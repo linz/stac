@@ -5,7 +5,7 @@
 - **Title**: Historical Imagery
 - **Identifier**: historical_imagery
 - **Field Name Prefix**: historical_imagery
-- **Scope**: Item, Catalog, Collection
+- **Scope**: Item
 - **Extension Maturity Classification**: Work In Progress (Before proposal)
 
 
