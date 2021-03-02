@@ -9,6 +9,7 @@ authors = [
     "matthewhanson <matt.a.hanson@gmail.com>",
     "Matthias Mohr <m.mohr@uni-muenster.de>",
     "Victor Engmark <vengmark@linz.govt.nz>",
+    "Mitchell Paff <mpaff@linz.govt.nz>",
 ]
 
 [tool.poetry.dependencies]
