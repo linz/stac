@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "LINZ STAC extensions"
+version = "0.1.0"
+description = ""
+authors = [
+    "Blayne Chard <blayne@chard.com>",
+    "Daniel Silk <dsilk@linz.govt.nz>",
+    "James Santucci <james.santucci@gmail.com>",
+    "matthewhanson <matt.a.hanson@gmail.com>",
+    "Matthias Mohr <m.mohr@uni-muenster.de>",
+    "Victor Engmark <vengmark@linz.govt.nz>",
+]
+
+[tool.poetry.dependencies]
+
+[tool.poetry.dev-dependencies]
+pre-commit = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
