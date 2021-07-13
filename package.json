@@ -1,0 +1,6 @@
+{
+  "prettier": {
+    "printWidth": 80,
+    "proseWrap": "always"
+  }
+}
