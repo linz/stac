@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://stac-extensions.github.io/template/v1.0.0/schema.json#",
+  "$id": "https://linz.github.io/STAC/extensions/linz/json-schema/schema.json",
   "title": "LINZ STAC Extension",
   "description": "LINZ STAC Extension.",
   "oneOf": [
