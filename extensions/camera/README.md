@@ -5,7 +5,7 @@
 - **Title**: Camera
 - **Identifier**: https://linz.github.io/STAC/extensions/camera/v1.0.0/schema.json
 - **Field Name Prefix**: camera
-- **Scope**: Item, Collection
+- **Scope**: Item
 - **Extension Classification**: Work In Progress (Before proposal)
 
 ## Item Properties or Asset Fields
