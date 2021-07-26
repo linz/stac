@@ -1,5 +1,5 @@
 {
-  "name": "stac-extensions",
+  "name": "@linzjs/stac",
   "version": "1.0.0",
   "devDependencies": {
     "remark-cli": "^8.0.0",
