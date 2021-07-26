@@ -21,8 +21,8 @@ International licence.
 The survey metadata that is being converted to STAC can be viewed and downloaded
 from the [LINZ Data Service](https://data.linz.govt.nz/layer/51002).
 
-For more details see:
-https://www.linz.govt.nz/about-linz/what-were-doing/projects/crown-aerial-film-archive-historical-imagery-scanning-project
+For more details see
+[The Crown Aerial Film Archive historical imagery scanning project](https://www.linz.govt.nz/about-linz/what-were-doing/projects/crown-aerial-film-archive-historical-imagery-scanning-project).
 
 ## License
 
