@@ -10,6 +10,6 @@ jobs:
         with:
           node-version: 14
       - uses: actions/checkout@v2
-      - run: |
-          npm install
-          npm test
+      - run: npm install yarn
+      - run: yarn
+      - run: yarn test

@@ -7,7 +7,7 @@
     "check-examples": "stac-node-validator . --lint --verbose --schemaMap https://stac-extensions.github.io/template/v1.0.0/schema.json=./json-schema/schema.json",
     "format-examples": "stac-node-validator . --format --schemaMap https://stac-extensions.github.io/template/v1.0.0/schema.json=./json-schema/schema.json"
   },
-  "dependencies": {
+  "devDependencies": {
     "remark-cli": "^8.0.0",
     "remark-lint": "^7.0.0",
     "remark-lint-no-html": "^2.0.0",
