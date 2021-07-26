@@ -1,4 +1,4 @@
-name: Publish JSON Schema
+name: Publish STAC JSON schema
 on:
   release:
     types: [published]
@@ -9,7 +9,7 @@ jobs:
       - name: Inject env variables
         uses: rlespinasse/github-slug-action@v3.x
       - uses: actions/checkout@v2
-      - name: deploy JSON Schema for version ${{ env.GITHUB_REF_SLUG }}
+      - name: Deploy JSON Schema for version ${{ env.GITHUB_REF_SLUG }}
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
