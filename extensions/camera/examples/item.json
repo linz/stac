@@ -1,7 +1,7 @@
 {
     "stac_version": "1.0.0",
     "stac_extensions": [
-        "TODO: URL"
+        "https://linz.github.io/STAC/extensions/camera/v1.0.0/schema.json"
     ],
     "type": "Feature",
     "id": "72360",
