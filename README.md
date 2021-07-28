@@ -47,6 +47,14 @@ automatically verify the contents of files before committing:
    poetry run pre-commit install --overwrite
    ```
 
+## Adding a new extension
+
+Be sure to add a schemaMap entry to the
+[.pre-commit-config.yaml](.pre-commit-config.yaml) file with your json-schema
+`$id` url followed by the path to the json-schema locally. This will allow
+pre-commit to use a local json-schema file rather than retrieving a possibly yet
+un-published json-schema.
+
 ## [License](LICENSE)
 
 [![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
