@@ -37,7 +37,7 @@ automatically verify the contents of files before committing:
 1. Install packages:
 
    ```shell
-   npm install
+   yarn
    poetry install
    ```
 
