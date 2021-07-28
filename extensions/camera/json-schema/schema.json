@@ -1,79 +1,69 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://linz.github.io/STAC/extensions/camera/v1.0.0/schema.json",
-    "title": "Camera Extension",
-    "description": "STAC Camera Extension for STAC Items.",
-    "oneOf": [
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://linz.github.io/STAC/extensions/camera/v1.0.0/schema.json",
+  "title": "Camera Extension",
+  "description": "STAC Camera Extension for STAC Items.",
+  "oneOf": [
+    {
+      "$comment": "This is the schema for STAC Items.",
+      "allOf": [
         {
-            "$comment": "This is the schema for STAC Items.",
-            "allOf": [
-                {
-                    "type": "object",
-                    "required": [
-                        "type",
-                        "properties",
-                        "assets"
-                    ],
-                    "properties": {
-                        "type": {
-                            "const": "Feature"
-                        },
-                        "properties": {
-                            "allOf": [
-                                {
-                                    "$ref": "#/definitions/fields"
-                                }
-                            ]
-                        },
-                        "assets": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "$ref": "#/definitions/fields"
-                            }
-                        }
-                    }
-                },
-                {
-                    "$ref": "#/definitions/stac_extensions"
-                }
-            ]
-        }
-    ],
-    "definitions": {
-        "stac_extensions": {
-            "type": "object",
-            "required": [
-                "stac_extensions"
-            ],
+          "type": "object",
+          "required": ["type", "properties", "assets"],
+          "properties": {
+            "type": {
+              "const": "Feature"
+            },
             "properties": {
-                "stac_extensions": {
-                    "type": "array",
-                    "contains": {
-                        "const": "https://linz.github.io/STAC/extensions/camera/v1.0.0/schema.json"
-                    }
+              "allOf": [
+                {
+                  "$ref": "#/definitions/fields"
                 }
+              ]
+            },
+            "assets": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/fields"
+              }
             }
+          }
         },
-        "fields": {
-            "type": "object",
-            "properties": {
-                "camera:sequence_number": {
-                    "title": "Sequence Number",
-                    "type": [
-                        "integer"
-                    ]
-                },
-                "camera:nominal_focal_length": {
-                    "title": "Nominal Focal Length",
-                    "type": [
-                        "integer"
-                    ]
-                }
-            },
-            "patternProperties": {
-                "^(?!camera:)": {}
-            },
-            "additionalProperties": false
+        {
+          "$ref": "#/definitions/stac_extensions"
         }
+      ]
     }
+  ],
+  "definitions": {
+    "stac_extensions": {
+      "type": "object",
+      "required": ["stac_extensions"],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "contains": {
+            "const": "https://linz.github.io/STAC/extensions/camera/v1.0.0/schema.json"
+          }
+        }
+      }
+    },
+    "fields": {
+      "type": "object",
+      "properties": {
+        "camera:sequence_number": {
+          "title": "Sequence Number",
+          "type": ["integer"]
+        },
+        "camera:nominal_focal_length": {
+          "title": "Nominal Focal Length",
+          "type": ["integer"]
+        }
+      },
+      "patternProperties": {
+        "^(?!camera:)": {}
+      },
+      "additionalProperties": false
+    }
+  }
 }

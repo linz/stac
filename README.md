@@ -29,7 +29,7 @@ For more details see
 Prerequisites:
 
 - [Poetry](https://python-poetry.org/)
-- [NPM](https://www.npmjs.com/)
+- [Yarn](https://yarnpkg.com/)
 
 Follow these steps to set up a development environment with pre-commit hooks to
 automatically verify the contents of files before committing:
