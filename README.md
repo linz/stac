@@ -21,5 +21,43 @@ International licence.
 The survey metadata that is being converted to STAC can be viewed and downloaded
 from the [LINZ Data Service](https://data.linz.govt.nz/layer/51002).
 
-For more details see:
-https://www.linz.govt.nz/about-linz/what-were-doing/projects/crown-aerial-film-archive-historical-imagery-scanning-project
+For more details see
+[The Crown Aerial Film Archive historical imagery scanning project](https://www.linz.govt.nz/about-linz/what-were-doing/projects/crown-aerial-film-archive-historical-imagery-scanning-project).
+
+## Development
+
+Prerequisites:
+
+- [Poetry](https://python-poetry.org/)
+- [Yarn](https://yarnpkg.com/)
+
+Follow these steps to set up a development environment with pre-commit hooks to
+automatically verify the contents of files before committing:
+
+1. Install packages:
+
+   ```shell
+   yarn
+   poetry install
+   ```
+
+2. Enable pre-commit hooks:
+
+   ```shell
+   poetry run pre-commit install --overwrite
+   ```
+
+## Adding a new extension
+
+Be sure to add a schemaMap entry to the
+[.pre-commit-config.yaml](.pre-commit-config.yaml) file with your json-schema
+`$id` url followed by the path to the json-schema locally. This will allow
+pre-commit to use a local json-schema file rather than retrieving a possibly yet
+un-published json-schema.
+
+## [License](LICENSE)
+
+[![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
+
+This work is licensed under a
+[Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
