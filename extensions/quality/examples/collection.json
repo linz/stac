@@ -1,5 +1,5 @@
 {
-  "stac_version": "1.0.0-rc.1",
+  "stac_version": "1.0.0",
   "stac_extensions": [
     "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
     "https://linz.github.io/STAC/extensions/quality/v1.0.0/schema.json"
@@ -24,6 +24,7 @@
     "z": 3
   },
   "template:another_one": [1, 2, 3],
+  "quality:description": "This is an example dataset quality description",
   "assets": {
     "example": {
       "href": "https://example.com/examples/file.xyz",
