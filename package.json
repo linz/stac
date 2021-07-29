@@ -2,7 +2,7 @@
   "name": "@linzjs/stac",
   "version": "1.0.0",
   "devDependencies": {
-    "remark-cli": "^8.0.0",
+    "remark-cli": "^9.0.0",
     "remark-lint": "^8.0.0",
     "remark-lint-no-html": "^2.0.0",
     "remark-preset-lint-consistent": "^3.0.0",
