@@ -41,6 +41,14 @@
         "quality:description": {
           "title": "Dataset Data Quality",
           "type": ["string"]
+        },
+        "quality:horizontal_accuracy": {
+          "title": "Horizontal Accuracy",
+          "type": ["number"]
+        },
+        "quality:horizontal_accuracy_type": {
+          "title": "Horizontal Accuracy Type",
+          "enum": ["Nominal", "95% confidence interval"]
         }
       },
       "patternProperties": {
