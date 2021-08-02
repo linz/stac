@@ -1,14 +1,14 @@
 # Quality Extension Specification
 
-**This is a work in progress and has not been reviewed everything is likely to
-change**
-
 - **Title**: Quality
 - **Identifier**:
   [https://linz.github.io/STAC/extensions/quality/v1.0.0/schema.json]()
 - **Field Name Prefix**: quality
 - **Scope**: Collection
-- **Extension Classification**: Work In Progress (Before proposal)
+- **Extension
+  [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):**
+  Proposal
+- **Owner**: @billgeo @imincik @l0b0 @MitchellPaff
 
 ## Collection Fields
 
