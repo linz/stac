@@ -48,6 +48,7 @@
         },
         "quality:horizontal_accuracy_type": {
           "title": "Horizontal Accuracy Type",
+          "type": "string",
           "enum": ["Nominal", "95% confidence interval"]
         }
       },
