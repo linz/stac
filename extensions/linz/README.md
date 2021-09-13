@@ -22,9 +22,10 @@ extension which adds constraints to default STAC schema properties.
 
 ## Item Properties and Collection Fields
 
-| Field Name | Type   | Description                     |
-| ---------- | ------ | ------------------------------- |
-| title      | string | **REQUIRED**. Collection title. |
+| Field Name              | Type   | Description                                                                                                                                                                                                                                                                                                                                      |
+| ----------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| title                   | string | **REQUIRED**. Collection title.                                                                                                                                                                                                                                                                                                                  |
+| security_classification | string | **REQUIRED**. New Zealand Government [Security Classification](https://www.digital.govt.nz/standards-and-guidance/governance/managing-online-channels/security-and-privacy-for-websites/foundations/classify-information/). Must be one of `Unclassified`, `IN-CONFIDENCE`, `SENSITIVE`, `RESTRICTED`, `CONFIDENTIAL`, `SECRET` or `TOP-SECRET`. |
 
 ## Contributing
 
