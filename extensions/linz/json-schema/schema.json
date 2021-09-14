@@ -19,8 +19,50 @@
               "minLength": 1
             }
           }
+        },
+        {
+          "$ref": "#/definitions/security_classification"
+        },
+        {
+          "$ref": "#/definitions/stac_extensions"
         }
       ]
     }
-  ]
+  ],
+  "definitions": {
+    "stac_extensions": {
+      "type": "object",
+      "required": ["stac_extensions"],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "contains": {
+            "const": "https://linz.github.io/STAC/extensions/linz/v1.0.0/schema.json"
+          }
+        }
+      }
+    },
+    "security_classification": {
+      "type": "object",
+      "required": ["linz:security_classification"],
+      "properties": {
+        "linz:security_classification": {
+          "type": "string",
+          "enum": [
+            "Unclassified",
+            "IN-CONFIDENCE",
+            "SENSITIVE",
+            "RESTRICTED",
+            "CONFIDENTIAL",
+            "SECRET",
+            "TOP-SECRET"
+          ]
+        }
+      },
+      "patternProperties": {
+        "^(?!linz:)": {}
+      },
+      "additionalProperties": false
+    }
+  }
 }
