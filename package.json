@@ -1,7 +1,13 @@
 {
   "name": "@linzjs/stac",
-  "version": "1.0.0",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "lint": "npx eslint extensions --fix",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
+  },
   "devDependencies": {
+    "@linzjs/style": "^3.1.1",
     "stac-node-validator": "^1.0.0"
   },
   "prettier": {
