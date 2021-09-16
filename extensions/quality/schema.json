@@ -30,7 +30,7 @@
         "stac_extensions": {
           "type": "array",
           "contains": {
-            "const": "https://linz.github.io/STAC/__STAC_VERSION__/quality/schema.json"
+            "const": "https://linz.github.io/stac/__STAC_VERSION__/quality/schema.json"
           }
         }
       }
