@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "npx eslint extensions --fix",
     "validate": "./validate.sh extensions/*/examples/*.json",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && npm run version-schema && git add CHANGELOG.md extensions",
+    "version-schema": "sed -i \"s/__STAC_VERSION__/$npm_package_version/\" extensions/**/*.*"
   },
   "devDependencies": {
     "@linzjs/style": "^3.1.1",

@@ -1,5 +1,5 @@
 {
-  "stac_version": "1.0.0-rc.1",
+  "stac_version": "1.0.0",
   "stac_extensions": [
     "https://linz.github.io/stac/__STAC_VERSION__/template/schema.json"
   ],
