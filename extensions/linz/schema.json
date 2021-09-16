@@ -12,11 +12,21 @@
         },
         {
           "type": "object",
-          "required": ["title"],
+          "required": ["title", "created", "updated"],
           "properties": {
             "title": {
               "type": "string",
               "minLength": 1
+            },
+            "created": {
+              "type": "string",
+              "minLength": 1,
+              "format": "date-time"
+            },
+            "updated": {
+              "type": "string",
+              "minLength": 1,
+              "format": "date-time"
             }
           }
         },
