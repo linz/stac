@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "lint": "npx eslint extensions --fix",
+    "validate": "./validate.sh extensions/*/examples/*.json",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
   "devDependencies": {

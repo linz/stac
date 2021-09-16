@@ -5,7 +5,7 @@ change**
 
 - **Title**: Camera
 - **Identifier**:
-  [https://linz.github.io/STAC/extensions/camera/v1.0.0/schema.json]()
+  [https://linz.github.io/stac/extensions/camera/v1.0.0/schema.json]()
 - **Field Name Prefix**: camera
 - **Scope**: Item
 - **Extension Classification**: Work In Progress (Before proposal)

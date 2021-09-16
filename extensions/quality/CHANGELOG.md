@@ -18,4 +18,4 @@ and this project adheres to
 
 ### Fixed
 
-[unreleased]: https://github.com/linz/STAC/compare/v1.0.0...HEAD
+[unreleased]: https://github.com/linz/stac/compare/v1.0.0...HEAD
