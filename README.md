@@ -47,6 +47,12 @@ automatically verify the contents of files before committing:
    poetry run pre-commit install --overwrite
    ```
 
+### Releases
+
+To create a release run `yarn version <patch|minor|major>` which will create a change log and version tag.
+
+Push this to master then the build pipeline will create a github release which will trigger the github pages to be published.
+
 ## Adding a new extension
 
 Be sure to add a schemaMap entry to the
