@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://linz.github.io/stac/extensions/camera/v1.0.0/schema.json",
+  "$id": "https://linz.github.io/stac/__STAC_VERSION__/camera/schema.json",
   "title": "Camera Extension",
   "description": "STAC Camera Extension for STAC Items.",
   "oneOf": [
@@ -43,7 +43,7 @@
         "stac_extensions": {
           "type": "array",
           "contains": {
-            "const": "https://linz.github.io/stac/extensions/camera/v1.0.0/schema.json"
+            "const": "https://linz.github.io/stac/__STAC_VERSION__/camera/schema.json"
           }
         }
       }

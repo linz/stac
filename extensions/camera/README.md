@@ -5,7 +5,7 @@ change**
 
 - **Title**: Camera
 - **Identifier**:
-  [https://linz.github.io/stac/extensions/camera/v1.0.0/schema.json]()
+  [https://linz.github.io/stac/__STAC_VERSION__/camera/schema.json]()
 - **Field Name Prefix**: camera
 - **Scope**: Item
 - **Extension Classification**: Work In Progress (Before proposal)
@@ -14,5 +14,5 @@ change**
 
 | Field Name                  | Type    | Description                                                                                                                      |
 | --------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| camera:sequence_number      | integer | Also referred to as veder; the sequential order of photos taken by an individual camera                                          |
+| camera:sequence_number      | integer | Also referred to as vender; the sequential order of photos taken by an individual camera                                          |
 | camera:nominal_focal_length | integer | Distance in mm from the camera lens centre to the film in the camera at which the image will have the least possible distortion. |

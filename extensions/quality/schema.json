@@ -1,8 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://linz.github.io/stac/extensions/linz/json-schema/schema.json",
-  "title": "LINZ STAC Extension",
-  "description": "LINZ STAC Extension.",
+  "$id": "https://linz.github.io/stac/__STAC_VERSION__/quality/schema.json#",
+  "description": "STAC Quality Extension for STAC Collections.",
   "oneOf": [
     {
       "$comment": "This is the schema for LINZ STAC Collections.",
@@ -19,12 +18,6 @@
               "minLength": 1
             }
           }
-        },
-        {
-          "$ref": "#/definitions/security_classification"
-        },
-        {
-          "$ref": "#/definitions/stac_extensions"
         }
       ]
     }
@@ -37,30 +30,30 @@
         "stac_extensions": {
           "type": "array",
           "contains": {
-            "const": "https://linz.github.io/stac/extensions/linz/v1.0.0/schema.json"
+            "const": "https://linz.github.io/STAC/__STAC_VERSION__/quality/schema.json"
           }
         }
       }
     },
-    "security_classification": {
+    "fields": {
       "type": "object",
-      "required": ["linz:security_classification"],
       "properties": {
-        "linz:security_classification": {
+        "quality:description": {
+          "title": "Dataset Data Quality",
+          "type": ["string"]
+        },
+        "quality:horizontal_accuracy": {
+          "title": "Horizontal Accuracy",
+          "type": ["number"]
+        },
+        "quality:horizontal_accuracy_type": {
+          "title": "Horizontal Accuracy Type",
           "type": "string",
-          "enum": [
-            "Unclassified",
-            "IN-CONFIDENCE",
-            "SENSITIVE",
-            "RESTRICTED",
-            "CONFIDENTIAL",
-            "SECRET",
-            "TOP-SECRET"
-          ]
+          "enum": ["Nominal", "95% confidence interval"]
         }
       },
       "patternProperties": {
-        "^(?!linz:)": {}
+        "^(?!quality:)": {}
       },
       "additionalProperties": false
     }

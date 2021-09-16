@@ -2,7 +2,7 @@
 
 - **Title**: Quality
 - **Identifier**:
-  [https://linz.github.io/stac/extensions/quality/v1.0.0/schema.json]()
+  [https://linz.github.io/stac/extensions/quality/__STAC_VERSION__/schema.json]()
 - **Field Name Prefix**: quality
 - **Scope**: Collection
 - **Extension

@@ -2,7 +2,7 @@
 
 - **Title:** Template
 - **Identifier:**
-  <https://stac-extensions.github.io/template/v1.0.0/schema.json>
+  <https://stac-extensions.github.io/template/__STAC_VERSION__/schema.json>
 - **Field Name Prefix:** template
 - **Scope:** Item, Collection
 - **Extension
