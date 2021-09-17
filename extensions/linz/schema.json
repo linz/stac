@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://linz.github.io/STAC/extensions/linz/json-schema/schema.json",
+  "$id": "https://linz.github.io/stac/__STAC_VERSION__/linz/schema.json",
   "title": "LINZ STAC Extension",
   "description": "LINZ STAC Extension.",
   "oneOf": [
@@ -37,7 +37,7 @@
         "stac_extensions": {
           "type": "array",
           "contains": {
-            "const": "https://linz.github.io/STAC/extensions/linz/v1.0.0/schema.json"
+            "const": "https://linz.github.io/stac/__STAC_VERSION__/linz/schema.json"
           }
         }
       }

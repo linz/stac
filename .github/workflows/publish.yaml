@@ -9,9 +9,11 @@ jobs:
       - name: Inject env variables
         uses: rlespinasse/github-slug-action@v3.x
       - uses: actions/checkout@v2
+      - run: sed -i "s/__STAC_VERSION__/$GITHUB_REF_SLUG/" extensions/**/*.*
       - name: Deploy JSON Schema for version ${{ env.GITHUB_REF_SLUG }}
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: json-schema
+          publish_dir: extensions
           destination_dir: ${{ env.GITHUB_REF_SLUG }}
+
