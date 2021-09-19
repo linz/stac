@@ -1,8 +1,6 @@
 name: Test
 on:
   push:
-    tags:
-      - v*
     branches:
       - master
   pull_request:
@@ -13,9 +11,3 @@ jobs:
     steps:
       - uses: linz/action-typescript@v1
       - run: yarn validate
-
-      - name: Create github release
-        if: startsWith(github.ref, 'refs/tags/v')
-        run: npx conventional-github-releaser -p angular
-        env:
-          CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{secrets.GITHUB_TOKEN}}
