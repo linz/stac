@@ -3,10 +3,12 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "lint": "npx eslint . --fix && yarn format:markdown",
+    "lint": "npx eslint . --fix && yarn format",
+    "format": "yarn format:markdown && yarn format:yaml",
     "format:markdown": "npx prettier **/*.md --write",
+    "format:yaml": "npx prettier **/*.yaml --write",
     "validate": "./validate.sh extensions/*/examples/*.json",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && yarn format:markdown && git add CHANGELOG.md",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && yarn format && git add CHANGELOG.md",
     "version-schema": "sed -i \"s/_STAC_VERSION_/v$npm_package_version/\" extensions/**/*.*"
   },
   "devDependencies": {

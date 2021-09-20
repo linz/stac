@@ -21,7 +21,7 @@ jobs:
       - name: Prepare tag
         id: git
         run: echo "::set-output name=tag::${GITHUB_REF##*/}"
-        
+
       - name: Deploy JSON Schema for version ${{ env.GITHUB_REF }}
         uses: peaceiris/actions-gh-pages@v3
         with:
