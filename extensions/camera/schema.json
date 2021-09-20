@@ -3,36 +3,27 @@
   "$id": "https://linz.github.io/stac/__STAC_VERSION__/camera/schema.json",
   "title": "Camera Extension",
   "description": "STAC Camera Extension for STAC Items.",
-  "oneOf": [
+  "allOf": [
     {
-      "$comment": "This is the schema for STAC Items.",
-      "allOf": [
-        {
-          "type": "object",
-          "required": ["type", "properties", "assets"],
-          "properties": {
-            "type": {
-              "const": "Feature"
-            },
-            "properties": {
-              "allOf": [
-                {
-                  "$ref": "#/definitions/fields"
-                }
-              ]
-            },
-            "assets": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/fields"
-              }
-            }
-          }
+      "type": "object",
+      "required": ["type", "properties", "assets"],
+      "properties": {
+        "type": {
+          "const": "Feature"
         },
-        {
-          "$ref": "#/definitions/stac_extensions"
+        "properties": {
+          "$ref": "#/definitions/fields"
+        },
+        "assets": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/fields"
+          }
         }
-      ]
+      }
+    },
+    {
+      "$ref": "#/definitions/stac_extensions"
     }
   ],
   "definitions": {
