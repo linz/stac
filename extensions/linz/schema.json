@@ -3,40 +3,35 @@
   "$id": "https://linz.github.io/stac/__STAC_VERSION__/linz/schema.json",
   "title": "LINZ STAC Extension",
   "description": "LINZ STAC Extension.",
-  "oneOf": [
+  "allOf": [
     {
-      "$comment": "This is the schema for LINZ STAC Collections.",
-      "allOf": [
-        {
-          "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
+      "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
+    },
+    {
+      "type": "object",
+      "required": ["title", "created", "updated"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
         },
-        {
-          "type": "object",
-          "required": ["title", "created", "updated"],
-          "properties": {
-            "title": {
-              "type": "string",
-              "minLength": 1
-            },
-            "created": {
-              "type": "string",
-              "minLength": 1,
-              "format": "date-time"
-            },
-            "updated": {
-              "type": "string",
-              "minLength": 1,
-              "format": "date-time"
-            }
-          }
+        "created": {
+          "type": "string",
+          "minLength": 1,
+          "format": "date-time"
         },
-        {
-          "$ref": "#/definitions/security_classification"
-        },
-        {
-          "$ref": "#/definitions/stac_extensions"
+        "updated": {
+          "type": "string",
+          "minLength": 1,
+          "format": "date-time"
         }
-      ]
+      }
+    },
+    {
+      "$ref": "#/definitions/security_classification"
+    },
+    {
+      "$ref": "#/definitions/stac_extensions"
     }
   ],
   "definitions": {
