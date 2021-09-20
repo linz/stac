@@ -3,18 +3,17 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "lint": "npx eslint extensions --fix",
+    "lint": "npx eslint . --fix && yarn format",
+    "format": "yarn format:markdown && yarn format:yaml",
+    "format:markdown": "npx prettier **/*.md --write",
+    "format:yaml": "npx prettier **/*.yaml --write",
     "validate": "./validate.sh extensions/*/examples/*.json",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
-    "version-schema": "sed -i \"s/__STAC_VERSION__/v$npm_package_version/\" extensions/**/*.*"
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && yarn format && git add CHANGELOG.md",
+    "version-schema": "sed -i \"s/_STAC_VERSION_/v$npm_package_version/\" extensions/**/*.*"
   },
   "devDependencies": {
     "@linzjs/style": "^3.1.1",
     "conventional-changelog-cli": "^2.1.1",
     "stac-node-validator": "^1.0.0"
-  },
-  "prettier": {
-    "printWidth": 80,
-    "proseWrap": "always"
   }
 }

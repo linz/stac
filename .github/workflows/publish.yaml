@@ -1,19 +1,30 @@
 name: Publish STAC JSON schema
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - v*
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Inject env variables
-        uses: rlespinasse/github-slug-action@v3.x
       - uses: actions/checkout@v2
-      - run: sed -i "s/__STAC_VERSION__/$GITHUB_REF_SLUG/" extensions/**/*.*
-      - name: Deploy JSON Schema for version ${{ env.GITHUB_REF_SLUG }}
+
+      - name: Create github release
+        run: npx conventional-github-releaser -p angular
+        env:
+          CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Version schema
+        run: yarn run version-schema
+
+      - name: Prepare tag
+        id: git
+        run: echo "::set-output name=tag::${GITHUB_REF##*/}"
+
+      - name: Deploy JSON Schema for version ${{ env.GITHUB_REF }}
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: extensions
-          destination_dir: ${{ env.GITHUB_REF_SLUG }}
-
+          destination_dir: ${{ steps.git.outputs.tag }}
