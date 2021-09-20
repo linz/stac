@@ -16,7 +16,7 @@ jobs:
         env:
           CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      - run: sed -i "s/__STAC_VERSION__/$GITHUB_REF/" extensions/**/*.*
+      - run: sed -i "s/_STAC_VERSION_/$GITHUB_REF/" extensions/**/*.*
         if: startsWith(github.ref, 'refs/tags/v')
         
       - name: Deploy JSON Schema for version ${{ env.GITHUB_REF }}
