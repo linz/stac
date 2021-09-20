@@ -48,15 +48,7 @@
       "properties": {
         "linz:security_classification": {
           "type": "string",
-          "enum": [
-            "Unclassified",
-            "IN-CONFIDENCE",
-            "SENSITIVE",
-            "RESTRICTED",
-            "CONFIDENTIAL",
-            "SECRET",
-            "TOP-SECRET"
-          ]
+          "enum": ["Unclassified", "IN-CONFIDENCE", "SENSITIVE", "RESTRICTED", "CONFIDENTIAL", "SECRET", "TOP-SECRET"]
         }
       },
       "patternProperties": {

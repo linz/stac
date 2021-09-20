@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "lint": "npx eslint extensions --fix",
+    "lint": "npx eslint . --fix",
     "validate": "./validate.sh extensions/*/examples/*.json",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "version-schema": "sed -i \"s/__STAC_VERSION__/v$npm_package_version/\" extensions/**/*.*"
@@ -12,9 +12,5 @@
     "@linzjs/style": "^3.1.1",
     "conventional-changelog-cli": "^2.1.1",
     "stac-node-validator": "^1.0.0"
-  },
-  "prettier": {
-    "printWidth": 80,
-    "proseWrap": "always"
   }
 }

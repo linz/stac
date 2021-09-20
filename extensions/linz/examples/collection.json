@@ -1,8 +1,6 @@
 {
   "stac_version": "1.0.0",
-  "stac_extensions": [
-    "https://linz.github.io/stac/__STAC_VERSION__/linz/schema.json"
-  ],
+  "stac_extensions": ["https://linz.github.io/stac/__STAC_VERSION__/linz/schema.json"],
   "type": "Collection",
   "id": "collection",
   "title": "A title",
