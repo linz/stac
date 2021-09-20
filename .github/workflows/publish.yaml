@@ -16,4 +16,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: extensions
           destination_dir: ${{ env.GITHUB_REF_SLUG }}
-
