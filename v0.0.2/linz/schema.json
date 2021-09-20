@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://linz.github.io/stac/v0.0.2/linz/schema.json",
+  "title": "LINZ STAC Extension",
+  "description": "LINZ STAC Extension.",
+  "allOf": [
+    {
+      "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
+    },
+    {
+      "type": "object",
+      "required": ["title", "created", "updated"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created": {
+          "type": "string",
+          "minLength": 1,
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "minLength": 1,
+          "format": "date-time"
+        }
+      }
+    },
+    {
+      "$ref": "#/definitions/security_classification"
+    },
+    {
+      "$ref": "#/definitions/stac_extensions"
+    }
+  ],
+  "definitions": {
+    "stac_extensions": {
+      "type": "object",
+      "required": ["stac_extensions"],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "contains": {
+            "const": "https://linz.github.io/stac/v0.0.2/linz/schema.json"
+          }
+        }
+      }
+    },
+    "security_classification": {
+      "type": "object",
+      "required": ["linz:security_classification"],
+      "properties": {
+        "linz:security_classification": {
+          "type": "string",
+          "enum": ["Unclassified", "IN-CONFIDENCE", "SENSITIVE", "RESTRICTED", "CONFIDENTIAL", "SECRET", "TOP-SECRET"]
+        }
+      },
+      "patternProperties": {
+        "^(?!linz:)": {}
+      },
+      "additionalProperties": false
+    }
+  }
+}
