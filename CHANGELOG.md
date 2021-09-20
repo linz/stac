@@ -1,3 +1,13 @@
+## [0.0.2](https://github.com/linz/stac/compare/v0.0.1...v0.0.2) (2021-09-20)
+
+### Bug Fixes
+
+- Use portable shebang line ([#37](https://github.com/linz/stac/issues/37)) ([bba2f63](https://github.com/linz/stac/commit/bba2f6348be563e6827751533be20bf1be633591))
+
+### Features
+
+- added new mandatory fields to LINZ STAC schema ([#28](https://github.com/linz/stac/issues/28)) ([58687a1](https://github.com/linz/stac/commit/58687a1c252f85236f79300ee2cdf61e7abeefd2))
+
 ## 0.0.1 (2021-09-17)
 
 ### Bug Fixes
