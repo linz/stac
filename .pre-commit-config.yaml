@@ -11,8 +11,16 @@ repos:
         files: ^extensions/[^/]+/examples/.*\.json$
         stages: [commit]
 
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: a99a3fbe79a9d346cabd02a5e167ad0edafe616b # v2.3.0
-    hooks:
       - id: prettier
+        name: prettier
+        entry: node_modules/.bin/prettier
+        language: node
+        files: ^.*\.(md|yaml)$
+        stages: [commit]
+
+      - id: eslint
+        name: eslint
+        entry: node_modules/.bin/eslint
+        language: node
+        types: [json]
         stages: [commit]
