@@ -1,3 +1,9 @@
+## [0.0.3](https://github.com/linz/stac/compare/v0.0.2...v0.0.3) (2021-09-21)
+
+### Bug Fixes
+
+- Replace version placeholder in all extension files ([#42](https://github.com/linz/stac/issues/42)) ([3db8d61](https://github.com/linz/stac/commit/3db8d618940897e7f7931b16d948f25d7b0fc472))
+
 ## [0.0.2](https://github.com/linz/stac/compare/v0.0.1...v0.0.2) (2021-09-20)
 
 ### Bug Fixes
