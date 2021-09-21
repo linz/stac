@@ -56,7 +56,7 @@ Push this to master then the build pipeline will create a github release which w
 ## Adding a new extension
 
 Be sure to add a schemaMap entry to the
-[.pre-commit-config.yaml](.pre-commit-config.yaml) file with your json-schema
+[validate.sh](validate.sh) file with your json-schema
 `$id` url followed by the path to the json-schema locally. This will allow
 pre-commit to use a local json-schema file rather than retrieving a possibly yet
 un-published json-schema.
