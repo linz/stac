@@ -9,6 +9,19 @@ change**
 - **Scope**: Item
 - **Extension Maturity Classification**: Work In Progress (Before proposal)
 
+LINZ is currently scanning 550,000 photo negatives from 7,300 aerial surveys
+flown between 1936 and 2008.
+
+As of July 2020, more than 493,000 photos have been digitised and made
+available, free of charge, under the Creative Commons Attribution 4.0
+International licence.
+
+The survey metadata that is being converted to STAC can be viewed and downloaded
+from the [LINZ Data Service](https://data.linz.govt.nz/layer/51002).
+
+For more details see
+[The Crown Aerial Film Archive historical imagery scanning project](https://www.linz.govt.nz/about-linz/what-were-doing/projects/crown-aerial-film-archive-historical-imagery-scanning-project).
+
 ## STAC Collections
 
 ### [STAC Collection Fields](https://github.com/radiantearth/stac-spec/blob/v1.0.0/collection-spec/collection-spec.md)
