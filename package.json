@@ -9,7 +9,7 @@
     "format:yaml": "npx prettier **/*.yaml --write",
     "validate": "./validate.sh extensions/*/examples/*.json",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && yarn format && git add CHANGELOG.md",
-    "version-schema": "sed -i \"s/_STAC_VERSION_/v$npm_package_version/\" extensions/**/*.*"
+    "version-schema": "find extensions -type f -print0 | xargs -0 sed -i \"s/_STAC_VERSION_/v$npm_package_version/\""
   },
   "devDependencies": {
     "@linzjs/style": "^3.1.1",
