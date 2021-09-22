@@ -1,3 +1,10 @@
+## [0.0.4](https://github.com/linz/STAC/compare/v0.0.3...v0.0.4) (2021-09-22)
+
+### Bug Fixes
+
+- modified the json-schema for linz properties to copy stac ([#45](https://github.com/linz/STAC/issues/45)) ([49677de](https://github.com/linz/STAC/commit/49677de6c193fad0049e0bea555dccabb26a420a))
+- Specify command to release new version ([#44](https://github.com/linz/STAC/issues/44)) ([4b32a34](https://github.com/linz/STAC/commit/4b32a34c579f5099fe7a2c17986698a5555dafaf))
+
 ## [0.0.3](https://github.com/linz/stac/compare/v0.0.2...v0.0.3) (2021-09-21)
 
 ### Bug Fixes
