@@ -2,11 +2,10 @@
   "stac_version": "1.0.0",
   "stac_extensions": ["https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json"],
   "type": "Collection",
+  "description": "This is a non-conformant STAC example using the linz extension. It is missing the mandatory updated, created and linz:security_classification fields.",
   "id": "collection",
-  "description": "A description",
+  "title": "A title",
   "license": "Apache-2.0",
-  "created": "2015-06-23",
-  "updated": "2015-06-23",
   "extent": {
     "spatial": {
       "bbox": [[172.9, 1.3, 173, 1.4]]

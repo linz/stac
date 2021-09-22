@@ -14,5 +14,11 @@ validator_command=(
 
 for path in extensions/*/non-examples/*.json
 do
-    ! "${validator_command[@]}" "$path"
+    if "${validator_command[@]}" "$path"
+    then
+        echo "Valid non-example: ${path}" >&2
+        exit_code=1
+    fi
 done
+
+exit "${exit_code-0}"
