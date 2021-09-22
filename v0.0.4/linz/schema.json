@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://linz.github.io/stac/v0.0.4/linz/schema.json",
+  "title": "LINZ STAC Extension",
+  "description": "LINZ STAC Extension.",
+  "allOf": [
+    {
+      "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
+    },
+    {
+      "$ref": "#/definitions/linz"
+    },
+    {
+      "$ref": "#/definitions/stac_extensions"
+    }
+  ],
+  "definitions": {
+    "stac_extensions": {
+      "type": "object",
+      "required": ["stac_extensions"],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "contains": {
+            "const": "https://linz.github.io/stac/v0.0.4/linz/schema.json"
+          }
+        }
+      }
+    },
+    "linz": {
+      "type": "object",
+      "required": ["title", "linz:security_classification", "linz:created", "linz:updated"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "linz:security_classification": {
+          "type": "string",
+          "enum": ["Unclassified", "IN-CONFIDENCE", "SENSITIVE", "RESTRICTED", "CONFIDENTIAL", "SECRET", "TOP-SECRET"]
+        },
+        "linz:created": {
+          "title": "Creation Time",
+          "type": "string",
+          "format": "date-time",
+          "pattern": "(\\+00:00|Z)$"
+        },
+        "linz:updated": {
+          "title": "Last Update Time",
+          "type": "string",
+          "format": "date-time",
+          "pattern": "(\\+00:00|Z)$"
+        }
+      },
+      "patternProperties": {
+        "^(?!linz:)": {}
+      },
+      "additionalProperties": false
+    }
+  }
+}
