@@ -8,29 +8,7 @@
       "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
     },
     {
-      "type": "object",
-      "required": ["title", "created", "updated"],
-      "properties": {
-        "title": {
-          "type": "string",
-          "minLength": 1
-        },
-        "created": {
-          "title": "Creation Time",
-          "type": "string",
-          "format": "date-time",
-          "pattern": "(\\+00:00|Z)$"
-        },
-        "updated": {
-          "title": "Last Update Time",
-          "type": "string",
-          "format": "date-time",
-          "pattern": "(\\+00:00|Z)$"
-        }
-      }
-    },
-    {
-      "$ref": "#/definitions/security_classification"
+      "$ref": "#/definitions/linz"
     },
     {
       "$ref": "#/definitions/stac_extensions"
@@ -49,13 +27,29 @@
         }
       }
     },
-    "security_classification": {
+    "linz": {
       "type": "object",
-      "required": ["linz:security_classification"],
+      "required": ["title", "linz:security_classification", "linz:created", "linz:updated"],
       "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
         "linz:security_classification": {
           "type": "string",
           "enum": ["Unclassified", "IN-CONFIDENCE", "SENSITIVE", "RESTRICTED", "CONFIDENTIAL", "SECRET", "TOP-SECRET"]
+        },
+        "linz:created": {
+          "title": "Creation Time",
+          "type": "string",
+          "format": "date-time",
+          "pattern": "(\\+00:00|Z)$"
+        },
+        "linz:updated": {
+          "title": "Last Update Time",
+          "type": "string",
+          "format": "date-time",
+          "pattern": "(\\+00:00|Z)$"
         }
       },
       "patternProperties": {
