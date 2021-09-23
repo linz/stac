@@ -25,12 +25,7 @@
     },
     "quality": {
       "type": "object",
-      "required": ["title"],
       "properties": {
-        "title": {
-          "type": "string",
-          "minLength": 1
-        },
         "quality:description": {
           "title": "Dataset Data Quality",
           "type": ["string"]
