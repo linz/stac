@@ -17,7 +17,7 @@ extension which adds constraints to default STAC schema properties.
 - Examples:
   - [Collection example](examples/collection.json): Shows the basic usage of the
     extension in a STAC Collection
-- [JSON Schema](json-schema/schema.json)
+- [JSON Schema](./schema.json)
 - [Changelog](./CHANGELOG.md)
 
 ## Item Properties and Collection Fields
