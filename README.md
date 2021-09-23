@@ -15,6 +15,7 @@ if other data managers find them to be useful.
 - [Historical Imagery](./extensions/historical_imagery): Aerial survey photos.
 - [LINZ](./extensions/linz): Toitū Te Whenua LINZ-specific settings.
 - [Quality](./extensions/quality): Dataset accuracy.
+- [Scanning](./extensions/scanning): Scanning details for photos.
 
 ## Development
 
