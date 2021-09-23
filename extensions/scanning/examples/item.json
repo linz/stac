@@ -10,14 +10,10 @@
     "instruments": ["EAGLE IV"],
     "mission": "SURVEY_1",
     "scan:is_original": true,
-    "scan:datetime": "2020-Q1"
+    "scan:scanned": "2018-10-01T00:00:00.000Z"
   },
   "links": [],
   "assets": {
-    ".his": {
-      "href": "./72360.his",
-      "file:checksum": "1220e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
     "image/tiff; application=geotiff; profile=cloud-optimized": {
       "href": "./72360.tiff",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",

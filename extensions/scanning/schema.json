@@ -46,9 +46,10 @@
           "title": "Original Negative",
           "type": "boolean"
         },
-        "scan:datetime": {
-          "title": "When Scanned",
-          "type": "string"
+        "scan:scanned": {
+          "title": "Scanned Date",
+          "type": "string",
+          "pattern": "(\\+00:00|Z)$"
         }
       },
       "patternProperties": {
