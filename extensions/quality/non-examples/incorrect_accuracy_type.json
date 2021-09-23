@@ -4,7 +4,7 @@
     "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
     "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json"
   ],
-  "description": "This is a non-conformant STAC example using the quality extension. quality:description is an integer rather than string.",
+  "description": "This is a non-conformant STAC example using the quality extension. quality:horizontal_accuracy_type is not one of the enumerated values.",
   "type": "Collection",
   "id": "collection",
   "title": "A title",
@@ -17,7 +17,6 @@
       "interval": [["2015-06-23T00:00:00Z", null]]
     }
   },
-  "quality:description": 1234,
   "quality:horizontal_accuracy": 0.4,
   "quality:horizontal_accuracy_type": "Good",
   "assets": {
@@ -27,7 +26,8 @@
   },
   "item_assets": {
     "data": {
-      "roles": ["data"]
+      "roles": ["data"],
+      "template:new_field": "test"
     }
   },
   "summaries": {
