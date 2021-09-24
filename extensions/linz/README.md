@@ -29,6 +29,13 @@ extension which adds constraints to default STAC schema properties.
 | linz:created                 | string | **REQUIRED**. Creation date and time of the collection in UTC.                                                                                                                                                                                                                                                                                   |
 | linz:updated                 | string | **REQUIRED**. Date and time the collection was updated last, in UTC.                                                                                                                                                                                                                                                                             |
 
+### Extensions
+
+This extension includes two other extensions:
+
+- [quality](../quality)
+- [version](https://github.com/stac-extensions/version)
+
 ## Contributing
 
 All contributions are subject to the
