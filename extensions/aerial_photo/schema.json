@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://linz.github.io/stac/_STAC_VERSION_/aerial_photo/schema.json",
+  "title": "Aerial Photography Extension",
+  "description": "STAC Aerial Photography Extension for STAC Items.",
+  "allOf": [
+    {
+      "type": "object",
+      "required": ["type", "properties", "assets"],
+      "properties": {
+        "type": {
+          "const": "Feature"
+        },
+        "properties": {
+          "required": ["aerial_photo:run", "aerial_photo:sequence_number"],
+          "$ref": "#/definitions/fields"
+        },
+        "assets": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/fields"
+          }
+        }
+      }
+    },
+    {
+      "$ref": "#/definitions/stac_extensions"
+    }
+  ],
+  "definitions": {
+    "stac_extensions": {
+      "type": "object",
+      "required": ["stac_extensions"],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "contains": {
+            "const": "https://linz.github.io/stac/_STAC_VERSION_/aerial_photo/schema.json"
+          }
+        }
+      }
+    },
+    "fields": {
+      "type": "object",
+      "properties": {
+        "aerial_photo:run": {
+          "title": "Straight line/pass of sequential imagery",
+          "type": "string"
+        },
+        "aerial_photo:altitude": {
+          "title": "Altitude in feet",
+          "type": "integer"
+        },
+        "aerial_photo:scale": {
+          "title": "Scale denominator",
+          "type": "integer"
+        },
+        "aerial_photo:sequence_number": {
+          "title": "Sequential order",
+          "type": "integer"
+        },
+        "aerial_photo:anomalies": {
+          "title": "Image anomalies",
+          "type": "string"
+        }
+      },
+      "patternProperties": {
+        "^(?!aerial_photo:)": {}
+      },
+      "additionalProperties": false
+    }
+  }
+}

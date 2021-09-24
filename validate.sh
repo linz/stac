@@ -6,6 +6,7 @@ shopt -s failglob
 validator_command=(
     node_modules/.bin/stac-node-validator
     --schemaMap=https://linz.github.io/stac/_STAC_VERSION_/template/schema.json=extensions/template/schema.json
+    --schemaMap=https://linz.github.io/stac/_STAC_VERSION_/aerial_photo/schema.json=extensions/aerial_photo/schema.json
     --schemaMap=https://linz.github.io/stac/_STAC_VERSION_/camera/schema.json=extensions/camera/schema.json
     --schemaMap=https://linz.github.io/stac/_STAC_VERSION_/scanning/schema.json=extensions/scanning/schema.json
     --schemaMap=https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json=extensions/quality/schema.json
