@@ -26,6 +26,15 @@
           "title": "Horizontal Accuracy Type",
           "type": "string",
           "enum": ["Nominal", "95% confidence interval"]
+        },
+        "quality:vertical_accuracy": {
+          "title": "Vertical Accuracy",
+          "type": ["number"]
+        },
+        "quality:vertical_accuracy_type": {
+          "title": "Vertical Accuracy Type",
+          "type": "string",
+          "enum": ["Nominal", "95% confidence interval"]
         }
       },
       "patternProperties": {
