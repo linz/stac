@@ -17,6 +17,20 @@ if other data managers find them to be useful.
 - [Quality](./extensions/quality): Dataset accuracy.
 - [Scanning](./extensions/scanning): Scanning details for photos.
 
+## Running tests
+
+1. Install packages:
+
+   ```shell
+   yarn
+   ```
+
+2. Validate examples and non-examples:
+
+   ```shell
+   yarn validate
+   ```
+
 ## Development
 
 Prerequisites:
