@@ -12,7 +12,7 @@
           "const": "Feature"
         },
         "properties": {
-          "required": ["film:id", "film:sequence_number"],
+          "required": ["film:id", "film:negative_sequence"],
           "$ref": "#/definitions/fields"
         },
         "assets": {
@@ -44,11 +44,11 @@
       "type": "object",
       "properties": {
         "film:id": {
-          "title": "NZAM Film ID",
+          "title": "Film ID",
           "type": "string"
         },
-        "film:sequence_number": {
-          "title": "Film Sequence Number",
+        "film:negative_sequence": {
+          "title": "Negative Sequence Number",
           "type": "integer"
         },
         "film:physical_condition": {

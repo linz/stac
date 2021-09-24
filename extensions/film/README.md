@@ -11,9 +11,9 @@
 
 ## Item Properties or Asset Fields
 
-| Field Name              | Type    | Description                                                                                     |
-| ----------------------- | ------- | ----------------------------------------------------------------------------------------------- |
-| film:id                 | string  | **REQUIRED** Identification number assigned by NZAM to each roll of film held in their storage. |
-| film:sequence_number    | integer | **REQUIRED** Sequential order of each negative within a roll of film.                           |
-| film:physical_condition | string  | Comments field about unusual film condition.                                                    |
-| film:physical_size      | string  | Physical size of the negatives on a roll of film.                                               |
+| Field Name              | Type    | Description                                                           |
+| ----------------------- | ------- | --------------------------------------------------------------------- |
+| film:id                 | string  | **REQUIRED** Identifier assigned to each roll of film.                |
+| film:negative_sequence  | integer | **REQUIRED** Sequential order of each negative within a roll of film. |
+| film:physical_condition | string  | Comments field about unusual film condition.                          |
+| film:physical_size      | string  | Physical size of the negatives on a roll of film.                     |
