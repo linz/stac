@@ -2,7 +2,7 @@
   "stac_version": "1.0.0",
   "stac_extensions": [
     "https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json",
-    "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json"
+    "https://stac-extensions.github.io/version/v1.0.0/schema.json"
   ],
   "type": "Collection",
   "id": "collection",
@@ -28,5 +28,6 @@
   "links": [],
   "quality:description": "Example quality description",
   "quality:horizontal_accuracy": 1,
-  "quality:horizontal_accuracy_type": "Nominal"
+  "quality:horizontal_accuracy_type": "Nominal",
+  "version": "2.0.0"
 }

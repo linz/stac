@@ -2,12 +2,12 @@
   "stac_version": "1.0.0",
   "stac_extensions": [
     "https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json",
-    "https://stac-extensions.github.io/version/v1.0.0/schema.json"
+    "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json"
   ],
   "type": "Collection",
   "id": "collection",
   "title": "A title",
-  "description": "A description",
+  "description": "This is a non-conformant example. It is missing the mandatory \"version\" extension reference.",
   "license": "Apache-2.0",
   "linz:created": "2015-06-23T00:00:00Z",
   "linz:updated": "2015-06-23T00:00:00Z",

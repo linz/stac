@@ -21,9 +21,18 @@
       "properties": {
         "stac_extensions": {
           "type": "array",
-          "contains": {
-            "const": "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json"
-          }
+          "allOf": [
+            {
+              "contains": {
+                "const": "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json"
+              }
+            },
+            {
+              "contains": {
+                "const": "https://stac-extensions.github.io/version/v1.0.0/schema.json"
+              }
+            }
+          ]
         }
       }
     },
