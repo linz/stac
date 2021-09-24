@@ -15,10 +15,6 @@
   },
   "links": [],
   "assets": {
-    ".his": {
-      "href": "./72360.his",
-      "file:checksum": "1220e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
     "image/tiff; application=geotiff; profile=cloud-optimized": {
       "href": "./72360.tiff",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
