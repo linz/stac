@@ -23,5 +23,8 @@
       "maximum": "2019-07-10T13:44:56Z"
     }
   },
-  "links": []
+  "links": [],
+  "quality:description": "Example quality description",
+  "quality:horizontal_accuracy": 1,
+  "quality:horizontal_accuracy_type": "Nominal"
 }
