@@ -29,11 +29,11 @@
       "properties": {
         "camera:sequence_number": {
           "title": "Sequence Number",
-          "type": ["integer"]
+          "type": "integer"
         },
         "camera:nominal_focal_length": {
           "title": "Nominal Focal Length",
-          "type": ["integer"]
+          "type": "integer"
         }
       },
       "patternProperties": {
