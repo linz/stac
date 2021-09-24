@@ -9,24 +9,9 @@
     },
     {
       "$ref": "#/definitions/linz"
-    },
-    {
-      "$ref": "#/definitions/stac_extensions"
     }
   ],
   "definitions": {
-    "stac_extensions": {
-      "type": "object",
-      "required": ["stac_extensions"],
-      "properties": {
-        "stac_extensions": {
-          "type": "array",
-          "contains": {
-            "const": "https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json"
-          }
-        }
-      }
-    },
     "linz": {
       "type": "object",
       "required": ["title", "linz:security_classification", "linz:created", "linz:updated"],
