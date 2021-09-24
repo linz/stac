@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://linz.github.io/stac/_STAC_VERSION_/film/schema.json",
+  "title": "Film Extension",
+  "description": "STAC Film Extension for STAC Items.",
+  "allOf": [
+    {
+      "type": "object",
+      "required": ["type", "properties", "assets"],
+      "properties": {
+        "type": {
+          "const": "Feature"
+        },
+        "properties": {
+          "required": ["film:id", "film:sequence_number"],
+          "$ref": "#/definitions/fields"
+        },
+        "assets": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/fields"
+          }
+        }
+      }
+    },
+    {
+      "$ref": "#/definitions/stac_extensions"
+    }
+  ],
+  "definitions": {
+    "stac_extensions": {
+      "type": "object",
+      "required": ["stac_extensions"],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "contains": {
+            "const": "https://linz.github.io/stac/_STAC_VERSION_/film/schema.json"
+          }
+        }
+      }
+    },
+    "fields": {
+      "type": "object",
+      "properties": {
+        "film:id": {
+          "title": "NZAM Film ID",
+          "type": "string"
+        },
+        "film:sequence_number": {
+          "title": "Film Sequence Number",
+          "type": "integer"
+        },
+        "film:physical_condition": {
+          "title": "Physical Film Condition",
+          "type": "string"
+        },
+        "film:physical_size": {
+          "title": "Physical Size Format",
+          "type": "string"
+        }
+      },
+      "patternProperties": {
+        "^(?!film:)": {}
+      },
+      "additionalProperties": false
+    }
+  }
+}

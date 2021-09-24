@@ -12,6 +12,7 @@ if other data managers find them to be useful.
 ## Extensions
 
 - [Camera](./extensions/camera): Camera details for photos.
+- [Film](./extensions/film): Film details for photos.
 - [Historical Imagery](./extensions/historical_imagery): Aerial survey photos.
 - [LINZ](./extensions/linz): Toitū Te Whenua LINZ-specific settings.
 - [Quality](./extensions/quality): Dataset accuracy.
