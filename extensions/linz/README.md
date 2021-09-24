@@ -3,7 +3,7 @@
 - **Title:** LINZ Top Level Extension
 - **Identifier:**
   <https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json>
-- **Field Name Prefix:** NONE
+- **Field Name Prefix:** linz
 - **Scope:** Collection
 - **Extension
   [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):**
