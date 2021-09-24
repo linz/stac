@@ -26,8 +26,7 @@
   },
   "item_assets": {
     "data": {
-      "roles": ["data"],
-      "template:new_field": "test"
+      "roles": ["data"]
     }
   },
   "summaries": {
