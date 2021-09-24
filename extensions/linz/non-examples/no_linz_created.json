@@ -1,6 +1,9 @@
 {
   "stac_version": "1.0.0",
-  "stac_extensions": ["https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json"],
+  "stac_extensions": [
+    "https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json",
+    "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json"
+  ],
   "type": "Collection",
   "id": "collection",
   "title": "A title",
@@ -22,5 +25,8 @@
       "maximum": "2019-07-10T13:44:56Z"
     }
   },
-  "links": []
+  "links": [],
+  "quality:description": "Example quality description",
+  "quality:horizontal_accuracy": 1,
+  "quality:horizontal_accuracy_type": "Nominal"
 }
