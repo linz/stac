@@ -21,24 +21,9 @@
           }
         }
       }
-    },
-    {
-      "$ref": "#/definitions/stac_extensions"
     }
   ],
   "definitions": {
-    "stac_extensions": {
-      "type": "object",
-      "required": ["stac_extensions"],
-      "properties": {
-        "stac_extensions": {
-          "type": "array",
-          "contains": {
-            "const": "https://linz.github.io/stac/_STAC_VERSION_/camera/schema.json"
-          }
-        }
-      }
-    },
     "fields": {
       "type": "object",
       "properties": {

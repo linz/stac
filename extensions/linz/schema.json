@@ -8,25 +8,16 @@
       "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
     },
     {
-      "$ref": "#/definitions/linz"
+      "$ref": "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json#"
     },
     {
-      "$ref": "#/definitions/stac_extensions"
+      "$ref": "https://stac-extensions.github.io/version/v1.0.0/schema.json#"
+    },
+    {
+      "$ref": "#/definitions/linz"
     }
   ],
   "definitions": {
-    "stac_extensions": {
-      "type": "object",
-      "required": ["stac_extensions"],
-      "properties": {
-        "stac_extensions": {
-          "type": "array",
-          "contains": {
-            "const": "https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json"
-          }
-        }
-      }
-    },
     "linz": {
       "type": "object",
       "required": ["title", "linz:security_classification", "linz:created", "linz:updated"],

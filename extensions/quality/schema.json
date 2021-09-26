@@ -11,18 +11,6 @@
     }
   ],
   "definitions": {
-    "stac_extensions": {
-      "type": "object",
-      "required": ["stac_extensions"],
-      "properties": {
-        "stac_extensions": {
-          "type": "array",
-          "contains": {
-            "const": "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json"
-          }
-        }
-      }
-    },
     "quality": {
       "type": "object",
       "properties": {
@@ -36,6 +24,15 @@
         },
         "quality:horizontal_accuracy_type": {
           "title": "Horizontal Accuracy Type",
+          "type": "string",
+          "enum": ["Nominal", "95% confidence interval"]
+        },
+        "quality:vertical_accuracy": {
+          "title": "Vertical Accuracy",
+          "type": ["number"]
+        },
+        "quality:vertical_accuracy_type": {
+          "title": "Vertical Accuracy Type",
           "type": "string",
           "enum": ["Nominal", "95% confidence interval"]
         }
