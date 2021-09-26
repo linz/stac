@@ -32,9 +32,6 @@
               }
             }
           }
-        },
-        {
-          "$ref": "#/definitions/stac_extensions"
         }
       ]
     },
@@ -63,9 +60,6 @@
           }
         },
         {
-          "$ref": "#/definitions/stac_extensions"
-        },
-        {
           "$comment": "Remove this object if this extension does not define top-level fields for Collections.",
           "$ref": "#/definitions/fields"
         }
@@ -73,18 +67,6 @@
     }
   ],
   "definitions": {
-    "stac_extensions": {
-      "type": "object",
-      "required": ["stac_extensions"],
-      "properties": {
-        "stac_extensions": {
-          "type": "array",
-          "contains": {
-            "const": "https://linz.github.io/stac/_STAC_VERSION_/template/schema.json"
-          }
-        }
-      }
-    },
     "fields": {
       "$comment": "Add your new fields here. Don't require them here, do that above in the item schema.",
       "type": "object",
