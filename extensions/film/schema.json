@@ -12,8 +12,14 @@
           "const": "Feature"
         },
         "properties": {
-          "required": ["film:id", "film:negative_sequence"],
-          "$ref": "#/definitions/fields"
+          "allOf": [
+            {
+              "required": ["film:id", "film:negative_sequence"]
+            },
+            {
+              "$ref": "#/definitions/fields"
+            }
+          ]
         },
         "assets": {
           "type": "object",
