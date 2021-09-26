@@ -12,8 +12,14 @@
           "const": "Feature"
         },
         "properties": {
-          "required": ["aerial_photo:run", "aerial_photo:sequence_number"],
-          "$ref": "#/definitions/fields"
+          "allOf": [
+            {
+              "required": ["aerial_photo:run", "aerial_photo:sequence_number"]
+            },
+            {
+              "$ref": "#/definitions/fields"
+            }
+          ]
         },
         "assets": {
           "type": "object",
