@@ -1,21 +1,3 @@
-## [0.0.5](https://github.com/linz/stac/compare/v0.1.0...v0.0.5) (2021-09-27)
-
-### Bug Fixes
-
-- modified the json-schema for linz properties to copy stac ([#45](https://github.com/linz/stac/issues/45)) ([49677de](https://github.com/linz/stac/commit/49677de6c193fad0049e0bea555dccabb26a420a))
-- removed duplicate validation of the title property in the qualit… ([#52](https://github.com/linz/stac/issues/52)) ([af90938](https://github.com/linz/stac/commit/af90938e162041de0b213072ce72e13936e796be))
-- Specify command to release new version ([#44](https://github.com/linz/stac/issues/44)) ([4b32a34](https://github.com/linz/stac/commit/4b32a34c579f5099fe7a2c17986698a5555dafaf))
-
-### Features
-
-- Add editor configuration ([#54](https://github.com/linz/stac/issues/54)) ([472b15e](https://github.com/linz/stac/commit/472b15ecbce77efda3f1d37e50153123f162f1cc))
-- Add key LINZ extension properties ([#61](https://github.com/linz/stac/issues/61)) ([41a1324](https://github.com/linz/stac/commit/41a13241e28e3521cf072a947398eabacc590415))
-- added negative json examples to verify schemas negatively ([#46](https://github.com/linz/stac/issues/46)) ([f5acad2](https://github.com/linz/stac/commit/f5acad2155e76595081629a5f18f05575f413a76))
-- added new fields in quality extension ([#59](https://github.com/linz/stac/issues/59)) ([1b4555c](https://github.com/linz/stac/commit/1b4555c6e4d19d82353141fa731a17e3ced38990))
-- Create aerial photography extension ([#66](https://github.com/linz/stac/issues/66)) ([d5d8c59](https://github.com/linz/stac/commit/d5d8c59a000333ba4b5dd18d3cdc2ffdbb2d7236))
-- Create film extension ([#60](https://github.com/linz/stac/issues/60)) ([e3f7058](https://github.com/linz/stac/commit/e3f7058121128b9794ef1093c081e55be2c3b1c5))
-- Create scanning extension ([#55](https://github.com/linz/stac/issues/55)) ([9e983ab](https://github.com/linz/stac/commit/9e983ab0bfe59a5c42167880d637e8eaa72a01f2))
-
 ## [0.0.4](https://github.com/linz/STAC/compare/v0.0.3...v0.0.4) (2021-09-22)
 
 ### Bug Fixes
