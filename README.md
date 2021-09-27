@@ -11,6 +11,7 @@ if other data managers find them to be useful.
 
 ## Extensions
 
+- [Aerial Photography](./extensions/aerial-photo): Aerial photography details for photos.
 - [Camera](./extensions/camera): Camera details for photos.
 - [Film](./extensions/film): Film details for photos.
 - [Historical Imagery](./extensions/historical_imagery): Aerial survey photos.
