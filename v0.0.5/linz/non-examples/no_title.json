@@ -1,0 +1,33 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://linz.github.io/stac/v0.0.5/linz/schema.json",
+    "https://stac-extensions.github.io/version/v1.0.0/schema.json"
+  ],
+  "type": "Collection",
+  "id": "collection",
+  "description": "This is a non-conformant example. It is missing the mandatory \"title\" property.",
+  "license": "Apache-2.0",
+  "linz:created": "2015-06-23T00:00:00Z",
+  "linz:updated": "2015-06-23T00:00:00Z",
+  "linz:security_classification": "Unclassified",
+  "extent": {
+    "spatial": {
+      "bbox": [[172.9, 1.3, 173, 1.4]]
+    },
+    "temporal": {
+      "interval": [["2015-06-23T00:00:00Z", null]]
+    }
+  },
+  "summaries": {
+    "datetime": {
+      "minimum": "2015-06-23T00:00:00Z",
+      "maximum": "2019-07-10T13:44:56Z"
+    }
+  },
+  "links": [],
+  "quality:description": "Example quality description",
+  "quality:horizontal_accuracy": 1,
+  "quality:horizontal_accuracy_type": "Nominal",
+  "version": "2.0.0"
+}

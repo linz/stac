@@ -1,0 +1,28 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": ["https://linz.github.io/stac/v0.0.5/camera/schema.json"],
+  "description": "This is a non-conformant STAC example using the camera extension. The camera:sequence_number field is a string instead of an integer.",
+  "type": "Feature",
+  "id": "72360",
+  "geometry": null,
+  "properties": {
+    "datetime": "1952-04-23T00:00:00.000Z",
+    "platform": "Fixed-wing Aircraft",
+    "instruments": ["EAGLE IV"],
+    "mission": "SURVEY_1",
+    "camera:sequence_number": "incorrect string",
+    "camera:nominal_focal_length": 508
+  },
+  "links": [],
+  "assets": {
+    ".his": {
+      "href": "./72360.his",
+      "file:checksum": "1220e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "image/tiff; application=geotiff; profile=cloud-optimized": {
+      "href": "./72360.tiff",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "file:checksum": "1220b7deb18ad9dc6f3f94df60c26dd235a019946b8b6b7d1a36f100a8f9f1889130"
+    }
+  }
+}
