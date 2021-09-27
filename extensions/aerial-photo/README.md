@@ -2,7 +2,7 @@
 
 **This is a work in progress and has not been reviewed everything is likely to change**
 
-- **Title**: aerial-photo
+- **Title**: Aerial Photography
 - **Identifier**:
   [https://linz.github.io/stac/_STAC_VERSION_/film/aerial-photo.json]()
 - **Field Name Prefix**: aerial-photo
