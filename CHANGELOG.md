@@ -1,3 +1,5 @@
+## [0.0.5](https://github.com/linz/stac/compare/v0.1.0...v0.0.5) (2021-09-27)
+
 # [0.1.0](https://github.com/linz/stac/compare/v0.0.3...v0.1.0) (2021-09-27)
 
 ### Bug Fixes
