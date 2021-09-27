@@ -1,6 +1,7 @@
 {
   "stac_version": "1.0.0",
-  "stac_extensions": ["https://linz.github.io/stac/_STAC_VERSION_/aerial_photo/schema.json"],
+  "stac_extensions": ["https://linz.github.io/stac/_STAC_VERSION_/aerial-photo/schema.json"],
+  "description": "This is a non-conformant STAC example using the aerial photography extension. The aerial-photo:run field is an integer instead of a string.",
   "type": "Feature",
   "id": "72360",
   "geometry": null,
@@ -9,11 +10,11 @@
     "platform": "Fixed-wing Aircraft",
     "instruments": ["EAGLE IV"],
     "mission": "SURVEY_1",
-    "aerial_photo:run": "P1",
-    "aerial_photo:altitude": 3325,
-    "aerial_photo:scale": 4800,
-    "aerial_photo:sequence_number": 14,
-    "aerial_photo:anomalies": "Cloud shadow"
+    "aerial-photo:run": 248,
+    "aerial-photo:altitude": 3325,
+    "aerial-photo:scale": 4800,
+    "aerial-photo:sequence_number": 14,
+    "aerial-photo:anomalies": "Cloud shadow"
   },
   "links": [],
   "assets": {
