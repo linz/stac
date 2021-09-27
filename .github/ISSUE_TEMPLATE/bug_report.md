@@ -22,5 +22,14 @@ Steps to reproduce the behavior:
 **Expected behavior**
 [A clear and concise description of what you expected to happen.]
 
+**Actual behavior**
+[Describe what actually happened.]
+
+[If applicable, add logs to help explain your problem:]
+
+```console
+[Paste logs here]
+```
+
 **Additional context**
 [Add any other context about the problem here.]
