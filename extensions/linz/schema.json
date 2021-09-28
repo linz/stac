@@ -14,6 +14,9 @@
       "$ref": "https://stac-extensions.github.io/version/v1.0.0/schema.json#"
     },
     {
+      "$ref": "https://stac-extensions.github.io/projection/v1.0.0/schema.json#"
+    },
+    {
       "$ref": "#/definitions/linz"
     }
   ],

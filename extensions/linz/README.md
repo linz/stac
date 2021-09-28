@@ -44,8 +44,9 @@ This is the introduction for the purpose and the content of the XYZ Object...
 
 ### Extensions
 
-This extension includes two other extensions:
+This extension includes these other extensions:
 
+- [projection](https://github.com/stac-extensions/projection)
 - [quality](../quality)
 - [version](https://github.com/stac-extensions/version)
 
