@@ -19,6 +19,7 @@
   },
   "quality:description": 1234,
   "quality:horizontal_accuracy": 0.4,
+  "quality:lineage": "This is an example dataset lineage description.",
   "assets": {
     "example": {
       "href": "https://example.com/examples/file.xyz"

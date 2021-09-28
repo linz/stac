@@ -4,10 +4,10 @@
     "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
     "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json"
   ],
+  "description": "This is a non-conformant STAC example using the quality extension. quality:lineage is missing.",
   "type": "Collection",
   "id": "collection",
   "title": "A title",
-  "description": "A description",
   "license": "Apache-2.0",
   "extent": {
     "spatial": {
@@ -17,29 +17,16 @@
       "interval": [["2015-06-23T00:00:00Z", null]]
     }
   },
-  "template:new_field": "test",
-  "template:xyz": {
-    "x": 1,
-    "y": 2,
-    "z": 3
-  },
-  "template:another_one": [1, 2, 3],
-  "quality:description": "This is an example dataset quality description.",
+  "quality:description": "This is an example dataset description.",
   "quality:horizontal_accuracy": 0.4,
-  "quality:horizontal_accuracy_type": "Nominal",
-  "quality:lineage": "This is an example dataset lineage description.",
-  "quality:vertical_accuracy": 0.4,
-  "quality:vertical_accuracy_type": "Nominal",
   "assets": {
     "example": {
-      "href": "https://example.com/examples/file.xyz",
-      "template:new_field": "test"
+      "href": "https://example.com/examples/file.xyz"
     }
   },
   "item_assets": {
     "data": {
-      "roles": ["data"],
-      "template:new_field": "test"
+      "roles": ["data"]
     }
   },
   "summaries": {

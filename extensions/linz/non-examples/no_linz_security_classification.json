@@ -29,5 +29,6 @@
   "quality:description": "Example quality description",
   "quality:horizontal_accuracy": 1,
   "quality:horizontal_accuracy_type": "Nominal",
+  "quality:lineage": "This is an example dataset lineage description.",
   "version": "2.0.0"
 }

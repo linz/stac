@@ -20,7 +20,14 @@
   "definitions": {
     "linz": {
       "type": "object",
-      "required": ["title", "linz:security_classification", "linz:created", "linz:lifecycle", "linz:updated"],
+      "required": [
+        "title",
+        "linz:security_classification",
+        "linz:created",
+        "linz:lifecycle",
+        "linz:providers",
+        "linz:updated"
+      ],
       "properties": {
         "title": {
           "type": "string",
