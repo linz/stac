@@ -21,12 +21,12 @@
     "linz": {
       "type": "object",
       "required": [
-        "title",
-        "linz:security_classification",
         "linz:created",
         "linz:lifecycle",
         "linz:providers",
-        "linz:updated"
+        "linz:security_classification",
+        "linz:updated",
+        "title"
       ],
       "properties": {
         "title": {
