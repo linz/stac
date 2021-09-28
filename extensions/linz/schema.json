@@ -20,7 +20,14 @@
   "definitions": {
     "linz": {
       "type": "object",
-      "required": ["title", "linz:security_classification", "linz:created", "linz:updated"],
+      "required": [
+        "linz:created",
+        "linz:lifecycle",
+        "linz:providers",
+        "linz:security_classification",
+        "linz:updated",
+        "title"
+      ],
       "properties": {
         "title": {
           "type": "string",
@@ -35,6 +42,41 @@
           "type": "string",
           "format": "date-time",
           "pattern": "(\\+00:00|Z)$"
+        },
+        "linz:lifecycle": {
+          "title": "Life Cycle",
+          "type": "string",
+          "enum": ["Under Development", "Preview", "Ongoing", "Completed", "Deprecated"]
+        },
+        "linz:providers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": {
+                "title": "Organization name",
+                "type": "string"
+              },
+              "description": {
+                "title": "Organization description",
+                "type": "string"
+              },
+              "roles": {
+                "title": "Organization roles",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": ["manager", "custodian"]
+                }
+              },
+              "url": {
+                "title": "Organization homepage",
+                "type": "string",
+                "format": "iri"
+              }
+            }
+          }
         },
         "linz:updated": {
           "title": "Last Update Time",
