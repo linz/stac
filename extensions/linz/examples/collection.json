@@ -42,5 +42,7 @@
   "quality:horizontal_accuracy_type": "Nominal",
   "quality:lineage": "This is an example dataset lineage description.",
   "version": "2.0.0",
-  "proj:espg": 4324
+  "proj:epsg": 32659,
+  "proj:shape": [5558, 9559],
+  "proj:transform": [0.5, 0, 712710, 0, -0.5, 151406, 0, 0, 1]
 }
