@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://linz.github.io/stac/v0.0.6/linz/schema.json",
+  "title": "LINZ STAC Extension",
+  "description": "LINZ STAC Extension.",
+  "allOf": [
+    {
+      "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
+    },
+    {
+      "$ref": "https://linz.github.io/stac/v0.0.6/quality/schema.json#"
+    },
+    {
+      "$ref": "https://stac-extensions.github.io/version/v1.0.0/schema.json#"
+    },
+    {
+      "$ref": "#/definitions/linz"
+    }
+  ],
+  "definitions": {
+    "linz": {
+      "type": "object",
+      "required": [
+        "linz:created",
+        "linz:lifecycle",
+        "linz:providers",
+        "linz:security_classification",
+        "linz:updated",
+        "title"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "linz:security_classification": {
+          "type": "string",
+          "enum": ["Unclassified", "IN-CONFIDENCE", "SENSITIVE", "RESTRICTED", "CONFIDENTIAL", "SECRET", "TOP-SECRET"]
+        },
+        "linz:created": {
+          "title": "Creation Time",
+          "type": "string",
+          "format": "date-time",
+          "pattern": "(\\+00:00|Z)$"
+        },
+        "linz:lifecycle": {
+          "title": "Life Cycle",
+          "type": "string",
+          "enum": ["Under Development", "Preview", "Ongoing", "Completed", "Deprecated"]
+        },
+        "linz:providers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": {
+                "title": "Organization name",
+                "type": "string"
+              },
+              "description": {
+                "title": "Organization description",
+                "type": "string"
+              },
+              "roles": {
+                "title": "Organization roles",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": ["manager", "custodian"]
+                }
+              },
+              "url": {
+                "title": "Organization homepage",
+                "type": "string",
+                "format": "iri"
+              }
+            }
+          }
+        },
+        "linz:updated": {
+          "title": "Last Update Time",
+          "type": "string",
+          "format": "date-time",
+          "pattern": "(\\+00:00|Z)$"
+        }
+      },
+      "patternProperties": {
+        "^(?!linz:)": {}
+      },
+      "additionalProperties": false
+    }
+  }
+}

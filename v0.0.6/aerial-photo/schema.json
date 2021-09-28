@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://linz.github.io/stac/v0.0.6/aerial-photo/schema.json",
+  "title": "Aerial Photography Extension",
+  "description": "STAC Aerial Photography Extension for STAC Items.",
+  "allOf": [
+    {
+      "type": "object",
+      "required": ["type", "properties", "assets"],
+      "properties": {
+        "type": {
+          "const": "Feature"
+        },
+        "properties": {
+          "allOf": [
+            {
+              "required": ["aerial-photo:run", "aerial-photo:sequence_number"]
+            },
+            {
+              "$ref": "#/definitions/fields"
+            }
+          ]
+        },
+        "assets": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/fields"
+          }
+        }
+      }
+    },
+    {
+      "$ref": "#/definitions/stac_extensions"
+    }
+  ],
+  "definitions": {
+    "stac_extensions": {
+      "type": "object",
+      "required": ["stac_extensions"],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "contains": {
+            "const": "https://linz.github.io/stac/v0.0.6/aerial-photo/schema.json"
+          }
+        }
+      }
+    },
+    "fields": {
+      "type": "object",
+      "properties": {
+        "aerial-photo:run": {
+          "title": "Straight line/pass of sequential imagery",
+          "type": "string"
+        },
+        "aerial-photo:altitude": {
+          "title": "Altitude in feet",
+          "type": "integer"
+        },
+        "aerial-photo:scale": {
+          "title": "Scale denominator",
+          "type": "integer"
+        },
+        "aerial-photo:sequence_number": {
+          "title": "Sequential order",
+          "type": "integer"
+        },
+        "aerial-photo:anomalies": {
+          "title": "Image anomalies",
+          "type": "string"
+        }
+      },
+      "patternProperties": {
+        "^(?!aerial-photo:)": {}
+      },
+      "additionalProperties": false
+    }
+  }
+}

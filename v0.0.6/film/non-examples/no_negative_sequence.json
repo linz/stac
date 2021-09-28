@@ -1,0 +1,25 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": ["https://linz.github.io/stac/v0.0.6/film/schema.json"],
+  "description": "This is a non-conformant STAC example using the film extension. It is missing the mandatory film:negative_sequence property.",
+  "type": "Feature",
+  "id": "72360",
+  "geometry": null,
+  "properties": {
+    "datetime": "1952-04-23T00:00:00.000Z",
+    "platform": "Fixed-wing Aircraft",
+    "instruments": ["EAGLE IV"],
+    "mission": "SURVEY_1",
+    "film:id": "TL109A",
+    "film:physical_condition": "Metadata manually populated, Flight chart not available",
+    "film:physical_size": "18cm x 23cm"
+  },
+  "links": [],
+  "assets": {
+    "image/tiff; application=geotiff; profile=cloud-optimized": {
+      "href": "./72360.tiff",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "file:checksum": "1220b7deb18ad9dc6f3f94df60c26dd235a019946b8b6b7d1a36f100a8f9f1889130"
+    }
+  }
+}

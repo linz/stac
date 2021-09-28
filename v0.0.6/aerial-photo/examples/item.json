@@ -1,0 +1,26 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": ["https://linz.github.io/stac/v0.0.6/aerial-photo/schema.json"],
+  "type": "Feature",
+  "id": "72360",
+  "geometry": null,
+  "properties": {
+    "datetime": "1952-04-23T00:00:00.000Z",
+    "platform": "Fixed-wing Aircraft",
+    "instruments": ["EAGLE IV"],
+    "mission": "SURVEY_1",
+    "aerial-photo:run": "P1",
+    "aerial-photo:altitude": 3325,
+    "aerial-photo:scale": 4800,
+    "aerial-photo:sequence_number": 14,
+    "aerial-photo:anomalies": "Cloud shadow"
+  },
+  "links": [],
+  "assets": {
+    "image/tiff; application=geotiff; profile=cloud-optimized": {
+      "href": "./72360.tiff",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "file:checksum": "1220b7deb18ad9dc6f3f94df60c26dd235a019946b8b6b7d1a36f100a8f9f1889130"
+    }
+  }
+}

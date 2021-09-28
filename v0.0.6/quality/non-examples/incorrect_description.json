@@ -1,0 +1,49 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+    "https://linz.github.io/stac/v0.0.6/quality/schema.json"
+  ],
+  "description": "This is a non-conformant STAC example using the quality extension. quality:description is an integer rather than string.",
+  "type": "Collection",
+  "id": "collection",
+  "title": "A title",
+  "license": "Apache-2.0",
+  "extent": {
+    "spatial": {
+      "bbox": [[172.9, 1.3, 173, 1.4]]
+    },
+    "temporal": {
+      "interval": [["2015-06-23T00:00:00Z", null]]
+    }
+  },
+  "quality:description": 1234,
+  "quality:horizontal_accuracy": 0.4,
+  "quality:lineage": "This is an example dataset lineage description.",
+  "assets": {
+    "example": {
+      "href": "https://example.com/examples/file.xyz"
+    }
+  },
+  "item_assets": {
+    "data": {
+      "roles": ["data"]
+    }
+  },
+  "summaries": {
+    "datetime": {
+      "minimum": "2015-06-23T00:00:00Z",
+      "maximum": "2019-07-10T13:44:56Z"
+    }
+  },
+  "links": [
+    {
+      "href": "https://example.com/examples/collection.json",
+      "rel": "self"
+    },
+    {
+      "href": "https://example.com/examples/item.json",
+      "rel": "item"
+    }
+  ]
+}
