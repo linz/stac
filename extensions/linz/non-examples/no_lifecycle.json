@@ -6,7 +6,7 @@
   ],
   "type": "Collection",
   "id": "collection",
-  "title": "A title",
+  "title": "This is a non-conformant example. It has no linz:lifecycle field.",
   "description": "A description",
   "license": "Apache-2.0",
   "linz:created": "2015-06-23T00:00:00Z",

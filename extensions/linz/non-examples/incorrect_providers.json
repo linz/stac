@@ -7,7 +7,7 @@
   "type": "Collection",
   "id": "collection",
   "title": "A title",
-  "description": "A description",
+  "description": "This is a non-conformant example. It has a linz:providers object with no name field.",
   "license": "Apache-2.0",
   "linz:created": "2015-06-23T00:00:00Z",
   "linz:lifecycle": "Under Development",
