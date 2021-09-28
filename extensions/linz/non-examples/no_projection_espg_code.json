@@ -6,10 +6,11 @@
   ],
   "type": "Collection",
   "id": "collection",
-  "title": "This is a non-conformant example. It has no linz:lifecycle field.",
-  "description": "A description",
+  "title": "A title",
+  "description": "This is a non-conformant example. It has no proj:espg field.",
   "license": "Apache-2.0",
   "linz:created": "2015-06-23T00:00:00Z",
+  "linz:lifecycle": "Under Development",
   "linz:providers": [
     {
       "name": "Example",
@@ -39,6 +40,5 @@
   "quality:horizontal_accuracy": 1,
   "quality:horizontal_accuracy_type": "Nominal",
   "quality:lineage": "This is an example dataset lineage description.",
-  "version": "2.0.0",
-  "proj:espg": 4324
+  "version": "2.0.0"
 }
