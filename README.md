@@ -35,26 +35,9 @@ if other data managers find them to be useful.
 
 ## Development
 
-Prerequisites:
+Install packages by running `yarn`.
 
-- [Poetry](https://python-poetry.org/)
-- [Yarn](https://yarnpkg.com/)
-
-Follow these steps to set up a development environment with pre-commit hooks to
-automatically verify the contents of files before committing:
-
-1. Install packages:
-
-   ```shell
-   yarn
-   poetry install
-   ```
-
-2. Enable pre-commit hooks:
-
-   ```shell
-   poetry run pre-commit install --overwrite
-   ```
+Verify changes by running `yarn lint && yarn validate` before committing.
 
 ### Releases
 
@@ -67,7 +50,7 @@ Push this to master then the build pipeline will create a github release which w
 Be sure to add a schemaMap entry to the
 [validate.sh](validate.sh) file with your json-schema
 `$id` url followed by the path to the json-schema locally. This will allow
-pre-commit to use a local json-schema file rather than retrieving a possibly yet
+`yarn validate` to use a local json-schema file rather than retrieving a possibly yet
 un-published json-schema.
 
 ## [License](LICENSE)
