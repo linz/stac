@@ -11,3 +11,4 @@ jobs:
     steps:
       - uses: linz/action-typescript@v1
       - run: yarn validate
+      - run: yarn test

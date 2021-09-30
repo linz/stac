@@ -9,11 +9,14 @@
     "format:yaml": "npx prettier **/*.yaml --write",
     "validate": "./validate.sh",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && yarn format && git add CHANGELOG.md",
-    "version-schema": "find extensions -type f -print0 | xargs -0 sed -i \"s/_STAC_VERSION_/v$npm_package_version/\""
+    "version-schema": "find extensions -type f -print0 | xargs -0 sed -i \"s/_STAC_VERSION_/v$npm_package_version/\"",
+    "test": "npx ospec"
   },
   "devDependencies": {
     "@linzjs/style": "^3.2.0",
+    "@types/ospec": "^4.0.2",
     "conventional-changelog-cli": "^2.1.1",
+    "ospec": "^4.1.1",
     "stac-node-validator": "^1.0.0"
   }
 }
