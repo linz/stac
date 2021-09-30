@@ -1,8 +1,8 @@
-import o from "ospec"
-import Ajv from "ajv"
+import o from 'ospec'
+import Ajv from 'ajv'
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-import { promises as fs } from 'fs'
+import { promises as fs } from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
