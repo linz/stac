@@ -44,7 +44,7 @@ Verify changes by running `yarn lint && yarn validate` before committing.
 
 To create a release run `yarn version --new-version <patch|minor|major>` which will create a change log and version tag.
 
-Push this to master then the build pipeline will create a github release which will trigger the github pages to be published.
+`git push --atomic origin master TAG` then the build pipeline will create a github release which will trigger the github pages to be published.
 
 ## Adding a new extension
 
