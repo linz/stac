@@ -31,6 +31,7 @@ if other data managers find them to be useful.
 
    ```shell
    yarn validate
+   yarn test
    ```
 
 ## Development
