@@ -1,3 +1,16 @@
+## [0.0.7](https://github.com/linz/stac/compare/v0.0.6...v0.0.7) (2021-10-03)
+
+### Features
+
+- Add issue templates ([#68](https://github.com/linz/stac/issues/68)) ([bdd3c14](https://github.com/linz/stac/commit/bdd3c14d77f6c51aab90cd7bafeac5eb0f4a7243))
+- make projection extension mandatory ([#70](https://github.com/linz/stac/issues/70)) ([e9d0ec3](https://github.com/linz/stac/commit/e9d0ec32c63590605bf0315ddfbb242e1a14e732))
+- Support Nix ([#67](https://github.com/linz/stac/issues/67)) ([a4f765b](https://github.com/linz/stac/commit/a4f765b30f3faa4380a74c6a3b56eb28c8238ad7))
+- unit testing with ospec ([#76](https://github.com/linz/stac/issues/76)) ([5879d84](https://github.com/linz/stac/commit/5879d8456fa04ab06e6918f9b6098d7f7a3a5176))
+
+### Reverts
+
+- reinstate stac_extensions schema definitions ([#65](https://github.com/linz/stac/issues/65)) ([7418626](https://github.com/linz/stac/commit/7418626606a759c3c3f2d3a3a7e5668c18c956f5)), closes [/github.com/linz/stac/pull/60#discussion_r715257218](https://github.com//github.com/linz/stac/pull/60/issues/discussion_r715257218)
+
 ## [0.0.6](https://github.com/linz/stac/compare/v0.0.3...v0.0.6) (2021-09-28)
 
 ### Bug Fixes
