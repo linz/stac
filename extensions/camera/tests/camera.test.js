@@ -1,5 +1,5 @@
 import o from 'ospec';
-import Ajv from 'ajv';
+import { ajv } from '../../validation.js';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { promises as fs } from 'fs';
@@ -9,7 +9,6 @@ const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/item.json');
 
 o.spec('camera', () => {
-  const ajv = new Ajv();
   let validate;
 
   o.before(async () => {
