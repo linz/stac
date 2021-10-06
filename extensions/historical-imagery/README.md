@@ -4,8 +4,8 @@
 change**
 
 - **Title**: Historical Imagery
-- **Identifier**: historical_imagery
-- **Field Name Prefix**: historical_imagery
+- **Identifier**: historical-imagery
+- **Field Name Prefix**: historical-imagery
 - **Scope**: Item
 - **Extension Maturity Classification**: Work In Progress (Before proposal)
 
@@ -68,36 +68,36 @@ For more details see
 | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | --------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | [eo:bands](https://github.com/stac-extensions/eo/blob/v1.0.0/README.md#eobands) | \[[Band Object](https://github.com/stac-extensions/eo/blob/v1.0.0/README.md#band-object)] | The eo:bands array is used to describe the available spectral bands in an Asset. | photo_type or image file metadata | `[{"name": "Black and White", "common_name": "pan"}]` | Identify photo_type / image file metadata mismatch? Each Asset should also specify its own band object. |
 
-#### Aerial Photography Extension
+#### [Aerial Photography Extension](../aerial-photo)
 
-| Field Name                   | Type    | Description                                                                                                                                                        | Internal Field Name | Example                         | Comments                                                                       |
-| ---------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------- | ------------------------------- | ------------------------------------------------------------------------------ |
-| aerial_photo:run             | string  | **REQUIRED**. A straight line/pass of sequential imagery flown during a specific survey.                                                                           | run                 | `1; 2; A; B`                    | ...                                                                            |
-| aerial_photo:altitude        | integer | Altitude in feet at which the plane was flying when the photo was taken.                                                                                           | altitude            | `5000; 16500`                   | Convert to metres?                                                             |
-| aerial_photo:scale           | integer | Denominator of the distance on the ground relative to the distance on the physical film negative for a photo.                                                      | scale               | `44500`                         | ...                                                                            |
-| aerial_photo:sequence_number | integer | **REQUIRED**. Sequential order of photos taken during a run.                                                                                                       | photo_no            | `1; 2; 3; 4`                    | ...                                                                            |
-| aerial_photo:version         | integer | Assume it has to do with photos that were re-flown due to cloud cover or another anomaly, and thus we may have two variant copies of the same survey/run/photo no. | photo_version       | `1; 2`                          | Need to confirm what this field actually contains and how it should be stored. |
-| aerial_photo:anomalies       | string  | Comments about unusual things noticed in the image.                                                                                                                | image_anomalies     | `Cloud shadow; Fogging present` | Often erroneously contains comments about the physical film condition.         |
+| Field Name                   | Type        | Description                                                                                                                                                        | Internal Field Name | Example                         | Comments                                                               |
+| ---------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------- | ------------------------------- | ---------------------------------------------------------------------- |
+| aerial-photo:run             | string      | **REQUIRED**. A straight line/pass of sequential imagery flown during a specific survey.                                                                           | run                 | `1; 2; A; B`                    | ...                                                                    |
+| aerial-photo:altitude        | integer     | Altitude in feet at which the plane was flying when the photo was taken.                                                                                           | altitude            | `5000; 16500`                   | Convert to metres?                                                     |
+| aerial-photo:scale           | integer     | Denominator of the distance on the ground relative to the distance on the physical film negative for a photo.                                                      | scale               | `44500`                         | ...                                                                    |
+| aerial-photo:sequence_number | integer     | **REQUIRED**. Sequential order of photos taken during a run.                                                                                                       | photo_no            | `1; 2; 3; 4`                    | ...                                                                    |
+| ~~aerial-photo:version~~     | ~~integer~~ | Assume it has to do with photos that were re-flown due to cloud cover or another anomaly, and thus we may have two variant copies of the same survey/run/photo no. | photo_version       | `1; 2`                          | Decision made not to include this in the STAC schema.                  |
+| aerial-photo:anomalies       | string      | Comments about unusual things noticed in the image.                                                                                                                | image_anomalies     | `Cloud shadow; Fogging present` | Often erroneously contains comments about the physical film condition. |
 
-#### Camera Extension
+#### [Camera Extension](../camera)
 
 | Field Name                  | Type    | Description                                                                                                                      | Internal Field Name  | Example         | Comments |
 | --------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------- | --------------- | -------- |
 | camera:sequence_number      | integer | Also referred to as veder; the sequential order of photos taken by an individual camera.                                         | camera_sequence_no   | `33410; 199101` | ...      |
 | camera:nominal_focal_length | integer | Distance in mm from the camera lens centre to the film in the camera at which the image will have the least possible distortion. | nominal_focal_length | `210; 114`      | ...      |
 
-#### Film Extension
+#### [Film Extension](../film)
 
 | Field Name              | Type    | Description                                                                                      | Internal Field Name     | Example                                                     | Comments |
 | ----------------------- | ------- | ------------------------------------------------------------------------------------------------ | ----------------------- | ----------------------------------------------------------- | -------- |
 | film:id                 | string  | **REQUIRED**. Identification number assigned by NZAM to each roll of film held in their storage. | film                    | `996; 2510C; CAA22`                                         | ...      |
-| film:sequence_number    | integer | **REQUIRED**. Sequential order of each negative within a roll of film.                           | film_sequence_no        | `234, 4567`                                                 | ...      |
+| film:negative_sequence  | integer | **REQUIRED**. Sequential order of each negative within a roll of film.                           | film_sequence_no        | `234, 4567`                                                 | ...      |
 | film:physical_condition | string  | Comments field about unusual film condition.                                                     | physical_film_condition | `Film scratched; Metadata manually populated; Not Film 222` | ...      |
 | film:physical_size      | string  | Physical size of the negatives on a roll of film.                                                | format                  | `23 cm x 23 cm; 18 cm x 23 cm`                              | ...      |
 
-#### Scanning Extension
+#### [Scanning Extension](../scanning)
 
-| Field Name       | Type    | Description                                                          | Internal Field Name | Example          | Comments            |
-| ---------------- | ------- | -------------------------------------------------------------------- | ------------------- | ---------------- | ------------------- |
-| scan:is_original | boolean | Whether the scan is of an original negative or a copy.               | source              | `ORIGINAL; COPY` | Convert to boolean. |
-| scan:datetime    | string  | Year and quarter during which the photo was scanned/delivered to us. | when_scanned        | `2020-Q1`        | ...                 |
+| Field Name       | Type    | Description                                                                                                                                                                                                                                                            | Internal Field Name | Example                    | Comments            |
+| ---------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | -------------------------- | ------------------- |
+| scan:is_original | boolean | Whether the scan is of an original negative (true) or a copy (false).                                                                                                                                                                                                  | source              | `ORIGINAL; COPY`           | Convert to boolean. |
+| scan:scanned     | string  | Date and time the corresponding data was scanned. For LINZ data, this will be the start datetime for the calendar year quarter in which the data was scanned. MUST be formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). | when_scanned        | `2018-10-01T00:00:00.000Z` | ...                 |
