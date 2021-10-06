@@ -33,7 +33,7 @@ extension which adds constraints to default STAC schema properties.
 
 ### Providers Object
 
-This is the introduction for the purpose and the content of the XYZ Object...
+This is the introduction for the purpose and the content of the Providers Object
 
 | Field Name  | Type      | Description                                                                                                                                                                                                                                  |
 | ----------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -41,6 +41,8 @@ This is the introduction for the purpose and the content of the XYZ Object...
 | description | string    | Multi-line description to add further provider information such as processing details for processors and producers, hosting details for hosts or basic contact information. CommonMark 0.29 syntax MAY be used for rich text representation. |
 | roles       | \[string] | Roles of the provider. Either `manager` or `custodian`                                                                                                                                                                                       |
 | url         | string    | Homepage on which the provider describes the dataset and publishes contact information.                                                                                                                                                      |
+
+Note: for the `manager` role at Toitū Te Whenua LINZ, the name should be either a the role name of a person who manages this dataset (to preserve their privacy) or the name of a team that manages this dataset. The `url` should be an internal URL that links to more information about that person or team.
 
 ### Extensions
 
