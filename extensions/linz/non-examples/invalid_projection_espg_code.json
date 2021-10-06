@@ -3,12 +3,13 @@
   "stac_extensions": [
     "https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json",
     "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json",
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
     "https://stac-extensions.github.io/version/v1.0.0/schema.json"
   ],
   "type": "Collection",
   "id": "collection",
   "title": "A title",
-  "description": "This is a non-conformant example. It has no proj:espg field.",
+  "description": "This is a non-conformant example. It has an invalid proj:epsg value.",
   "license": "Apache-2.0",
   "linz:created": "2015-06-23T00:00:00Z",
   "linz:lifecycle": "Under Development",
@@ -41,5 +42,11 @@
   "quality:horizontal_accuracy": 1,
   "quality:horizontal_accuracy_type": "Nominal",
   "quality:lineage": "This is an example dataset lineage description.",
-  "version": "2.0.0"
+  "version": "2.0.0",
+  "assets": {
+    "example": {
+      "href": "https://example.com/examples/file.xyz",
+      "proj:epsg": "32659"
+    }
+  }
 }
