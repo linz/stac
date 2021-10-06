@@ -95,7 +95,7 @@ For more details see
 | film:physical_condition | string  | Comments field about unusual film condition.                                                     | physical_film_condition | `Film scratched; Metadata manually populated; Not Film 222` | ...      |
 | film:physical_size      | string  | Physical size of the negatives on a roll of film.                                                | format                  | `23 cm x 23 cm; 18 cm x 23 cm`                              | ...      |
 
-#### Scanning Extension[Scanning Extension](../scanning)
+#### [Scanning Extension](../scanning)
 
 | Field Name       | Type    | Description                                                          | Internal Field Name | Example          | Comments            |
 | ---------------- | ------- | -------------------------------------------------------------------- | ------------------- | ---------------- | ------------------- |
