@@ -26,7 +26,6 @@ export async function loadSchemaFromUri(uri) {
       return JSON.parse(await fs.readFile(join(__dirname, schemaPath)));
     }
 
-
     let response = await axios.get(uri);
     return response.data;
   } catch (error) {
