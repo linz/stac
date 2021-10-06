@@ -34,11 +34,11 @@
   "quality:horizontal_accuracy_type": "Nominal",
   "quality:lineage": "This is an example dataset lineage description.",
   "version": "2.0.0",
-  "quality:invalid": true,
   "assets": {
     "example": {
       "href": "https://example.com/examples/file.xyz",
       "proj:epsg": 32659
     }
-  }
+  },
+  "quality:invalid": true
 }
