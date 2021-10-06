@@ -11,16 +11,13 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
  */
 export async function loadSchema(uri) {
   try {
-    console.log('fetching', { uri });
-
     if (uri.startsWith('https://linz.github.io/stac/_STAC_VERSION_/')) {
       const schemaPath = uri.slice('https://linz.github.io/stac/_STAC_VERSION_/'.length);
-      console.log('loaded from file', schemaPath);
 
       return JSON.parse(await fs.readFile(join(__dirname, schemaPath)));
     }
 
-    let response = await axios.get(uri);
+    const response = await axios.get(uri);
     return response.data;
   } catch (error) {
     throw new Error(`-- Schema at '${uri}' not found. Please ensure all entries in 'stac_extensions' are valid.`);

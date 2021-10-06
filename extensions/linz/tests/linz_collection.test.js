@@ -23,7 +23,8 @@ o.spec('linz-collection', () => {
     // given
     const linzCollectionExample = JSON.parse(await fs.readFile(examplePath));
 
-    const valid = ajv.validate(linzCollectionExample);
+    // when
+    const valid = validate(linzCollectionExample);
 
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
