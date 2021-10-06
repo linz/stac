@@ -23,11 +23,9 @@ export async function loadSchemaFromUri(uri) {
   try {
     if (uri.startsWith('https://linz.github.io/stac/_STAC_VERSION_/')) {
       const schemaPath = uri.slice('https://linz.github.io/stac/_STAC_VERSION_/'.length);
-      console.log('loaded from file', schemaPath);
       return JSON.parse(await fs.readFile(join(__dirname, schemaPath)));
     }
 
-    console.log('Fetch', uri);
 
     let response = await axios.get(uri);
     return response.data;
