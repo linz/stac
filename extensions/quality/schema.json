@@ -7,6 +7,9 @@
       "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
     },
     {
+      "$ref": "#/definitions/stac_extensions"
+    },
+    {
       "$ref": "#/definitions/quality"
     }
   ],
