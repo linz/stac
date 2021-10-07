@@ -27,10 +27,9 @@ if other data managers find them to be useful.
    yarn
    ```
 
-2. Validate examples and non-examples:
+2. Run tests:
 
    ```shell
-   yarn validate
    yarn test
    ```
 
@@ -38,7 +37,7 @@ if other data managers find them to be useful.
 
 Install packages by running `yarn`.
 
-Verify changes by running `yarn lint && yarn validate` before committing.
+Verify changes by running `yarn lint && yarn test` before committing.
 
 ### Releases
 
@@ -51,7 +50,7 @@ To create a release run `yarn version --new-version <patch|minor|major>` which w
 Be sure to add a schemaMap entry to the
 [validate.sh](validate.sh) file with your json-schema
 `$id` url followed by the path to the json-schema locally. This will allow
-`yarn validate` to use a local json-schema file rather than retrieving a possibly yet
+`yarn test` to use a local json-schema file rather than retrieving a possibly yet
 un-published json-schema.
 
 ## [License](LICENSE)
