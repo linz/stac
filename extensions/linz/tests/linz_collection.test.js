@@ -70,6 +70,23 @@ o.spec('linz-collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
+  o("Collection with invalid 'proj:epsg' value should fail validation", async () => {
+    // given
+    const collection = JSON.parse(await fs.readFile(examplePath));
+    collection['assets']['example']['proj:epsg'] = 'string';
+
+    // when
+    let valid = validate(collection);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.dataPath === ".assets['example']['proj:epsg']" && error.message === 'should be integer,null',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o("Collection without 'linz:providers' property should fail validation", async () => {
     // given
     const collection = JSON.parse(await fs.readFile(examplePath));
