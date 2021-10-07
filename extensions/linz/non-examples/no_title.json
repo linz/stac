@@ -41,6 +41,20 @@
   "quality:horizontal_accuracy": 1,
   "quality:horizontal_accuracy_type": "Nominal",
   "quality:lineage": "This is an example dataset lineage description.",
+  "providers": [
+    {
+      "name": "Example",
+      "description": "Example description.",
+      "roles": ["licensor"],
+      "url": "https://www.exampleurl.com"
+    },
+    {
+      "name": "Example",
+      "description": "Example description.",
+      "roles": ["producer"],
+      "url": "https://www.exampleurl.com"
+    }
+  ],
   "version": "2.0.0",
   "assets": {
     "example": {
