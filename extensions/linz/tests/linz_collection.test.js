@@ -126,9 +126,11 @@ o.spec('linz-collection', () => {
 
       // then
       o(valid).equals(false);
-      o(validate.errors.some((error) => error.message === 'should contain a valid item')).equals(true)(
-        JSON.stringify(validate.errors),
-      );
+      o(
+        validate.errors.some(
+          (error) => error.dataPath === '.providers' && error.message === 'should contain a valid item',
+        ),
+      ).equals(true)(JSON.stringify(validate.errors));
     }
   });
 });
