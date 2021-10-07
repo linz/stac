@@ -10,11 +10,11 @@ const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/collection.json');
 
 o.spec('linz-collection', () => {
+  o.specTimeout(20000);
   let validate;
   const ajv = new Ajv(AjvOptions);
 
   o.before(async () => {
-    o.timeout(5000);
     const data = JSON.parse(await fs.readFile(schemaPath));
     validate = await ajv.compileAsync(data);
   });

@@ -3,24 +3,58 @@
   "$id": "https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json",
   "title": "LINZ STAC Extension",
   "description": "LINZ STAC Extension.",
-  "allOf": [
+  "oneOf": [
     {
-      "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
+      "$comment": "This is the schema for STAC Items.",
+      "allOf": [
+        {
+          "type": "object",
+          "required": ["linz:geospatial_type"]
+        },
+        {
+          "$ref": "https://schemas.stacspec.org/v1.0.0/item-spec/json-schema/item.json#"
+        },
+        {
+          "$ref": "#/definitions/fields"
+        },
+        {
+          "$ref": "#/definitions/stac_extensions"
+        }
+      ]
     },
     {
-      "$ref": "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json#"
-    },
-    {
-      "$ref": "https://stac-extensions.github.io/version/v1.0.0/schema.json#"
-    },
-    {
-      "$ref": "https://stac-extensions.github.io/projection/v1.0.0/schema.json#"
-    },
-    {
-      "$ref": "#/definitions/linz"
-    },
-    {
-      "$ref": "#/definitions/stac_extensions"
+      "$comment": "This is the schema for STAC Collections.",
+      "allOf": [
+        {
+          "type": "object",
+          "required": [
+            "linz:created",
+            "linz:lifecycle",
+            "linz:providers",
+            "linz:security_classification",
+            "linz:updated",
+            "title"
+          ]
+        },
+        {
+          "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
+        },
+        {
+          "$ref": "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json#"
+        },
+        {
+          "$ref": "https://stac-extensions.github.io/version/v1.0.0/schema.json#"
+        },
+        {
+          "$ref": "https://stac-extensions.github.io/projection/v1.0.0/schema.json#"
+        },
+        {
+          "$ref": "#/definitions/fields"
+        },
+        {
+          "$ref": "#/definitions/stac_extensions"
+        }
+      ]
     }
   ],
   "definitions": {
@@ -36,30 +70,43 @@
         }
       }
     },
-    "linz": {
+    "fields": {
       "type": "object",
-      "required": [
-        "linz:created",
-        "linz:lifecycle",
-        "linz:providers",
-        "linz:security_classification",
-        "linz:updated",
-        "title"
-      ],
       "properties": {
-        "title": {
-          "type": "string",
-          "minLength": 1
-        },
-        "linz:security_classification": {
-          "type": "string",
-          "enum": ["Unclassified", "IN-CONFIDENCE", "SENSITIVE", "RESTRICTED", "CONFIDENTIAL", "SECRET", "TOP-SECRET"]
-        },
         "linz:created": {
           "title": "Creation Time",
           "type": "string",
           "format": "date-time",
           "pattern": "(\\+00:00|Z)$"
+        },
+        "linz:geospatial_type": {
+          "type": "string",
+          "enum": [
+            "Black and White Image",
+            "Circular String",
+            "Colour Image",
+            "Compound Curve",
+            "Curve Polygon",
+            "Geometry",
+            "Geometry Collection",
+            "Greyscale",
+            "Grid",
+            "Hyperspectral",
+            "Multicurve",
+            "Multilinestring",
+            "Multipoint",
+            "Multipolygon",
+            "Multispectral",
+            "Multisurface",
+            "Linestring",
+            "Point",
+            "Point Cloud",
+            "Polygon",
+            "Polyhedral Surface",
+            "RGB",
+            "Tin",
+            "Triangle"
+          ]
         },
         "linz:lifecycle": {
           "title": "Life Cycle",
@@ -96,11 +143,19 @@
             }
           }
         },
+        "linz:security_classification": {
+          "type": "string",
+          "enum": ["Unclassified", "IN-CONFIDENCE", "SENSITIVE", "RESTRICTED", "CONFIDENTIAL", "SECRET", "TOP-SECRET"]
+        },
         "linz:updated": {
           "title": "Last Update Time",
           "type": "string",
           "format": "date-time",
           "pattern": "(\\+00:00|Z)$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
         }
       },
       "patternProperties": {

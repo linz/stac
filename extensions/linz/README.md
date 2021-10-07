@@ -4,7 +4,7 @@
 - **Identifier:**
   <https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json>
 - **Field Name Prefix:** linz
-- **Scope:** Collection
+- **Scope:** Item, Collection
 - **Extension
   [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):**
   Proposal
@@ -15,12 +15,51 @@ This is LINZ top level
 extension which adds constraints to default STAC schema properties.
 
 - Examples:
+
   - [Collection example](examples/collection.json): Shows the basic usage of the
     extension in a STAC Collection
+  - [Item example](examples/item.json): Shows the basic usage of the extension
+    in a STAC Item
+
 - [JSON Schema](./schema.json)
 - [Changelog](./CHANGELOG.md)
 
-## Item Properties and Collection Fields
+## Item Fields
+
+| Field Name      | Type   | Description                                                                                                                                                  |
+| --------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| geospatial_type | string | **REQUIRED**. A general description of the type of content that can be found in the dataset. See the [list of accepted geospatial types](#geospatial-types). |
+
+#### Geospatial Types
+
+| Name                  | Additional description                                                                |
+| --------------------- | ------------------------------------------------------------------------------------- |
+| Black and White Image |                                                                                       |
+| Circular String       | ISO/IEC 13249-3:2016(en)                                                              |
+| Colour Image          |                                                                                       |
+| Compound Curve        | ISO/IEC 13249-3:2016(en)                                                              |
+| Curve Polygon         | ISO/IEC 13249-3:2016(en)                                                              |
+| Geometry              | When mixed vector types are used in the same dataset                                  |
+| Geometry Collection   | ISO/IEC 13249-3:2016(en)                                                              |
+| Greyscale             | Single band byte datatype, grayscale interpretation, with optional 2nd band for Alpha |
+| Grid                  | Single band non-byte datatype, grayscale interpretation                               |
+| Hyperspectral         | 10+ bands                                                                             |
+| Multicurve            | ISO/IEC 13249-3:2016(en)                                                              |
+| Multilinestring       | ISO/IEC 13249-3:2016(en)                                                              |
+| Multipoint            | ISO/IEC 13249-3:2016(en)                                                              |
+| Multipolygon          | ISO/IEC 13249-3:2016(en)                                                              |
+| Multispectral         | 4 or more bands, but not including RGBA. Including RGBI                               |
+| Multisurface          | ISO/IEC 13249-3:2016(en)                                                              |
+| Linestring            | ISO/IEC 13249-3:2016(en)                                                              |
+| Point                 | ISO/IEC 13249-3:2016(en)                                                              |
+| Point Cloud           |                                                                                       |
+| Polygon               | ISO/IEC 13249-3:2016(en)                                                              |
+| Polyhedral Surface    | ISO/IEC 13249-3:2016(en)                                                              |
+| RGB                   | Can also include RGBA where 4th band is defined as Alpha                              |
+| Tin                   | ISO/IEC 13249-3:2016(en)                                                              |
+| Triangle              | ISO/IEC 13249-3:2016(en)                                                              |
+
+## Collection Fields
 
 | Field Name                   | Type                                  | Description                                                                                                                                                                                                                                                                                                                                      |
 | ---------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
