@@ -59,4 +59,19 @@ o.spec('linz-collection', () => {
       JSON.stringify(validate.errors),
     );
   });
+
+  o("Collection without 'providers' property should fail validation", async () => {
+    // given
+    const collection = JSON.parse(await fs.readFile(examplePath));
+    delete collection.providers;
+
+    // when
+    let valid = validate(collection);
+
+    // then
+    o(valid).equals(false);
+    o(validate.errors.some((error) => error.message === "should have required property '.providers'")).equals(true)(
+      JSON.stringify(validate.errors),
+    );
+  });
 });

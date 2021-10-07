@@ -33,6 +33,7 @@
             "linz:providers",
             "linz:security_classification",
             "linz:updated",
+            "providers",
             "title"
           ]
         },
