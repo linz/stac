@@ -3,8 +3,8 @@
   "stac_extensions": [
     "https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json",
     "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json",
-    "https://stac-extensions.github.io/version/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/projection/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/version/v1.0.0/schema.json"
   ],
   "type": "Collection",
   "id": "collection",
@@ -43,7 +43,10 @@
   "quality:horizontal_accuracy_type": "Nominal",
   "quality:lineage": "This is an example dataset lineage description.",
   "version": "2.0.0",
-  "proj:epsg": 32659,
-  "proj:shape": [5558, 9559],
-  "proj:transform": [0.5, 0, 712710, 0, -0.5, 151406, 0, 0, 1]
+  "assets": {
+    "example": {
+      "href": "https://example.com/examples/file.xyz",
+      "proj:epsg": 32659
+    }
+  }
 }
