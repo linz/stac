@@ -10,7 +10,7 @@ const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/collection.json');
 
 o.spec('linz-collection', () => {
-  o.specTimeout(20000)
+  o.specTimeout(20000);
   let validate;
   const ajv = new Ajv(AjvOptions);
 
