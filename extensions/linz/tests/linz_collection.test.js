@@ -74,4 +74,21 @@ o.spec('linz-collection', () => {
       JSON.stringify(validate.errors),
     );
   });
+
+  o('Collection without required provider roles should fail validation', async () => {
+    // given
+    for (const role of ['producer', 'licensor']) {
+      const collection = JSON.parse(await fs.readFile(examplePath));
+      collection.providers = collection.providers.filter((provider) => !role in provider.roles);
+
+      // when
+      let valid = validate(collection);
+
+      // then
+      o(valid).equals(false);
+      o(validate.errors.some((error) => error.message === 'should contain a valid item')).equals(true)(
+        JSON.stringify(validate.errors),
+      );
+    }
+  });
 });
