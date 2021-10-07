@@ -61,7 +61,7 @@ o.spec('quality-collection', () => {
   });
 
   o(
-    "Collection without a non-numerated value for the 'quality:horizontal_accuracy_type' field should fail validation",
+    "Collection which contains a value for the 'quality:horizontal_accuracy_type' field which isn't one of the enumerated values should fail validation",
     async () => {
       // given
       const qualityCollectionExample = JSON.parse(await fs.readFile(exampleCollectionPath));
