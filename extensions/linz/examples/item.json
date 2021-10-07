@@ -30,5 +30,5 @@
       "href": "https://example.com/examples/file.xyz"
     }
   },
-  "linz:geospatial_type": "Polygon"
+  "linz:geospatial_type": "polygon"
 }

@@ -41,7 +41,7 @@
         "quality:horizontal_accuracy_type": {
           "title": "Horizontal Accuracy Type",
           "type": "string",
-          "enum": ["Nominal", "95% confidence interval"]
+          "enum": ["nominal", "95% confidence interval"]
         },
         "quality:lineage": {
           "title": "Lineage",
@@ -54,7 +54,7 @@
         "quality:vertical_accuracy_type": {
           "title": "Vertical Accuracy Type",
           "type": "string",
-          "enum": ["Nominal", "95% confidence interval"]
+          "enum": ["nominal", "95% confidence interval"]
         }
       },
       "patternProperties": {
