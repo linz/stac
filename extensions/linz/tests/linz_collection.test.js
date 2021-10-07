@@ -40,8 +40,9 @@ o.spec('linz-collection', () => {
 
     // then
     o(valid).equals(false);
-    o(validate.errors.length).equals(1);
-    o(validate.errors[0].message).equals("should have required property 'linz:providers'");
+    o(validate.errors.some((error) => error.message === "should have required property '['linz:providers']'")).equals(
+      true,
+    )(JSON.stringify(validate.errors));
   });
 
   o("Collection without 'linz:providers' 'name' property should fail validation", async () => {
@@ -54,7 +55,8 @@ o.spec('linz-collection', () => {
 
     // then
     o(valid).equals(false);
-    o(validate.errors.length).equals(1);
-    o(validate.errors[0].message).equals("should have required property 'name'");
+    o(validate.errors.some((error) => error.message === "should have required property 'name'")).equals(true)(
+      JSON.stringify(validate.errors),
+    );
   });
 });
