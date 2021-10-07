@@ -35,29 +35,29 @@ extension which adds constraints to default STAC schema properties.
 | Name                  | Additional description                                                                |
 | --------------------- | ------------------------------------------------------------------------------------- |
 | Black and White Image |                                                                                       |
-| Circular String       |                                                                                       |
+| Circular String       | ISO/IEC 13249-3:2016(en)                                                              |
 | Colour Image          |                                                                                       |
-| Compound Curve        |                                                                                       |
-| Curve Polygon         |                                                                                       |
+| Compound Curve        | ISO/IEC 13249-3:2016(en)                                                              |
+| Curve Polygon         | ISO/IEC 13249-3:2016(en)                                                              |
 | Geometry              | When mixed vector types are used in the same dataset                                  |
-| Geometry Collection   |                                                                                       |
+| Geometry Collection   | ISO/IEC 13249-3:2016(en)                                                              |
 | Greyscale             | Single band byte datatype, grayscale interpretation, with optional 2nd band for Alpha |
 | Grid                  | Single band non-byte datatype, grayscale interpretation                               |
 | Hyperspectral         | 10+ bands                                                                             |
-| Multicurve            |                                                                                       |
-| Multilinestring       |                                                                                       |
-| Multipoint            |                                                                                       |
-| Multipolygon          |                                                                                       |
+| Multicurve            | ISO/IEC 13249-3:2016(en)                                                              |
+| Multilinestring       | ISO/IEC 13249-3:2016(en)                                                              |
+| Multipoint            | ISO/IEC 13249-3:2016(en)                                                              |
+| Multipolygon          | ISO/IEC 13249-3:2016(en)                                                              |
 | Multispectral         | 4 or more bands, but not including RGBA. Including RGBI                               |
-| Multisurface          |                                                                                       |
-| Linestring            |                                                                                       |
-| Point                 |                                                                                       |
+| Multisurface          | ISO/IEC 13249-3:2016(en)                                                              |
+| Linestring            | ISO/IEC 13249-3:2016(en)                                                              |
+| Point                 | ISO/IEC 13249-3:2016(en)                                                              |
 | Point Cloud           |                                                                                       |
-| Polygon               |                                                                                       |
-| Polyhedral Surface    |                                                                                       |
+| Polygon               | ISO/IEC 13249-3:2016(en)                                                              |
+| Polyhedral Surface    | ISO/IEC 13249-3:2016(en)                                                              |
 | RGB                   | Can also include RGBA where 4th band is defined as Alpha                              |
-| Tin                   |                                                                                       |
-| Triangle              |                                                                                       |
+| Tin                   | ISO/IEC 13249-3:2016(en)                                                              |
+| Triangle              | ISO/IEC 13249-3:2016(en)                                                              |
 
 ## Collection Fields
 
