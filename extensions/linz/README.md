@@ -40,7 +40,7 @@ extension which adds constraints to default STAC schema properties.
 | Compound Curve        |                                                                                       |
 | Curve Polygon         |                                                                                       |
 | Geometry              | When mixed vector types are used in the same dataset                                  |
-| Geometry Collection   |
+| Geometry Collection   |                                                                                       |
 | Greyscale             | Single band byte datatype, grayscale interpretation, with optional 2nd band for Alpha |
 | Grid                  | Single band non-byte datatype, grayscale interpretation                               |
 | Hyperspectral         | 10+ bands                                                                             |
