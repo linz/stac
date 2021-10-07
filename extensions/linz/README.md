@@ -32,14 +32,32 @@ extension which adds constraints to default STAC schema properties.
 
 #### Geospatial Types
 
-|                                                                |                                                                 |                                                                         |                                                                                                   |
-| -------------------------------------------------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| Black and White Image                                          | Circular String                                                 | Colour Image                                                            | Compound Curve                                                                                    |
-| Curve Polygon                                                  | Geometry (when mixed vector types are used in the same dataset) | Geometry Collection                                                     | Greyscale (Single band byte datatype, grayscale interpretation, with optional 2nd band for Alpha) |
-| Grid (Single band non-byte datatype, grayscale interpretation) | Hyperspectral (10+ bands)                                       | Multicurve                                                              | Multilinestring                                                                                   |
-| Multipoint                                                     | Multipolygon                                                    | Multispectral (4 or more bands, but not including RGBA. Including RGBI) | Multisurface                                                                                      |
-| Linestring                                                     | Point                                                           | Point Cloud                                                             | Polygon                                                                                           |
-| Polyhedral Surface                                             | RGB (can also include RGBA where 4th band is defined as Alpha)  | Tin                                                                     | Triangle                                                                                          |
+| Name                  | Additional description                                                                |
+| --------------------- | ------------------------------------------------------------------------------------- |
+| Black and White Image |                                                                                       |
+| Circular String       |                                                                                       |
+| Colour Image          |                                                                                       |
+| Compound Curve        |                                                                                       |
+| Curve Polygon         |                                                                                       |
+| Geometry              | When mixed vector types are used in the same dataset                                  |
+| Geometry Collection   |
+| Greyscale             | Single band byte datatype, grayscale interpretation, with optional 2nd band for Alpha |
+| Grid                  | Single band non-byte datatype, grayscale interpretation                               |
+| Hyperspectral         | 10+ bands                                                                             |
+| Multicurve            |                                                                                       |
+| Multilinestring       |                                                                                       |
+| Multipoint            |                                                                                       |
+| Multipolygon          |                                                                                       |
+| Multispectral         | 4 or more bands, but not including RGBA. Including RGBI                               |
+| Multisurface          |                                                                                       |
+| Linestring            |                                                                                       |
+| Point                 |                                                                                       |
+| Point Cloud           |                                                                                       |
+| Polygon               |                                                                                       |
+| Polyhedral Surface    |                                                                                       |
+| RGB                   | Can also include RGBA where 4th band is defined as Alpha                              |
+| Tin                   |                                                                                       |
+| Triangle              |                                                                                       |
 
 ## Collection Fields
 
