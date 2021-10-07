@@ -87,6 +87,36 @@ o.spec('linz-collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
+  o("Collection without 'linz:created' property should fail validation", async () => {
+    // given
+    const collection = JSON.parse(await fs.readFile(examplePath));
+    delete collection['linz:created'];
+
+    // when
+    let valid = validate(collection);
+
+    // then
+    o(valid).equals(false);
+    o(validate.errors.some((error) => error.message === "should have required property '['linz:created']'")).equals(
+      true,
+    )(JSON.stringify(validate.errors));
+  });
+
+  o("Collection without 'linz:lifecycle' property should fail validation", async () => {
+    // given
+    const collection = JSON.parse(await fs.readFile(examplePath));
+    delete collection['linz:lifecycle'];
+
+    // when
+    let valid = validate(collection);
+
+    // then
+    o(valid).equals(false);
+    o(validate.errors.some((error) => error.message === "should have required property '['linz:lifecycle']'")).equals(
+      true,
+    )(JSON.stringify(validate.errors));
+  });
+
   o("Collection without 'linz:providers' property should fail validation", async () => {
     // given
     const collection = JSON.parse(await fs.readFile(examplePath));
@@ -98,6 +128,38 @@ o.spec('linz-collection', () => {
     // then
     o(valid).equals(false);
     o(validate.errors.some((error) => error.message === "should have required property '['linz:providers']'")).equals(
+      true,
+    )(JSON.stringify(validate.errors));
+  });
+
+  o("Collection without 'linz:security_classification' property should fail validation", async () => {
+    // given
+    const collection = JSON.parse(await fs.readFile(examplePath));
+    delete collection['linz:security_classification'];
+
+    // when
+    let valid = validate(collection);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.message === "should have required property '['linz:security_classification']'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
+  o("Collection without 'linz:updated' property should fail validation", async () => {
+    // given
+    const collection = JSON.parse(await fs.readFile(examplePath));
+    delete collection['linz:updated'];
+
+    // when
+    let valid = validate(collection);
+
+    // then
+    o(valid).equals(false);
+    o(validate.errors.some((error) => error.message === "should have required property '['linz:updated']'")).equals(
       true,
     )(JSON.stringify(validate.errors));
   });
@@ -149,5 +211,35 @@ o.spec('linz-collection', () => {
         ),
       ).equals(true)(JSON.stringify(validate.errors));
     }
+  });
+
+  o("Collection without 'title' property should fail validation", async () => {
+    // given
+    const collection = JSON.parse(await fs.readFile(examplePath));
+    delete collection.title;
+
+    // when
+    let valid = validate(collection);
+
+    // then
+    o(valid).equals(false);
+    o(validate.errors.some((error) => error.message === "should have required property '.title'")).equals(true)(
+      JSON.stringify(validate.errors),
+    );
+  });
+
+  o("Collection without 'version' property should fail validation", async () => {
+    // given
+    const collection = JSON.parse(await fs.readFile(examplePath));
+    delete collection.version;
+
+    // when
+    let valid = validate(collection);
+
+    // then
+    o(valid).equals(false);
+    o(validate.errors.some((error) => error.message === "should have required property '.version'")).equals(true)(
+      JSON.stringify(validate.errors),
+    );
   });
 });
