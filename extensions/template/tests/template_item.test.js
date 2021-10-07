@@ -19,7 +19,7 @@ o.spec('template-item', () => {
     validate = await ajv.compileAsync(data);
   });
 
-  o('template-item-validates-successfully', async () => {
+  o('Item should pass validation', async () => {
     // given
     const templateItemExample = JSON.parse(await fs.readFile(exampleItemPath));
 
@@ -30,7 +30,7 @@ o.spec('template-item', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o('template-item-validation-fails', async () => {
+  o("Item without mandatory 'template:new_field' property should fail validation", async () => {
     // given
     const templateItemExample = JSON.parse(await fs.readFile(exampleItemPath));
     delete templateItemExample.properties['template:new_field'];

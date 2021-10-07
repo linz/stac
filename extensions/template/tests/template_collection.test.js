@@ -19,7 +19,7 @@ o.spec('template-collection', () => {
     validate = await ajv.compileAsync(data);
   });
 
-  o('template-collection-validates-successfully', async () => {
+  o('Collection should pass validation', async () => {
     // given
     const templateCollectionExample = JSON.parse(await fs.readFile(exampleCollectionPath));
 
@@ -30,7 +30,7 @@ o.spec('template-collection', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o('template-collection-validation-fails', async () => {
+  o("Collection without mandatory 'y' field in the 'template:xyz object should fail validation", async () => {
     // given
     const templateCollectionExample = JSON.parse(await fs.readFile(exampleCollectionPath));
     delete templateCollectionExample['assets']['example']['template:xyz']['y'];
