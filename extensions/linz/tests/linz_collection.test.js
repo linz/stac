@@ -50,6 +50,26 @@ o.spec('linz-collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
+  o("Collection with unsupported 'quality:*' property should fail validation", async () => {
+    // given
+    const collection = JSON.parse(await fs.readFile(examplePath));
+    const parameterName = 'quality:unknown';
+    collection[parameterName] = 1;
+
+    // when
+    let valid = validate(collection);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.params.additionalProperty === parameterName &&
+          error.message === 'should NOT have additional properties',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o("Collection without 'linz:providers' property should fail validation", async () => {
     // given
     const collection = JSON.parse(await fs.readFile(examplePath));
