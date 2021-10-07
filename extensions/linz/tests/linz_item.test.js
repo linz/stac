@@ -14,7 +14,7 @@ o.spec('linz-item', () => {
   const ajv = new Ajv(AjvOptions);
 
   o.before(async () => {
-    o.timeout(5000);
+    o.timeout(10000);
     const data = JSON.parse(await fs.readFile(schemaPath));
     validate = await ajv.compileAsync(data);
   });
