@@ -85,7 +85,7 @@
                 "type": "array",
                 "items": {
                   "type": "string",
-                  "enum": ["manager", "custodian"]
+                  "enum": ["custodian", "manager"]
                 }
               },
               "url": {
