@@ -14,14 +14,4 @@ validator_command=(
     --schemaMap=https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json=extensions/linz/schema.json
 )
 "${validator_command[@]}" extensions/*/examples/*.json
-
-for path in extensions/*/non-examples/*.json
-do
-    if "${validator_command[@]}" "$path"
-    then
-        echo "Valid non-example: ${path}" >&2
-        exit_code=1
-    fi
-done
-
 exit "${exit_code-0}"
