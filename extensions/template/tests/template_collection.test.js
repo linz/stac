@@ -10,7 +10,6 @@ const schemaPath = join(__dirname, '..', 'schema.json');
 const exampleCollectionPath = join(__dirname, '..', 'examples/collection.json');
 
 o.spec('template-collection', () => {
-  o.specTimeout(20000);
   let validate;
   const ajv = new Ajv(AjvOptions);
 
