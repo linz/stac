@@ -32,32 +32,34 @@ extension which adds constraints to default STAC schema properties.
 
 #### Geospatial Types
 
-| Name                  | Additional description                                                                        |
-| --------------------- | --------------------------------------------------------------------------------------------- |
-| black and white image | Ungeoreferenced black and white image                                                         |
-| circular string       | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
-| colour image          | Ungeoreferenced colour image                                                                  |
-| compound curve        | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
-| curve polygon         | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
-| geometry              | When mixed vector types are used in the same dataset                                          |
-| geometry collection   | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
-| greyscale             | Single band raster, byte datatype, grayscale interpretation, with optional 2nd band for Alpha |
-| grid                  | Single band raster, non-byte datatype, grayscale interpretation                               |
-| hyperspectral         | 10+ band raster                                                                               |
-| multicurve            | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
-| multilinestring       | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
-| multipoint            | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
-| multipolygon          | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
-| multispectral         | 4 or more band raster, but not including RGBA. Including RGBI                                 |
-| multisurface          | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
-| linestring            | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
-| point                 | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
-| point cloud           | A set of points in 3D space, generally produced by LiDAR or photogrammetry                    |
-| polygon               | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
-| polyhedral surface    | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
-| rgb                   | RGB colour raster, can also include RGBA where 4th band is defined as Alpha                   |
-| tin                   | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
-| triangle              | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
+See ISO/IEC 13249-3:2016(en) for further information on geometric data types
+
+| Name                  | Additional description                                                                                      |
+| --------------------- | ----------------------------------------------------------------------------------------------------------- |
+| black and white image | Ungeoreferenced black and white image                                                                       |
+| circular string       | A continuous collection of arcs (lines with curved interpolation between points)                            |
+| colour image          | Ungeoreferenced colour image                                                                                |
+| compound curve        | A continuous collection of circular strings and/or linestrings                                              |
+| curve polygon         | A polygon that contains circular strings or compound curves                                                 |
+| geometry              | When mixed geometry types are used in the same dataset                                                      |
+| geometry collection   | A collection of mixed geometric types                                                                       |
+| greyscale             | Single band raster, byte datatype, grayscale interpretation, with optional 2nd band for Alpha               |
+| grid                  | Single band raster, non-byte datatype, grayscale interpretation                                             |
+| hyperspectral         | 10+ band raster                                                                                             |
+| multicurve            | A collection of curves (a linestring with non-linear interpolation between points)                          |
+| multilinestring       | A collection of linestrings                                                                                 |
+| multipoint            | A collection of points                                                                                      |
+| multipolygon          | A collection of polygons                                                                                    |
+| multispectral         | 4 or more band raster, including RGBI, but not including RGBA                                               |
+| multisurface          | A collection of surfaces (non-planar polygons)                                                              |
+| linestring            | A 1-dimensional geometric object stored as a sequence of points                                             |
+| point                 | A 0-dimensional geometric object that represents a single location                                          |
+| point cloud           | A set of points in 3D space, generally produced by LiDAR or photogrammetry                                  |
+| polygon               | A 2-dimensional planar geometric object with an exterior boundary and 0 or more interior boundaries (holes) |
+| polyhedral surface    | A contiguous collection of polygons that share common boundary segments                                     |
+| rgb                   | RGB colour raster, can also include RGBA where 4th band is defined as Alpha                                 |
+| tin                   | A continguous collection of triangles that share common boundary segments                                   |
+| triangle              | A 2-dimensional geometric object stored as three points                                                     |
 
 ## Collection Fields
 
