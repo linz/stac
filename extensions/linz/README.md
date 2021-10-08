@@ -32,32 +32,32 @@ extension which adds constraints to default STAC schema properties.
 
 #### Geospatial Types
 
-| Name                  | Additional description                                                                |
-| --------------------- | ------------------------------------------------------------------------------------- |
-| Black and White Image |                                                                                       |
-| Circular String       | ISO/IEC 13249-3:2016(en)                                                              |
-| Colour Image          |                                                                                       |
-| Compound Curve        | ISO/IEC 13249-3:2016(en)                                                              |
-| Curve Polygon         | ISO/IEC 13249-3:2016(en)                                                              |
-| Geometry              | When mixed vector types are used in the same dataset                                  |
-| Geometry Collection   | ISO/IEC 13249-3:2016(en)                                                              |
-| Greyscale             | Single band byte datatype, grayscale interpretation, with optional 2nd band for Alpha |
-| Grid                  | Single band non-byte datatype, grayscale interpretation                               |
-| Hyperspectral         | 10+ bands                                                                             |
-| Multicurve            | ISO/IEC 13249-3:2016(en)                                                              |
-| Multilinestring       | ISO/IEC 13249-3:2016(en)                                                              |
-| Multipoint            | ISO/IEC 13249-3:2016(en)                                                              |
-| Multipolygon          | ISO/IEC 13249-3:2016(en)                                                              |
-| Multispectral         | 4 or more bands, but not including RGBA. Including RGBI                               |
-| Multisurface          | ISO/IEC 13249-3:2016(en)                                                              |
-| Linestring            | ISO/IEC 13249-3:2016(en)                                                              |
-| Point                 | ISO/IEC 13249-3:2016(en)                                                              |
-| Point Cloud           |                                                                                       |
-| Polygon               | ISO/IEC 13249-3:2016(en)                                                              |
-| Polyhedral Surface    | ISO/IEC 13249-3:2016(en)                                                              |
-| RGB                   | Can also include RGBA where 4th band is defined as Alpha                              |
-| Tin                   | ISO/IEC 13249-3:2016(en)                                                              |
-| Triangle              | ISO/IEC 13249-3:2016(en)                                                              |
+| Name                  | Additional description                                                                        |
+| --------------------- | --------------------------------------------------------------------------------------------- |
+| black and white image | Ungeoreferenced black and white image                                                         |
+| circular string       | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
+| colour image          | Ungeoreferenced colour image                                                                  |
+| compound curve        | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
+| curve polygon         | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
+| geometry              | When mixed vector types are used in the same dataset                                          |
+| geometry collection   | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
+| greyscale             | Single band raster, byte datatype, grayscale interpretation, with optional 2nd band for Alpha |
+| grid                  | Single band raster, non-byte datatype, grayscale interpretation                               |
+| hyperspectral         | 10+ band raster                                                                               |
+| multicurve            | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
+| multilinestring       | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
+| multipoint            | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
+| multipolygon          | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
+| multispectral         | 4 or more band raster, but not including RGBA. Including RGBI                                 |
+| multisurface          | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
+| linestring            | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
+| point                 | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
+| point cloud           | A set of points in 3D space, generally produced by LiDAR or photogrammetry                    |
+| polygon               | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
+| polyhedral surface    | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
+| rgb                   | RGB colour raster, can also include RGBA where 4th band is defined as Alpha                   |
+| tin                   | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
+| triangle              | See ISO/IEC 13249-3:2016(en) for vector data definitions                                      |
 
 ## Collection Fields
 
