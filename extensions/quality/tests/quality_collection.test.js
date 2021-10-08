@@ -40,9 +40,11 @@ o.spec('quality-collection', () => {
 
     // then
     o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "should have required property 'quality:lineage'")).equals(
-      true,
-    )(JSON.stringify(validate.errors));
+    o(
+      validate.errors.some(
+        (error) => error.dataPath === '' && error.message === "should have required property 'quality:lineage'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
   });
 
   o("Collection with an incorrect 'quality:description' field should fail validation", async () => {
@@ -55,9 +57,11 @@ o.spec('quality-collection', () => {
 
     // then
     o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === 'should be string')).equals(true)(
-      JSON.stringify(validate.errors),
-    );
+    o(
+      validate.errors.some(
+        (error) => error.dataPath === "['quality:description']" && error.message === 'should be string',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
   });
 
   o(
@@ -72,9 +76,13 @@ o.spec('quality-collection', () => {
 
       // then
       o(valid).equals(false);
-      o(validate.errors.some((error) => error.message === 'should be equal to one of the allowed values')).equals(true)(
-        JSON.stringify(validate.errors),
-      );
+      o(
+        validate.errors.some(
+          (error) =>
+            error.dataPath === "['quality:horizontal_accuracy_type']" &&
+            error.message === 'should be equal to one of the allowed values',
+        ),
+      ).equals(true)(JSON.stringify(validate.errors));
     },
   );
 
@@ -90,9 +98,13 @@ o.spec('quality-collection', () => {
 
       // then
       o(valid).equals(false);
-      o(validate.errors.some((error) => error.message === 'should be equal to one of the allowed values')).equals(true)(
-        JSON.stringify(validate.errors),
-      );
+      o(
+        validate.errors.some(
+          (error) =>
+            error.dataPath === "['quality:vertical_accuracy_type']" &&
+            error.message === 'should be equal to one of the allowed values',
+        ),
+      ).equals(true)(JSON.stringify(validate.errors));
     },
   );
 });
