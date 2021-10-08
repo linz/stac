@@ -83,36 +83,36 @@
         "linz:geospatial_type": {
           "type": "string",
           "enum": [
-            "Black and White Image",
-            "Circular String",
-            "Colour Image",
-            "Compound Curve",
-            "Curve Polygon",
-            "Geometry",
-            "Geometry Collection",
-            "Greyscale",
-            "Grid",
-            "Hyperspectral",
-            "Multicurve",
-            "Multilinestring",
-            "Multipoint",
-            "Multipolygon",
-            "Multispectral",
-            "Multisurface",
-            "Linestring",
-            "Point",
-            "Point Cloud",
-            "Polygon",
-            "Polyhedral Surface",
-            "RGB",
-            "Tin",
-            "Triangle"
+            "black and white image",
+            "circular string",
+            "colour image",
+            "compound curve",
+            "curve polygon",
+            "geometry",
+            "geometry collection",
+            "greyscale",
+            "grid",
+            "hyperspectral",
+            "multicurve",
+            "multilinestring",
+            "multipoint",
+            "multipolygon",
+            "multispectral",
+            "multisurface",
+            "linestring",
+            "point",
+            "point cloud",
+            "polygon",
+            "polyhedral surface",
+            "rgb",
+            "tin",
+            "triangle"
           ]
         },
         "linz:lifecycle": {
           "title": "Life Cycle",
           "type": "string",
-          "enum": ["Under Development", "Preview", "Ongoing", "Completed", "Deprecated"]
+          "enum": ["under development", "preview", "ongoing", "completed", "deprecated"]
         },
         "linz:providers": {
           "type": "array",
@@ -146,7 +146,7 @@
         },
         "linz:security_classification": {
           "type": "string",
-          "enum": ["Unclassified", "IN-CONFIDENCE", "SENSITIVE", "RESTRICTED", "CONFIDENTIAL", "SECRET", "TOP-SECRET"]
+          "enum": ["unclassified", "in-confidence", "sensitive", "restricted", "confidential", "secret", "top-secret"]
         },
         "linz:updated": {
           "title": "Last Update Time",
