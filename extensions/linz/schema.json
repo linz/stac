@@ -3,57 +3,56 @@
   "$id": "https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json",
   "title": "LINZ STAC Extension",
   "description": "LINZ STAC Extension.",
-  "oneOf": [
+  "allOf": [
     {
-      "$comment": "This is the schema for STAC Items.",
-      "allOf": [
-        {
-          "type": "object",
-          "required": ["linz:geospatial_type"]
-        },
-        {
-          "$ref": "https://schemas.stacspec.org/v1.0.0/item-spec/json-schema/item.json#"
-        },
-        {
-          "$ref": "#/definitions/fields"
-        },
-        {
-          "$ref": "#/definitions/stac_extensions"
-        }
-      ]
+      "$ref": "https://stac-extensions.github.io/version/v1.0.0/schema.json#"
     },
     {
-      "$comment": "This is the schema for STAC Collections.",
-      "allOf": [
+      "$ref": "https://stac-extensions.github.io/projection/v1.0.0/schema.json#"
+    },
+    {
+      "$ref": "#/definitions/fields"
+    },
+    {
+      "$ref": "#/definitions/stac_extensions"
+    },
+    {
+      "$comment": "Type-specific schemas",
+      "oneOf": [
         {
-          "type": "object",
-          "required": [
-            "linz:created",
-            "linz:lifecycle",
-            "linz:providers",
-            "linz:security_classification",
-            "linz:updated",
-            "providers",
-            "title"
+          "$comment": "This is the schema for STAC Items.",
+          "allOf": [
+            {
+              "type": "object",
+              "required": ["linz:geospatial_type"]
+            },
+            {
+              "$ref": "https://schemas.stacspec.org/v1.0.0/item-spec/json-schema/item.json#"
+            }
           ]
         },
         {
-          "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
-        },
-        {
-          "$ref": "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json#"
-        },
-        {
-          "$ref": "https://stac-extensions.github.io/version/v1.0.0/schema.json#"
-        },
-        {
-          "$ref": "https://stac-extensions.github.io/projection/v1.0.0/schema.json#"
-        },
-        {
-          "$ref": "#/definitions/fields"
-        },
-        {
-          "$ref": "#/definitions/stac_extensions"
+          "$comment": "This is the schema for STAC Collections.",
+          "allOf": [
+            {
+              "type": "object",
+              "required": [
+                "linz:created",
+                "linz:lifecycle",
+                "linz:providers",
+                "linz:security_classification",
+                "linz:updated",
+                "providers",
+                "title"
+              ]
+            },
+            {
+              "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
+            },
+            {
+              "$ref": "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json#"
+            }
+          ]
         }
       ]
     }
