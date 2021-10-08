@@ -1,5 +1,5 @@
 import o from 'ospec';
-import { AjvOptions } from '../../validation.js';
+import { AjvOptions, defaultTimeout } from '../../validation.js';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { promises as fs } from 'fs';
@@ -10,7 +10,7 @@ const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/item.json');
 
 o.spec('linz-item', () => {
-  o.specTimeout(20000);
+  o.specTimeout(defaultTimeout);
   let validate;
   const ajv = new Ajv(AjvOptions);
 
