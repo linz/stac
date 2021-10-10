@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const exampleItemPath = join(__dirname, '..', 'examples/item.json');
 
-o.spec('template-item', () => {
+o.spec('Template item', () => {
   let validate;
   const ajv = new Ajv(AjvOptions);
 
@@ -18,7 +18,7 @@ o.spec('template-item', () => {
     validate = await ajv.compileAsync(data);
   });
 
-  o('Item should pass validation', async () => {
+  o('Example should pass validation', async () => {
     // given
     const templateItemExample = JSON.parse(await fs.readFile(exampleItemPath));
 
@@ -29,7 +29,7 @@ o.spec('template-item', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Item without mandatory 'template:new_field' property should fail validation", async () => {
+  o("Example without mandatory 'template:new_field' property should fail validation", async () => {
     // given
     const templateItemExample = JSON.parse(await fs.readFile(exampleItemPath));
     delete templateItemExample.properties['template:new_field'];

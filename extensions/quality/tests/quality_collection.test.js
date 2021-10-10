@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const exampleCollectionPath = join(__dirname, '..', 'examples/collection.json');
 
-o.spec('quality-collection', () => {
+o.spec('Quality collection', () => {
   let validate;
   const ajv = new Ajv(AjvOptions);
 
@@ -18,7 +18,7 @@ o.spec('quality-collection', () => {
     validate = await ajv.compileAsync(data);
   });
 
-  o('Collection should pass validation', async () => {
+  o('Example should pass validation', async () => {
     // given
     const qualityCollectionExample = JSON.parse(await fs.readFile(exampleCollectionPath));
 
@@ -29,7 +29,7 @@ o.spec('quality-collection', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Collection without the mandatory 'quality:lineage' field should fail validation", async () => {
+  o("Example without the mandatory 'quality:lineage' field should fail validation", async () => {
     // given
     const qualityCollectionExample = JSON.parse(await fs.readFile(exampleCollectionPath));
     delete qualityCollectionExample['quality:lineage'];
@@ -46,7 +46,7 @@ o.spec('quality-collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
-  o("Collection with an incorrect 'quality:description' field should fail validation", async () => {
+  o("Example with an incorrect 'quality:description' field should fail validation", async () => {
     // given
     const qualityCollectionExample = JSON.parse(await fs.readFile(exampleCollectionPath));
     qualityCollectionExample['quality:description'] = 1234;
@@ -64,7 +64,7 @@ o.spec('quality-collection', () => {
   });
 
   o(
-    "Collection which contains a value for the 'quality:horizontal_accuracy_type' field which isn't one of the enumerated values should fail validation",
+    "Example which contains a value for the 'quality:horizontal_accuracy_type' field which isn't one of the enumerated values should fail validation",
     async () => {
       // given
       const qualityCollectionExample = JSON.parse(await fs.readFile(exampleCollectionPath));
@@ -86,7 +86,7 @@ o.spec('quality-collection', () => {
   );
 
   o(
-    "Collection which contains a value for the 'quality:vertical_accuracy_type' field which isn't one of the enumerated values should fail validation",
+    "Example which contains a value for the 'quality:vertical_accuracy_type' field which isn't one of the enumerated values should fail validation",
     async () => {
       // given
       const qualityCollectionExample = JSON.parse(await fs.readFile(exampleCollectionPath));

@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/item.json');
 
-o.spec('camera', () => {
+o.spec('Camera item', () => {
   let validate;
   const ajv = new Ajv(AjvOptions);
 
@@ -18,7 +18,7 @@ o.spec('camera', () => {
     validate = await ajv.compileAsync(data);
   });
 
-  o('camera-validates-successfully', async () => {
+  o('Example should pass validation', async () => {
     // given
     const cameraItemExample = JSON.parse(await fs.readFile(examplePath));
 
@@ -29,7 +29,7 @@ o.spec('camera', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Item with an incorrect 'camera:sequence_number' field should fail validation", async () => {
+  o("Example with an incorrect 'camera:sequence_number' field should fail validation", async () => {
     // given
     const cameraItemExample = JSON.parse(await fs.readFile(examplePath));
     cameraItemExample.properties['camera:sequence_number'] = 'incorrect_value';

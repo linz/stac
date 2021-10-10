@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const exampleItemPath = join(__dirname, '..', 'examples/item.json');
 
-o.spec('aerial-photo-item', () => {
+o.spec('Aerial photo item', () => {
   let validate;
   const ajv = new Ajv(AjvOptions);
 
@@ -18,7 +18,7 @@ o.spec('aerial-photo-item', () => {
     validate = await ajv.compileAsync(data);
   });
 
-  o('Item should pass validation', async () => {
+  o('Example should pass validation', async () => {
     // given
     const aerialPhotoItemExample = JSON.parse(await fs.readFile(exampleItemPath));
 
@@ -29,7 +29,7 @@ o.spec('aerial-photo-item', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Item with an incorrect 'aerial-photo:run' field should fail validation", async () => {
+  o("Example with an incorrect 'aerial-photo:run' field should fail validation", async () => {
     // given
     const aerialPhotoItemExample = JSON.parse(await fs.readFile(exampleItemPath));
     aerialPhotoItemExample.properties['aerial-photo:run'] = 1234;
@@ -46,7 +46,7 @@ o.spec('aerial-photo-item', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
-  o("Item without the mandatory 'aerial-photo:run' field should fail validation", async () => {
+  o("Example without the mandatory 'aerial-photo:run' field should fail validation", async () => {
     // given
     const aerialPhotoItemExample = JSON.parse(await fs.readFile(exampleItemPath));
     delete aerialPhotoItemExample.properties['aerial-photo:run'];
@@ -64,7 +64,7 @@ o.spec('aerial-photo-item', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
-  o("Item without a mandatory 'aerial-photo:sequence_number' field should fail validation", async () => {
+  o("Example without a mandatory 'aerial-photo:sequence_number' field should fail validation", async () => {
     // given
     const aerialPhotoItemExample = JSON.parse(await fs.readFile(exampleItemPath));
     delete aerialPhotoItemExample.properties['aerial-photo:sequence_number'];
@@ -83,7 +83,7 @@ o.spec('aerial-photo-item', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
-  o("Item with an incorrect 'aerial-photo:sequence_number' field should fail validation", async () => {
+  o("Example with an incorrect 'aerial-photo:sequence_number' field should fail validation", async () => {
     // given
     const aerialPhotoItemExample = JSON.parse(await fs.readFile(exampleItemPath));
     aerialPhotoItemExample.properties['aerial-photo:sequence_number'] = 'incorrect_example';

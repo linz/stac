@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/collection.json');
 
-o.spec('linz-collection', () => {
+o.spec('LINZ collection', () => {
   o.specTimeout(defaultTimeout);
   let validate;
   const ajv = new Ajv(AjvOptions);
@@ -19,7 +19,7 @@ o.spec('linz-collection', () => {
     validate = await ajv.compileAsync(data);
   });
 
-  o('linz-collection-validates-successfully', async () => {
+  o('Example should pass validation', async () => {
     // given
     const linzCollectionExample = JSON.parse(await fs.readFile(examplePath));
 
@@ -30,7 +30,7 @@ o.spec('linz-collection', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Collection with unsupported 'linz:*' property should fail validation", async () => {
+  o("Example with unsupported 'linz:*' property should fail validation", async () => {
     // given
     const collection = JSON.parse(await fs.readFile(examplePath));
     const parameterName = 'linz:unknown';
@@ -50,7 +50,7 @@ o.spec('linz-collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
-  o("Collection with unsupported 'quality:*' property should fail validation", async () => {
+  o("Example with unsupported 'quality:*' property should fail validation", async () => {
     // given
     const collection = JSON.parse(await fs.readFile(examplePath));
     const parameterName = 'quality:unknown';
@@ -70,7 +70,7 @@ o.spec('linz-collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
-  o("Collection with invalid 'proj:epsg' value should fail validation", async () => {
+  o("Example with invalid 'proj:epsg' value should fail validation", async () => {
     // given
     const collection = JSON.parse(await fs.readFile(examplePath));
     collection['assets']['example']['proj:epsg'] = 'string';
@@ -87,7 +87,7 @@ o.spec('linz-collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
-  o("Collection without 'linz:created' property should fail validation", async () => {
+  o("Example without 'linz:created' property should fail validation", async () => {
     // given
     const collection = JSON.parse(await fs.readFile(examplePath));
     delete collection['linz:created'];
@@ -102,7 +102,7 @@ o.spec('linz-collection', () => {
     )(JSON.stringify(validate.errors));
   });
 
-  o("Collection without 'linz:lifecycle' property should fail validation", async () => {
+  o("Example without 'linz:lifecycle' property should fail validation", async () => {
     // given
     const collection = JSON.parse(await fs.readFile(examplePath));
     delete collection['linz:lifecycle'];
@@ -117,7 +117,7 @@ o.spec('linz-collection', () => {
     )(JSON.stringify(validate.errors));
   });
 
-  o("Collection without 'linz:providers' property should fail validation", async () => {
+  o("Example without 'linz:providers' property should fail validation", async () => {
     // given
     const collection = JSON.parse(await fs.readFile(examplePath));
     delete collection['linz:providers'];
@@ -132,7 +132,7 @@ o.spec('linz-collection', () => {
     )(JSON.stringify(validate.errors));
   });
 
-  o("Collection without 'linz:security_classification' property should fail validation", async () => {
+  o("Example without 'linz:security_classification' property should fail validation", async () => {
     // given
     const collection = JSON.parse(await fs.readFile(examplePath));
     delete collection['linz:security_classification'];
@@ -149,7 +149,7 @@ o.spec('linz-collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
-  o("Collection without 'linz:updated' property should fail validation", async () => {
+  o("Example without 'linz:updated' property should fail validation", async () => {
     // given
     const collection = JSON.parse(await fs.readFile(examplePath));
     delete collection['linz:updated'];
@@ -164,7 +164,7 @@ o.spec('linz-collection', () => {
     )(JSON.stringify(validate.errors));
   });
 
-  o("Collection without 'linz:providers' 'name' property should fail validation", async () => {
+  o("Example without 'linz:providers' 'name' property should fail validation", async () => {
     // given
     const collection = JSON.parse(await fs.readFile(examplePath));
     delete collection['linz:providers'][0].name;
@@ -179,7 +179,7 @@ o.spec('linz-collection', () => {
     );
   });
 
-  o("Collection without 'providers' property should fail validation", async () => {
+  o("Example without 'providers' property should fail validation", async () => {
     // given
     const collection = JSON.parse(await fs.readFile(examplePath));
     delete collection.providers;
@@ -213,7 +213,7 @@ o.spec('linz-collection', () => {
     }
   });
 
-  o("Collection without 'title' property should fail validation", async () => {
+  o("Example without 'title' property should fail validation", async () => {
     // given
     const collection = JSON.parse(await fs.readFile(examplePath));
     delete collection.title;
@@ -228,7 +228,7 @@ o.spec('linz-collection', () => {
     );
   });
 
-  o("Collection without 'version' property should fail validation", async () => {
+  o("Example without 'version' property should fail validation", async () => {
     // given
     const collection = JSON.parse(await fs.readFile(examplePath));
     delete collection.version;
