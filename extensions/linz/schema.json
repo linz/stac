@@ -36,15 +36,7 @@
           "allOf": [
             {
               "type": "object",
-              "required": [
-                "linz:created",
-                "linz:lifecycle",
-                "linz:providers",
-                "linz:security_classification",
-                "linz:updated",
-                "providers",
-                "title"
-              ]
+              "required": ["linz:lifecycle", "linz:providers", "linz:security_classification", "providers", "title"]
             },
             {
               "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
@@ -73,12 +65,6 @@
     "fields": {
       "type": "object",
       "properties": {
-        "linz:created": {
-          "title": "Creation Time",
-          "type": "string",
-          "format": "date-time",
-          "pattern": "(\\+00:00|Z)$"
-        },
         "linz:geospatial_type": {
           "type": "string",
           "enum": [
@@ -170,12 +156,6 @@
         "linz:security_classification": {
           "type": "string",
           "enum": ["unclassified", "in-confidence", "sensitive", "restricted", "confidential", "secret", "top-secret"]
-        },
-        "linz:updated": {
-          "title": "Last Update Time",
-          "type": "string",
-          "format": "date-time",
-          "pattern": "(\\+00:00|Z)$"
         },
         "providers": {
           "allOf": [

@@ -87,21 +87,6 @@ o.spec('LINZ collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
-  o("Example without 'linz:created' property should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    delete example['linz:created'];
-
-    // when
-    let valid = validate(example);
-
-    // then
-    o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "should have required property '['linz:created']'")).equals(
-      true,
-    )(JSON.stringify(validate.errors));
-  });
-
   o("Example without 'linz:lifecycle' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
@@ -147,21 +132,6 @@ o.spec('LINZ collection', () => {
         (error) => error.message === "should have required property '['linz:security_classification']'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
-  });
-
-  o("Example without 'linz:updated' property should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    delete example['linz:updated'];
-
-    // when
-    let valid = validate(example);
-
-    // then
-    o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "should have required property '['linz:updated']'")).equals(
-      true,
-    )(JSON.stringify(validate.errors));
   });
 
   o("Example without 'linz:providers' 'name' property should fail validation", async () => {
