@@ -21,10 +21,10 @@ o.spec('LINZ collection', () => {
 
   o('Example should pass validation', async () => {
     // given
-    const linzCollectionExample = JSON.parse(await fs.readFile(examplePath));
+    const example = JSON.parse(await fs.readFile(examplePath));
 
     // when
-    const valid = validate(linzCollectionExample);
+    const valid = validate(example);
 
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
@@ -32,12 +32,12 @@ o.spec('LINZ collection', () => {
 
   o("Example with unsupported 'linz:*' property should fail validation", async () => {
     // given
-    const collection = JSON.parse(await fs.readFile(examplePath));
+    const example = JSON.parse(await fs.readFile(examplePath));
     const parameterName = 'linz:unknown';
-    collection[parameterName] = 1;
+    example[parameterName] = 1;
 
     // when
-    let valid = validate(collection);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
@@ -52,12 +52,12 @@ o.spec('LINZ collection', () => {
 
   o("Example with unsupported 'quality:*' property should fail validation", async () => {
     // given
-    const collection = JSON.parse(await fs.readFile(examplePath));
+    const example = JSON.parse(await fs.readFile(examplePath));
     const parameterName = 'quality:unknown';
-    collection[parameterName] = 1;
+    example[parameterName] = 1;
 
     // when
-    let valid = validate(collection);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
@@ -72,11 +72,11 @@ o.spec('LINZ collection', () => {
 
   o("Example with invalid 'proj:epsg' value should fail validation", async () => {
     // given
-    const collection = JSON.parse(await fs.readFile(examplePath));
-    collection['assets']['example']['proj:epsg'] = 'string';
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['assets']['example']['proj:epsg'] = 'string';
 
     // when
-    let valid = validate(collection);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
@@ -89,11 +89,11 @@ o.spec('LINZ collection', () => {
 
   o("Example without 'linz:created' property should fail validation", async () => {
     // given
-    const collection = JSON.parse(await fs.readFile(examplePath));
-    delete collection['linz:created'];
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:created'];
 
     // when
-    let valid = validate(collection);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
@@ -104,11 +104,11 @@ o.spec('LINZ collection', () => {
 
   o("Example without 'linz:lifecycle' property should fail validation", async () => {
     // given
-    const collection = JSON.parse(await fs.readFile(examplePath));
-    delete collection['linz:lifecycle'];
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:lifecycle'];
 
     // when
-    let valid = validate(collection);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
@@ -119,11 +119,11 @@ o.spec('LINZ collection', () => {
 
   o("Example without 'linz:providers' property should fail validation", async () => {
     // given
-    const collection = JSON.parse(await fs.readFile(examplePath));
-    delete collection['linz:providers'];
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:providers'];
 
     // when
-    let valid = validate(collection);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
@@ -134,11 +134,11 @@ o.spec('LINZ collection', () => {
 
   o("Example without 'linz:security_classification' property should fail validation", async () => {
     // given
-    const collection = JSON.parse(await fs.readFile(examplePath));
-    delete collection['linz:security_classification'];
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:security_classification'];
 
     // when
-    let valid = validate(collection);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
@@ -151,11 +151,11 @@ o.spec('LINZ collection', () => {
 
   o("Example without 'linz:updated' property should fail validation", async () => {
     // given
-    const collection = JSON.parse(await fs.readFile(examplePath));
-    delete collection['linz:updated'];
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:updated'];
 
     // when
-    let valid = validate(collection);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
@@ -166,11 +166,11 @@ o.spec('LINZ collection', () => {
 
   o("Example without 'linz:providers' 'name' property should fail validation", async () => {
     // given
-    const collection = JSON.parse(await fs.readFile(examplePath));
-    delete collection['linz:providers'][0].name;
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:providers'][0].name;
 
     // when
-    let valid = validate(collection);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
@@ -181,11 +181,11 @@ o.spec('LINZ collection', () => {
 
   o("Example without 'providers' property should fail validation", async () => {
     // given
-    const collection = JSON.parse(await fs.readFile(examplePath));
-    delete collection.providers;
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.providers;
 
     // when
-    let valid = validate(collection);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
@@ -197,11 +197,11 @@ o.spec('LINZ collection', () => {
   o('Collection without required provider roles should fail validation', async () => {
     // given
     for (const role of ['producer', 'licensor']) {
-      const collection = JSON.parse(await fs.readFile(examplePath));
-      collection.providers = collection.providers.filter((provider) => !role in provider.roles);
+      const example = JSON.parse(await fs.readFile(examplePath));
+      example.providers = example.providers.filter((provider) => !role in provider.roles);
 
       // when
-      let valid = validate(collection);
+      let valid = validate(example);
 
       // then
       o(valid).equals(false);
@@ -215,11 +215,11 @@ o.spec('LINZ collection', () => {
 
   o("Example without 'title' property should fail validation", async () => {
     // given
-    const collection = JSON.parse(await fs.readFile(examplePath));
-    delete collection.title;
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.title;
 
     // when
-    let valid = validate(collection);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
@@ -230,11 +230,11 @@ o.spec('LINZ collection', () => {
 
   o("Example without 'version' property should fail validation", async () => {
     // given
-    const collection = JSON.parse(await fs.readFile(examplePath));
-    delete collection.version;
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.version;
 
     // when
-    let valid = validate(collection);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);

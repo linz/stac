@@ -21,10 +21,10 @@ o.spec('LINZ item', () => {
 
   o('Example should pass validation', async () => {
     // given
-    const linzItemExample = JSON.parse(await fs.readFile(examplePath));
+    const example = JSON.parse(await fs.readFile(examplePath));
 
     // when
-    const valid = validate(linzItemExample);
+    const valid = validate(example);
 
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
@@ -32,11 +32,11 @@ o.spec('LINZ item', () => {
 
   o("Example without 'linz:geospatial_type' property should fail validation", async () => {
     // given
-    const linzItemExample = JSON.parse(await fs.readFile(examplePath));
-    delete linzItemExample['linz:geospatial_type'];
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:geospatial_type'];
 
     // when
-    const valid = validate(linzItemExample);
+    const valid = validate(example);
 
     // then
     o(valid).equals(false);
@@ -45,11 +45,11 @@ o.spec('LINZ item', () => {
 
   o("Example with invalid 'linz:geospatial_type' value should fail validation", async () => {
     // given
-    const linzItemExample = JSON.parse(await fs.readFile(examplePath));
-    linzItemExample['linz:geospatial_type'] = 'incorrect_example';
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:geospatial_type'] = 'incorrect_example';
 
     // when
-    const valid = validate(linzItemExample);
+    const valid = validate(example);
 
     // then
     o(valid).equals(false);

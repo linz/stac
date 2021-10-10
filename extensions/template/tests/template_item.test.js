@@ -7,7 +7,7 @@ import { AjvOptions } from '../../validation.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
-const exampleItemPath = join(__dirname, '..', 'examples/item.json');
+const examplePath = join(__dirname, '..', 'examples/item.json');
 
 o.spec('Template item', () => {
   let validate;
@@ -20,10 +20,10 @@ o.spec('Template item', () => {
 
   o('Example should pass validation', async () => {
     // given
-    const templateItemExample = JSON.parse(await fs.readFile(exampleItemPath));
+    const example = JSON.parse(await fs.readFile(examplePath));
 
     // when
-    let valid = validate(templateItemExample);
+    let valid = validate(example);
 
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
@@ -31,10 +31,10 @@ o.spec('Template item', () => {
 
   o("Example without mandatory 'template:new_field' property should fail validation", async () => {
     // given
-    const templateItemExample = JSON.parse(await fs.readFile(exampleItemPath));
-    delete templateItemExample.properties['template:new_field'];
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.properties['template:new_field'];
     // when
-    let valid = validate(templateItemExample);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);

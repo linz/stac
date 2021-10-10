@@ -20,10 +20,10 @@ o.spec('Camera item', () => {
 
   o('Example should pass validation', async () => {
     // given
-    const cameraItemExample = JSON.parse(await fs.readFile(examplePath));
+    const example = JSON.parse(await fs.readFile(examplePath));
 
     // when
-    let valid = validate(cameraItemExample);
+    let valid = validate(example);
 
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
@@ -31,11 +31,11 @@ o.spec('Camera item', () => {
 
   o("Example with an incorrect 'camera:sequence_number' field should fail validation", async () => {
     // given
-    const cameraItemExample = JSON.parse(await fs.readFile(examplePath));
-    cameraItemExample.properties['camera:sequence_number'] = 'incorrect_value';
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example.properties['camera:sequence_number'] = 'incorrect_value';
 
     // when
-    let valid = validate(cameraItemExample);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
