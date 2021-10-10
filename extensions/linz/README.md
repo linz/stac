@@ -30,9 +30,9 @@ extension which adds constraints to default STAC schema properties.
 | --------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | geospatial_type | string | **REQUIRED**. A general description of the type of content that can be found in the dataset. See the [list of accepted geospatial types](#geospatial-types). |
 
-#### Geospatial Types
+### Geospatial Types
 
-See ISO/IEC 13249-3:2016(en) for further information on geometric data types
+See [ISO/IEC 13249-3:2016(en)](https://www.iso.org/obp/ui/#!iso:std:60343:en) for further information on geometric data types
 
 | Name                  | Additional description                                                                                      |
 | --------------------- | ----------------------------------------------------------------------------------------------------------- |
