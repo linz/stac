@@ -55,4 +55,40 @@ o.spec('LINZ item', () => {
     o(valid).equals(false);
     o(validate.errors[0].message).equals('should be equal to one of the allowed values');
   });
+
+  o("Asset with no 'created' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['assets']['example']['created'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.dataPath === ".assets['example']" && error.message === "should have required property 'created'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
+  o("Asset with no 'updated' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['assets']['example']['updated'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.dataPath === ".assets['example']" && error.message === "should have required property 'updated'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
 });

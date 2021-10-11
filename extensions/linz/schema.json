@@ -36,15 +36,7 @@
           "allOf": [
             {
               "type": "object",
-              "required": [
-                "linz:created",
-                "linz:lifecycle",
-                "linz:providers",
-                "linz:security_classification",
-                "linz:updated",
-                "providers",
-                "title"
-              ]
+              "required": ["linz:lifecycle", "linz:providers", "linz:security_classification", "providers", "title"]
             },
             {
               "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
@@ -73,11 +65,26 @@
     "fields": {
       "type": "object",
       "properties": {
-        "linz:created": {
-          "title": "Creation Time",
-          "type": "string",
-          "format": "date-time",
-          "pattern": "(\\+00:00|Z)$"
+        "assets": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["created", "updated"],
+            "properties": {
+              "created": {
+                "title": "Creation time",
+                "type": "string",
+                "format": "date-time",
+                "pattern": "(\\+00:00|Z)$"
+              },
+              "updated": {
+                "title": "Last update time",
+                "type": "string",
+                "format": "date-time",
+                "pattern": "(\\+00:00|Z)$"
+              }
+            }
+          }
         },
         "linz:geospatial_type": {
           "type": "string",
@@ -171,12 +178,6 @@
           "type": "string",
           "enum": ["unclassified", "in-confidence", "sensitive", "restricted", "confidential", "secret", "top-secret"]
         },
-        "linz:updated": {
-          "title": "Last Update Time",
-          "type": "string",
-          "format": "date-time",
-          "pattern": "(\\+00:00|Z)$"
-        },
         "providers": {
           "allOf": [
             {
@@ -202,6 +203,48 @@
               }
             }
           ]
+        },
+        "summaries": {
+          "type": "object",
+          "required": ["created", "updated"],
+          "properties": {
+            "created": {
+              "type": "object",
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Earliest asset creation time",
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "(\\+00:00|Z)$"
+                },
+                "maximum": {
+                  "title": "Latest asset creation time",
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "(\\+00:00|Z)$"
+                }
+              }
+            },
+            "updated": {
+              "type": "object",
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Earliest asset updated time",
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "(\\+00:00|Z)$"
+                },
+                "maximum": {
+                  "title": "Latest asset updated time",
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "(\\+00:00|Z)$"
+                }
+              }
+            }
+          }
         },
         "title": {
           "type": "string",

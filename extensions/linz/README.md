@@ -66,11 +66,13 @@ See [ISO/IEC 13249-3:2016(en)](https://www.iso.org/obp/ui/#!iso:std:60343:en) fo
 | Field Name                   | Type                                  | Description                                                                                                                                                                                                                                                                                                                                      |
 | ---------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | title                        | string                                | **REQUIRED**. Collection title.                                                                                                                                                                                                                                                                                                                  |
-| linz:created                 | string                                | **REQUIRED**. Creation date and time of the collection in UTC.                                                                                                                                                                                                                                                                                   |
+| summaries/created/minimum    | date-time                             | **REQUIRED**. Earliest [asset created value](#asset-fields), in UTC.                                                                                                                                                                                                                                                                             |
+| summaries/created/maximum    | date-time                             | **REQUIRED**. Latest [asset created value](#asset-fields), in UTC.                                                                                                                                                                                                                                                                               |
+| summaries/updated/minimum    | date-time                             | **REQUIRED**. Earliest [asset updated value](#asset-fields), in UTC.                                                                                                                                                                                                                                                                             |
+| summaries/updated/maximum    | date-time                             | **REQUIRED**. Latest [asset updated value](#asset-fields), in UTC.                                                                                                                                                                                                                                                                               |
 | linz:lifecycle               | string                                | **REQUIRED**. Lifecycle Status of Collection. Must be one of `under development`, `preview`, `ongoing`, `completed`, `deprecated`.                                                                                                                                                                                                               |
 | linz:providers               | [Providers Object](#providers-object) | **REQUIRED**. A list of providers, which may include all organizations capturing or processing the data or the hosting provider. Providers should be listed in chronological order with the most recent provider being the last element of the list.                                                                                             |
 | linz:security_classification | string                                | **REQUIRED**. New Zealand Government [Security Classification](https://www.digital.govt.nz/standards-and-guidance/governance/managing-online-channels/security-and-privacy-for-websites/foundations/classify-information/). Must be one of `unclassified`, `in-confidence`, `sensitive`, `restricted`, `confidential`, `secret` or `top-secret`. |
-| linz:updated                 | string                                | **REQUIRED**. Date and time the collection was updated last, in UTC.                                                                                                                                                                                                                                                                             |
 
 ### Providers Object
 
@@ -84,6 +86,15 @@ This is the introduction for the purpose and the content of the Providers Object
 | url         | string    | Homepage on which the provider describes the dataset and publishes contact information.                                                                                                                                                      |
 
 Note: for the `manager` role at Toitū Te Whenua LINZ, the name should be either a the role name of a person who manages this dataset (to preserve their privacy) or the name of a team that manages this dataset. The `url` should be an internal URL that links to more information about that person or team.
+
+## Asset Fields
+
+These fields apply to assets within both items and collections.
+
+| Field Name        | Type   | Description                                                     |
+| ----------------- | ------ | --------------------------------------------------------------- |
+| assets/\*/created | string | **REQUIRED**. Creation date and time of the asset, in UTC.      |
+| assets/\*/updated | string | **REQUIRED**. Date and time the asset was last updated, in UTC. |
 
 ## Extensions
 
