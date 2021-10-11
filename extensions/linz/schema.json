@@ -206,7 +206,7 @@
         },
         "summaries": {
           "type": "object",
-          "required": ["created"],
+          "required": ["created", "updated"],
           "properties": {
             "created": {
               "type": "object",
@@ -220,6 +220,24 @@
                 },
                 "maximum": {
                   "title": "Latest asset creation time",
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "(\\+00:00|Z)$"
+                }
+              }
+            },
+            "updated": {
+              "type": "object",
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Earliest asset updated time",
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "(\\+00:00|Z)$"
+                },
+                "maximum": {
+                  "title": "Latest asset updated time",
                   "type": "string",
                   "format": "date-time",
                   "pattern": "(\\+00:00|Z)$"
