@@ -85,7 +85,7 @@ This is the introduction for the purpose and the content of the Providers Object
 
 Note: for the `manager` role at Toitū Te Whenua LINZ, the name should be either a the role name of a person who manages this dataset (to preserve their privacy) or the name of a team that manages this dataset. The `url` should be an internal URL that links to more information about that person or team.
 
-### Extensions
+## Extensions
 
 This extension includes these other extensions:
 
