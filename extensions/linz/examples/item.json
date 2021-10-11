@@ -32,7 +32,7 @@
     }
   ],
   "assets": {
-    "data": {
+    "example": {
       "href": "https://example.com/examples/file.xyz"
     }
   },
