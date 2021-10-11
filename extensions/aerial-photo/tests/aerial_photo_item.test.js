@@ -3,14 +3,14 @@ import Ajv from 'ajv';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { promises as fs } from 'fs';
-import { AjvOptions, defaultTimeout } from '../../validation.js';
+import { AjvOptions, DefaultTimeoutMillis } from '../../validation.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/item.json');
 
 o.spec('Aerial photo item', () => {
-  o.specTimeout(defaultTimeout);
+  o.specTimeout(DefaultTimeoutMillis);
   let validate;
   const ajv = new Ajv(AjvOptions);
 

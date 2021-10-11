@@ -34,4 +34,4 @@ export async function loadSchemaFromUri(uri) {
 }
 
 export const AjvOptions = { loadSchema, formats: Object.assign(iriFormats) };
-export const defaultTimeout = 60_000;
+export const DefaultTimeoutMillis = 60_000;
