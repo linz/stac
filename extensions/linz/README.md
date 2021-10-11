@@ -90,6 +90,7 @@ These fields apply to assets within both items and collections.
 | Field Name | Type   | Description                                                          |
 | ---------- | ------ | -------------------------------------------------------------------- |
 | created    | string | **REQUIRED**. Creation date and time of the collection, in UTC.      |
+| updated    | string | **REQUIRED**. Date and time the collection was updated last, in UTC. |
 
 ## Extensions
 

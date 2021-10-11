@@ -69,10 +69,16 @@
           "type": "object",
           "additionalProperties": {
             "type": "object",
-            "required": ["created"],
+            "required": ["created", "updated"],
             "properties": {
               "created": {
                 "title": "Creation time",
+                "type": "string",
+                "format": "date-time",
+                "pattern": "(\\+00:00|Z)$"
+              },
+              "updated": {
+                "title": "Last update time",
                 "type": "string",
                 "format": "date-time",
                 "pattern": "(\\+00:00|Z)$"
