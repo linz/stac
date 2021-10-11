@@ -87,6 +87,23 @@ o.spec('LINZ collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
+  o("Summaries with no 'created' property should fail validation", async () => {
+    // given
+    const collection = JSON.parse(await fs.readFile(examplePath));
+    delete collection['summaries']['created'];
+
+    // when
+    let valid = validate(collection);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.dataPath === '.summaries' && error.message === "should have required property 'created'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o("Asset with no 'created' property should fail validation", async () => {
     // given
     const collection = JSON.parse(await fs.readFile(examplePath));
