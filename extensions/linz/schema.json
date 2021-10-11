@@ -65,6 +65,21 @@
     "fields": {
       "type": "object",
       "properties": {
+        "assets": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["created"],
+            "properties": {
+              "created": {
+                "title": "Creation time",
+                "type": "string",
+                "format": "date-time",
+                "pattern": "(\\+00:00|Z)$"
+              }
+            }
+          }
+        },
         "linz:geospatial_type": {
           "type": "string",
           "enum": [

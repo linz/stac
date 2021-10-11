@@ -33,7 +33,8 @@
   ],
   "assets": {
     "example": {
-      "href": "https://example.com/examples/file.xyz"
+      "href": "https://example.com/examples/file.xyz",
+      "created": "2000-01-01T00:00:00Z"
     }
   },
   "linz:geospatial_type": "polygon"
