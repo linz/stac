@@ -3,14 +3,14 @@ import Ajv from 'ajv';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { promises as fs } from 'fs';
-import { AjvOptions, defaultTimeout } from '../../validation.js';
+import { AjvOptions, DefaultTimeoutMillis } from '../../validation.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/collection.json');
 
 o.spec('LINZ collection', () => {
-  o.specTimeout(defaultTimeout);
+  o.specTimeout(DefaultTimeoutMillis);
   let validate;
   const ajv = new Ajv(AjvOptions);
 
@@ -208,6 +208,25 @@ o.spec('LINZ collection', () => {
       o(
         validate.errors.some(
           (error) => error.dataPath === '.providers' && error.message === 'should contain a valid item',
+        ),
+      ).equals(true)(JSON.stringify(validate.errors));
+    }
+  });
+
+  o('Example without required linz:provider roles should fail validation', async () => {
+    // given
+    for (const role of ['manager', 'custodian']) {
+      const example = JSON.parse(await fs.readFile(examplePath));
+      example['linz:providers'] = example['linz:providers'].filter((provider) => !role in provider.roles);
+
+      // when
+      let valid = validate(example);
+
+      // then
+      o(valid).equals(false);
+      o(
+        validate.errors.some(
+          (error) => error.dataPath === "['linz:providers']" && error.message === 'should contain a valid item',
         ),
       ).equals(true)(JSON.stringify(validate.errors));
     }
