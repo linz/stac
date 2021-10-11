@@ -58,11 +58,11 @@ o.spec('LINZ item', () => {
 
   o("Asset with no 'created' property should fail validation", async () => {
     // given
-    const collection = JSON.parse(await fs.readFile(examplePath));
-    delete collection['assets']['example']['created'];
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['assets']['example']['created'];
 
     // when
-    let valid = validate(collection);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
@@ -76,11 +76,11 @@ o.spec('LINZ item', () => {
 
   o("Asset with no 'updated' property should fail validation", async () => {
     // given
-    const collection = JSON.parse(await fs.readFile(examplePath));
-    delete collection['assets']['example']['updated'];
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['assets']['example']['updated'];
 
     // when
-    let valid = validate(collection);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
