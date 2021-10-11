@@ -41,9 +41,10 @@ Verify changes by running `yarn lint && yarn test` before committing.
 
 ### Releases
 
-To create a release run `yarn version --new-version <patch|minor|major>` which will create a change log and version tag.
+To create a release:
 
-`git push --atomic origin master TAG` then the build pipeline will create a github release which will trigger the github pages to be published.
+1. Run `yarn version --new-version <patch|minor|major>` which will create a change log commit and version tag.
+2. Run `git push --atomic origin master TAG` which will trigger a GitHub release job. This will publish the new version to the "gh-pages" branch.
 
 ## Adding a new extension
 
