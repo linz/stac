@@ -213,6 +213,25 @@ o.spec('LINZ collection', () => {
     }
   });
 
+  o('Example without required linz:provider roles should fail validation', async () => {
+    // given
+    for (const role of ['manager', 'custodian']) {
+      const example = JSON.parse(await fs.readFile(examplePath));
+      example['linz:providers'] = example['linz:providers'].filter((provider) => !role in provider.roles);
+
+      // when
+      let valid = validate(example);
+
+      // then
+      o(valid).equals(false);
+      o(
+        validate.errors.some(
+          (error) => error.dataPath === "['linz:providers']" && error.message === 'should contain a valid item',
+        ),
+      ).equals(true)(JSON.stringify(validate.errors));
+    }
+  });
+
   o("Example without 'title' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
