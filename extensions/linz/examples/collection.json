@@ -19,6 +19,12 @@
       "description": "Example description.",
       "roles": ["custodian"],
       "url": "https://www.exampleurl.com"
+    },
+    {
+      "name": "Example",
+      "description": "Example description.",
+      "roles": ["manager"],
+      "url": "https://www.exampleurl.com"
     }
   ],
   "linz:security_classification": "unclassified",

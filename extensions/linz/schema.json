@@ -114,6 +114,30 @@
           "enum": ["under development", "preview", "ongoing", "completed", "deprecated"]
         },
         "linz:providers": {
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "manager"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "custodian"
+                    }
+                  }
+                }
+              }
+            }
+          ],
           "type": "array",
           "items": {
             "type": "object",
