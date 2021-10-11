@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/item.json');
 
-o.spec('film', () => {
+o.spec('Film item', () => {
   let validate;
   const ajv = new Ajv(AjvOptions);
 
@@ -18,24 +18,24 @@ o.spec('film', () => {
     validate = await ajv.compileAsync(data);
   });
 
-  o('film-validates-successfully', async () => {
+  o('Example should pass validation', async () => {
     // given
-    const filmItemExample = JSON.parse(await fs.readFile(examplePath));
+    const example = JSON.parse(await fs.readFile(examplePath));
 
     // when
-    let valid = validate(filmItemExample);
+    let valid = validate(example);
 
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Item with an incorrect 'film:id' field should fail validation", async () => {
+  o("Example with an incorrect 'film:id' field should fail validation", async () => {
     // given
-    const filmItemExample = JSON.parse(await fs.readFile(examplePath));
-    filmItemExample.properties['film:id'] = 1234;
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example.properties['film:id'] = 1234;
 
     // when
-    let valid = validate(filmItemExample);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
@@ -46,13 +46,13 @@ o.spec('film', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
-  o("Item without a mandatory 'film:id' field should fail validation", async () => {
+  o("Example without a mandatory 'film:id' field should fail validation", async () => {
     // given
-    const filmItemExample = JSON.parse(await fs.readFile(examplePath));
-    delete filmItemExample.properties['film:id'];
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.properties['film:id'];
 
     // when
-    let valid = validate(filmItemExample);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
@@ -63,13 +63,13 @@ o.spec('film', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
-  o("Item with an incorrect 'film:negative_sequence' field should fail validation", async () => {
+  o("Example with an incorrect 'film:negative_sequence' field should fail validation", async () => {
     // given
-    const filmItemExample = JSON.parse(await fs.readFile(examplePath));
-    filmItemExample.properties['film:negative_sequence'] = 'incorrect_example';
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example.properties['film:negative_sequence'] = 'incorrect_example';
 
     // when
-    let valid = validate(filmItemExample);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
@@ -80,13 +80,13 @@ o.spec('film', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
-  o("Item without a mandatory 'film:negative_sequence' field should fail validation", async () => {
+  o("Example without a mandatory 'film:negative_sequence' field should fail validation", async () => {
     // given
-    const filmItemExample = JSON.parse(await fs.readFile(examplePath));
-    delete filmItemExample.properties['film:negative_sequence'];
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.properties['film:negative_sequence'];
 
     // when
-    let valid = validate(filmItemExample);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
