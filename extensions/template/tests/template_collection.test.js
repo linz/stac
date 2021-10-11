@@ -7,10 +7,9 @@ import { AjvOptions } from '../../validation.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
-const exampleCollectionPath = join(__dirname, '..', 'examples/collection.json');
+const examplePath = join(__dirname, '..', 'examples/collection.json');
 
-o.spec('template-collection', () => {
-  o.specTimeout(20000);
+o.spec('Template collection', () => {
   let validate;
   const ajv = new Ajv(AjvOptions);
 
@@ -19,24 +18,24 @@ o.spec('template-collection', () => {
     validate = await ajv.compileAsync(data);
   });
 
-  o('Collection should pass validation', async () => {
+  o('Example should pass validation', async () => {
     // given
-    const templateCollectionExample = JSON.parse(await fs.readFile(exampleCollectionPath));
+    const example = JSON.parse(await fs.readFile(examplePath));
 
     // when
-    let valid = validate(templateCollectionExample);
+    let valid = validate(example);
 
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Collection without mandatory 'y' field in the 'template:xyz object should fail validation", async () => {
+  o("Example without mandatory 'y' field in the 'template:xyz object should fail validation", async () => {
     // given
-    const templateCollectionExample = JSON.parse(await fs.readFile(exampleCollectionPath));
-    delete templateCollectionExample['assets']['example']['template:xyz']['y'];
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['assets']['example']['template:xyz']['y'];
 
     // when
-    let valid = validate(templateCollectionExample);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);

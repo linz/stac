@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/item.json');
 
-o.spec('camera', () => {
+o.spec('Camera item', () => {
   let validate;
   const ajv = new Ajv(AjvOptions);
 
@@ -18,28 +18,31 @@ o.spec('camera', () => {
     validate = await ajv.compileAsync(data);
   });
 
-  o('camera-validates-successfully', async () => {
+  o('Example should pass validation', async () => {
     // given
-    const camera_item_example = JSON.parse(await fs.readFile(examplePath));
+    const example = JSON.parse(await fs.readFile(examplePath));
 
     // when
-    let valid = validate(camera_item_example);
+    let valid = validate(example);
 
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o('camera-validation-fails', async () => {
+  o("Example with an incorrect 'camera:sequence_number' field should fail validation", async () => {
     // given
-    const camera_item_example = JSON.parse(await fs.readFile(examplePath));
-    camera_item_example.properties['camera:sequence_number'] = 'incorrect_value';
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example.properties['camera:sequence_number'] = 'incorrect_value';
 
     // when
-    let valid = validate(camera_item_example);
+    let valid = validate(example);
 
     // then
     o(valid).equals(false);
-    o(validate.errors.length).equals(1);
-    o(validate.errors[0].message).equals('should be integer');
+    o(
+      validate.errors.some(
+        (error) => error.dataPath === ".properties['camera:sequence_number']" && error.message === 'should be integer',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
   });
 });
