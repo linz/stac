@@ -1,3 +1,31 @@
+## [0.0.8](https://github.com/linz/stac/compare/v0.0.7...v0.0.8) (2021-10-12)
+
+### Bug Fixes
+
+- Include real projection extension fields ([#87](https://github.com/linz/stac/issues/87)) ([95322f8](https://github.com/linz/stac/commit/95322f8a79987af001d425ecafe9756b2734ab01))
+- Include third party schemas on top level ([#101](https://github.com/linz/stac/issues/101)) ([da277db](https://github.com/linz/stac/commit/da277db43b966b23ada4dc42e606329e389cf1eb))
+- Make quality `stac_extensions` entry mandatory ([#88](https://github.com/linz/stac/issues/88)) ([3729952](https://github.com/linz/stac/commit/372995244d9fccdf4ff4a6282925a90deb88d918))
+- rename to historical-imagery and update readme TDE-167 ([#84](https://github.com/linz/stac/issues/84)) ([6bf326f](https://github.com/linz/stac/commit/6bf326f414b4f72310e104abb557cf54fab80624))
+- Repair tests ([#93](https://github.com/linz/stac/issues/93)) ([1d9920d](https://github.com/linz/stac/commit/1d9920d3b1ab89a3c1b72e48a0d725a87187d734))
+- use longer default timeout when test has to download schema ([#102](https://github.com/linz/stac/issues/102)) ([ed9916a](https://github.com/linz/stac/commit/ed9916a65622456c2532a9b58c9bd92ea4058269))
+- validate that both manager and custodian roles are populated in … ([#111](https://github.com/linz/stac/issues/111)) ([8573048](https://github.com/linz/stac/commit/8573048932d05c57bf9ad90f06f302c8fbfa305c))
+
+### Features
+
+- add new linz item metadata schema ([#75](https://github.com/linz/stac/issues/75)) ([31d128e](https://github.com/linz/stac/commit/31d128e6f2094657a49e5a95ea2662f645cb8fff))
+- add unit tests for template extension ([#95](https://github.com/linz/stac/issues/95)) ([d1af8ed](https://github.com/linz/stac/commit/d1af8ed767b03c50e7ea72d1ea0ded9a961f0e97))
+- add unit tests for the quality extension ([#96](https://github.com/linz/stac/issues/96)) ([282312c](https://github.com/linz/stac/commit/282312cd2b79b1207ba7fe8b61f3a9658b9c32ac))
+- added ability to load schemas from url at compile time ([#82](https://github.com/linz/stac/issues/82)) ([02f19d7](https://github.com/linz/stac/commit/02f19d76acbcda89aa8869486c54e9fb41adcadd))
+- Lowercase enum values ([#99](https://github.com/linz/stac/issues/99)) ([8167ec5](https://github.com/linz/stac/commit/8167ec584da27a5d4e941a58a1f33100fb9cbc22))
+- Make provider types mandatory ([#89](https://github.com/linz/stac/issues/89)) ([ead7245](https://github.com/linz/stac/commit/ead72456a20b95e7532b4947f0880d2e8d5b4d18))
+- replace remaining non-examples with unit tests ([#104](https://github.com/linz/stac/issues/104)) ([70261cf](https://github.com/linz/stac/commit/70261cf917eb8c449a6e06c96cc534975f9d3c54))
+- Summarise created and updated datetimes ([#109](https://github.com/linz/stac/issues/109)) ([d6ec59c](https://github.com/linz/stac/commit/d6ec59c9320bd02392ad1bebd7024e04b1335a80))
+
+### Reverts
+
+- Revert "docs: improve geospatial_type descriptions" ([7519821](https://github.com/linz/stac/commit/7519821d0cc17806fa572229678ba68d9da0ce65))
+- Revert "docs: lower-case geospatial_type names" ([2684d4d](https://github.com/linz/stac/commit/2684d4df7c6617a3dbc538847065fab9b30697ac))
+
 ## [0.0.7](https://github.com/linz/stac/compare/v0.0.6...v0.0.7) (2021-10-03)
 
 ### Features
