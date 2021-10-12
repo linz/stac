@@ -47,7 +47,8 @@
     "datetime": {
       "minimum": "2015-06-23T00:00:00Z",
       "maximum": "2019-07-10T13:44:56Z"
-    }
+    },
+    "linz:geospatial_type": ["polygon"]
   },
   "links": [],
   "quality:description": "Example quality description",

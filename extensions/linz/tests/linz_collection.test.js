@@ -104,6 +104,24 @@ o.spec('LINZ collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
+  o("Summaries with no 'linz:geospatial_type' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['summaries']['linz:geospatial_type'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.dataPath === '.summaries' && error.message === "should have required property 'linz:geospatial_type'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o("Asset with no 'created' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));

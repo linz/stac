@@ -86,35 +86,7 @@
             }
           }
         },
-        "linz:geospatial_type": {
-          "type": "string",
-          "enum": [
-            "black and white image",
-            "circular string",
-            "color image",
-            "compound curve",
-            "curve polygon",
-            "geometry",
-            "geometry collection",
-            "grayscale",
-            "grid",
-            "hyperspectral",
-            "multicurve",
-            "multilinestring",
-            "multipoint",
-            "multipolygon",
-            "multispectral",
-            "multisurface",
-            "linestring",
-            "point",
-            "point cloud",
-            "polygon",
-            "polyhedral surface",
-            "rgb",
-            "tin",
-            "triangle"
-          ]
-        },
+        "linz:geospatial_type": { "$ref": "#/definitions/geospatial_type_enum" },
         "linz:lifecycle": {
           "title": "Life Cycle",
           "type": "string",
@@ -205,46 +177,7 @@
           ]
         },
         "summaries": {
-          "type": "object",
-          "required": ["created", "updated"],
-          "properties": {
-            "created": {
-              "type": "object",
-              "required": ["minimum", "maximum"],
-              "properties": {
-                "minimum": {
-                  "title": "Earliest asset creation time",
-                  "type": "string",
-                  "format": "date-time",
-                  "pattern": "(\\+00:00|Z)$"
-                },
-                "maximum": {
-                  "title": "Latest asset creation time",
-                  "type": "string",
-                  "format": "date-time",
-                  "pattern": "(\\+00:00|Z)$"
-                }
-              }
-            },
-            "updated": {
-              "type": "object",
-              "required": ["minimum", "maximum"],
-              "properties": {
-                "minimum": {
-                  "title": "Earliest asset updated time",
-                  "type": "string",
-                  "format": "date-time",
-                  "pattern": "(\\+00:00|Z)$"
-                },
-                "maximum": {
-                  "title": "Latest asset updated time",
-                  "type": "string",
-                  "format": "date-time",
-                  "pattern": "(\\+00:00|Z)$"
-                }
-              }
-            }
-          }
+          "allOf": [{ "$ref": "#/definitions/summaries" }]
         },
         "title": {
           "type": "string",
@@ -255,6 +188,83 @@
         "^(?!linz:)": {}
       },
       "additionalProperties": false
+    },
+    "summaries": {
+      "type": "object",
+      "required": ["created", "updated", "linz:geospatial_type"],
+      "properties": {
+        "created": {
+          "type": "object",
+          "required": ["minimum", "maximum"],
+          "properties": {
+            "minimum": {
+              "title": "Earliest asset creation time",
+              "type": "string",
+              "format": "date-time",
+              "pattern": "(\\+00:00|Z)$"
+            },
+            "maximum": {
+              "title": "Latest asset creation time",
+              "type": "string",
+              "format": "date-time",
+              "pattern": "(\\+00:00|Z)$"
+            }
+          }
+        },
+        "updated": {
+          "type": "object",
+          "required": ["minimum", "maximum"],
+          "properties": {
+            "minimum": {
+              "title": "Earliest asset updated time",
+              "type": "string",
+              "format": "date-time",
+              "pattern": "(\\+00:00|Z)$"
+            },
+            "maximum": {
+              "title": "Latest asset updated time",
+              "type": "string",
+              "format": "date-time",
+              "pattern": "(\\+00:00|Z)$"
+            }
+          }
+        },
+        "linz:geospatial_type": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/geospatial_type_enum"
+          }
+        }
+      }
+    },
+    "geospatial_type_enum": {
+      "type": "string",
+      "enum": [
+        "black and white image",
+        "circular string",
+        "color image",
+        "compound curve",
+        "curve polygon",
+        "geometry",
+        "geometry collection",
+        "grayscale",
+        "grid",
+        "hyperspectral",
+        "multicurve",
+        "multilinestring",
+        "multipoint",
+        "multipolygon",
+        "multispectral",
+        "multisurface",
+        "linestring",
+        "point",
+        "point cloud",
+        "polygon",
+        "polyhedral surface",
+        "rgb",
+        "tin",
+        "triangle"
+      ]
     }
   }
 }
