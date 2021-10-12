@@ -1,0 +1,80 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://linz.github.io/stac/v0.0.8/linz/schema.json",
+    "https://linz.github.io/stac/v0.0.8/quality/schema.json",
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/version/v1.0.0/schema.json"
+  ],
+  "type": "Collection",
+  "id": "collection",
+  "title": "A title",
+  "description": "A description",
+  "license": "Apache-2.0",
+  "linz:lifecycle": "under development",
+  "linz:providers": [
+    {
+      "name": "Example",
+      "description": "Example description.",
+      "roles": ["custodian"],
+      "url": "https://www.exampleurl.com"
+    },
+    {
+      "name": "Example",
+      "description": "Example description.",
+      "roles": ["manager"],
+      "url": "https://www.exampleurl.com"
+    }
+  ],
+  "linz:security_classification": "unclassified",
+  "extent": {
+    "spatial": {
+      "bbox": [[172.9, 1.3, 173, 1.4]]
+    },
+    "temporal": {
+      "interval": [["2015-06-23T00:00:00Z", null]]
+    }
+  },
+  "summaries": {
+    "created": {
+      "minimum": "1999-01-01T00:00:00Z",
+      "maximum": "2010-01-01T00:00:00Z"
+    },
+    "updated": {
+      "minimum": "1999-01-02T00:00:00Z",
+      "maximum": "2010-01-02T00:00:00Z"
+    },
+    "datetime": {
+      "minimum": "2015-06-23T00:00:00Z",
+      "maximum": "2019-07-10T13:44:56Z"
+    }
+  },
+  "links": [],
+  "quality:description": "Example quality description",
+  "quality:horizontal_accuracy": 1,
+  "quality:horizontal_accuracy_type": "nominal",
+  "quality:lineage": "This is an example dataset lineage description.",
+  "providers": [
+    {
+      "name": "Example",
+      "description": "Example description.",
+      "roles": ["licensor"],
+      "url": "https://www.exampleurl.com"
+    },
+    {
+      "name": "Example",
+      "description": "Example description.",
+      "roles": ["producer"],
+      "url": "https://www.exampleurl.com"
+    }
+  ],
+  "version": "2.0.0",
+  "assets": {
+    "example": {
+      "href": "https://example.com/examples/file.xyz",
+      "created": "2000-01-01T00:00:00Z",
+      "updated": "2020-01-01T00:00:00Z",
+      "proj:epsg": 32659
+    }
+  }
+}

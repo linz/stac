@@ -1,0 +1,260 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://linz.github.io/stac/v0.0.8/linz/schema.json",
+  "title": "LINZ STAC Extension",
+  "description": "LINZ STAC Extension.",
+  "allOf": [
+    {
+      "$ref": "https://stac-extensions.github.io/version/v1.0.0/schema.json#"
+    },
+    {
+      "$ref": "https://stac-extensions.github.io/projection/v1.0.0/schema.json#"
+    },
+    {
+      "$ref": "#/definitions/fields"
+    },
+    {
+      "$ref": "#/definitions/stac_extensions"
+    },
+    {
+      "$comment": "Type-specific schemas",
+      "oneOf": [
+        {
+          "$comment": "This is the schema for STAC Items.",
+          "allOf": [
+            {
+              "type": "object",
+              "required": ["linz:geospatial_type"]
+            },
+            {
+              "$ref": "https://schemas.stacspec.org/v1.0.0/item-spec/json-schema/item.json#"
+            }
+          ]
+        },
+        {
+          "$comment": "This is the schema for STAC Collections.",
+          "allOf": [
+            {
+              "type": "object",
+              "required": ["linz:lifecycle", "linz:providers", "linz:security_classification", "providers", "title"]
+            },
+            {
+              "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
+            },
+            {
+              "$ref": "https://linz.github.io/stac/v0.0.8/quality/schema.json#"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "stac_extensions": {
+      "type": "object",
+      "required": ["stac_extensions"],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "contains": {
+            "const": "https://linz.github.io/stac/v0.0.8/linz/schema.json"
+          }
+        }
+      }
+    },
+    "fields": {
+      "type": "object",
+      "properties": {
+        "assets": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["created", "updated"],
+            "properties": {
+              "created": {
+                "title": "Creation time",
+                "type": "string",
+                "format": "date-time",
+                "pattern": "(\\+00:00|Z)$"
+              },
+              "updated": {
+                "title": "Last update time",
+                "type": "string",
+                "format": "date-time",
+                "pattern": "(\\+00:00|Z)$"
+              }
+            }
+          }
+        },
+        "linz:geospatial_type": {
+          "type": "string",
+          "enum": [
+            "black and white image",
+            "circular string",
+            "color image",
+            "compound curve",
+            "curve polygon",
+            "geometry",
+            "geometry collection",
+            "grayscale",
+            "grid",
+            "hyperspectral",
+            "multicurve",
+            "multilinestring",
+            "multipoint",
+            "multipolygon",
+            "multispectral",
+            "multisurface",
+            "linestring",
+            "point",
+            "point cloud",
+            "polygon",
+            "polyhedral surface",
+            "rgb",
+            "tin",
+            "triangle"
+          ]
+        },
+        "linz:lifecycle": {
+          "title": "Life Cycle",
+          "type": "string",
+          "enum": ["under development", "preview", "ongoing", "completed", "deprecated"]
+        },
+        "linz:providers": {
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "manager"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "custodian"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": {
+                "title": "Organization name",
+                "type": "string"
+              },
+              "description": {
+                "title": "Organization description",
+                "type": "string"
+              },
+              "roles": {
+                "title": "Organization roles",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": ["custodian", "manager"]
+                }
+              },
+              "url": {
+                "title": "Organization homepage",
+                "type": "string",
+                "format": "iri"
+              }
+            }
+          }
+        },
+        "linz:security_classification": {
+          "type": "string",
+          "enum": ["unclassified", "in-confidence", "sensitive", "restricted", "confidential", "secret", "top-secret"]
+        },
+        "providers": {
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "licensor"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "producer"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "summaries": {
+          "type": "object",
+          "required": ["created", "updated"],
+          "properties": {
+            "created": {
+              "type": "object",
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Earliest asset creation time",
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "(\\+00:00|Z)$"
+                },
+                "maximum": {
+                  "title": "Latest asset creation time",
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "(\\+00:00|Z)$"
+                }
+              }
+            },
+            "updated": {
+              "type": "object",
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Earliest asset updated time",
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "(\\+00:00|Z)$"
+                },
+                "maximum": {
+                  "title": "Latest asset updated time",
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "(\\+00:00|Z)$"
+                }
+              }
+            }
+          }
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "patternProperties": {
+        "^(?!linz:)": {}
+      },
+      "additionalProperties": false
+    }
+  }
+}
