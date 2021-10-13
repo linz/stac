@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://linz.github.io/stac/v0.0.9/quality/schema.json#",
+  "description": "STAC Quality Extension for STAC Collections.",
+  "allOf": [
+    {
+      "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
+    },
+    {
+      "$ref": "#/definitions/stac_extensions"
+    },
+    {
+      "$ref": "#/definitions/quality"
+    }
+  ],
+  "definitions": {
+    "stac_extensions": {
+      "type": "object",
+      "required": ["stac_extensions"],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "contains": {
+            "const": "https://linz.github.io/stac/v0.0.9/quality/schema.json"
+          }
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "required": ["quality:lineage"],
+      "properties": {
+        "quality:description": {
+          "title": "Dataset Data Quality",
+          "type": ["string"]
+        },
+        "quality:horizontal_accuracy": {
+          "title": "Horizontal Accuracy",
+          "type": ["number"]
+        },
+        "quality:horizontal_accuracy_type": {
+          "title": "Horizontal Accuracy Type",
+          "type": "string",
+          "enum": ["nominal", "95% confidence interval"]
+        },
+        "quality:lineage": {
+          "title": "Lineage",
+          "type": "string"
+        },
+        "quality:vertical_accuracy": {
+          "title": "Vertical Accuracy",
+          "type": ["number"]
+        },
+        "quality:vertical_accuracy_type": {
+          "title": "Vertical Accuracy Type",
+          "type": "string",
+          "enum": ["nominal", "95% confidence interval"]
+        }
+      },
+      "patternProperties": {
+        "^(?!quality:)": {}
+      },
+      "additionalProperties": false
+    }
+  }
+}
