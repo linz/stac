@@ -5,6 +5,9 @@
   "description": "LINZ STAC Extension.",
   "allOf": [
     {
+      "$ref": "https://stac-extensions.github.io/file/v2.0.0/schema.json#"
+    },
+    {
       "$ref": "https://stac-extensions.github.io/version/v1.0.0/schema.json#"
     },
     {
@@ -69,7 +72,7 @@
           "type": "object",
           "additionalProperties": {
             "type": "object",
-            "required": ["created", "updated"],
+            "required": ["file:checksum", "created", "updated"],
             "properties": {
               "created": {
                 "title": "Creation time",

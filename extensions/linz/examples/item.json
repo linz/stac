@@ -2,6 +2,7 @@
   "stac_version": "1.0.0",
   "stac_extensions": [
     "https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json",
+    "https://stac-extensions.github.io/file/v2.0.0/schema.json",
     "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
     "https://stac-extensions.github.io/version/v1.0.0/schema.json"
   ],
@@ -35,7 +36,8 @@
     "example": {
       "href": "https://example.com/examples/file.xyz",
       "created": "2000-01-01T00:00:00Z",
-      "updated": "2020-01-01T00:00:00Z"
+      "updated": "2020-01-01T00:00:00Z",
+      "file:checksum": "1220e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     }
   },
   "linz:geospatial_type": "polygon"

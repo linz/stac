@@ -91,4 +91,23 @@ o.spec('LINZ item', () => {
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
+
+  o("Asset with no 'file:checksum' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['assets']['example']['file:checksum'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.dataPath === ".assets['example']" &&
+          error.message === "should have required property '['file:checksum']'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
 });
