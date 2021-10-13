@@ -92,10 +92,11 @@ Note: for the `manager` role at Toitū Te Whenua LINZ, the name should be either
 
 These fields apply to assets within both items and collections.
 
-| Field Name        | Type   | Description                                                     |
-| ----------------- | ------ | --------------------------------------------------------------- |
-| assets/\*/created | string | **REQUIRED**. Creation date and time of the asset, in UTC.      |
-| assets/\*/updated | string | **REQUIRED**. Date and time the asset was last updated, in UTC. |
+| Field Name              | Type   | Description                                                                                             |
+| ----------------------- | ------ | ------------------------------------------------------------------------------------------------------- |
+| assets/\*/created       | string | **REQUIRED**. Creation date and time of the asset, in UTC.                                              |
+| assets/\*/updated       | string | **REQUIRED**. Date and time the asset was last updated, in UTC.                                         |
+| assets/\*/file:checksum | string | **REQUIRED**. See [reference](https://github.com/stac-extensions/file/blob/v2.0.0/README.md#checksums). |
 
 ## Extensions
 
