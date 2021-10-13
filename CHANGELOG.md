@@ -1,3 +1,10 @@
+## [0.0.9](https://github.com/linz/stac/compare/v0.0.8...v0.0.9) (2021-10-13)
+
+### Features
+
+- add geospatial type summary for linz collections ([#113](https://github.com/linz/stac/issues/113)) ([25496be](https://github.com/linz/stac/commit/25496bead8f1b978a53218a9056df30c382703ef))
+- Make `file:checksum` asset property required ([#117](https://github.com/linz/stac/issues/117)) ([4bb30ec](https://github.com/linz/stac/commit/4bb30ec86c83750fe6b6f1b337cf7c0f4abc00bc))
+
 ## [0.0.8](https://github.com/linz/stac/compare/v0.0.7...v0.0.8) (2021-10-12)
 
 ### Bug Fixes
