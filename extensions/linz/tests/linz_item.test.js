@@ -40,7 +40,12 @@ o.spec('LINZ item', () => {
 
     // then
     o(valid).equals(false);
-    o(validate.errors[0].message).equals("should have required property '['linz:geospatial_type']'");
+    o(
+      validate.errors.some(
+        (error) =>
+          error.dataPath === '' && error.message === "should have required property '['linz:geospatial_type']'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
   });
 
   o("Example with invalid 'linz:geospatial_type' value should fail validation", async () => {
@@ -53,7 +58,13 @@ o.spec('LINZ item', () => {
 
     // then
     o(valid).equals(false);
-    o(validate.errors[0].message).equals('should be equal to one of the allowed values');
+    o(
+      validate.errors.some(
+        (error) =>
+          error.dataPath === "['linz:geospatial_type']" &&
+          error.message === 'should be equal to one of the allowed values',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
   });
 
   o("Asset with no 'created' property should fail validation", async () => {
