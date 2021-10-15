@@ -27,10 +27,19 @@
           "allOf": [
             {
               "type": "object",
-              "required": ["linz:lifecycle", "linz:providers", "linz:security_classification", "providers", "title"]
-            },
-            {
-              "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
+              "required": [
+                "linz:lifecycle",
+                "linz:providers",
+                "linz:security_classification",
+                "providers",
+                "title",
+                "type"
+              ],
+              "properties": {
+                "type": {
+                  "const": "Collection"
+                }
+              }
             },
             {
               "$ref": "https://linz.github.io/stac/extensions/_STAC_VERSION_/quality/schema.json#"
@@ -38,16 +47,13 @@
           ]
         },
         {
-          "$comment": "This is the schema for STAC Items.",
-          "allOf": [
-            {
-              "type": "object",
-              "required": ["linz:geospatial_type"]
-            },
-            {
-              "$ref": "https://schemas.stacspec.org/v1.0.0/item-spec/json-schema/item.json#"
+          "type": "object",
+          "required": ["linz:geospatial_type", "type"],
+          "properties": {
+            "type": {
+              "const": "Feature"
             }
-          ]
+          }
         }
       ]
     }
@@ -223,7 +229,8 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/geospatial_type_enum"
-              }
+              },
+              "minItems": 1
             }
           }
         },

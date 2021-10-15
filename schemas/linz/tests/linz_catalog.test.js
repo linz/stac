@@ -7,9 +7,9 @@ import { AjvOptions, DefaultTimeoutMillis } from '../../../validation.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
-const examplePath = join(__dirname, '..', 'examples/collection.json');
+const examplePath = join(__dirname, '..', 'examples/catalog.json');
 
-o.spec('Template collection', () => {
+o.spec('LINZ catalog schema', () => {
   o.specTimeout(DefaultTimeoutMillis);
   let validate;
   const ajv = new Ajv(AjvOptions);
@@ -24,26 +24,9 @@ o.spec('Template collection', () => {
     const example = JSON.parse(await fs.readFile(examplePath));
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
-  });
-
-  o("Example without mandatory 'template:new_field' field should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    delete example['template:new_field'];
-    delete example['assets'];
-    delete example['item_assets'];
-
-    // when
-    let valid = validate(example);
-
-    // then
-    o(valid).equals(false);
-    o(
-      validate.errors.some((error) => error.message === 'should match some schema in anyOf' && error.dataPath === ''),
-    ).equals(true)(JSON.stringify(validate.errors));
   });
 });

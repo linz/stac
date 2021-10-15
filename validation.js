@@ -21,9 +21,12 @@ export function loadSchema(uri) {
  */
 export async function loadSchemaFromUri(uri) {
   try {
-    if (uri.startsWith('https://linz.github.io/stac/extensions/_STAC_VERSION_/')) {
-      const schemaPath = uri.slice('https://linz.github.io/stac/extensions/_STAC_VERSION_/'.length);
-      return JSON.parse(await fs.readFile(join(__dirname, schemaPath)));
+    for (const type of ['extensions', 'schemas']) {
+      const prefix = 'https://linz.github.io/stac/' + type + '/_STAC_VERSION_/';
+      if (uri.startsWith(prefix)) {
+        const schemaPath = join(type, uri.slice(prefix.length));
+        return JSON.parse(await fs.readFile(join(__dirname, schemaPath)));
+      }
     }
 
     let response = await axios.get(uri);

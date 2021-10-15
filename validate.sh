@@ -12,6 +12,7 @@ validator_command=(
     --schemaMap=https://linz.github.io/stac/extensions/_STAC_VERSION_/scanning/schema.json=extensions/scanning/schema.json
     --schemaMap=https://linz.github.io/stac/extensions/_STAC_VERSION_/quality/schema.json=extensions/quality/schema.json
     --schemaMap=https://linz.github.io/stac/extensions/_STAC_VERSION_/linz/schema.json=extensions/linz/schema.json
+    --schemaMap=https://linz.github.io/stac/schemas/_STAC_VERSION_/linz/schema.json=schemas/linz/schema.json
 )
 
 "${validator_command[@]}" ./**/examples/*.json

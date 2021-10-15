@@ -4,9 +4,6 @@
   "description": "STAC Quality Extension for STAC Collections.",
   "allOf": [
     {
-      "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
-    },
-    {
       "$ref": "#/definitions/stac_extensions"
     },
     {
@@ -28,7 +25,7 @@
     },
     "quality": {
       "type": "object",
-      "required": ["quality:lineage"],
+      "required": ["quality:lineage", "type"],
       "properties": {
         "quality:description": {
           "title": "Dataset Data Quality",
@@ -55,6 +52,9 @@
           "title": "Vertical Accuracy Type",
           "type": "string",
           "enum": ["nominal", "95% confidence interval"]
+        },
+        "type": {
+          "const": "Collection"
         }
       },
       "patternProperties": {

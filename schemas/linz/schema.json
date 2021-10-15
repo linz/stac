@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://linz.github.io/stac/schemas/_STAC_VERSION_/linz/schema.json",
+  "title": "LINZ STAC Schema",
+  "description": "LINZ STAC Schema.",
+  "oneOf": [
+    {
+      "$ref": "https://schemas.stacspec.org/v1.0.0/catalog-spec/json-schema/catalog.json#"
+    },
+    {
+      "allOf": [
+        {
+          "$ref": "https://linz.github.io/stac/extensions/_STAC_VERSION_/linz/schema.json#"
+        },
+        {
+          "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
+        }
+      ]
+    },
+    {
+      "allOf": [
+        {
+          "$ref": "https://linz.github.io/stac/extensions/_STAC_VERSION_/linz/schema.json#"
+        },
+        {
+          "$ref": "https://schemas.stacspec.org/v1.0.0/item-spec/json-schema/item.json#"
+        }
+      ]
+    }
+  ]
+}

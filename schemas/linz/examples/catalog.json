@@ -1,0 +1,8 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": ["https://linz.github.io/stac/schemas/_STAC_VERSION_/linz/schema.json"],
+  "type": "Catalog",
+  "id": "catalog",
+  "description": "A description",
+  "links": []
+}
