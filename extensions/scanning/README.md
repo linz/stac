@@ -4,7 +4,7 @@
 change**
 
 - **Title**: Scanning
-- **Identifier**: 
+- **Identifier**:
   <https://stac.linz.govt.nz/_STAC_VERSION_/scanning/schema.json>
 - **Field Name Prefix**: scan
 - **Scope**: Item
