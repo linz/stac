@@ -11,13 +11,13 @@ if other data managers find them to be useful.
 
 ## Extensions
 
-- [Aerial Photography](./v0.0.9/aerial-photo): Aerial photography details for photos.
-- [Camera](./v0.0.9/camera): Camera details for photos.
-- [Film](./v0.0.9/film): Film details for photos.
-- [Historical Imagery](./v0.0.9/historical-imagery): Aerial survey photos.
-- [LINZ](./v0.0.9/linz): Toitū Te Whenua LINZ-specific settings.
-- [Quality](./v0.0.9/quality): Dataset accuracy.
-- [Scanning](./v0.0.9/scanning): Scanning details for photos.
+- [Aerial Photography](/v0.0.9/aerial-photo/): Aerial photography details for photos.
+- [Camera](/v0.0.9/camera/): Camera details for photos.
+- [Film](/v0.0.9/film/): Film details for photos.
+- [Historical Imagery](/v0.0.9/historical-imagery): Aerial survey photos.
+- [LINZ](/v0.0.9/linz/): Toitū Te Whenua LINZ-specific settings.
+- [Quality](/v0.0.9/quality/): Dataset accuracy.
+- [Scanning](/v0.0.9/scanning/): Scanning details for photos.
 
 ## Running tests
 
@@ -54,7 +54,7 @@ Be sure to add a schemaMap entry to the
 `yarn test` to use a local json-schema file rather than retrieving a possibly yet
 un-published json-schema.
 
-## [License](LICENSE)
+## [License](/LICENSE)
 
 [![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
 
