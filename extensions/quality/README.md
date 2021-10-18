@@ -1,8 +1,8 @@
 # Quality Extension Specification
 
 - **Title**: Quality
-- **Identifier**:
-  [https://linz.github.io/stac/extensions/quality/_STAC_VERSION_/schema.json]()
+- **Identifier**: 
+  <https://stac.linz.govt.nz/_STAC_VERSION_/quality/schema.json>
 - **Field Name Prefix**: quality
 - **Scope**: Collection
 - **Extension

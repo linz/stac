@@ -4,8 +4,8 @@
 change**
 
 - **Title**: Scanning
-- **Identifier**:
-  [https://linz.github.io/stac/_STAC_VERSION_/scanning/schema.json]()
+- **Identifier**: 
+  <https://stac.linz.govt.nz/_STAC_VERSION_/scanning/schema.json>
 - **Field Name Prefix**: scan
 - **Scope**: Item
 - **Extension Classification**: Work In Progress (Before proposal)
