@@ -2,7 +2,7 @@
 
 - **Title:** LINZ Top Level Extension
 - **Identifier:**
-  <https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json>
+  <https://stac.linz.govt.nz/_STAC_VERSION_/linz/schema.json>
 - **Field Name Prefix:** linz
 - **Scope:** Item, Collection
 - **Extension
