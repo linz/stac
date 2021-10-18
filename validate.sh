@@ -14,4 +14,3 @@ validator_command=(
     --schemaMap=https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json=extensions/linz/schema.json
 )
 "${validator_command[@]}" extensions/*/examples/*.json
-exit "${exit_code-0}"
