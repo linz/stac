@@ -4,7 +4,7 @@
 
 - **Title**: Aerial Photography
 - **Identifier**:
-  [https://linz.github.io/stac/_STAC_VERSION_/film/aerial-photo.json]()
+  [https://linz.github.io/stac/_STAC_VERSION_/aerial-photo/schema.json]()
 - **Field Name Prefix**: aerial-photo
 - **Scope**: Item
 - **Extension Classification**: Work In Progress (Before proposal)
