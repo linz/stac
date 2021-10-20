@@ -27,7 +27,19 @@
           "allOf": [
             {
               "type": "object",
-              "required": ["linz:lifecycle", "linz:providers", "linz:security_classification", "providers", "title"]
+              "required": [
+                "linz:lifecycle",
+                "linz:providers",
+                "linz:security_classification",
+                "providers",
+                "title",
+                "type"
+              ],
+              "properties": {
+                "type": {
+                  "const": "Collection"
+                }
+              }
             },
             {
               "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
@@ -42,7 +54,12 @@
           "allOf": [
             {
               "type": "object",
-              "required": ["linz:geospatial_type"]
+              "required": ["linz:geospatial_type", "type"],
+              "properties": {
+                "type": {
+                  "const": "Feature"
+                }
+              }
             },
             {
               "$ref": "https://schemas.stacspec.org/v1.0.0/item-spec/json-schema/item.json#"
