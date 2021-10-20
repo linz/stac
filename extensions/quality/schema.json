@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json#",
+  "$id": "https://linz.github.io/stac/extensions/_STAC_VERSION_/quality/schema.json#",
   "description": "STAC Quality Extension for STAC Collections.",
   "allOf": [
     {
@@ -21,7 +21,7 @@
         "stac_extensions": {
           "type": "array",
           "contains": {
-            "const": "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json"
+            "const": "https://linz.github.io/stac/extensions/_STAC_VERSION_/quality/schema.json"
           }
         }
       }

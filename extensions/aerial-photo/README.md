@@ -4,7 +4,7 @@
 
 - **Title**: Aerial Photography
 - **Identifier**:
-  <https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json>
+  <https://stac.linz.govt.nz/extensions/_STAC_VERSION_/aerial-photo/schema.json>
 - **Field Name Prefix**: aerial-photo
 - **Scope**: Item
 - **Extension Classification**: Work In Progress (Before proposal)
