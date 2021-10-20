@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://linz.github.io/stac/_STAC_VERSION_/template/schema.json",
+  "$id": "https://linz.github.io/stac/extensions/_STAC_VERSION_/template/schema.json",
   "title": "Template Extension",
   "description": "STAC Template Extension for STAC Items and STAC Collections.",
   "oneOf": [
@@ -134,7 +134,7 @@
         "stac_extensions": {
           "type": "array",
           "contains": {
-            "const": "https://linz.github.io/stac/_STAC_VERSION_/template/schema.json"
+            "const": "https://linz.github.io/stac/extensions/_STAC_VERSION_/template/schema.json"
           }
         }
       }

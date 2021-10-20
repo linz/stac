@@ -5,7 +5,7 @@ change**
 
 - **Title**: Camera
 - **Identifier**:
-  <https://stac.linz.govt.nz/_STAC_VERSION_/camera/schema.json>
+  <https://stac.linz.govt.nz/extensions/_STAC_VERSION_/camera/schema.json>
 - **Field Name Prefix**: camera
 - **Scope**: Item
 - **Extension Classification**: Work In Progress (Before proposal)
