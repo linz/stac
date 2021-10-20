@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -o errexit -o nounset
-shopt -s failglob
+shopt -s failglob globstar
 
 validator_command=(
     node_modules/.bin/stac-node-validator
@@ -13,4 +13,5 @@ validator_command=(
     --schemaMap=https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json=extensions/quality/schema.json
     --schemaMap=https://linz.github.io/stac/_STAC_VERSION_/linz/schema.json=extensions/linz/schema.json
 )
-"${validator_command[@]}" extensions/*/examples/*.json
+
+"${validator_command[@]}" ./**/examples/*.json
