@@ -1,5 +1,5 @@
 import o from 'ospec';
-import { AjvOptions, DefaultTimeoutMillis } from '../../validation.js';
+import { AjvOptions, DefaultTimeoutMillis } from '../../../validation.js';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { promises as fs } from 'fs';
