@@ -1,0 +1,75 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "72359",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [170.54524, -45.80237],
+        [170.56476, -45.80277],
+        [170.56431, -45.81345],
+        [170.54479, -45.81305],
+        [170.54524, -45.80237]
+      ]
+    ]
+  },
+  "bbox": [170.54524, -45.80237, 170.56431, -45.81345],
+  "properties": {
+    "datetime": "1958-01-22T12:00:00.000Z",
+    "platform": "Fixed-wing Aircraft",
+    "instruments": ["EAGLE IV"],
+    "mission": "SURVEY_1",
+    "proj:epsg": 4167,
+    "proj:centroid": [{ "lat": -45.8079, "lon": 170.5548 }],
+    "eo:bands": [{ "name": "Black and White", "common_name": "pan" }],
+    "aerial-photo:run": "E",
+    "aerial-photo:altitude": 11000,
+    "aerial-photo:scale": 6600,
+    "aerial-photo:sequence_number": 49,
+    "aerial-photo:anomalies": "Cloud shadow",
+    "camera:sequence_number": 89555,
+    "camera:nominal_focal_length": 508,
+    "film:id": "731",
+    "film:negative_sequence": 113,
+    "film:physical_condition": "Not Film 222",
+    "film:physical_size": "18cm x 23cm",
+    "scan:is_original": true,
+    "scan:scanned": "2019-12-31T12:00:00.000Z"
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "image/tiff; application=geotiff; profile=cloud-optimized": {
+      "href": "./72359.tiff",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "file:checksum": "1220b7deb18ad9dc6f3f94df60c26dd235a019946b8b6b7d1a36f100a8f9f1889130"
+    }
+  },
+  "stac_extensions": [
+    "https://linz.github.io/stac/_STAC_VERSION_/historical-imagery/schema.json",
+    "https://stac-extensions.github.io/file/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://linz.github.io/stac/_STAC_VERSION_/aerial-photo/schema.json",
+    "https://linz.github.io/stac/_STAC_VERSION_/camera/schema.json",
+    "https://linz.github.io/stac/_STAC_VERSION_/film/schema.json",
+    "https://linz.github.io/stac/_STAC_VERSION_/scanning/schema.json"
+  ],
+  "collection": "01FJ0SE46TT5TGBHBVX64TMEPA"
+}
