@@ -30,18 +30,20 @@ o.spec('Template collection', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Example without mandatory 'y' field in the 'template:xyz object should fail validation", async () => {
+  o("Example without mandatory 'template:new_field' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
-    delete example['assets']['example']['template:xyz']['y'];
+    delete example['template:new_field'];
+    delete example['assets'];
+    delete example['item_assets'];
 
     // when
     let valid = validate(example);
 
     // then
     o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "should have required property 'y'")).equals(true)(
-      JSON.stringify(validate.errors),
-    );
+    o(
+      validate.errors.some((error) => error.message === 'should match some schema in anyOf' && error.dataPath === ''),
+    ).equals(true)(JSON.stringify(validate.errors));
   });
 });
