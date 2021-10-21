@@ -15,12 +15,10 @@ This is LINZ top level
 extension which adds constraints to default STAC schema properties.
 
 - Examples:
-
   - [Collection example](examples/collection.json): Shows the basic usage of the
     extension in a STAC Collection
   - [Item example](examples/item.json): Shows the basic usage of the extension
     in a STAC Item
-
 - [JSON Schema](./schema.json)
 - [Changelog](./CHANGELOG.md)
 
