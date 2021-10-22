@@ -1,6 +1,15 @@
 {
-  "type": "Feature",
   "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/file/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://linz.github.io/stac/_STAC_VERSION_/aerial-photo/schema.json",
+    "https://linz.github.io/stac/_STAC_VERSION_/camera/schema.json",
+    "https://linz.github.io/stac/_STAC_VERSION_/film/schema.json",
+    "https://linz.github.io/stac/_STAC_VERSION_/scanning/schema.json"
+  ],
+  "type": "Feature",
   "id": "72359",
   "geometry": {
     "type": "Polygon",
@@ -21,8 +30,7 @@
     "instruments": ["EAGLE IV"],
     "mission": "SURVEY_1",
     "proj:epsg": 4167,
-    "proj:centroid": [{ "lat": -45.8079, "lon": 170.5548 }],
-    "eo:bands": [{ "name": "Black and White", "common_name": "pan" }],
+    "proj:centroid": { "lat": -45.8079, "lon": 170.5548 },
     "aerial-photo:run": "E",
     "aerial-photo:altitude": 11000,
     "aerial-photo:scale": 6600,
@@ -58,18 +66,9 @@
     "image/tiff; application=geotiff; profile=cloud-optimized": {
       "href": "./72359.tiff",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "file:checksum": "1220b7deb18ad9dc6f3f94df60c26dd235a019946b8b6b7d1a36f100a8f9f1889130"
+      "file:checksum": "1220b7deb18ad9dc6f3f94df60c26dd235a019946b8b6b7d1a36f100a8f9f1889130",
+      "eo:bands": [{ "name": "Black and White", "common_name": "pan" }]
     }
   },
-  "stac_extensions": [
-    "https://linz.github.io/stac/_STAC_VERSION_/historical-imagery/schema.json",
-    "https://stac-extensions.github.io/file/v2.0.0/schema.json",
-    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
-    "https://linz.github.io/stac/_STAC_VERSION_/aerial-photo/schema.json",
-    "https://linz.github.io/stac/_STAC_VERSION_/camera/schema.json",
-    "https://linz.github.io/stac/_STAC_VERSION_/film/schema.json",
-    "https://linz.github.io/stac/_STAC_VERSION_/scanning/schema.json"
-  ],
   "collection": "01FJ0SE46TT5TGBHBVX64TMEPA"
 }
