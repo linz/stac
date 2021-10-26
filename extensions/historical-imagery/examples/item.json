@@ -1,9 +1,10 @@
 {
   "stac_version": "1.0.0",
   "stac_extensions": [
-    "https://stac-extensions.github.io/file/v2.0.0/schema.json",
-    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
+    "https://linz.github.io/stac/_STAC_VERSION_/historical-imagery/schema.json",
     "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.0.0/schema.json",
     "https://linz.github.io/stac/_STAC_VERSION_/aerial-photo/schema.json",
     "https://linz.github.io/stac/_STAC_VERSION_/camera/schema.json",
     "https://linz.github.io/stac/_STAC_VERSION_/film/schema.json",
@@ -11,6 +12,7 @@
   ],
   "type": "Feature",
   "id": "72359",
+  "bbox": [170.54524, -45.80237, 170.56431, -45.81345],
   "geometry": {
     "type": "Polygon",
     "coordinates": [
@@ -23,7 +25,6 @@
       ]
     ]
   },
-  "bbox": [170.54524, -45.80237, 170.56431, -45.81345],
   "properties": {
     "datetime": "1958-01-22T12:00:00.000Z",
     "platform": "Fixed-wing Aircraft",
@@ -47,19 +48,8 @@
   },
   "links": [
     {
-      "rel": "root",
-      "href": "./collection.json",
-      "type": "application/json"
-    },
-    {
-      "rel": "parent",
-      "href": "./collection.json",
-      "type": "application/json"
-    },
-    {
-      "rel": "collection",
-      "href": "./collection.json",
-      "type": "application/json"
+      "href": "https://example.com/examples/item.json",
+      "rel": "self"
     }
   ],
   "assets": {
@@ -69,6 +59,5 @@
       "file:checksum": "1220b7deb18ad9dc6f3f94df60c26dd235a019946b8b6b7d1a36f100a8f9f1889130",
       "eo:bands": [{ "name": "Black and White", "common_name": "pan" }]
     }
-  },
-  "collection": "01FJ0SE46TT5TGBHBVX64TMEPA"
+  }
 }
