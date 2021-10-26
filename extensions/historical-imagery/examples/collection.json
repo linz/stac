@@ -5,11 +5,7 @@
     "https://linz.github.io/stac/_STAC_VERSION_/historical-imagery/schema.json",
     "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
     "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/file/v2.0.0/schema.json",
-    "https://linz.github.io/stac/_STAC_VERSION_/aerial-photo/schema.json",
-    "https://linz.github.io/stac/_STAC_VERSION_/camera/schema.json",
-    "https://linz.github.io/stac/_STAC_VERSION_/film/schema.json",
-    "https://linz.github.io/stac/_STAC_VERSION_/scanning/schema.json"
+    "https://stac-extensions.github.io/file/v2.0.0/schema.json"
   ],
   "id": "01FJ0SE46TT5TGBHBVX64TMEPA",
   "title": "399",

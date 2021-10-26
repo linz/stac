@@ -20,6 +20,7 @@ export function loadSchema(uri) {
  * function passed in to Ajv instance which allows us to load schemas from a url at run time.
  */
 export async function loadSchemaFromUri(uri) {
+  console.log(uri);
   try {
     if (uri.startsWith('https://linz.github.io/stac/_STAC_VERSION_/')) {
       const schemaPath = uri.slice('https://linz.github.io/stac/_STAC_VERSION_/'.length);
