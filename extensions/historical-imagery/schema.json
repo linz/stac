@@ -23,9 +23,6 @@
         },
         {
           "$ref": "#/definitions/stac_extensions"
-        },
-        {
-          "$ref": "#/definitions/item_fields"
         }
       ]
     },
@@ -47,14 +44,11 @@
       ],
       "anyOf": [
         {
-          "$comment": "This is the schema for the top-level fields in a Collection. Remove this if this extension does not define top-level fields for Collections.",
+          "$comment": "This is the schema for the top-level fields in a Collection.",
           "allOf": [
             {
               "$comment": "Require fields here for Collections (top-level) - override default.",
               "required": ["title"]
-            },
-            {
-              "$ref": "#/definitions/collection_fields"
             }
           ]
         }
@@ -112,24 +106,6 @@
           ]
         }
       }
-    },
-    "item_fields": {
-      "$comment": "Add your new fields here. Don't require them here, do that above in the corresponding schema.",
-      "type": "object",
-      "properties": {},
-      "patternProperties": {
-        "^(?!historical-imagery:)": {}
-      },
-      "additionalProperties": false
-    },
-    "collection_fields": {
-      "$comment": "Add your new fields here. Don't require them here, do that above in the corresponding schema.",
-      "type": "object",
-      "properties": {},
-      "patternProperties": {
-        "^(?!historical-imagery:)": {}
-      },
-      "additionalProperties": false
     }
   }
 }
