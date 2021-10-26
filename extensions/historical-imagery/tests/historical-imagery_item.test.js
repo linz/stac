@@ -71,18 +71,4 @@ o.spec('historical-imagery item', () => {
       JSON.stringify(validate.errors),
     );
   });
-
-  o("Example without mandatory 'scan:is_original' property should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    delete example.properties['scan:is_original'];
-    // when
-    const valid = validate(example);
-
-    // then
-    o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "should have required property '['scan:is_original']'")).equals(
-      true,
-    )(JSON.stringify(validate.errors));
-  });
 });
