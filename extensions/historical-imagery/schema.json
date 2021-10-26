@@ -13,6 +13,11 @@
           "properties": {
             "type": {
               "const": "Feature"
+            },
+            "properties": {
+              "type": "object",
+              "$comment": "Require fields here for Item Properties - override default.",
+              "required": ["platform", "mission", "proj:epsg", "scan:is_original"]
             }
           }
         },
@@ -80,11 +85,7 @@
     "item_fields": {
       "$comment": "Add your new fields here. Don't require them here, do that above in the corresponding schema.",
       "type": "object",
-      "properties": {
-        "proj:epsg": {
-          "type": "integer"
-        }
-      },
+      "properties": {},
       "patternProperties": {
         "^(?!historical-imagery:)": {}
       },
