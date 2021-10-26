@@ -17,7 +17,7 @@
             "properties": {
               "type": "object",
               "$comment": "Require fields here for Item Properties - override default.",
-              "required": ["platform", "mission", "proj:epsg", "scan:is_original"]
+              "required": ["platform", "mission", "proj:epsg"]
             }
           }
         },
@@ -26,6 +26,37 @@
         },
         {
           "$ref": "#/definitions/item_fields"
+        }
+      ]
+    },
+    {
+      "$comment": "This is the schema for STAC Collections.",
+      "type": "object",
+      "allOf": [
+        {
+          "required": ["type"],
+          "properties": {
+            "type": {
+              "const": "Collection"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/stac_extensions"
+        }
+      ],
+      "anyOf": [
+        {
+          "$comment": "This is the schema for the top-level fields in a Collection. Remove this if this extension does not define top-level fields for Collections.",
+          "allOf": [
+            {
+              "$comment": "Require fields here for Collections (top-level) - override default.",
+              "required": ["title"]
+            },
+            {
+              "$ref": "#/definitions/collection_fields"
+            }
+          ]
         }
       ]
     }
@@ -83,6 +114,15 @@
       }
     },
     "item_fields": {
+      "$comment": "Add your new fields here. Don't require them here, do that above in the corresponding schema.",
+      "type": "object",
+      "properties": {},
+      "patternProperties": {
+        "^(?!historical-imagery:)": {}
+      },
+      "additionalProperties": false
+    },
+    "collection_fields": {
       "$comment": "Add your new fields here. Don't require them here, do that above in the corresponding schema.",
       "type": "object",
       "properties": {},
