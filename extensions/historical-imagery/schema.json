@@ -22,7 +22,7 @@
           }
         },
         {
-          "$ref": "#/definitions/stac_extensions_item"
+          "$ref": "#/definitions/stac_extensions"
         }
       ]
     },
@@ -37,9 +37,6 @@
               "const": "Collection"
             }
           }
-        },
-        {
-          "$ref": "#/definitions/stac_extensions_collection"
         }
       ],
       "anyOf": [
@@ -56,7 +53,7 @@
     }
   ],
   "definitions": {
-    "stac_extensions_item": {
+    "stac_extensions": {
       "type": "object",
       "required": ["stac_extensions"],
       "properties": {
@@ -101,38 +98,6 @@
             {
               "contains": {
                 "const": "https://linz.github.io/stac/_STAC_VERSION_/scanning/schema.json"
-              }
-            }
-          ]
-        }
-      }
-    },
-
-    "stac_extensions_collection": {
-      "type": "object",
-      "required": ["stac_extensions"],
-      "properties": {
-        "stac_extensions": {
-          "type": "array",
-          "allOf": [
-            {
-              "contains": {
-                "const": "https://linz.github.io/stac/_STAC_VERSION_/historical-imagery/schema.json"
-              }
-            },
-            {
-              "contains": {
-                "const": "https://stac-extensions.github.io/eo/v1.0.0/schema.json"
-              }
-            },
-            {
-              "contains": {
-                "const": "https://stac-extensions.github.io/projection/v1.0.0/schema.json"
-              }
-            },
-            {
-              "contains": {
-                "const": "https://stac-extensions.github.io/file/v2.0.0/schema.json"
               }
             }
           ]
