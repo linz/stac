@@ -17,7 +17,7 @@
             "properties": {
               "type": "object",
               "$comment": "Require fields here for Item Properties - override default.",
-              "required": ["platform", "mission", "proj:epsg"]
+              "required": ["platform", "instruments", "mission", "eo:bands"]
             }
           }
         },

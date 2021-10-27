@@ -29,9 +29,10 @@
     "datetime": "1958-01-22T12:00:00.000Z",
     "platform": "Fixed-wing Aircraft",
     "instruments": ["EAGLE IV"],
-    "mission": "399",
+    "mission": "SURVEY_1",
     "proj:epsg": 4167,
     "proj:centroid": { "lat": -45.8079, "lon": 170.5548 },
+    "eo:bands": [{ "name": "Black and White", "common_name": "pan" }],
     "aerial-photo:run": "E",
     "aerial-photo:altitude": 11000,
     "aerial-photo:scale": 6600,
@@ -53,17 +54,16 @@
       "type": "application/json"
     },
     {
-      "rel": "self",
+      "rel": "item",
       "href": "./item.json",
       "type": "application/json"
     }
   ],
   "assets": {
-    "image/tiff; application=geotiff; profile=cloud-optimized": {
+    "example": {
       "href": "./72359.tiff",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "file:checksum": "1220b7deb18ad9dc6f3f94df60c26dd235a019946b8b6b7d1a36f100a8f9f1889130",
-      "eo:bands": [{ "name": "Black and White", "common_name": "pan" }]
+      "file:checksum": "1220b7deb18ad9dc6f3f94df60c26dd235a019946b8b6b7d1a36f100a8f9f1889130"
     }
   },
   "collection": "01FJ0SE46TT5TGBHBVX64TMEPA"
