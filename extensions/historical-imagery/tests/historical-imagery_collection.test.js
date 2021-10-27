@@ -32,21 +32,6 @@ o.spec('historical-imagery collection', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  //   o("Example without mandatory 'title' field should fail validation", async () => {
-  //     // given
-  //     const example = JSON.parse(await fs.readFile(examplePath));
-  //     delete example['title'];
-
-  //     // when
-  //     let valid = validate(example);
-
-  //     // then
-  //     o(valid).equals(false);
-  //     o(
-  //       validate.errors.some((error) => error.message === 'should match some schema in anyOf' && error.dataPath === ''),
-  //     ).equals(true)(JSON.stringify(validate.errors));
-  //   });
-
   o("Example without 'title' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
