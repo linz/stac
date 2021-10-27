@@ -4,9 +4,9 @@
 change**
 
 - **Title**: Historical Imagery
-- **Identifier**: historical-imagery
+- **Identifier**: <https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json>
 - **Field Name Prefix**: historical-imagery
-- **Scope**: Item
+- **Scope**: Item, Collection
 - **Extension Maturity Classification**: Work In Progress (Before proposal)
 
 LINZ is currently scanning 550,000 photo negatives from 7,300 aerial surveys
