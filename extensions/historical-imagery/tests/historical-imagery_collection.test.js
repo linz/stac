@@ -9,6 +9,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/collection.json');
 
+// Note that tests for summaries will be written once the rules are decided for mandatory summary data
+
 o.spec('historical-imagery collection', () => {
   o.specTimeout(DefaultTimeoutMillis);
   let validate;
@@ -30,18 +32,33 @@ o.spec('historical-imagery collection', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Example without mandatory 'title' field should fail validation", async () => {
+  //   o("Example without mandatory 'title' field should fail validation", async () => {
+  //     // given
+  //     const example = JSON.parse(await fs.readFile(examplePath));
+  //     delete example['title'];
+
+  //     // when
+  //     let valid = validate(example);
+
+  //     // then
+  //     o(valid).equals(false);
+  //     o(
+  //       validate.errors.some((error) => error.message === 'should match some schema in anyOf' && error.dataPath === ''),
+  //     ).equals(true)(JSON.stringify(validate.errors));
+  //   });
+
+  o("Example without 'title' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
-    delete example['title'];
+    delete example.title;
 
     // when
     let valid = validate(example);
 
     // then
     o(valid).equals(false);
-    o(
-      validate.errors.some((error) => error.message === 'should match some schema in anyOf' && error.dataPath === ''),
-    ).equals(true)(JSON.stringify(validate.errors));
+    o(validate.errors.some((error) => error.message === "should have required property '.title'")).equals(true)(
+      JSON.stringify(validate.errors),
+    );
   });
 });
