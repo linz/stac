@@ -16,7 +16,7 @@
             },
             "properties": {
               "type": "object",
-              "$comment": "Require fields here for Item Properties - override default.",
+              "$comment": "Require fields here for Item Properties.",
               "required": ["platform", "instruments", "mission", "eo:bands"]
             }
           }
@@ -27,29 +27,14 @@
       ]
     },
     {
-      "$comment": "This is the schema for STAC Collections.",
+      "$comment": "This is the schema for STAC Collections. Require fields here for Collections (top-level).",
       "type": "object",
-      "allOf": [
-        {
-          "required": ["type"],
-          "properties": {
-            "type": {
-              "const": "Collection"
-            }
-          }
+      "required": ["type", "title"],
+      "properties": {
+        "type": {
+          "const": "Collection"
         }
-      ],
-      "anyOf": [
-        {
-          "$comment": "This is the schema for the top-level fields in a Collection.",
-          "allOf": [
-            {
-              "$comment": "Require fields here for Collections (top-level) - override default.",
-              "required": ["title"]
-            }
-          ]
-        }
-      ]
+      }
     }
   ],
   "definitions": {
