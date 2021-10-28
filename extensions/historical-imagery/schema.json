@@ -9,7 +9,7 @@
       "allOf": [
         {
           "type": "object",
-          "required": ["type"],
+          "required": ["type", "properties", "assets"],
           "properties": {
             "type": {
               "const": "Feature"
@@ -17,7 +17,14 @@
             "properties": {
               "type": "object",
               "$comment": "Require fields here for Item Properties.",
-              "required": ["platform", "instruments", "mission", "eo:bands"]
+              "required": ["platform", "instruments", "mission"]
+            },
+            "assets": {
+              "type": "object",
+              "$comment": "Require fields here for Item Asset Properties.",
+              "additionalProperties": {
+                "required": ["eo:bands"]
+              }
             }
           }
         },

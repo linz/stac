@@ -65,7 +65,7 @@ o.spec('historical-imagery item', () => {
   o("Example without the mandatory 'eo:bands' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
-    delete example.properties['eo:bands'];
+    delete example.assets['image/tiff; application=geotiff; profile=cloud-optimized']['eo:bands'];
 
     // when
     let valid = validate(example);
@@ -74,7 +74,9 @@ o.spec('historical-imagery item', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.dataPath === '.properties' && error.message === "should have required property '['eo:bands']'",
+        (error) =>
+          error.dataPath === ".assets['image/tiff; application=geotiff; profile=cloud-optimized']" &&
+          error.message === "should have required property '['eo:bands']'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
