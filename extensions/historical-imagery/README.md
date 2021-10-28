@@ -70,14 +70,13 @@ For more details see
 
 #### [Aerial Photography Extension](../aerial-photo)
 
-| Field Name                   | Type        | Description                                                                                                                                                        | Internal Field Name |
-| ---------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------- |
-| aerial-photo:run             | string      | **REQUIRED**. A straight line/pass of sequential imagery flown during a specific survey.                                                                           | run                 |
-| aerial-photo:altitude        | integer     | Altitude in feet at which the plane was flying when the photo was taken.                                                                                           | altitude            |
-| aerial-photo:scale           | integer     | Denominator of the distance on the ground relative to the distance on the physical film negative for a photo.                                                      | scale               |
-| aerial-photo:sequence_number | integer     | **REQUIRED**. Sequential order of photos taken during a run.                                                                                                       | photo_no            |
-| ~~aerial-photo:version~~     | ~~integer~~ | Assume it has to do with photos that were re-flown due to cloud cover or another anomaly, and thus we may have two variant copies of the same survey/run/photo no. | photo_version       |
-| aerial-photo:anomalies       | string      | Comments about unusual things noticed in the image.                                                                                                                | image_anomalies     |
+| Field Name                   | Type    | Description                                                                                                   | Internal Field Name |
+| ---------------------------- | ------- | ------------------------------------------------------------------------------------------------------------- | ------------------- |
+| aerial-photo:run             | string  | **REQUIRED**. A straight line/pass of sequential imagery flown during a specific survey.                      | run                 |
+| aerial-photo:altitude        | integer | Altitude in feet at which the plane was flying when the photo was taken.                                      | altitude            |
+| aerial-photo:scale           | integer | Denominator of the distance on the ground relative to the distance on the physical film negative for a photo. | scale               |
+| aerial-photo:sequence_number | integer | **REQUIRED**. Sequential order of photos taken during a run.                                                  | photo_no            |
+| aerial-photo:anomalies       | string  | Comments about unusual things noticed in the image.                                                           | image_anomalies     |
 
 #### [Camera Extension](../camera)
 
