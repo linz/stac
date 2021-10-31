@@ -10,6 +10,10 @@
   Proposal
 - **Owner**: @billgeo @imincik @l0b0 @MitchellPaff
 
+Quality metadata is considered to be data that indicates the geospatial quality and accuracy of the collection. Overall, it helps to increase the user's confidence in the data and helps them determine if the data is fit for their purpose.
+
+This extension applies to STAC Collections, as quality and accuracy is most often bound to the Collection level and therefore shared across all items. It is recommended adding these fields to the corresponding the STAC Collection for geospatial datasets.
+
 ## Collection Fields
 
 | Field Name                       | Type   | Description                                                                                                  |
