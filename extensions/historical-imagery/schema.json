@@ -35,13 +35,20 @@
     },
     {
       "$comment": "This is the schema for STAC Collections. Require fields here for Collections (top-level).",
-      "type": "object",
-      "required": ["type", "title"],
-      "properties": {
-        "type": {
-          "const": "Collection"
+      "allOf": [
+        {
+          "type": "object",
+          "required": ["type", "title"],
+          "properties": {
+            "type": {
+              "const": "Collection"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/stac_extensions_collection"
         }
-      }
+      ]
     }
   ],
   "definitions": {
@@ -93,6 +100,18 @@
               }
             }
           ]
+        }
+      }
+    },
+    "stac_extensions_collection": {
+      "type": "object",
+      "required": ["stac_extensions"],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "contains": {
+            "const": "https://linz.github.io/stac/_STAC_VERSION_/historical-imagery/schema.json"
+          }
         }
       }
     }

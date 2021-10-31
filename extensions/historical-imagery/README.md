@@ -22,6 +22,13 @@ from the [LINZ Data Service](https://data.linz.govt.nz/layer/51002).
 For more details see
 [The Crown Aerial Film Archive historical imagery scanning project](https://www.linz.govt.nz/about-linz/what-were-doing/projects/crown-aerial-film-archive-historical-imagery-scanning-project).
 
+- Examples:
+  - [Collection example](examples/collection.json): Shows the basic usage of the
+    extension in a STAC Collection
+  - [Item example](examples/item.json): Shows the basic usage of the extension
+    in a STAC Item
+- [JSON Schema](./schema.json)
+
 ## STAC Collections
 
 ### [STAC Collection Fields](https://github.com/radiantearth/stac-spec/blob/v1.0.0/collection-spec/collection-spec.md)
