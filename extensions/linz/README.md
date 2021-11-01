@@ -24,9 +24,10 @@ extension which adds constraints to default STAC schema properties.
 
 ## Item Fields
 
-| Field Name           | Type   | Description                                                                                                                                                  |
-| -------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| linz:geospatial_type | string | **REQUIRED**. A general description of the type of content that can be found in the dataset. See the [list of accepted geospatial types](#geospatial-types). |
+| Field Name           | Type                | Description                                                                                                                                                  |
+| -------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| linz:geospatial_type | string              | **REQUIRED**. A general description of the type of content that can be found in the dataset. See the [list of accepted geospatial types](#geospatial-types). |
+| processing:software  | Map<string, string> | Recommended. The software and versions which were used to generate the dataset. See [reference](https://github.com/stac-extensions/processing).              |
 
 ### Geospatial Types
 
@@ -74,6 +75,7 @@ See [ISO/IEC 13249-3:2016(en)](https://www.iso.org/obp/ui/#!iso:std:60343:en) fo
 | linz:providers                 | LINZ Provider Object | **REQUIRED**. The object provides information about a provider with additional roles defined by Toitū Te Whenua LINZ. A provider is any of the organizations that captures or processes the content of the assets and therefore influences the data offered by the STAC implementation. See [LINZ Provider Object](#linz-provider-object).       |
 | providers                      | Provider Object      | **REQUIRED**. The object provides information about a provider. A provider is any of the organizations that captures or processes the content of the assets and therefore influences the data offered by the STAC implementation. See [Provider Object](#provider-object).                                                                       |
 | linz:security_classification   | string               | **REQUIRED**. New Zealand Government [Security Classification](https://www.digital.govt.nz/standards-and-guidance/governance/managing-online-channels/security-and-privacy-for-websites/foundations/classify-information/). Must be one of `unclassified`, `in-confidence`, `sensitive`, `restricted`, `confidential`, `secret` or `top-secret`. |
+| processing:software            | Map<string, string>  | Recommended. The software and versions which were used to generate the dataset. See [reference](https://github.com/stac-extensions/processing).                                                                                                                                                                                                  |
 
 ### LINZ Provider Object
 
