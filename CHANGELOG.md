@@ -1,3 +1,22 @@
+## [0.0.10](https://github.com/linz/stac/compare/v0.0.9...v0.0.10) (2021-11-01)
+
+### Bug Fixes
+
+- historical imagery collection stac_extension ([#136](https://github.com/linz/stac/issues/136)) ([edad186](https://github.com/linz/stac/commit/edad186e8fed56bc5a095eeec63520846048fe1e))
+- linz readme bullet point formatting ([#132](https://github.com/linz/stac/issues/132)) ([7f02972](https://github.com/linz/stac/commit/7f0297286a00ac2530fb0a5842fc1e1685a00d1d))
+- update template schema to latest ([#126](https://github.com/linz/stac/issues/126)) ([8fbe466](https://github.com/linz/stac/commit/8fbe4669fff825b19e16f5b7bbd0ad19e6619d66))
+
+### Features
+
+- Duplicate referenced field documentation in table ([#138](https://github.com/linz/stac/issues/138)) ([9376923](https://github.com/linz/stac/commit/9376923a6bef275444ed463e6ffe4fe19ca2d576))
+- enable jekyll for linz style ([#123](https://github.com/linz/stac/issues/123)) ([a6740ce](https://github.com/linz/stac/commit/a6740ce286341ad602e5406571acdbd20b460517))
+- historical imagery providers (TDE-146) ([#141](https://github.com/linz/stac/issues/141)) ([997ebcf](https://github.com/linz/stac/commit/997ebcf9af7cbfa9ce535c90da0374ea8c1caa7f))
+- historical imagery schema ([#133](https://github.com/linz/stac/issues/133)) ([bc94729](https://github.com/linz/stac/commit/bc94729f1b8b79ddd85af3b14aa20b9f0d3a86ac))
+- Make processing extension recommended ([#137](https://github.com/linz/stac/issues/137)) ([c3a48cd](https://github.com/linz/stac/commit/c3a48cd19ad91abc9fdc5683e7a7c5627a4cc5bc))
+- Move quality:lineage to linz:history ([#140](https://github.com/linz/stac/issues/140)) ([14befef](https://github.com/linz/stac/commit/14befef671553380aa13b34e98499693313d8d69))
+- move to stac.linz.govt.nz for the schemas ([#124](https://github.com/linz/stac/issues/124)) ([e8167d1](https://github.com/linz/stac/commit/e8167d10e71050f98ba7b41c022b4aa28eef6296))
+- Refer to example files recursively ([#129](https://github.com/linz/stac/issues/129)) ([db3171a](https://github.com/linz/stac/commit/db3171a51c8ec7044b55a677ae7d1523ed7b017b))
+
 ## [0.0.9](https://github.com/linz/stac/compare/v0.0.8...v0.0.9) (2021-10-13)
 
 ### Features
