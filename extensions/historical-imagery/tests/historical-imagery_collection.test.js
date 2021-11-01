@@ -46,4 +46,38 @@ o.spec('historical-imagery collection', () => {
       JSON.stringify(validate.errors),
     );
   });
+
+  o("Example without 'providers' should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.providers;
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(validate.errors.some((error) => error.message === "should have required property '.providers'")).equals(true)(
+      JSON.stringify(validate.errors),
+    );
+  });
+
+  o('Collection without required provider roles should fail validation', async () => {
+    // given
+    for (const role of ['producer', 'licensor', 'processor', 'host']) {
+      const example = JSON.parse(await fs.readFile(examplePath));
+      example.providers = example.providers.filter((provider) => !role in provider.roles);
+
+      // when
+      let valid = validate(example);
+
+      // then
+      o(valid).equals(false);
+      o(
+        validate.errors.some(
+          (error) => error.dataPath === '.providers' && error.message === 'should contain a valid item',
+        ),
+      ).equals(true)(JSON.stringify(validate.errors));
+    }
+  });
 });

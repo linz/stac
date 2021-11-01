@@ -85,7 +85,7 @@
       "minimum": 2193,
       "maximum": 2193
     },
-    "aerial-photo:altitide": {
+    "aerial-photo:altitude": {
       "minimum": 10000,
       "maximum": 11000
     },
