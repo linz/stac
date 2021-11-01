@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://linz.github.io/stac/_STAC_VERSION_/historical-imagery/schema.json",
-  "title": "historical Imagery Extension",
-  "description": "STAC historical Imagery Extension for STAC Items and STAC Collections.",
+  "title": "Historical Imagery Extension",
+  "description": "STAC Historical Imagery Extension for STAC Items and STAC Collections.",
   "oneOf": [
     {
       "$comment": "This is the schema for STAC Items.",
@@ -38,12 +38,15 @@
       "allOf": [
         {
           "type": "object",
-          "required": ["type", "title"],
+          "required": ["type", "title", "providers"],
           "properties": {
             "type": {
               "const": "Collection"
             }
           }
+        },
+        {
+          "$ref": "#/definitions/fields_collection"
         },
         {
           "$ref": "#/definitions/stac_extensions_collection"
@@ -112,6 +115,60 @@
           "contains": {
             "const": "https://linz.github.io/stac/_STAC_VERSION_/historical-imagery/schema.json"
           }
+        }
+      }
+    },
+    "fields_collection": {
+      "type": "object",
+      "$comment": "Remove licensor and producer when validation against linz STAC extension is included.",
+      "properties": {
+        "providers": {
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "licensor"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "producer"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "processor"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "host"
+                    }
+                  }
+                }
+              }
+            }
+          ]
         }
       }
     }
