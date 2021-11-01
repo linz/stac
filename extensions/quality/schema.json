@@ -28,7 +28,6 @@
     },
     "quality": {
       "type": "object",
-      "required": ["quality:lineage"],
       "properties": {
         "quality:description": {
           "title": "Dataset Data Quality",
@@ -42,10 +41,6 @@
           "title": "Horizontal Accuracy Type",
           "type": "string",
           "enum": ["nominal", "95% confidence interval"]
-        },
-        "quality:lineage": {
-          "title": "Lineage",
-          "type": "string"
         },
         "quality:vertical_accuracy": {
           "title": "Vertical Accuracy",

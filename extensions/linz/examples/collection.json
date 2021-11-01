@@ -55,7 +55,7 @@
   "quality:description": "Example quality description",
   "quality:horizontal_accuracy": 1,
   "quality:horizontal_accuracy_type": "nominal",
-  "quality:lineage": "This is an example dataset lineage description.",
+  "linz:history": "This is an example dataset lineage description.",
   "providers": [
     {
       "name": "Example",
