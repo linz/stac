@@ -30,23 +30,6 @@ o.spec('Quality collection', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Example without the mandatory 'quality:lineage' field should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    delete example['quality:lineage'];
-
-    // when
-    let valid = validate(example);
-
-    // then
-    o(valid).equals(false);
-    o(
-      validate.errors.some(
-        (error) => error.dataPath === '' && error.message === "should have required property 'quality:lineage'",
-      ),
-    ).equals(true)(JSON.stringify(validate.errors));
-  });
-
   o("Example with an incorrect 'quality:description' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));

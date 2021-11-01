@@ -28,6 +28,7 @@
             {
               "type": "object",
               "required": [
+                "linz:history",
                 "linz:lifecycle",
                 "linz:providers",
                 "linz:security_classification",
@@ -107,6 +108,10 @@
           }
         },
         "linz:geospatial_type": { "$ref": "#/definitions/geospatial_type_enum" },
+        "linz:history": {
+          "title": "History",
+          "type": "string"
+        },
         "linz:lifecycle": {
           "title": "Life Cycle",
           "type": "string",
