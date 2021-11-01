@@ -1,0 +1,125 @@
+{
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "stac_extensions": ["https://linz.github.io/stac/v0.0.10/historical-imagery/schema.json"],
+  "id": "01FJ0SE46TT5TGBHBVX64TMEPA",
+  "title": "399",
+  "description": "Survey 399 of the Crown Aerial Film Archive",
+  "license": "CC-BY-4.0",
+  "extent": {
+    "spatial": {
+      "bbox": [[170.54524, -45.80237, 170.56431, -45.81345]]
+    },
+    "temporal": {
+      "interval": [["1947-03-28T12:00:00.000Z", "1952-04-22T12:00:00.000Z"]]
+    }
+  },
+  "providers": [
+    {
+      "name": "NZ Aerial Mapping",
+      "description": "Aerial survey and geospatial services firm. Went into liquidation in 2014.",
+      "roles": ["producer"]
+    },
+    {
+      "name": "Toitū Te Whenua LINZ",
+      "description": "The New Zealand Government's lead agency for location and property information, Crown land and managing overseas investment.",
+      "roles": ["host", "licensor", "processor"],
+      "url": "https://www.linz.govt.nz/about-linz/what-were-doing/projects/crown-aerial-film-archive-historical-imagery-scanning-project"
+    }
+  ],
+  "summaries": {
+    "platform": ["Fixed-wing Aircraft"],
+    "instruments": ["EAGLE IV"],
+    "mission": ["399"],
+    "aerial-photo:run": [
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L",
+      "M",
+      "N",
+      "O",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "U",
+      "V",
+      "W",
+      "X"
+    ],
+    "aerial-photo:anomalies": [
+      "Bottom of frame obscured by splice tape",
+      "Chemical stain",
+      "Chemical stain, Fogging present, Static",
+      "Chemical stain, Static",
+      "Cloud",
+      "Cloud Shadow",
+      "Cloud, Chemical stain",
+      "Cloud, Static",
+      "Fogging present",
+      "Fogging present, Chemical stain",
+      "Static",
+      "Top of frame fogged, No instrument panel"
+    ],
+    "film:id": ["464", "465", "466", "470", "476", "486", "577", "579", "580", "728", "731", "732"],
+    "film:physical_condition": ["Film scratched", "NOT 10/03/1949", "NOT 16/04/1947"],
+    "film:physical_size": ["18cm x 23cm"],
+    "scan:is_original": [true, false],
+    "eo:bands": [
+      {
+        "name": "Black and White",
+        "common_name": "pan"
+      }
+    ],
+    "scan:scanned": {
+      "minimum": "2018-06-30T12:00:00.000Z",
+      "maximum": "2019-12-31T12:00:00.000Z"
+    },
+    "proj:epsg": {
+      "minimum": 2193,
+      "maximum": 2193
+    },
+    "aerial-photo:altitude": {
+      "minimum": 10000,
+      "maximum": 11000
+    },
+    "aerial-photo:scale": {
+      "minimum": 6600,
+      "maximum": 6600
+    },
+    "aerial-photo:sequence_number": {
+      "minimum": 1,
+      "maximum": 89
+    },
+    "camera:sequence_number": {
+      "minimum": 32724,
+      "maximum": 89642
+    },
+    "camera:nominal_focal_length": {
+      "minimum": 508,
+      "maximum": 508
+    },
+    "film:negative_sequence": {
+      "mimimum": 1,
+      "maximum": 184
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./item.json",
+      "type": "application/json"
+    }
+  ]
+}

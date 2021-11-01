@@ -1,0 +1,70 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://linz.github.io/stac/v0.0.10/historical-imagery/schema.json",
+    "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.0.0/schema.json",
+    "https://linz.github.io/stac/v0.0.10/aerial-photo/schema.json",
+    "https://linz.github.io/stac/v0.0.10/camera/schema.json",
+    "https://linz.github.io/stac/v0.0.10/film/schema.json",
+    "https://linz.github.io/stac/v0.0.10/scanning/schema.json"
+  ],
+  "type": "Feature",
+  "id": "215354",
+  "bbox": [170.54524, -45.80237, 170.56431, -45.81345],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [170.54524, -45.80237],
+        [170.56476, -45.80277],
+        [170.56431, -45.81345],
+        [170.54479, -45.81305],
+        [170.54524, -45.80237]
+      ]
+    ]
+  },
+  "properties": {
+    "datetime": "1949-03-09T12:00:00.000Z",
+    "platform": "Fixed-wing Aircraft",
+    "instruments": ["EAGLE IV"],
+    "mission": "399",
+    "proj:epsg": 4167,
+    "proj:centroid": { "lat": -45.8284, "lon": 170.4842 },
+    "aerial-photo:run": "H",
+    "aerial-photo:altitude": 11000,
+    "aerial-photo:scale": 6600,
+    "aerial-photo:sequence_number": 39,
+    "aerial-photo:anomalies": "Cloud, Chemical stain",
+    "camera:sequence_number": 58064,
+    "camera:nominal_focal_length": 508,
+    "film:id": "579",
+    "film:negative_sequence": 34,
+    "film:physical_condition": "Film scratched",
+    "film:physical_size": "18cm x 23cm",
+    "scan:is_original": true,
+    "scan:scanned": "2018-09-30T12:00:00.000Z"
+  },
+  "links": [
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./item.json",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "image/tiff; application=geotiff; profile=cloud-optimized": {
+      "href": "./215354.tiff",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "file:checksum": "1220b7deb18ad9dc6f3f94df60c26dd235a019946b8b6b7d1a36f100a8f9f1889130",
+      "eo:bands": [{ "name": "Black and White", "common_name": "pan" }]
+    }
+  },
+  "collection": "01FJ0SE46TT5TGBHBVX64TMEPA"
+}

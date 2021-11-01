@@ -1,0 +1,176 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://linz.github.io/stac/v0.0.10/historical-imagery/schema.json",
+  "title": "Historical Imagery Extension",
+  "description": "STAC Historical Imagery Extension for STAC Items and STAC Collections.",
+  "oneOf": [
+    {
+      "$comment": "This is the schema for STAC Items.",
+      "allOf": [
+        {
+          "type": "object",
+          "required": ["type", "properties", "assets"],
+          "properties": {
+            "type": {
+              "const": "Feature"
+            },
+            "properties": {
+              "type": "object",
+              "$comment": "Require fields here for Item Properties.",
+              "required": ["platform", "instruments", "mission"]
+            },
+            "assets": {
+              "type": "object",
+              "$comment": "Require fields here for Item Asset Properties.",
+              "additionalProperties": {
+                "required": ["eo:bands"]
+              }
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/stac_extensions"
+        }
+      ]
+    },
+    {
+      "$comment": "This is the schema for STAC Collections. Require fields here for Collections (top-level).",
+      "allOf": [
+        {
+          "type": "object",
+          "required": ["type", "title", "providers"],
+          "properties": {
+            "type": {
+              "const": "Collection"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/fields_collection"
+        },
+        {
+          "$ref": "#/definitions/stac_extensions_collection"
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "stac_extensions": {
+      "type": "object",
+      "required": ["stac_extensions"],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "allOf": [
+            {
+              "contains": {
+                "const": "https://linz.github.io/stac/v0.0.10/historical-imagery/schema.json"
+              }
+            },
+            {
+              "contains": {
+                "const": "https://stac-extensions.github.io/eo/v1.0.0/schema.json"
+              }
+            },
+            {
+              "contains": {
+                "const": "https://stac-extensions.github.io/projection/v1.0.0/schema.json"
+              }
+            },
+            {
+              "contains": {
+                "const": "https://stac-extensions.github.io/file/v2.0.0/schema.json"
+              }
+            },
+            {
+              "contains": {
+                "const": "https://linz.github.io/stac/v0.0.10/aerial-photo/schema.json"
+              }
+            },
+            {
+              "contains": {
+                "const": "https://linz.github.io/stac/v0.0.10/camera/schema.json"
+              }
+            },
+            {
+              "contains": {
+                "const": "https://linz.github.io/stac/v0.0.10/film/schema.json"
+              }
+            },
+            {
+              "contains": {
+                "const": "https://linz.github.io/stac/v0.0.10/scanning/schema.json"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "stac_extensions_collection": {
+      "type": "object",
+      "required": ["stac_extensions"],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "contains": {
+            "const": "https://linz.github.io/stac/v0.0.10/historical-imagery/schema.json"
+          }
+        }
+      }
+    },
+    "fields_collection": {
+      "type": "object",
+      "$comment": "Remove licensor and producer when validation against linz STAC extension is included.",
+      "properties": {
+        "providers": {
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "licensor"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "producer"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "processor"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "host"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
