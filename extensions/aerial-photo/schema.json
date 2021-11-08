@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://linz.github.io/stac/_STAC_VERSION_/aerial-photo/schema.json",
+  "$id": "https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json",
   "title": "Aerial Photography Extension",
   "description": "STAC Aerial Photography Extension for STAC Items.",
   "allOf": [
@@ -41,7 +41,7 @@
         "stac_extensions": {
           "type": "array",
           "contains": {
-            "const": "https://linz.github.io/stac/_STAC_VERSION_/aerial-photo/schema.json"
+            "const": "https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json"
           }
         }
       }

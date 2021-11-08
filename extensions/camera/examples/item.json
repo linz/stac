@@ -1,11 +1,11 @@
 {
   "stac_version": "1.0.0",
-  "stac_extensions": ["https://linz.github.io/stac/_STAC_VERSION_/camera/schema.json"],
+  "stac_extensions": ["https://stac.linz.govt.nz/_STAC_VERSION_/camera/schema.json"],
   "type": "Feature",
   "id": "72360",
   "geometry": null,
   "properties": {
-    "datetime": "1952-04-23T00:00:00.000Z",
+    "datetime": "1952-04-22T12:00:00Z",
     "platform": "Fixed-wing Aircraft",
     "instruments": ["EAGLE IV"],
     "mission": "SURVEY_1",

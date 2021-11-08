@@ -5,7 +5,7 @@ change**
 
 - **Title**: Historical Imagery
 - **Identifier**: <https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json>
-- **Field Name Prefix**: historical-imagery
+- **Field Name Prefix**: N/A
 - **Scope**: Item, Collection
 - **Extension Maturity Classification**: Work In Progress (Before proposal)
 
