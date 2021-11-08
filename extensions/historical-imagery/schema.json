@@ -21,10 +21,7 @@
             },
             "assets": {
               "type": "object",
-              "$comment": "Require fields here for Item Asset Properties.",
-              "additionalProperties": {
-                "required": ["eo:bands"]
-              }
+              "$comment": "Require fields here for Item Asset Properties."
             }
           }
         },
