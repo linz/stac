@@ -71,9 +71,9 @@ For more details see
 
 #### [Electro-Optical Extension](https://github.com/stac-extensions/eo)
 
-| Field Name                                                                      | Type                                                                                      | Description                                                                      | Internal Field Name               |
-| ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | --------------------------------- |
-| [eo:bands](https://github.com/stac-extensions/eo/blob/v1.0.0/README.md#eobands) | \[[Band Object](https://github.com/stac-extensions/eo/blob/v1.0.0/README.md#band-object)] | The eo:bands array is used to describe the available spectral bands in an Asset. | photo_type or image file metadata |
+| Field Name                                                                      | Type                                                                                      | Description                                                                                    | Internal Field Name               |
+| ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | --------------------------------- |
+| [eo:bands](https://github.com/stac-extensions/eo/blob/v1.0.0/README.md#eobands) | \[[Band Object](https://github.com/stac-extensions/eo/blob/v1.0.0/README.md#band-object)] | **REQUIRED**. The eo:bands array is used to describe the available spectral bands in an Asset. | photo_type or image file metadata |
 
 #### [Aerial Photography Extension](../aerial-photo)
 
