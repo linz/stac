@@ -21,8 +21,8 @@ export function loadSchema(uri) {
  */
 export async function loadSchemaFromUri(uri) {
   try {
-    if (uri.startsWith('https://linz.github.io/stac/_STAC_VERSION_/')) {
-      const schemaPath = uri.slice('https://linz.github.io/stac/_STAC_VERSION_/'.length);
+    if (uri.startsWith('https://stac.linz.govt.nz/_STAC_VERSION_/')) {
+      const schemaPath = uri.slice('https://stac.linz.govt.nz/_STAC_VERSION_/'.length);
       return JSON.parse(await fs.readFile(join(__dirname, 'extensions', schemaPath)));
     }
 

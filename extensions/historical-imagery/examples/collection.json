@@ -1,7 +1,7 @@
 {
   "type": "Collection",
   "stac_version": "1.0.0",
-  "stac_extensions": ["https://linz.github.io/stac/_STAC_VERSION_/historical-imagery/schema.json"],
+  "stac_extensions": ["https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json"],
   "id": "01FJ0SE46TT5TGBHBVX64TMEPA",
   "title": "399",
   "description": "Survey 399 of the Crown Aerial Film Archive",
