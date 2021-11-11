@@ -1,6 +1,6 @@
 {
   "stac_version": "1.0.0",
-  "stac_extensions": ["https://linz.github.io/stac/_STAC_VERSION_/scanning/schema.json"],
+  "stac_extensions": ["https://stac.linz.govt.nz/_STAC_VERSION_/scanning/schema.json"],
   "type": "Feature",
   "id": "72360",
   "geometry": null,
