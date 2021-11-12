@@ -14,13 +14,6 @@
       "interval": [["2015-06-23T00:00:00Z", null]]
     }
   },
-  "template:new_field": "test",
-  "template:xyz": {
-    "x": 1,
-    "y": 2,
-    "z": 3
-  },
-  "template:another_one": [1, 2, 3],
   "quality:description": "This is an example dataset quality description.",
   "quality:horizontal_accuracy": 0.4,
   "quality:horizontal_accuracy_type": "nominal",
@@ -28,14 +21,7 @@
   "quality:vertical_accuracy_type": "nominal",
   "assets": {
     "example": {
-      "href": "https://example.com/examples/file.xyz",
-      "template:new_field": "test"
-    }
-  },
-  "item_assets": {
-    "data": {
-      "roles": ["data"],
-      "template:new_field": "test"
+      "href": "https://example.com/examples/file.xyz"
     }
   },
   "summaries": {
