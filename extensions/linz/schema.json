@@ -942,7 +942,12 @@
           }
         },
         "linz:asset_summaries": {
-          "required": ["created"]
+          "required": ["created"],
+          "properties": {
+            "created": {
+              "required": ["minimum"]
+            }
+          }
         },
         "linz:geospatial_type": {},
         "linz:history": {

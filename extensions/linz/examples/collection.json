@@ -13,7 +13,9 @@
   "description": "A description",
   "license": "Apache-2.0",
   "linz:asset_summaries": {
-    "created": {}
+    "created": {
+      "minimum": ""
+    }
   },
   "linz:lifecycle": "under development",
   "linz:providers": [

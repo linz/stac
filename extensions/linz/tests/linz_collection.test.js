@@ -240,6 +240,25 @@ o.spec('LINZ collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
+  o("Asset summary created without the mandatory 'minimum' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:asset_summaries']['created']['minimum'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/linz:asset_summaries/created' &&
+          error.message === "must have required property 'minimum'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o("Example without the mandatory 'linz:history' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
