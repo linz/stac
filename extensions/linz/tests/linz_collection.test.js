@@ -243,103 +243,53 @@ o.spec('LINZ collection', () => {
     }
   });
 
-  o("Asset summary created/updated without the mandatory 'minimum' property should fail validation", async () => {
-    for (const property of ['created', 'updated']) {
-      // given
-      const example = JSON.parse(await fs.readFile(examplePath));
-      delete example['linz:asset_summaries'][property]['minimum'];
+  o(
+    "Asset summary created/updated without the mandatory 'minimum'/'maximum' properties should fail validation",
+    async () => {
+      for (const outerProperty of ['created', 'updated']) {
+        for (const innerProperty of ['minimum', 'maximum']) {
+          // given
+          const example = JSON.parse(await fs.readFile(examplePath));
+          delete example['linz:asset_summaries'][outerProperty][innerProperty];
 
-      // when
-      let valid = validate(example);
+          // when
+          let valid = validate(example);
 
-      // then
-      o(valid).equals(false);
-      o(
-        validate.errors.some(
-          (error) =>
-            error.instancePath === `/linz:asset_summaries/${property}` &&
-            error.message === "must have required property 'minimum'",
-        ),
-      ).equals(true)(JSON.stringify(validate.errors));
+          // then
+          o(valid).equals(false);
+          o(
+            validate.errors.some(
+              (error) =>
+                error.instancePath === `/linz:asset_summaries/${outerProperty}` &&
+                error.message === `must have required property '${innerProperty}'`,
+            ),
+          ).equals(true)(JSON.stringify(validate.errors));
+        }
+      }
+    },
+  );
+
+  o("Asset summary created/updated with invalid 'minimum'/'maximum' value should fail validation", async () => {
+    for (const outerProperty of ['created', 'updated']) {
+      for (const innerProperty of ['minimum', 'maximum']) {
+        // given
+        const example = JSON.parse(await fs.readFile(examplePath));
+        example['linz:asset_summaries'][outerProperty][innerProperty] = '1999-01-01T00:00:00';
+
+        // when
+        let valid = validate(example);
+
+        // then
+        o(valid).equals(false);
+        o(
+          validate.errors.some(
+            (error) =>
+              error.instancePath === `/linz:asset_summaries/${outerProperty}/${innerProperty}` &&
+              error.message === 'must match pattern "(\\+00:00|Z)$"',
+          ),
+        ).equals(true)(JSON.stringify(validate.errors));
+      }
     }
-  });
-
-  o("Asset summary created without the mandatory 'maximum' property should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    delete example['linz:asset_summaries']['created']['maximum'];
-
-    // when
-    let valid = validate(example);
-
-    // then
-    o(valid).equals(false);
-    o(
-      validate.errors.some(
-        (error) =>
-          error.instancePath === '/linz:asset_summaries/created' &&
-          error.message === "must have required property 'maximum'",
-      ),
-    ).equals(true)(JSON.stringify(validate.errors));
-  });
-
-  o("Asset summary updated without the mandatory 'maximum' property should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    delete example['linz:asset_summaries']['updated']['maximum'];
-
-    // when
-    let valid = validate(example);
-
-    // then
-    o(valid).equals(false);
-    o(
-      validate.errors.some(
-        (error) =>
-          error.dataPath === "['linz:asset_summaries'].updated" &&
-          error.message === "should have required property '.maximum'",
-      ),
-    ).equals(true)(JSON.stringify(validate.errors));
-  });
-
-  o("Asset summary created/updated with invalid 'minimum' value should fail validation", async () => {
-    for (const property of ['created', 'updated']) {
-      // given
-      const example = JSON.parse(await fs.readFile(examplePath));
-      example['linz:asset_summaries'][property]['minimum'] = '1999-01-01T00:00:00';
-
-      // when
-      let valid = validate(example);
-
-      // then
-      o(valid).equals(false);
-      o(
-        validate.errors.some(
-          (error) =>
-            error.instancePath === `/linz:asset_summaries/${property}/minimum` &&
-            error.message === 'must match pattern "(\\+00:00|Z)$"',
-        ),
-      ).equals(true)(JSON.stringify(validate.errors));
-    }
-  });
-
-  o("Asset summary created with invalid 'maximum' value should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    example['linz:asset_summaries']['created']['maximum'] = '1999-01-01T00:00:00';
-
-    // when
-    let valid = validate(example);
-
-    // then
-    o(valid).equals(false);
-    o(
-      validate.errors.some(
-        (error) =>
-          error.instancePath === '/linz:asset_summaries/created/maximum' &&
-          error.message === 'must match pattern "(\\+00:00|Z)$"',
-      ),
-    ).equals(true)(JSON.stringify(validate.errors));
   });
 
   o("Example without the mandatory 'linz:history' field should fail validation", async () => {

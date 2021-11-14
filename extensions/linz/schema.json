@@ -959,6 +959,10 @@
                 "minimum": {
                   "title": "Earliest asset updated time",
                   "$ref": "#/definitions/utc_datetime"
+                },
+                "maximum": {
+                  "title": "Latest asset updated time",
+                  "$ref": "#/definitions/utc_datetime"
                 }
               }
             }
