@@ -259,6 +259,25 @@ o.spec('LINZ collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
+  o("Asset summary created without the mandatory 'maximum' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:asset_summaries']['created']['maximum'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.dataPath === "['linz:asset_summaries'].created" &&
+          error.message === "should have required property '.maximum'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o("Asset summary created with invalid 'minimum' value should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));

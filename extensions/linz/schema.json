@@ -941,7 +941,7 @@
           "required": ["created"],
           "properties": {
             "created": {
-              "required": ["minimum"],
+              "required": ["minimum", "maximum"],
               "properties": {
                 "minimum": {
                   "title": "Earliest asset creation time",
