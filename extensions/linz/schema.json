@@ -132,15 +132,11 @@
             "properties": {
               "created": {
                 "title": "Creation time",
-                "type": "string",
-                "format": "date-time",
-                "pattern": "(\\+00:00|Z)$"
+                "$ref": "#/definitions/utc_datetime"
               },
               "updated": {
                 "title": "Last update time",
-                "type": "string",
-                "format": "date-time",
-                "pattern": "(\\+00:00|Z)$"
+                "$ref": "#/definitions/utc_datetime"
               },
               "linz:language": {
                 "title": "IETF RFC 5646 language tag",
@@ -948,9 +944,7 @@
               "required": ["minimum"],
               "properties": {
                 "minimum": {
-                  "type": "string",
-                  "format": "date-time",
-                  "pattern": "(\\+00:00|Z)$"
+                  "$ref": "#/definitions/utc_datetime"
                 }
               }
             }
@@ -1064,15 +1058,11 @@
               "properties": {
                 "minimum": {
                   "title": "Earliest asset creation time",
-                  "type": "string",
-                  "format": "date-time",
-                  "pattern": "(\\+00:00|Z)$"
+                  "$ref": "#/definitions/utc_datetime"
                 },
                 "maximum": {
                   "title": "Latest asset creation time",
-                  "type": "string",
-                  "format": "date-time",
-                  "pattern": "(\\+00:00|Z)$"
+                  "$ref": "#/definitions/utc_datetime"
                 }
               }
             },
@@ -1082,15 +1072,11 @@
               "properties": {
                 "minimum": {
                   "title": "Earliest asset updated time",
-                  "type": "string",
-                  "format": "date-time",
-                  "pattern": "(\\+00:00|Z)$"
+                  "$ref": "#/definitions/utc_datetime"
                 },
                 "maximum": {
                   "title": "Latest asset updated time",
-                  "type": "string",
-                  "format": "date-time",
-                  "pattern": "(\\+00:00|Z)$"
+                  "$ref": "#/definitions/utc_datetime"
                 }
               }
             }
@@ -1105,6 +1091,11 @@
         "^(?!linz:)": {}
       },
       "additionalProperties": false
+    },
+    "utc_datetime": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "(\\+00:00|Z)$"
     }
   }
 }
