@@ -12,7 +12,9 @@
   "title": "A title",
   "description": "A description",
   "license": "Apache-2.0",
-  "linz:asset_summaries": {},
+  "linz:asset_summaries": {
+    "created": {}
+  },
   "linz:lifecycle": "under development",
   "linz:providers": [
     {

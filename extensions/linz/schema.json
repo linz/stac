@@ -941,7 +941,9 @@
             }
           }
         },
-        "linz:asset_summaries": {},
+        "linz:asset_summaries": {
+          "required": ["created"]
+        },
         "linz:geospatial_type": {},
         "linz:history": {
           "title": "History",

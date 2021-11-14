@@ -222,6 +222,24 @@ o.spec('LINZ collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
+  o("Asset summary without the mandatory 'created' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:asset_summaries']['created'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/linz:asset_summaries' && error.message === "must have required property 'created'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o("Example without the mandatory 'linz:history' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
