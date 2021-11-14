@@ -243,42 +243,25 @@ o.spec('LINZ collection', () => {
     }
   });
 
-  o("Asset summary created without the mandatory 'minimum' property should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    delete example['linz:asset_summaries']['created']['minimum'];
+  o("Asset summary created/updated without the mandatory 'minimum' property should fail validation", async () => {
+    for (const property of ['created', 'updated']) {
+      // given
+      const example = JSON.parse(await fs.readFile(examplePath));
+      delete example['linz:asset_summaries'][property]['minimum'];
 
-    // when
-    let valid = validate(example);
+      // when
+      let valid = validate(example);
 
-    // then
-    o(valid).equals(false);
-    o(
-      validate.errors.some(
-        (error) =>
-          error.instancePath === '/linz:asset_summaries/created' &&
-          error.message === "must have required property 'minimum'",
-      ),
-    ).equals(true)(JSON.stringify(validate.errors));
-  });
-
-  o("Asset summary updated without the mandatory 'minimum' property should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    delete example['linz:asset_summaries']['updated']['minimum'];
-
-    // when
-    let valid = validate(example);
-
-    // then
-    o(valid).equals(false);
-    o(
-      validate.errors.some(
-        (error) =>
-          error.instancePath === '/linz:asset_summaries/updated' &&
-          error.message === "must have required property 'minimum'",
-      ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      // then
+      o(valid).equals(false);
+      o(
+        validate.errors.some(
+          (error) =>
+            error.instancePath === `/linz:asset_summaries/${property}` &&
+            error.message === "must have required property 'minimum'",
+        ),
+      ).equals(true)(JSON.stringify(validate.errors));
+    }
   });
 
   o("Asset summary created without the mandatory 'maximum' property should fail validation", async () => {
@@ -300,23 +283,25 @@ o.spec('LINZ collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
-  o("Asset summary created with invalid 'minimum' value should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    example['linz:asset_summaries']['created']['minimum'] = '1999-01-01T00:00:00';
+  o("Asset summary created/updated with invalid 'minimum' value should fail validation", async () => {
+    for (const property of ['created', 'updated']) {
+      // given
+      const example = JSON.parse(await fs.readFile(examplePath));
+      example['linz:asset_summaries'][property]['minimum'] = '1999-01-01T00:00:00';
 
-    // when
-    let valid = validate(example);
+      // when
+      let valid = validate(example);
 
-    // then
-    o(valid).equals(false);
-    o(
-      validate.errors.some(
-        (error) =>
-          error.instancePath === '/linz:asset_summaries/created/minimum' &&
-          error.message === 'must match pattern "(\\+00:00|Z)$"',
-      ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      // then
+      o(valid).equals(false);
+      o(
+        validate.errors.some(
+          (error) =>
+            error.instancePath === `/linz:asset_summaries/${property}/minimum` &&
+            error.message === 'must match pattern "(\\+00:00|Z)$"',
+        ),
+      ).equals(true)(JSON.stringify(validate.errors));
+    }
   });
 
   o("Asset summary created with invalid 'maximum' value should fail validation", async () => {
