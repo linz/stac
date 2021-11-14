@@ -16,7 +16,8 @@
     "created": {
       "minimum": "1999-01-01T00:00:00Z",
       "maximum": "2010-01-01T00:00:00Z"
-    }
+    },
+    "updated": {}
   },
   "linz:lifecycle": "under development",
   "linz:providers": [

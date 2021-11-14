@@ -938,7 +938,7 @@
           }
         },
         "linz:asset_summaries": {
-          "required": ["created"],
+          "required": ["created", "updated"],
           "properties": {
             "created": {
               "required": ["minimum", "maximum"],
