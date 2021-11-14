@@ -952,6 +952,9 @@
                   "$ref": "#/definitions/utc_datetime"
                 }
               }
+            },
+            "updated": {
+              "required": ["minimum"]
             }
           }
         },
