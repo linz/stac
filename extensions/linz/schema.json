@@ -946,6 +946,10 @@
                 "minimum": {
                   "title": "Earliest asset creation time",
                   "$ref": "#/definitions/utc_datetime"
+                },
+                "maximum": {
+                  "title": "Latest asset creation time",
+                  "$ref": "#/definitions/utc_datetime"
                 }
               }
             }

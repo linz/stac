@@ -273,7 +273,7 @@ o.spec('LINZ collection', () => {
       validate.errors.some(
         (error) =>
           error.dataPath === "['linz:asset_summaries'].created" &&
-          error.message === "should have required property '.maximum'",
+          error.message === "should have required property 'maximum'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -293,6 +293,25 @@ o.spec('LINZ collection', () => {
         (error) =>
           error.instancePath === '/linz:asset_summaries/created/minimum' &&
           error.message === 'must match pattern "(\\+00:00|Z)$"',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
+  o("Asset summary created with invalid 'maximum' value should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:asset_summaries']['created']['maximum'] = '1999-01-01T00:00:00';
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.dataPath === "['linz:asset_summaries'].created.maximum" &&
+          error.message === 'should match pattern "(\\+00:00|Z)$"',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
