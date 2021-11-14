@@ -944,6 +944,7 @@
               "required": ["minimum"],
               "properties": {
                 "minimum": {
+                  "title": "Earliest asset creation time",
                   "$ref": "#/definitions/utc_datetime"
                 }
               }
@@ -1057,11 +1058,11 @@
               "required": ["minimum", "maximum"],
               "properties": {
                 "minimum": {
-                  "title": "Earliest asset creation time",
+                  "title": "Earliest metadata creation time",
                   "$ref": "#/definitions/utc_datetime"
                 },
                 "maximum": {
-                  "title": "Latest asset creation time",
+                  "title": "Latest metadata creation time",
                   "$ref": "#/definitions/utc_datetime"
                 }
               }
@@ -1071,11 +1072,11 @@
               "required": ["minimum", "maximum"],
               "properties": {
                 "minimum": {
-                  "title": "Earliest asset updated time",
+                  "title": "Earliest metadata updated time",
                   "$ref": "#/definitions/utc_datetime"
                 },
                 "maximum": {
-                  "title": "Latest asset updated time",
+                  "title": "Latest metadata updated time",
                   "$ref": "#/definitions/utc_datetime"
                 }
               }
