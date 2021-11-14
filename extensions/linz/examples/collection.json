@@ -18,7 +18,8 @@
       "maximum": "2010-01-01T00:00:00Z"
     },
     "updated": {
-      "minimum": "1999-01-01T00:00:00Z"
+      "minimum": "1999-01-01T00:00:00Z",
+      "maximum": ""
     }
   },
   "linz:lifecycle": "under development",

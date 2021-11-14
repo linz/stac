@@ -954,10 +954,10 @@
               }
             },
             "updated": {
-              "required": ["minimum"],
+              "required": ["minimum", "maximum"],
               "properties": {
                 "minimum": {
-                  "title": "Earliest asset creation time",
+                  "title": "Earliest asset updated time",
                   "$ref": "#/definitions/utc_datetime"
                 }
               }
