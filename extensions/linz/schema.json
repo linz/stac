@@ -34,6 +34,7 @@
           {
             "type": "object",
             "required": [
+              "linz:asset_summaries",
               "linz:geospatial_type",
               "linz:history",
               "linz:lifecycle",
@@ -940,6 +941,7 @@
             }
           }
         },
+        "linz:asset_summaries": {},
         "linz:geospatial_type": {},
         "linz:history": {
           "title": "History",

@@ -205,6 +205,23 @@ o.spec('LINZ collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
+  o("Example without the mandatory 'linz:asset_summaries' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:asset_summaries'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '' && error.message === "must have required property 'linz:asset_summaries'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o("Example without the mandatory 'linz:history' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
