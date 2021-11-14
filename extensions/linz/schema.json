@@ -945,7 +945,12 @@
           "required": ["created"],
           "properties": {
             "created": {
-              "required": ["minimum"]
+              "required": ["minimum"],
+              "properties": {
+                "minimum": {
+                  "type": "string"
+                }
+              }
             }
           }
         },
