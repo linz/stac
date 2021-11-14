@@ -948,7 +948,8 @@
               "required": ["minimum"],
               "properties": {
                 "minimum": {
-                  "type": "string"
+                  "type": "string",
+                  "format": "date-time"
                 }
               }
             }

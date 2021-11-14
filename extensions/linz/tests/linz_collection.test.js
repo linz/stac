@@ -262,7 +262,7 @@ o.spec('LINZ collection', () => {
   o("Asset summary created with invalid 'minimum' value should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
-    example['linz:asset_summaries']['created']['minimum'] = 1;
+    example['linz:asset_summaries']['created']['minimum'] = 'yesterday';
 
     // when
     let valid = validate(example);
@@ -272,7 +272,8 @@ o.spec('LINZ collection', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.instancePath === '/linz:asset_summaries/created/minimum' && error.message === 'must be string',
+          error.instancePath === '/linz:asset_summaries/created/minimum' &&
+          error.message === 'must match format "date-time"',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
