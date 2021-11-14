@@ -14,14 +14,16 @@
   },
   "links": [],
   "assets": {
-    ".his": {
-      "href": "./72360.his",
-      "file:checksum": "1220e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    "image/tiff; application=geotiff; profile=cloud-optimized": {
+    "visual": {
       "href": "./72360.tiff",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "file:checksum": "1220b7deb18ad9dc6f3f94df60c26dd235a019946b8b6b7d1a36f100a8f9f1889130"
+      "file:checksum": "1220b7deb18ad9dc6f3f94df60c26dd235a019946b8b6b7d1a36f100a8f9f1889130",
+      "eo:bands": [
+        {
+          "name": "gray",
+          "common_name": "pan"
+        }
+      ]
     }
   }
 }

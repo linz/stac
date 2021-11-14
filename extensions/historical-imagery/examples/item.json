@@ -59,11 +59,16 @@
     }
   ],
   "assets": {
-    "image/tiff; application=geotiff; profile=cloud-optimized": {
+    "visual": {
       "href": "./215354.tiff",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "file:checksum": "1220b7deb18ad9dc6f3f94df60c26dd235a019946b8b6b7d1a36f100a8f9f1889130",
-      "eo:bands": [{ "name": "Black and White", "common_name": "pan" }]
+      "eo:bands": [
+        {
+          "name": "gray",
+          "common_name": "pan"
+        }
+      ]
     }
   },
   "collection": "01FJ0SE46TT5TGBHBVX64TMEPA"
