@@ -345,4 +345,21 @@ o.spec('LINZ collection', () => {
       JSON.stringify(validate.errors),
     );
   });
+
+  o("Example with incorrect 'linz:update_frequency' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:update_frequency'] = 'incorrect';
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '/linz:update_frequency' && error.message === 'must match format "duration"',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
 });
