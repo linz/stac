@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://linz.github.io/stac/_STAC_VERSION_/historical-imagery/schema.json",
+  "$id": "https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json",
   "title": "Historical Imagery Extension",
   "description": "STAC Historical Imagery Extension for STAC Items and STAC Collections.",
   "oneOf": [
@@ -64,7 +64,7 @@
           "allOf": [
             {
               "contains": {
-                "const": "https://linz.github.io/stac/_STAC_VERSION_/historical-imagery/schema.json"
+                "const": "https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json"
               }
             },
             {
@@ -84,22 +84,22 @@
             },
             {
               "contains": {
-                "const": "https://linz.github.io/stac/_STAC_VERSION_/aerial-photo/schema.json"
+                "const": "https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json"
               }
             },
             {
               "contains": {
-                "const": "https://linz.github.io/stac/_STAC_VERSION_/camera/schema.json"
+                "const": "https://stac.linz.govt.nz/_STAC_VERSION_/camera/schema.json"
               }
             },
             {
               "contains": {
-                "const": "https://linz.github.io/stac/_STAC_VERSION_/film/schema.json"
+                "const": "https://stac.linz.govt.nz/_STAC_VERSION_/film/schema.json"
               }
             },
             {
               "contains": {
-                "const": "https://linz.github.io/stac/_STAC_VERSION_/scanning/schema.json"
+                "const": "https://stac.linz.govt.nz/_STAC_VERSION_/scanning/schema.json"
               }
             }
           ]
@@ -113,7 +113,7 @@
         "stac_extensions": {
           "type": "array",
           "contains": {
-            "const": "https://linz.github.io/stac/_STAC_VERSION_/historical-imagery/schema.json"
+            "const": "https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json"
           }
         }
       }

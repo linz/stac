@@ -2,7 +2,7 @@
   "stac_version": "1.0.0",
   "stac_extensions": [
     "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
-    "https://linz.github.io/stac/_STAC_VERSION_/quality/schema.json"
+    "https://stac.linz.govt.nz/_STAC_VERSION_/quality/schema.json"
   ],
   "type": "Collection",
   "id": "collection",
