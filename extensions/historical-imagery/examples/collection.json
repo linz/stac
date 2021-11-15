@@ -73,7 +73,7 @@
     "scan:is_original": [true, false],
     "eo:bands": [
       {
-        "name": "Black and White",
+        "name": "gray",
         "common_name": "pan"
       }
     ],
