@@ -338,4 +338,38 @@ o.spec('LINZ collection', () => {
       JSON.stringify(validate.errors),
     );
   });
+
+  o("Example with incorrect 'linz:language' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['assets']['example']['linz:language'] = 1;
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.dataPath === ".assets['example']['linz:language']" && error.message === 'should be string',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
+  o("Example with incorrect 'linz:encoding' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['assets']['example']['linz:encoding'] = 1;
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.dataPath === ".assets['example']['linz:encoding']" && error.message === 'should be string',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
 });
