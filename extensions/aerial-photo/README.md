@@ -6,7 +6,7 @@
 - **Identifier**:
   <https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json>
 - **Field Name Prefix**: aerial-photo
-- **Scope**: Item
+- **Scope**: Item, Collection
 - **Extension Classification**: Work In Progress (Before proposal)
 
 ## Item Properties or Asset Fields
