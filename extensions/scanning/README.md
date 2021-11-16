@@ -7,7 +7,7 @@ change**
 - **Identifier**:
   <https://stac.linz.govt.nz/_STAC_VERSION_/scanning/schema.json>
 - **Field Name Prefix**: scan
-- **Scope**: Item
+- **Scope**: Item, Collection
 - **Extension Classification**: Work In Progress (Before proposal)
 
 ## Item Properties or Asset Fields
@@ -16,3 +16,7 @@ change**
 | ---------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | scan:is_original | boolean | Whether the scan is of an original negative (true) or a copy (false).                                                                                                                                                                                                  |
 | scan:scanned     | string  | Date and time the corresponding data was scanned. For LINZ data, this will be the start datetime for the calendar year quarter in which the data was scanned. MUST be formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). |
+
+## Collection Fields
+
+The above fields can be added to Collection summaries. This schema is a work in progress and does not enforce any validation rules for values.

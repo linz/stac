@@ -18,3 +18,7 @@
 | aerial-photo:scale           | integer | Denominator of the distance on the ground relative to the distance on the physical film negative for a photo. |
 | aerial-photo:sequence_number | integer | **REQUIRED** Sequential order of photos taken during a run.                                                   |
 | aerial-photo:anomalies       | string  | Comments about unusual things noticed in the image.                                                           |
+
+## Collection Fields
+
+The above fields can be added to Collection summaries. This schema is a work in progress and does not enforce any validation rules for values.
