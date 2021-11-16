@@ -99,10 +99,12 @@
                 "pattern": "(\\+00:00|Z)$"
               },
               "linz:encoding": {
-                "type": "string"
+                "type": "string",
+                "enum": ["utf-8"]
               },
               "linz:language": {
-                "type": "string"
+                "type": "string",
+                "pattern": "^[a-z]{2}-[A-Z]{2}$"
               },
               "updated": {
                 "title": "Last update time",

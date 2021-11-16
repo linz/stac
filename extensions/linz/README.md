@@ -104,6 +104,8 @@ These fields apply to assets within both items and collections.
 | assets/\*/created       | string | **REQUIRED**. Creation date and time of the asset, in UTC.                                              |
 | assets/\*/updated       | string | **REQUIRED**. Date and time the asset was last updated, in UTC.                                         |
 | assets/\*/file:checksum | string | **REQUIRED**. See [reference](https://github.com/stac-extensions/file/blob/v2.0.0/README.md#checksums). |
+| linz:encoding           | string | Recommended. Character encoding standard used for the data asset.                                       |
+| linz:language           | string | Recommended. Language used in the data asset.                                                           |
 
 ## Extensions
 
