@@ -20,4 +20,4 @@
 
 ## Collection Fields
 
-The above fields can be added to Collection summaries. This schema is a work in progress and does not enforce any validation rules for values.
+The above fields can be added to Collection summaries. This schema is a work in progress and does not enforce any validation rules for Collection summaries values.
