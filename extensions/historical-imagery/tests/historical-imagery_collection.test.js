@@ -11,7 +11,7 @@ const examplePath = join(__dirname, '..', 'examples/collection.json');
 
 // Note that tests for summaries will be written once the rules are decided for mandatory summary data
 
-o.spec('historical-imagery collection', () => {
+o.spec('Historical Imagery Extension Collection', () => {
   o.specTimeout(DefaultTimeoutMillis);
   let validate;
   const ajv = new Ajv(AjvOptions);

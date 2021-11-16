@@ -1,7 +1,16 @@
 {
   "type": "Collection",
   "stac_version": "1.0.0",
-  "stac_extensions": ["https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json"],
+  "stac_extensions": [
+    "https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json",
+    "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.0.0/schema.json",
+    "https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json",
+    "https://stac.linz.govt.nz/_STAC_VERSION_/camera/schema.json",
+    "https://stac.linz.govt.nz/_STAC_VERSION_/film/schema.json",
+    "https://stac.linz.govt.nz/_STAC_VERSION_/scanning/schema.json"
+  ],
   "id": "01FJ0SE46TT5TGBHBVX64TMEPA",
   "title": "399",
   "description": "Survey 399 of the Crown Aerial Film Archive",
