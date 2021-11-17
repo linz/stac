@@ -49,7 +49,7 @@
           "$ref": "#/definitions/fields_collection"
         },
         {
-          "$ref": "#/definitions/stac_extensions_collection"
+          "$ref": "#/definitions/stac_extensions"
         }
       ]
     }
@@ -103,18 +103,6 @@
               }
             }
           ]
-        }
-      }
-    },
-    "stac_extensions_collection": {
-      "type": "object",
-      "required": ["stac_extensions"],
-      "properties": {
-        "stac_extensions": {
-          "type": "array",
-          "contains": {
-            "const": "https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json"
-          }
         }
       }
     },
