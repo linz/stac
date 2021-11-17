@@ -2,10 +2,9 @@ import axios from 'axios';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { promises as fs } from 'fs';
-import { fastFormats } from 'ajv-formats/dist/formats.js';
-import formats from 'ajv-formats-draft2019';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 import iriFormats from 'stac-node-validator/iri.js';
+import { fastFormats } from 'ajv-formats/dist/formats.js';
 
 const Schemas = new Map();
 export function loadSchema(uri) {
@@ -34,5 +33,5 @@ export async function loadSchemaFromUri(uri) {
   }
 }
 
-export const AjvOptions = { loadSchema, formats: Object.assign(formats, fastFormats, iriFormats), strictTypes: false };
+export const AjvOptions = { loadSchema, formats: Object.assign(fastFormats, iriFormats) };
 export const DefaultTimeoutMillis = 60_000;
