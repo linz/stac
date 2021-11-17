@@ -42,7 +42,7 @@ o.spec('Aerial Photo Extension Item', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.dataPath === ".properties['aerial-photo:run']" && error.message === 'should be string',
+        (error) => error.instancePath === ".properties['aerial-photo:run']" && error.message === 'should be string',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -60,7 +60,8 @@ o.spec('Aerial Photo Extension Item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.dataPath === '.properties' && error.message === "should have required property '['aerial-photo:run']'",
+          error.instancePath === '.properties' &&
+          error.message === "should have required property '['aerial-photo:run']'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -78,7 +79,7 @@ o.spec('Aerial Photo Extension Item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.dataPath === '.properties' &&
+          error.instancePath === '.properties' &&
           error.message === "should have required property '['aerial-photo:sequence_number']'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
@@ -97,7 +98,7 @@ o.spec('Aerial Photo Extension Item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.dataPath === ".properties['aerial-photo:sequence_number']" && error.message === 'should be integer',
+          error.instancePath === ".properties['aerial-photo:sequence_number']" && error.message === 'should be integer',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });

@@ -42,7 +42,7 @@ o.spec('Quality collection', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.dataPath === "['quality:description']" && error.message === 'should be string',
+        (error) => error.instancePath === "['quality:description']" && error.message === 'should be string',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -62,7 +62,7 @@ o.spec('Quality collection', () => {
       o(
         validate.errors.some(
           (error) =>
-            error.dataPath === "['quality:horizontal_accuracy_type']" &&
+            error.instancePath === "['quality:horizontal_accuracy_type']" &&
             error.message === 'should be equal to one of the allowed values',
         ),
       ).equals(true)(JSON.stringify(validate.errors));
@@ -84,7 +84,7 @@ o.spec('Quality collection', () => {
       o(
         validate.errors.some(
           (error) =>
-            error.dataPath === "['quality:vertical_accuracy_type']" &&
+            error.instancePath === "['quality:vertical_accuracy_type']" &&
             error.message === 'should be equal to one of the allowed values',
         ),
       ).equals(true)(JSON.stringify(validate.errors));

@@ -42,7 +42,8 @@ o.spec('Camera item', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.dataPath === ".properties['camera:sequence_number']" && error.message === 'should be integer',
+        (error) =>
+          error.instancePath === ".properties['camera:sequence_number']" && error.message === 'should be integer',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });

@@ -43,7 +43,7 @@ o.spec('LINZ item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.dataPath === '' && error.message === "should have required property '['linz:geospatial_type']'",
+          error.instancePath === '' && error.message === "should have required property '['linz:geospatial_type']'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -61,7 +61,7 @@ o.spec('LINZ item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.dataPath === "['linz:geospatial_type']" &&
+          error.instancePath === "['linz:geospatial_type']" &&
           error.message === 'should be equal to one of the allowed values',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
@@ -80,7 +80,7 @@ o.spec('LINZ item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.dataPath === ".assets['example']" && error.message === "should have required property 'created'",
+          error.instancePath === ".assets['example']" && error.message === "should have required property 'created'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -98,7 +98,7 @@ o.spec('LINZ item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.dataPath === ".assets['example']" && error.message === "should have required property 'updated'",
+          error.instancePath === ".assets['example']" && error.message === "should have required property 'updated'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -116,7 +116,7 @@ o.spec('LINZ item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.dataPath === ".assets['example']" &&
+          error.instancePath === ".assets['example']" &&
           error.message === "should have required property '['file:checksum']'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
