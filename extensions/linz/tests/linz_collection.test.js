@@ -44,8 +44,7 @@ o.spec('LINZ collection', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.params.additionalProperty === parameterName &&
-          error.message === 'should NOT have additional properties',
+          error.params.additionalProperty === parameterName && error.message === 'must NOT have additional properties',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -64,8 +63,7 @@ o.spec('LINZ collection', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.params.additionalProperty === parameterName &&
-          error.message === 'should NOT have additional properties',
+          error.params.additionalProperty === parameterName && error.message === 'must NOT have additional properties',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -82,8 +80,7 @@ o.spec('LINZ collection', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) =>
-          error.instancePath === ".assets['example']['proj:epsg']" && error.message === 'should be integer,null',
+        (error) => error.instancePath === '/assets/example/proj:epsg' && error.message === 'must be integer,null',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -100,7 +97,7 @@ o.spec('LINZ collection', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.instancePath === '.summaries' && error.message === "should have required property 'created'",
+        (error) => error.instancePath === '/summaries' && error.message === "must have required property 'created'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -118,8 +115,7 @@ o.spec('LINZ collection', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.instancePath === '.summaries' &&
-          error.message === "should have required property 'linz:geospatial_type'",
+          error.instancePath === '/summaries' && error.message === "must have required property 'linz:geospatial_type'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -137,8 +133,8 @@ o.spec('LINZ collection', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.instancePath === ".summaries['linz:geospatial_type']" &&
-          error.message === 'should NOT have fewer than 1 items',
+          error.instancePath === '/summaries/linz:geospatial_type' &&
+          error.message === 'must NOT have fewer than 1 items',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -156,7 +152,7 @@ o.spec('LINZ collection', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.instancePath === ".assets['example']" && error.message === "should have required property 'created'",
+          error.instancePath === '/assets/example' && error.message === "must have required property 'created'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -174,7 +170,7 @@ o.spec('LINZ collection', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.instancePath === ".assets['example']" && error.message === "should have required property 'updated'",
+          error.instancePath === '/assets/example' && error.message === "must have required property 'updated'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -191,7 +187,7 @@ o.spec('LINZ collection', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.instancePath === '' && error.message === "should have required property '['linz:history']'",
+        (error) => error.instancePath === '' && error.message === "must have required property 'linz:history'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -206,9 +202,11 @@ o.spec('LINZ collection', () => {
 
     // then
     o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "should have required property '['linz:lifecycle']'")).equals(
-      true,
-    )(JSON.stringify(validate.errors));
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '' && error.message === "must have required property 'linz:lifecycle'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
   });
 
   o("Example without 'linz:providers' property should fail validation", async () => {
@@ -221,9 +219,11 @@ o.spec('LINZ collection', () => {
 
     // then
     o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "should have required property '['linz:providers']'")).equals(
-      true,
-    )(JSON.stringify(validate.errors));
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '' && error.message === "must have required property 'linz:providers'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
   });
 
   o("Example without 'linz:security_classification' property should fail validation", async () => {
@@ -238,7 +238,8 @@ o.spec('LINZ collection', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.message === "should have required property '['linz:security_classification']'",
+        (error) =>
+          error.instancePath === '' && error.message === "must have required property 'linz:security_classification'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -253,9 +254,11 @@ o.spec('LINZ collection', () => {
 
     // then
     o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "should have required property 'name'")).equals(true)(
-      JSON.stringify(validate.errors),
-    );
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '/linz:providers/0' && error.message === "must have required property 'name'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
   });
 
   o("Example without 'providers' property should fail validation", async () => {
@@ -268,7 +271,7 @@ o.spec('LINZ collection', () => {
 
     // then
     o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "should have required property '.providers'")).equals(true)(
+    o(validate.errors.some((error) => error.message === "must have required property 'providers'")).equals(true)(
       JSON.stringify(validate.errors),
     );
   });
@@ -286,7 +289,7 @@ o.spec('LINZ collection', () => {
       o(valid).equals(false);
       o(
         validate.errors.some(
-          (error) => error.instancePath === '.providers' && error.message === 'should contain a valid item',
+          (error) => error.instancePath === '/providers' && error.message === 'must contain at least 1 valid item(s)',
         ),
       ).equals(true)(JSON.stringify(validate.errors));
     }
@@ -305,7 +308,8 @@ o.spec('LINZ collection', () => {
       o(valid).equals(false);
       o(
         validate.errors.some(
-          (error) => error.instancePath === "['linz:providers']" && error.message === 'should contain a valid item',
+          (error) =>
+            error.instancePath === '/linz:providers' && error.message === 'must contain at least 1 valid item(s)',
         ),
       ).equals(true)(JSON.stringify(validate.errors));
     }
@@ -321,9 +325,11 @@ o.spec('LINZ collection', () => {
 
     // then
     o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "should have required property '.title'")).equals(true)(
-      JSON.stringify(validate.errors),
-    );
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '' && error.message === "must have required property 'title'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
   });
 
   o("Example without 'version' property should fail validation", async () => {
@@ -336,7 +342,7 @@ o.spec('LINZ collection', () => {
 
     // then
     o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "should have required property '.version'")).equals(true)(
+    o(validate.errors.some((error) => error.message === "must have required property 'version'")).equals(true)(
       JSON.stringify(validate.errors),
     );
   });

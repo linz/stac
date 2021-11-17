@@ -42,7 +42,7 @@ o.spec('Scanning Extension Item', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.instancePath === ".properties['scan:is_original']" && error.message === 'should be boolean',
+        (error) => error.instancePath === '/properties/scan:is_original' && error.message === 'must be boolean',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -60,8 +60,7 @@ o.spec('Scanning Extension Item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.instancePath === ".properties['scan:scanned']" &&
-          error.message === 'should match pattern "(\\+00:00|Z)$"',
+          error.instancePath === '/properties/scan:scanned' && error.message === 'must match pattern "(\\+00:00|Z)$"',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });

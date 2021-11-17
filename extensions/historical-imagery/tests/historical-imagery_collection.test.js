@@ -42,7 +42,7 @@ o.spec('Historical Imagery Extension Collection', () => {
 
     // then
     o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "should have required property '.title'")).equals(true)(
+    o(validate.errors.some((error) => error.message === "must have required property 'title'")).equals(true)(
       JSON.stringify(validate.errors),
     );
   });
@@ -57,7 +57,7 @@ o.spec('Historical Imagery Extension Collection', () => {
 
     // then
     o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "should have required property '.providers'")).equals(true)(
+    o(validate.errors.some((error) => error.message === "must have required property 'providers'")).equals(true)(
       JSON.stringify(validate.errors),
     );
   });
@@ -75,7 +75,7 @@ o.spec('Historical Imagery Extension Collection', () => {
       o(valid).equals(false);
       o(
         validate.errors.some(
-          (error) => error.instancePath === '.providers' && error.message === 'should contain a valid item',
+          (error) => error.instancePath === '/providers' && error.message === 'must contain at least 1 valid item(s)',
         ),
       ).equals(true)(JSON.stringify(validate.errors));
     }

@@ -42,8 +42,7 @@ o.spec('LINZ item', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) =>
-          error.instancePath === '' && error.message === "should have required property '['linz:geospatial_type']'",
+        (error) => error.instancePath === '' && error.message === "must have required property 'linz:geospatial_type'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -61,8 +60,8 @@ o.spec('LINZ item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.instancePath === "['linz:geospatial_type']" &&
-          error.message === 'should be equal to one of the allowed values',
+          error.instancePath === '/linz:geospatial_type' &&
+          error.message === 'must be equal to one of the allowed values',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -80,7 +79,7 @@ o.spec('LINZ item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.instancePath === ".assets['example']" && error.message === "should have required property 'created'",
+          error.instancePath === '/assets/example' && error.message === "must have required property 'created'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -98,7 +97,7 @@ o.spec('LINZ item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.instancePath === ".assets['example']" && error.message === "should have required property 'updated'",
+          error.instancePath === '/assets/example' && error.message === "must have required property 'updated'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -116,8 +115,7 @@ o.spec('LINZ item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.instancePath === ".assets['example']" &&
-          error.message === "should have required property '['file:checksum']'",
+          error.instancePath === '/assets/example' && error.message === "must have required property 'file:checksum'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
