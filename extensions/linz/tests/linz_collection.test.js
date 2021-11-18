@@ -119,10 +119,10 @@ o.spec('LINZ collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
-  o("Example with no values in 'linz:geospatial_type' property should fail validation", async () => {
+  o("Example with invalid 'linz:geospatial_type' value should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
-    example['linz:geospatial_type'] = [];
+    example['linz:geospatial_type'] = '';
 
     // when
     let valid = validate(example);
@@ -132,7 +132,8 @@ o.spec('LINZ collection', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.instancePath === '/linz:geospatial_type' && error.message === 'must NOT have fewer than 1 items',
+          error.instancePath === '/linz:geospatial_type' &&
+          error.message === 'must be equal to one of the allowed values',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });

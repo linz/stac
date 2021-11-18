@@ -51,7 +51,7 @@
     }
   },
   "links": [],
-  "linz:geospatial_type": ["polygon"],
+  "linz:geospatial_type": "polygon",
   "quality:description": "Example quality description",
   "quality:horizontal_accuracy": 1,
   "quality:horizontal_accuracy_type": "nominal",
