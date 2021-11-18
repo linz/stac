@@ -1,3 +1,17 @@
+## [0.0.11](https://github.com/linz/stac/compare/v0.0.10...v0.0.11) (2021-11-17)
+
+### Bug Fixes
+
+- change linz.github.io/stac to stac.linz.govt.nz ([#149](https://github.com/linz/stac/issues/149)) ([fff84dc](https://github.com/linz/stac/commit/fff84dc70fd847c8e8fb138d90f07b9b5542b838))
+- example datetimes to NZ time, remove ms, add scan date-time format (TDE-207) ([#147](https://github.com/linz/stac/issues/147)) ([562df5d](https://github.com/linz/stac/commit/562df5d85ddfa6d5d600ccd19ce22076e9334a76))
+- README updates: remove camera 'vender' reference, h-i require eo:bands ([#148](https://github.com/linz/stac/issues/148)) ([7443877](https://github.com/linz/stac/commit/7443877bda35b5b519cb213c3b5dfb20d351a73d))
+- remove eo and file extensions from examples ([#168](https://github.com/linz/stac/issues/168)) ([6f4d30a](https://github.com/linz/stac/commit/6f4d30ad3b5e2341be2257621bb4990a3cb15319))
+- updated extension examples and h-i test ([#155](https://github.com/linz/stac/issues/155)) ([a925f34](https://github.com/linz/stac/commit/a925f34585c60dbb20805287fcb42a0f4da515b9))
+
+### Features
+
+- add STAC Collections to extensions (TDE-232) ([#165](https://github.com/linz/stac/issues/165)) ([b7a3eb8](https://github.com/linz/stac/commit/b7a3eb805710d1ceeea514003bdc4b6d12326cd5))
+
 ## [0.0.10](https://github.com/linz/stac/compare/v0.0.9...v0.0.10) (2021-11-01)
 
 ### Bug Fixes
