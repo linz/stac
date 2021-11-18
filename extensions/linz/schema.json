@@ -28,6 +28,7 @@
             {
               "type": "object",
               "required": [
+                "linz:geospatial_type",
                 "linz:history",
                 "linz:lifecycle",
                 "linz:providers",
@@ -39,6 +40,12 @@
               "properties": {
                 "type": {
                   "const": "Collection"
+                },
+                "linz:geospatial_type": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/geospatial_type_enum"
+                  }
                 }
               }
             },
@@ -112,7 +119,7 @@
             }
           }
         },
-        "linz:geospatial_type": { "$ref": "#/definitions/geospatial_type_enum" },
+        "linz:geospatial_type": {},
         "linz:history": {
           "title": "History",
           "type": "string"
@@ -208,7 +215,7 @@
         },
         "summaries": {
           "type": "object",
-          "required": ["created", "updated", "linz:geospatial_type"],
+          "required": ["created", "updated"],
           "properties": {
             "created": {
               "type": "object",
@@ -244,12 +251,6 @@
                   "format": "date-time",
                   "pattern": "(\\+00:00|Z)$"
                 }
-              }
-            },
-            "linz:geospatial_type": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/geospatial_type_enum"
               }
             }
           }
