@@ -24,10 +24,10 @@ extension which adds constraints to default STAC schema properties.
 
 ## Item Fields
 
-| Field Name           | Type                | Description                                                                                                                                                  |
-| -------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| linz:geospatial_type | string              | **REQUIRED**. A general description of the type of content that can be found in the dataset. See the [list of accepted geospatial types](#geospatial-types). |
-| processing:software  | Map<string, string> | Recommended. The software and versions which were used to generate the dataset. See [reference](https://github.com/stac-extensions/processing).              |
+| Field Name                      | Type                | Description                                                                                                                                     |
+| ------------------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| properties/linz:geospatial_type | string              | A general description of the type of content that can be found in the dataset. See the [list of accepted geospatial types](#geospatial-types).  |
+| processing:software             | Map<string, string> | Recommended. The software and versions which were used to generate the dataset. See [reference](https://github.com/stac-extensions/processing). |
 
 ### Geospatial Types
 

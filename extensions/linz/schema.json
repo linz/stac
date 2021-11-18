@@ -55,10 +55,15 @@
           "allOf": [
             {
               "type": "object",
-              "required": ["linz:geospatial_type", "type"],
+              "required": ["type"],
               "properties": {
                 "type": {
                   "const": "Feature"
+                },
+                "properties": {
+                  "properties": {
+                    "linz:geospatial_type": { "$ref": "#/definitions/geospatial_type_enum" }
+                  }
                 }
               }
             },
