@@ -43,7 +43,9 @@ o.spec('Template collection', () => {
     // then
     o(valid).equals(false);
     o(
-      validate.errors.some((error) => error.message === 'should match some schema in anyOf' && error.dataPath === ''),
+      validate.errors.some(
+        (error) => error.message === "must have required property 'template:new_field'" && error.instancePath === '',
+      ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
 });

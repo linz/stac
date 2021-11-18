@@ -41,7 +41,7 @@ o.spec('Historical Imagery Extension Item', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.dataPath === '.properties' && error.message === "should have required property '.mission'",
+        (error) => error.instancePath === '/properties' && error.message === "must have required property 'mission'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -57,7 +57,7 @@ o.spec('Historical Imagery Extension Item', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.dataPath === '.properties' && error.message === "should have required property '.platform'",
+        (error) => error.instancePath === '/properties' && error.message === "must have required property 'platform'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -75,7 +75,7 @@ o.spec('Historical Imagery Extension Item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.dataPath === ".assets['visual']" && error.message === "should have required property '['eo:bands']'",
+          error.instancePath === '/assets/visual' && error.message === "must have required property 'eo:bands'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });

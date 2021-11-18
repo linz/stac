@@ -42,7 +42,7 @@ o.spec('Film item', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.dataPath === ".properties['film:id']" && error.message === 'should be string',
+        (error) => error.instancePath === '/properties/film:id' && error.message === 'must be string',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -59,7 +59,7 @@ o.spec('Film item', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.dataPath === '.properties' && error.message === "should have required property '['film:id']'",
+        (error) => error.instancePath === '/properties' && error.message === "must have required property 'film:id'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -76,7 +76,7 @@ o.spec('Film item', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.dataPath === ".properties['film:negative_sequence']" && error.message === 'should be integer',
+        (error) => error.instancePath === '/properties/film:negative_sequence' && error.message === 'must be integer',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -94,8 +94,8 @@ o.spec('Film item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.dataPath === '.properties' &&
-          error.message === "should have required property '['film:negative_sequence']'",
+          error.instancePath === '/properties' &&
+          error.message === "must have required property 'film:negative_sequence'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
