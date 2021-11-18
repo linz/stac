@@ -120,7 +120,7 @@
           "type": "object",
           "additionalProperties": {
             "type": "object",
-            "required": ["file:checksum", "created", "updated"],
+            "required": ["file:checksum", "linz:language", "created", "updated"],
             "properties": {
               "created": {
                 "title": "Creation time",
