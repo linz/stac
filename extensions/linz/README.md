@@ -28,7 +28,7 @@ extension which adds constraints to default STAC schema fields.
 | ------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | processing:software | Map<string, string> | Recommended. The software and versions which were used to generate the dataset. See [reference](https://github.com/stac-extensions/processing). |
 
-### Item Properties Fields
+### Item Properties Object Fields
 
 | Field Name           | Type   | Description                                                                                                                                    |
 | -------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -78,7 +78,7 @@ See [ISO/IEC 13249-3:2016(en)](https://www.iso.org/obp/ui/#!iso:std:60343:en) fo
 | linz:security_classification | string               | **REQUIRED**. New Zealand Government [Security Classification](https://www.digital.govt.nz/standards-and-guidance/governance/managing-online-channels/security-and-privacy-for-websites/foundations/classify-information/). Must be one of `unclassified`, `in-confidence`, `sensitive`, `restricted`, `confidential`, `secret` or `top-secret`. |
 | processing:software          | Map<string, string>  | Recommended. The software and versions which were used to generate the dataset. See [reference](https://github.com/stac-extensions/processing).                                                                                                                                                                                                  |
 
-### Collection Summaries Fields
+### Collection Summaries Object Fields
 
 | Field Name      | Type      | Description                                                          |
 | --------------- | --------- | -------------------------------------------------------------------- |
@@ -88,7 +88,7 @@ See [ISO/IEC 13249-3:2016(en)](https://www.iso.org/obp/ui/#!iso:std:60343:en) fo
 | updated/minimum | date-time | **REQUIRED**. Earliest [asset updated value](#asset-fields), in UTC. |
 | updated/maximum | date-time | **REQUIRED**. Latest [asset updated value](#asset-fields), in UTC.   |
 
-### LINZ Provider Object
+### LINZ Provider Object Fields
 
 This expands on the [provider object in the STAC spec](https://github.com/radiantearth/stac-spec/blob/v1.0.0/item-spec/common-metadata.md#provider-object). Only differences from that definition are mentioned here.
 
@@ -98,7 +98,7 @@ This expands on the [provider object in the STAC spec](https://github.com/radian
 | roles      | \[string] | **There needs to be at least one provider with the `custodian` role and one with the `manager` role.**                                                                                            |
 | url        | string    | The `url` should be an internal URL that links to more information about that person or team.                                                                                                     |
 
-### Provider Object
+### Provider Object Fields
 
 This expands on the [provider object in the STAC spec](https://github.com/radiantearth/stac-spec/blob/v1.0.0/item-spec/common-metadata.md#provider-object). Only differences from that definition are mentioned here.
 
