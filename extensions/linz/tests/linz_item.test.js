@@ -30,37 +30,6 @@ o.spec('LINZ item', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Example without 'linz:geospatial_type' property should not fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    delete example['properties']['linz:geospatial_type'];
-
-    // when
-    const valid = validate(example);
-
-    // then
-    o(valid).equals(true);
-  });
-
-  o("Example with invalid 'linz:geospatial_type' properties value should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    example['properties']['linz:geospatial_type'] = 'incorrect_example';
-
-    // when
-    const valid = validate(example);
-
-    // then
-    o(valid).equals(false);
-    o(
-      validate.errors.some(
-        (error) =>
-          error.instancePath === '/properties/linz:geospatial_type' &&
-          error.message === 'must be equal to one of the allowed values',
-      ),
-    ).equals(true)(JSON.stringify(validate.errors));
-  });
-
   o("Asset with no 'created' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));

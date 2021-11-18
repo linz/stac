@@ -23,7 +23,6 @@
   },
   "properties": {
     "datetime": "2020-12-11T22:38:32Z",
-    "linz:geospatial_type": "polygon",
     "proj:epsg": 123,
     "version": "1.0.0"
   },

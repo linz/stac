@@ -44,7 +44,33 @@
                 "linz:geospatial_type": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/definitions/geospatial_type_enum"
+                    "type": "string",
+                    "enum": [
+                      "black and white image",
+                      "circular string",
+                      "color image",
+                      "compound curve",
+                      "curve polygon",
+                      "geometry",
+                      "geometry collection",
+                      "grayscale",
+                      "grid",
+                      "hyperspectral",
+                      "multicurve",
+                      "multilinestring",
+                      "multipoint",
+                      "multipolygon",
+                      "multispectral",
+                      "multisurface",
+                      "linestring",
+                      "point",
+                      "point cloud",
+                      "polygon",
+                      "polyhedral surface",
+                      "rgb",
+                      "tin",
+                      "triangle"
+                    ]
                   },
                   "minItems": 1
                 }
@@ -67,11 +93,6 @@
               "properties": {
                 "type": {
                   "const": "Feature"
-                },
-                "properties": {
-                  "properties": {
-                    "linz:geospatial_type": { "$ref": "#/definitions/geospatial_type_enum" }
-                  }
                 }
               }
             },
@@ -265,35 +286,6 @@
         "^(?!linz:)": {}
       },
       "additionalProperties": false
-    },
-    "geospatial_type_enum": {
-      "type": "string",
-      "enum": [
-        "black and white image",
-        "circular string",
-        "color image",
-        "compound curve",
-        "curve polygon",
-        "geometry",
-        "geometry collection",
-        "grayscale",
-        "grid",
-        "hyperspectral",
-        "multicurve",
-        "multilinestring",
-        "multipoint",
-        "multipolygon",
-        "multispectral",
-        "multisurface",
-        "linestring",
-        "point",
-        "point cloud",
-        "polygon",
-        "polyhedral surface",
-        "rgb",
-        "tin",
-        "triangle"
-      ]
     }
   }
 }
