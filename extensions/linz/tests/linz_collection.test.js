@@ -195,7 +195,7 @@ o.spec('LINZ collection', () => {
   o("Asset with invalid 'linz:language' value should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
-    example['assets']['example']['linz:language'] = null;
+    example['assets']['example']['linz:language'] = '';
 
     // when
     let valid = validate(example);
@@ -204,7 +204,9 @@ o.spec('LINZ collection', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.instancePath === '/assets/example/linz:language' && error.message === 'must be string',
+        (error) =>
+          error.instancePath === '/assets/example/linz:language' &&
+          error.message === 'must be equal to one of the allowed values',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
