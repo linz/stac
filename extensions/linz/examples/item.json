@@ -24,7 +24,10 @@
   "properties": {
     "datetime": "2020-12-11T22:38:32Z",
     "proj:epsg": 123,
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "processing:software": {
+      "pystac": "v1.2.0"
+    }
   },
   "links": [
     {
