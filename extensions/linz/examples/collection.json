@@ -48,10 +48,10 @@
     "datetime": {
       "minimum": "2015-06-23T00:00:00Z",
       "maximum": "2019-07-10T13:44:56Z"
-    },
-    "linz:geospatial_type": ["polygon"]
+    }
   },
   "links": [],
+  "linz:geospatial_type": "polygon",
   "quality:description": "Example quality description",
   "quality:horizontal_accuracy": 1,
   "quality:horizontal_accuracy_type": "nominal",
