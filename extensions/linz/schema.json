@@ -21,83 +21,90 @@
     },
     {
       "$comment": "Type-specific schemas",
-      "oneOf": [
-        {
-          "$comment": "This is the schema for STAC Collections.",
-          "allOf": [
-            {
-              "type": "object",
-              "required": [
-                "linz:geospatial_type",
-                "linz:history",
-                "linz:lifecycle",
-                "linz:providers",
-                "linz:security_classification",
-                "providers",
-                "title",
-                "type"
-              ],
-              "properties": {
-                "type": {
-                  "const": "Collection"
-                },
-                "linz:geospatial_type": {
-                  "type": "string",
-                  "enum": [
-                    "black and white image",
-                    "circular string",
-                    "color image",
-                    "compound curve",
-                    "curve polygon",
-                    "geometry",
-                    "geometry collection",
-                    "grayscale",
-                    "grid",
-                    "hyperspectral",
-                    "multicurve",
-                    "multilinestring",
-                    "multipoint",
-                    "multipolygon",
-                    "multispectral",
-                    "multisurface",
-                    "linestring",
-                    "point",
-                    "point cloud",
-                    "polygon",
-                    "polyhedral surface",
-                    "rgb",
-                    "tin",
-                    "triangle"
-                  ]
-                }
+      "if": {
+        "properties": {
+          "type": {
+            "const": "Collection"
+          }
+        }
+      },
+      "then": {
+        "$comment": "This is the schema for STAC Collections.",
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "linz:geospatial_type",
+              "linz:history",
+              "linz:lifecycle",
+              "linz:providers",
+              "linz:security_classification",
+              "providers",
+              "title",
+              "type"
+            ],
+            "properties": {
+              "linz:geospatial_type": {
+                "type": "string",
+                "enum": [
+                  "black and white image",
+                  "circular string",
+                  "color image",
+                  "compound curve",
+                  "curve polygon",
+                  "geometry",
+                  "geometry collection",
+                  "grayscale",
+                  "grid",
+                  "hyperspectral",
+                  "multicurve",
+                  "multilinestring",
+                  "multipoint",
+                  "multipolygon",
+                  "multispectral",
+                  "multisurface",
+                  "linestring",
+                  "point",
+                  "point cloud",
+                  "polygon",
+                  "polyhedral surface",
+                  "rgb",
+                  "tin",
+                  "triangle"
+                ]
               }
-            },
-            {
-              "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
-            },
-            {
-              "$ref": "https://stac.linz.govt.nz/_STAC_VERSION_/quality/schema.json#"
             }
-          ]
+          },
+          {
+            "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
+          },
+          {
+            "$ref": "https://stac.linz.govt.nz/_STAC_VERSION_/quality/schema.json#"
+          }
+        ]
+      },
+      "else": {
+        "if": {
+          "properties": {
+            "type": {
+              "const": "Feature"
+            }
+          }
         },
-        {
+        "then": {
           "$comment": "This is the schema for STAC Items.",
           "allOf": [
             {
               "type": "object",
-              "required": ["type"],
-              "properties": {
-                "type": {
-                  "const": "Feature"
-                }
-              }
+              "required": ["type"]
             },
             {
               "$ref": "https://schemas.stacspec.org/v1.0.0/item-spec/json-schema/item.json#"
             }
           ]
-        }
-      ]
+        },
+        "else": false
+      }
     }
   ],
   "definitions": {
