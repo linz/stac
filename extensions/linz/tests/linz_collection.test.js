@@ -174,6 +174,43 @@ o.spec('LINZ collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
+  o("Asset with no 'linz:language' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['assets']['example']['linz:language'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/assets/example' && error.message === "must have required property 'linz:language'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
+  o("Asset with invalid 'linz:language' value should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['assets']['example']['linz:language'] = '';
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/assets/example/linz:language' &&
+          error.message === 'must be equal to one of the allowed values',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o("Example without the mandatory 'linz:history' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
