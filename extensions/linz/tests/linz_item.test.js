@@ -84,7 +84,7 @@ o.spec('LINZ item', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
-  o("Asset with no 'linz:language' property should fail validation", async () => {
+  o("Asset with no 'linz:language' property should pass validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example['assets']['example']['linz:language'];
@@ -93,12 +93,6 @@ o.spec('LINZ item', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
-      validate.errors.some(
-        (error) =>
-          error.instancePath === '/assets/example' && error.message === "must have required property 'linz:language'",
-      ),
-    ).equals(true)(JSON.stringify(validate.errors));
+    o(valid).equals(true);
   });
 });
