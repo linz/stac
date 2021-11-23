@@ -14,7 +14,7 @@
   "devDependencies": {
     "@linzjs/style": "^3.4.0",
     "@types/ospec": "^4.0.2",
-    "ajv": "^8.8.1",
+    "ajv": "^8.8.2",
     "ajv-formats": "^2.1.1",
     "conventional-changelog-cli": "^2.1.1",
     "ospec": "^4.1.1",
