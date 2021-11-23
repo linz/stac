@@ -118,10 +118,10 @@ These fields apply to assets within both items and collections.
 
 This extension includes these other extensions:
 
+- [processing](https://github.com/stac-extensions/processing)
 - [projection](https://github.com/stac-extensions/projection)
 - [quality](../quality)
 - [version](https://github.com/stac-extensions/version)
-- [processing](https://github.com/stac-extensions/processing)
 
 ## Contributing
 
