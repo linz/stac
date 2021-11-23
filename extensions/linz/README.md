@@ -121,6 +121,7 @@ This extension includes these other extensions:
 - [projection](https://github.com/stac-extensions/projection)
 - [quality](../quality)
 - [version](https://github.com/stac-extensions/version)
+- [processing](https://github.com/stac-extensions/processing)
 
 ## Contributing
 
