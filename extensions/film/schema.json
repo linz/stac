@@ -97,9 +97,9 @@
             "film:id": {
               "type": "array",
               "items": {
-                "type": "string",
-                "minItems": 1
-              }
+                "type": "string"
+              },
+              "minItems": 1
             },
             "film:negative_sequence": {
               "type": "object",
