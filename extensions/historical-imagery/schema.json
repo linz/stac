@@ -171,9 +171,9 @@
             "mission": {
               "type": "array",
               "items": {
-                "type": "string",
-                "minItems": 1
-              }
+                "type": "string"
+              },
+              "minItems": 1
             },
             "instruments": {
               "type": "array",
