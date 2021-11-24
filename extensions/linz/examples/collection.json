@@ -12,6 +12,16 @@
   "title": "A title",
   "description": "A description",
   "license": "Apache-2.0",
+  "linz:asset_summaries": {
+    "created": {
+      "minimum": "1999-01-01T00:00:00Z",
+      "maximum": "2010-01-01T00:00:00Z"
+    },
+    "updated": {
+      "minimum": "1999-01-01T00:00:00Z",
+      "maximum": "2010-01-01T00:00:00Z"
+    }
+  },
   "linz:lifecycle": "under development",
   "linz:providers": [
     {

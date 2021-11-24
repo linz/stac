@@ -34,6 +34,7 @@
           {
             "type": "object",
             "required": [
+              "linz:asset_summaries",
               "linz:geospatial_type",
               "linz:history",
               "linz:lifecycle",
@@ -131,15 +132,11 @@
             "properties": {
               "created": {
                 "title": "Creation time",
-                "type": "string",
-                "format": "date-time",
-                "pattern": "(\\+00:00|Z)$"
+                "$ref": "#/definitions/utc_datetime"
               },
               "updated": {
                 "title": "Last update time",
-                "type": "string",
-                "format": "date-time",
-                "pattern": "(\\+00:00|Z)$"
+                "$ref": "#/definitions/utc_datetime"
               },
               "linz:language": {
                 "title": "IETF RFC 5646 language tag",
@@ -940,6 +937,37 @@
             }
           }
         },
+        "linz:asset_summaries": {
+          "required": ["created", "updated"],
+          "properties": {
+            "created": {
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Earliest asset creation time",
+                  "$ref": "#/definitions/utc_datetime"
+                },
+                "maximum": {
+                  "title": "Latest asset creation time",
+                  "$ref": "#/definitions/utc_datetime"
+                }
+              }
+            },
+            "updated": {
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Earliest asset updated time",
+                  "$ref": "#/definitions/utc_datetime"
+                },
+                "maximum": {
+                  "title": "Latest asset updated time",
+                  "$ref": "#/definitions/utc_datetime"
+                }
+              }
+            }
+          }
+        },
         "linz:geospatial_type": {},
         "linz:history": {
           "title": "History",
@@ -1047,16 +1075,12 @@
               "required": ["minimum", "maximum"],
               "properties": {
                 "minimum": {
-                  "title": "Earliest asset creation time",
-                  "type": "string",
-                  "format": "date-time",
-                  "pattern": "(\\+00:00|Z)$"
+                  "title": "Earliest metadata creation time",
+                  "$ref": "#/definitions/utc_datetime"
                 },
                 "maximum": {
-                  "title": "Latest asset creation time",
-                  "type": "string",
-                  "format": "date-time",
-                  "pattern": "(\\+00:00|Z)$"
+                  "title": "Latest metadata creation time",
+                  "$ref": "#/definitions/utc_datetime"
                 }
               }
             },
@@ -1065,16 +1089,12 @@
               "required": ["minimum", "maximum"],
               "properties": {
                 "minimum": {
-                  "title": "Earliest asset updated time",
-                  "type": "string",
-                  "format": "date-time",
-                  "pattern": "(\\+00:00|Z)$"
+                  "title": "Earliest metadata updated time",
+                  "$ref": "#/definitions/utc_datetime"
                 },
                 "maximum": {
-                  "title": "Latest asset updated time",
-                  "type": "string",
-                  "format": "date-time",
-                  "pattern": "(\\+00:00|Z)$"
+                  "title": "Latest metadata updated time",
+                  "$ref": "#/definitions/utc_datetime"
                 }
               }
             }
@@ -1089,6 +1109,11 @@
         "^(?!linz:)": {}
       },
       "additionalProperties": false
+    },
+    "utc_datetime": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "(\\+00:00|Z)$"
     }
   }
 }
