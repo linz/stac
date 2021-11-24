@@ -29,4 +29,39 @@ o.spec('Aerial Photo Extension Collection', () => {
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
+  o("Summaries with no 'aerial-photo:run' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.summaries['aerial-photo:run'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/summaries' && error.message === "must have required property 'aerial-photo:run'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+  o("Summaries with no 'aerial-photo:sequence_number' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.summaries['aerial-photo:sequence_number'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/summaries' &&
+          error.message === "must have required property 'aerial-photo:sequence_number'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
 });
