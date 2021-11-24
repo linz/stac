@@ -150,9 +150,9 @@
             "aerial-photo:anomalies": {
               "type": "array",
               "items": {
-                "type": "string",
-                "minItems": 1
-              }
+                "type": "string"
+              },
+              "minItems": 1
             }
           }
         }
