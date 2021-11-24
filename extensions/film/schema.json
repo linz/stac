@@ -42,12 +42,15 @@
       "type": "object",
       "allOf": [
         {
-          "required": ["type"],
+          "required": ["type", "summaries"],
           "properties": {
             "type": {
               "const": "Collection"
             }
           }
+        },
+        {
+          "$ref": "#/definitions/fields"
         },
         {
           "$ref": "#/definitions/stac_extensions"
@@ -86,6 +89,47 @@
         "film:physical_size": {
           "title": "Physical Size Format",
           "type": "string"
+        },
+        "summaries": {
+          "type": "object",
+          "required": ["film:id", "film:negative_sequence"],
+          "properties": {
+            "film:id": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minItems": 1
+              }
+            },
+            "film:negative_sequence": {
+              "type": "object",
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Lowest negative sequence number",
+                  "type": "integer"
+                },
+                "maximum": {
+                  "title": "Highest negative sequence number",
+                  "type": "integer"
+                }
+              }
+            },
+            "film:physical_condition": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minItems": 1
+              }
+            },
+            "film:physical_size": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minItems": 1
+              }
+            }
+          }
         }
       },
       "patternProperties": {

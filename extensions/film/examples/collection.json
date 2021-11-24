@@ -33,7 +33,7 @@
     "mission": ["399"],
     "film:id": ["464", "465", "466", "470", "476", "486", "577", "579", "580", "728", "731", "732"],
     "film:negative_sequence": {
-      "mimimum": 1,
+      "minimum": 1,
       "maximum": 184
     },
     "film:physical_condition": ["Film scratched", "NOT 10/03/1949", "NOT 16/04/1947"],
