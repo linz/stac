@@ -39,8 +39,8 @@ o.spec('Template item', () => {
 
     // then
     o(valid).equals(false);
-    o(
-      validate.errors.some((error) => error.message === "should have required property '['template:new_field']'"),
-    ).equals(true)(JSON.stringify(validate.errors));
+    o(validate.errors.some((error) => error.message === "must have required property 'template:new_field'")).equals(
+      true,
+    )(JSON.stringify(validate.errors));
   });
 });

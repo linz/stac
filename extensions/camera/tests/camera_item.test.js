@@ -7,9 +7,9 @@ import { AjvOptions, DefaultTimeoutMillis } from '../../../validation.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
-const examplePath = join(__dirname, '..', 'examples/collection.json');
+const examplePath = join(__dirname, '..', 'examples/item.json');
 
-o.spec('Template collection', () => {
+o.spec('Camera item', () => {
   o.specTimeout(DefaultTimeoutMillis);
   let validate;
   const ajv = new Ajv(AjvOptions);
@@ -30,12 +30,10 @@ o.spec('Template collection', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Example without mandatory 'template:new_field' field should fail validation", async () => {
+  o("Example with an incorrect 'camera:sequence_number' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
-    delete example['template:new_field'];
-    delete example['assets'];
-    delete example['item_assets'];
+    example.properties['camera:sequence_number'] = 'incorrect_value';
 
     // when
     let valid = validate(example);
@@ -44,7 +42,7 @@ o.spec('Template collection', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.message === "must have required property 'template:new_field'" && error.instancePath === '',
+        (error) => error.instancePath === '/properties/camera:sequence_number' && error.message === 'must be integer',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });

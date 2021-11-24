@@ -7,9 +7,9 @@ import { AjvOptions, DefaultTimeoutMillis } from '../../../validation.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
-const examplePath = join(__dirname, '..', 'examples/item.json');
+const examplePath = join(__dirname, '..', 'examples/collection.json');
 
-o.spec('Scanning item', () => {
+o.spec('Film Extension Collection', () => {
   o.specTimeout(DefaultTimeoutMillis);
   let validate;
   const ajv = new Ajv(AjvOptions);
@@ -29,11 +29,10 @@ o.spec('Scanning item', () => {
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
-
-  o("Example with an incorrect 'scan:is_original' field should fail validation", async () => {
+  o("Summaries with no 'film:id' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
-    example.properties['scan:is_original'] = 'notboolean';
+    delete example.summaries['film:id'];
 
     // when
     let valid = validate(example);
@@ -42,15 +41,14 @@ o.spec('Scanning item', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.dataPath === ".properties['scan:is_original']" && error.message === 'should be boolean',
+        (error) => error.instancePath === '/summaries' && error.message === "must have required property 'film:id'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
-
-  o("Example with an incorrect 'scan:scanned' field should fail validation", async () => {
+  o("Summaries with no 'film:negative_sequence' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
-    example.properties['scan:scanned'] = '2019/DQ';
+    delete example.summaries['film:negative_sequence'];
 
     // when
     let valid = validate(example);
@@ -60,7 +58,8 @@ o.spec('Scanning item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.dataPath === ".properties['scan:scanned']" && error.message === 'should match pattern "(\\+00:00|Z)$"',
+          error.instancePath === '/summaries' &&
+          error.message === "must have required property 'film:negative_sequence'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });

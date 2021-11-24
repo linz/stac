@@ -11,7 +11,7 @@ const examplePath = join(__dirname, '..', 'examples/collection.json');
 
 // Note that tests for summaries will be written once the rules are decided for mandatory summary data
 
-o.spec('historical-imagery collection', () => {
+o.spec('Historical Imagery Extension Collection', () => {
   o.specTimeout(DefaultTimeoutMillis);
   let validate;
   const ajv = new Ajv(AjvOptions);
@@ -42,7 +42,7 @@ o.spec('historical-imagery collection', () => {
 
     // then
     o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "should have required property '.title'")).equals(true)(
+    o(validate.errors.some((error) => error.message === "must have required property 'title'")).equals(true)(
       JSON.stringify(validate.errors),
     );
   });
@@ -57,7 +57,7 @@ o.spec('historical-imagery collection', () => {
 
     // then
     o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "should have required property '.providers'")).equals(true)(
+    o(validate.errors.some((error) => error.message === "must have required property 'providers'")).equals(true)(
       JSON.stringify(validate.errors),
     );
   });
@@ -75,9 +75,57 @@ o.spec('historical-imagery collection', () => {
       o(valid).equals(false);
       o(
         validate.errors.some(
-          (error) => error.dataPath === '.providers' && error.message === 'should contain a valid item',
+          (error) => error.instancePath === '/providers' && error.message === 'must contain at least 1 valid item(s)',
         ),
       ).equals(true)(JSON.stringify(validate.errors));
     }
+  });
+  o("Summaries with no 'platform' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.summaries.platform;
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '/summaries' && error.message === "must have required property 'platform'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+  o("Summaries with no 'mission' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.summaries.mission;
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '/summaries' && error.message === "must have required property 'mission'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+  o("Summaries with no 'proj:epsg' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.summaries['proj:epsg'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '/summaries' && error.message === "must have required property 'proj:epsg'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
   });
 });

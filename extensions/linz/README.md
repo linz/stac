@@ -12,7 +12,7 @@
 
 This is LINZ top level
 [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC)
-extension which adds constraints to default STAC schema properties.
+extension which adds constraints to default STAC schema fields.
 
 - Examples:
   - [Collection example](examples/collection.json): Shows the basic usage of the
@@ -24,10 +24,11 @@ extension which adds constraints to default STAC schema properties.
 
 ## Item Fields
 
-| Field Name           | Type                | Description                                                                                                                                                  |
-| -------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| linz:geospatial_type | string              | **REQUIRED**. A general description of the type of content that can be found in the dataset. See the [list of accepted geospatial types](#geospatial-types). |
-| processing:software  | Map<string, string> | Recommended. The software and versions which were used to generate the dataset. See [reference](https://github.com/stac-extensions/processing).              |
+### Item Properties Object Fields
+
+| Field Name          | Type                | Description                                                                                                                                     |
+| ------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| processing:software | Map<string, string> | Recommended. The software and versions which were used to generate the dataset. See [reference](https://github.com/stac-extensions/processing). |
 
 ### Geospatial Types
 
@@ -62,22 +63,35 @@ See [ISO/IEC 13249-3:2016(en)](https://www.iso.org/obp/ui/#!iso:std:60343:en) fo
 
 ## Collection Fields
 
-| Field Name                     | Type                 | Description                                                                                                                                                                                                                                                                                                                                      |
-| ------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| title                          | string               | **REQUIRED**. Collection title.                                                                                                                                                                                                                                                                                                                  |
-| summaries/created/minimum      | date-time            | **REQUIRED**. Earliest [asset created value](#asset-fields), in UTC.                                                                                                                                                                                                                                                                             |
-| summaries/created/maximum      | date-time            | **REQUIRED**. Latest [asset created value](#asset-fields), in UTC.                                                                                                                                                                                                                                                                               |
-| summaries/updated/minimum      | date-time            | **REQUIRED**. Earliest [asset updated value](#asset-fields), in UTC.                                                                                                                                                                                                                                                                             |
-| summaries/updated/maximum      | date-time            | **REQUIRED**. Latest [asset updated value](#asset-fields), in UTC.                                                                                                                                                                                                                                                                               |
-| summaries/linz:geospatial_type | \[string]            | **REQUIRED**. A general description of the type of content that can be found in the dataset. See the [list of accepted geospatial types](#geospatial-types).                                                                                                                                                                                     |
-| linz:history                   | string               | **REQUIRED**. A descriptive statement about the lineage/history of a dataset                                                                                                                                                                                                                                                                     |
-| linz:lifecycle                 | string               | **REQUIRED**. Lifecycle Status of Collection. Must be one of `under development`, `preview`, `ongoing`, `completed`, `deprecated`.                                                                                                                                                                                                               |
-| linz:providers                 | LINZ Provider Object | **REQUIRED**. The object provides information about a provider with additional roles defined by Toitū Te Whenua LINZ. A provider is any of the organizations that captures or processes the content of the assets and therefore influences the data offered by the STAC implementation. See [LINZ Provider Object](#linz-provider-object).       |
-| providers                      | Provider Object      | **REQUIRED**. The object provides information about a provider. A provider is any of the organizations that captures or processes the content of the assets and therefore influences the data offered by the STAC implementation. See [Provider Object](#provider-object).                                                                       |
-| linz:security_classification   | string               | **REQUIRED**. New Zealand Government [Security Classification](https://www.digital.govt.nz/standards-and-guidance/governance/managing-online-channels/security-and-privacy-for-websites/foundations/classify-information/). Must be one of `unclassified`, `in-confidence`, `sensitive`, `restricted`, `confidential`, `secret` or `top-secret`. |
-| processing:software            | Map<string, string>  | Recommended. The software and versions which were used to generate the dataset. See [reference](https://github.com/stac-extensions/processing).                                                                                                                                                                                                  |
+| Field Name                   | Type                             | Description                                                                                                                                                                                                                                                                                                                                      |
+| ---------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| title                        | string                           | **REQUIRED**. Collection title.                                                                                                                                                                                                                                                                                                                  |
+| linz:asset_summaries         | Map<string, Map<string, string>> | **REQUIRED**. See [Custom Collection Summaries Object Fields](#custom-collection-summaries-object-fields).                                                                                                                                                                                                                                       |
+| linz:geospatial_type         | string                           | **REQUIRED**. A general description of the type of content that can be found in the dataset. See the [list of accepted geospatial types](#geospatial-types).                                                                                                                                                                                     |
+| linz:history                 | string                           | **REQUIRED**. A descriptive statement about the lineage/history of a dataset                                                                                                                                                                                                                                                                     |
+| linz:lifecycle               | string                           | **REQUIRED**. Lifecycle Status of Collection. Must be one of `under development`, `preview`, `ongoing`, `completed`, `deprecated`.                                                                                                                                                                                                               |
+| linz:providers               | LINZ Provider Object             | **REQUIRED**. The object provides information about a provider with additional roles defined by Toitū Te Whenua LINZ. A provider is any of the organizations that captures or processes the content of the assets and therefore influences the data offered by the STAC implementation. See [LINZ Provider Object](#linz-provider-object).       |
+| providers                    | Provider Object                  | **REQUIRED**. The object provides information about a provider. A provider is any of the organizations that captures or processes the content of the assets and therefore influences the data offered by the STAC implementation. See [Provider Object](#provider-object).                                                                       |
+| linz:security_classification | string                           | **REQUIRED**. New Zealand Government [Security Classification](https://www.digital.govt.nz/standards-and-guidance/governance/managing-online-channels/security-and-privacy-for-websites/foundations/classify-information/). Must be one of `unclassified`, `in-confidence`, `sensitive`, `restricted`, `confidential`, `secret` or `top-secret`. |
+| linz:update_frequency        | string                           | Recommended. Indicates how frequently an updated dataset may be distributed to the publication platform. Must follow the format for durations as defined in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#appendix-A). For example, `P3D` expresses a duration of 3 days.                                                              |
+| processing:software          | Map<string, string>              | Recommended. The software and versions which were used to generate the dataset. See [reference](https://github.com/stac-extensions/processing).                                                                                                                                                                                                  |
 
-### LINZ Provider Object
+### Custom Collection Summaries Object Fields
+
+| Field Name      | Type      | Description                                                          |
+| --------------- | --------- | -------------------------------------------------------------------- |
+| created/minimum | date-time | **REQUIRED**. Earliest [asset created value](#asset-fields), in UTC. |
+| created/maximum | date-time | **REQUIRED**. Latest [asset created value](#asset-fields), in UTC.   |
+| updated/minimum | date-time | **REQUIRED**. Earliest [asset updated value](#asset-fields), in UTC. |
+| updated/maximum | date-time | **REQUIRED**. Latest [asset updated value](#asset-fields), in UTC.   |
+
+### Collection Summaries Object Fields
+
+| Field Name | Type   | Description                     |
+| ---------- | ------ | ------------------------------- |
+| title      | string | **REQUIRED**. Collection title. |
+
+### LINZ Provider Object Fields
 
 This expands on the [provider object in the STAC spec](https://github.com/radiantearth/stac-spec/blob/v1.0.0/item-spec/common-metadata.md#provider-object). Only differences from that definition are mentioned here.
 
@@ -87,7 +101,7 @@ This expands on the [provider object in the STAC spec](https://github.com/radian
 | roles      | \[string] | **There needs to be at least one provider with the `custodian` role and one with the `manager` role.**                                                                                            |
 | url        | string    | The `url` should be an internal URL that links to more information about that person or team.                                                                                                     |
 
-### Provider Object
+### Provider Object Fields
 
 This expands on the [provider object in the STAC spec](https://github.com/radiantearth/stac-spec/blob/v1.0.0/item-spec/common-metadata.md#provider-object). Only differences from that definition are mentioned here.
 
@@ -99,16 +113,18 @@ This expands on the [provider object in the STAC spec](https://github.com/radian
 
 These fields apply to assets within both items and collections.
 
-| Field Name              | Type   | Description                                                                                             |
-| ----------------------- | ------ | ------------------------------------------------------------------------------------------------------- |
-| assets/\*/created       | string | **REQUIRED**. Creation date and time of the asset, in UTC.                                              |
-| assets/\*/updated       | string | **REQUIRED**. Date and time the asset was last updated, in UTC.                                         |
-| assets/\*/file:checksum | string | **REQUIRED**. See [reference](https://github.com/stac-extensions/file/blob/v2.0.0/README.md#checksums). |
+| Field Name    | Type   | Description                                                                                                                                                                                        |
+| ------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| created       | string | **REQUIRED**. Creation date and time of the asset, in UTC.                                                                                                                                         |
+| updated       | string | **REQUIRED**. Date and time the asset was last updated, in UTC.                                                                                                                                    |
+| file:checksum | string | **REQUIRED**. See [reference](https://github.com/stac-extensions/file/blob/v2.0.0/README.md#checksums).                                                                                            |
+| linz:language | string | Required for assets which include text when the collection is shared externally. [RFC 5646 language tag](https://datatracker.ietf.org/doc/html/rfc5646), for example `en-NZ` (New Zealand English) |
 
 ## Extensions
 
 This extension includes these other extensions:
 
+- [processing](https://github.com/stac-extensions/processing)
 - [projection](https://github.com/stac-extensions/projection)
 - [quality](../quality)
 - [version](https://github.com/stac-extensions/version)

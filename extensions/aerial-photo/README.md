@@ -6,7 +6,7 @@
 - **Identifier**:
   <https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json>
 - **Field Name Prefix**: aerial-photo
-- **Scope**: Item
+- **Scope**: Item, Collection
 - **Extension Classification**: Work In Progress (Before proposal)
 
 ## Item Properties or Asset Fields
@@ -18,3 +18,7 @@
 | aerial-photo:scale           | integer | Denominator of the distance on the ground relative to the distance on the physical film negative for a photo. |
 | aerial-photo:sequence_number | integer | **REQUIRED** Sequential order of photos taken during a run.                                                   |
 | aerial-photo:anomalies       | string  | Comments about unusual things noticed in the image.                                                           |
+
+## Collection Fields
+
+The above fields can be added to Collection summaries.

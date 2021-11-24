@@ -1,16 +1,7 @@
 {
   "type": "Collection",
   "stac_version": "1.0.0",
-  "stac_extensions": [
-    "https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json",
-    "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/file/v2.0.0/schema.json",
-    "https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json",
-    "https://stac.linz.govt.nz/_STAC_VERSION_/camera/schema.json",
-    "https://stac.linz.govt.nz/_STAC_VERSION_/film/schema.json",
-    "https://stac.linz.govt.nz/_STAC_VERSION_/scanning/schema.json"
-  ],
+  "stac_extensions": ["https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json"],
   "id": "01FJ0SE46TT5TGBHBVX64TMEPA",
   "title": "399",
   "description": "Survey 399 of the Crown Aerial Film Archive",
@@ -76,21 +67,6 @@
       "Static",
       "Top of frame fogged, No instrument panel"
     ],
-    "film:id": ["464", "465", "466", "470", "476", "486", "577", "579", "580", "728", "731", "732"],
-    "film:physical_condition": ["Film scratched", "NOT 10/03/1949", "NOT 16/04/1947"],
-    "film:physical_size": ["18cm x 23cm"],
-    "scan:is_original": [true, false],
-    "eo:bands": [
-      {
-        "name": "gray",
-        "common_name": "pan"
-      }
-    ],
-    "scan:scanned": {
-      "minimum": "2018-06-30T12:00:00Z",
-      "maximum": "2019-12-31T11:00:00Z"
-    },
-    "proj:epsg": [2193],
     "aerial-photo:altitude": {
       "minimum": 10000,
       "maximum": 11000
@@ -102,18 +78,6 @@
     "aerial-photo:sequence_number": {
       "minimum": 1,
       "maximum": 89
-    },
-    "camera:sequence_number": {
-      "minimum": 32724,
-      "maximum": 89642
-    },
-    "camera:nominal_focal_length": {
-      "minimum": 508,
-      "maximum": 508
-    },
-    "film:negative_sequence": {
-      "minimum": 1,
-      "maximum": 184
     }
   },
   "links": [
