@@ -1068,7 +1068,6 @@
         },
         "summaries": {
           "type": "object",
-          "required": ["created", "updated"],
           "properties": {
             "created": {
               "type": "object",
