@@ -185,8 +185,7 @@
             "proj:epsg": {
               "type": "array",
               "items": {
-                "type": "integer",
-                "minItems": 1
+                "type": "integer"
               }
             }
           }

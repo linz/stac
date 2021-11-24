@@ -183,4 +183,16 @@ o.spec('Historical Imagery Extension Collection', () => {
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
+
+  o("Summaries with empty 'proj:epsg' list should pass validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example.summaries['proj:epsg'] = [];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(true);
+  });
 });
