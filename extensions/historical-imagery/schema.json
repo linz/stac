@@ -38,7 +38,7 @@
       "allOf": [
         {
           "type": "object",
-          "required": ["type", "title", "providers"],
+          "required": ["type", "title", "providers", "summaries"],
           "properties": {
             "type": {
               "const": "Collection"
@@ -46,7 +46,7 @@
           }
         },
         {
-          "$ref": "#/definitions/fields_collection"
+          "$ref": "#/definitions/fields"
         },
         {
           "$ref": "#/definitions/stac_extensions"
@@ -106,7 +106,7 @@
         }
       }
     },
-    "fields_collection": {
+    "fields": {
       "type": "object",
       "$comment": "Remove licensor and producer when validation against linz STAC extension is included.",
       "properties": {
@@ -157,6 +157,39 @@
               }
             }
           ]
+        },
+        "summaries": {
+          "required": ["platform", "mission", "proj:epsg"],
+          "properties": {
+            "platform": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minItems": 1
+              }
+            },
+            "mission": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minItems": 1
+              }
+            },
+            "instruments": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minItems": 1
+              }
+            },
+            "proj:epsg": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minItems": 1
+              }
+            }
+          }
         }
       }
     }

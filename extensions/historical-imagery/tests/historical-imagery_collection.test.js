@@ -80,4 +80,52 @@ o.spec('Historical Imagery Extension Collection', () => {
       ).equals(true)(JSON.stringify(validate.errors));
     }
   });
+  o("Summaries with no 'platform' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.summaries.platform;
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '/summaries' && error.message === "must have required property 'platform'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+  o("Summaries with no 'mission' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.summaries.mission;
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '/summaries' && error.message === "must have required property 'mission'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+  o("Summaries with no 'proj:epsg' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.summaries['proj:epsg'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '/summaries' && error.message === "must have required property 'proj:epsg'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
 });

@@ -29,4 +29,38 @@ o.spec('Film Extension Collection', () => {
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
+  o("Summaries with no 'film:id' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.summaries['film:id'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '/summaries' && error.message === "must have required property 'film:id'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+  o("Summaries with no 'film:negative_sequence' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.summaries['film:negative_sequence'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/summaries' &&
+          error.message === "must have required property 'film:negative_sequence'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
 });
