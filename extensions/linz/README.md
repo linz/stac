@@ -85,12 +85,6 @@ See [ISO/IEC 13249-3:2016(en)](https://www.iso.org/obp/ui/#!iso:std:60343:en) fo
 | updated/minimum | date-time | **REQUIRED**. Earliest [asset updated value](#asset-fields), in UTC. |
 | updated/maximum | date-time | **REQUIRED**. Latest [asset updated value](#asset-fields), in UTC.   |
 
-### Collection Summaries Object Fields
-
-| Field Name | Type   | Description                     |
-| ---------- | ------ | ------------------------------- |
-| title      | string | **REQUIRED**. Collection title. |
-
 ### LINZ Provider Object Fields
 
 This expands on the [provider object in the STAC spec](https://github.com/radiantearth/stac-spec/blob/v1.0.0/item-spec/common-metadata.md#provider-object). Only differences from that definition are mentioned here.
