@@ -43,6 +43,9 @@
           }
         },
         {
+          "$ref": "#/definitions/fields"
+        },
+        {
           "$ref": "#/definitions/stac_extensions"
         }
       ]
@@ -71,6 +74,39 @@
         "camera:nominal_focal_length": {
           "title": "Nominal Focal Length",
           "type": ["integer"]
+        },
+        "summaries": {
+          "type": "object",
+          "properties": {
+            "camera:sequence_number": {
+              "type": "object",
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Lowest sequence number",
+                  "type": "integer"
+                },
+                "maximum": {
+                  "title": "Highest sequence number",
+                  "type": "integer"
+                }
+              }
+            },
+            "camera:nominal_focal_length": {
+              "type": "object",
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Lowest nominal focal length",
+                  "type": "integer"
+                },
+                "maximum": {
+                  "title": "Highest nominal focal length",
+                  "type": "integer"
+                }
+              }
+            }
+          }
         }
       },
       "patternProperties": {

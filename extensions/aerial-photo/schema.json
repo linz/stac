@@ -42,12 +42,15 @@
       "type": "object",
       "allOf": [
         {
-          "required": ["type"],
+          "required": ["type", "summaries"],
           "properties": {
             "type": {
               "const": "Collection"
             }
           }
+        },
+        {
+          "$ref": "#/definitions/fields"
         },
         {
           "$ref": "#/definitions/stac_extensions"
@@ -90,6 +93,68 @@
         "aerial-photo:anomalies": {
           "title": "Image anomalies",
           "type": "string"
+        },
+        "summaries": {
+          "type": "object",
+          "required": ["aerial-photo:run", "aerial-photo:sequence_number"],
+          "properties": {
+            "aerial-photo:run": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minItems": 1
+              }
+            },
+            "aerial-photo:sequence_number": {
+              "type": "object",
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Lowest sequence number",
+                  "type": "integer"
+                },
+                "maximum": {
+                  "title": "Highest sequence number",
+                  "type": "integer"
+                }
+              }
+            },
+            "aerial-photo:altitude": {
+              "type": "object",
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Lowest altitude",
+                  "type": "integer"
+                },
+                "maximum": {
+                  "title": "Highest altitude",
+                  "type": "integer"
+                }
+              }
+            },
+            "aerial-photo:scale": {
+              "type": "object",
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Minimum scale",
+                  "type": "integer"
+                },
+                "maximum": {
+                  "title": "Maximum scale",
+                  "type": "integer"
+                }
+              }
+            },
+            "aerial-photo:anomalies": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minItems": 1
+              }
+            }
+          }
         }
       },
       "patternProperties": {
