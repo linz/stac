@@ -80,6 +80,7 @@ o.spec('Historical Imagery Extension Collection', () => {
       ).equals(true)(JSON.stringify(validate.errors));
     }
   });
+
   o("Summaries with no 'platform' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
@@ -96,6 +97,7 @@ o.spec('Historical Imagery Extension Collection', () => {
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
+
   o("Summaries with no 'mission' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
@@ -112,6 +114,7 @@ o.spec('Historical Imagery Extension Collection', () => {
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
+
   o("Summaries with no 'proj:epsg' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));

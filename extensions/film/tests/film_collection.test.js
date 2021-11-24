@@ -29,6 +29,7 @@ o.spec('Film Extension Collection', () => {
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
+
   o("Summaries with no 'film:id' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
@@ -45,6 +46,7 @@ o.spec('Film Extension Collection', () => {
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
+
   o("Summaries with no 'film:negative_sequence' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));

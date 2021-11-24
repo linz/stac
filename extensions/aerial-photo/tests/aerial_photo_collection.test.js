@@ -29,6 +29,7 @@ o.spec('Aerial Photo Extension Collection', () => {
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
+
   o("Summaries with no 'aerial-photo:run' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
@@ -46,6 +47,7 @@ o.spec('Aerial Photo Extension Collection', () => {
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
+
   o("Summaries with no 'aerial-photo:sequence_number' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
