@@ -85,7 +85,7 @@ o.spec('LINZ collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
-  o("Summaries with no 'created' property should fail validation", async () => {
+  o("Summaries with no 'created' property should not fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example['summaries']['created'];
@@ -94,12 +94,19 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
-      validate.errors.some(
-        (error) => error.instancePath === '/summaries' && error.message === "must have required property 'created'",
-      ),
-    ).equals(true)(JSON.stringify(validate.errors));
+    o(valid).equals(true);
+  });
+
+  o("Summaries with no 'updated' property should not fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['summaries']['updated'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(true);
   });
 
   o("Example with no 'linz:geospatial_type' property should fail validation", async () => {
