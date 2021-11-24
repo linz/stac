@@ -90,10 +90,7 @@
       "minimum": "2018-06-30T12:00:00Z",
       "maximum": "2019-12-31T11:00:00Z"
     },
-    "proj:epsg": {
-      "minimum": 2193,
-      "maximum": 2193
-    },
+    "proj:epsg": [2193],
     "aerial-photo:altitude": {
       "minimum": 10000,
       "maximum": 11000
@@ -115,7 +112,7 @@
       "maximum": 508
     },
     "film:negative_sequence": {
-      "mimimum": 1,
+      "minimum": 1,
       "maximum": 184
     }
   },
