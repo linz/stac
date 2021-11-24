@@ -48,6 +48,24 @@ o.spec('Aerial Photo Extension Collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
+  o("Summaries with empty 'aerial-photo:run' list should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example.summaries['aerial-photo:run'] = [];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/summaries/aerial-photo:run' && error.message === 'must NOT have fewer than 1 items',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o("Summaries with no 'aerial-photo:sequence_number' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
