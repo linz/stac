@@ -43,6 +43,9 @@
           }
         },
         {
+          "$ref": "#/definitions/fields"
+        },
+        {
           "$ref": "#/definitions/stac_extensions"
         }
       ]
@@ -73,6 +76,36 @@
           "type": "string",
           "format": "date-time",
           "pattern": "(\\+00:00|Z)$"
+        },
+        "summaries": {
+          "type": "object",
+          "properties": {
+            "scan:is_original": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "boolean"
+              }
+            },
+            "scan:scanned": {
+              "type": "object",
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Earliest date",
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "(\\+00:00|Z)$"
+                },
+                "maximum": {
+                  "title": "Most recent date",
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "(\\+00:00|Z)$"
+                }
+              }
+            }
+          }
         }
       },
       "patternProperties": {
