@@ -164,9 +164,9 @@
             "platform": {
               "type": "array",
               "items": {
-                "type": "string",
-                "minItems": 1
-              }
+                "type": "string"
+              },
+              "minItems": 1
             },
             "mission": {
               "type": "array",

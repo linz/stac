@@ -98,6 +98,23 @@ o.spec('Historical Imagery Extension Collection', () => {
     ).equals(true)(JSON.stringify(validate.errors));
   });
 
+  o("Summaries with empty 'platform' list should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example.summaries.platform = [];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '/summaries/platform' && error.message === 'must NOT have fewer than 1 items',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o("Summaries with no 'mission' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
