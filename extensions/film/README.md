@@ -6,7 +6,7 @@
 - **Identifier**:
   <https://stac.linz.govt.nz/_STAC_VERSION_/film/schema.json>
 - **Field Name Prefix**: film
-- **Scope**: Item
+- **Scope**: Item, Collection
 - **Extension Classification**: Work In Progress (Before proposal)
 
 ## Item Properties or Asset Fields
@@ -17,3 +17,7 @@
 | film:negative_sequence  | integer | **REQUIRED** Sequential order of each negative within a roll of film. |
 | film:physical_condition | string  | Comments field about unusual film condition.                          |
 | film:physical_size      | string  | Physical size of the negatives on a roll of film.                     |
+
+## Collection Fields
+
+The above fields can be added to Collection summaries.

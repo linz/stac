@@ -1,36 +1,61 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://linz.github.io/stac/_STAC_VERSION_/aerial-photo/schema.json",
+  "$id": "https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json",
   "title": "Aerial Photography Extension",
-  "description": "STAC Aerial Photography Extension for STAC Items.",
-  "allOf": [
+  "description": "STAC Aerial Photography Extension for STAC Items, and Collection Summaries.",
+  "oneOf": [
     {
-      "type": "object",
-      "required": ["type", "properties", "assets"],
-      "properties": {
-        "type": {
-          "const": "Feature"
-        },
-        "properties": {
-          "allOf": [
-            {
-              "required": ["aerial-photo:run", "aerial-photo:sequence_number"]
-            },
-            {
-              "$ref": "#/definitions/fields"
-            }
-          ]
-        },
-        "assets": {
+      "$comment": "This is the schema for STAC Items.",
+      "allOf": [
+        {
           "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/fields"
+          "required": ["type", "properties", "assets"],
+          "properties": {
+            "type": {
+              "const": "Feature"
+            },
+            "properties": {
+              "allOf": [
+                {
+                  "required": ["aerial-photo:run", "aerial-photo:sequence_number"]
+                },
+                {
+                  "$ref": "#/definitions/fields"
+                }
+              ]
+            },
+            "assets": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/fields"
+              }
+            }
           }
+        },
+        {
+          "$ref": "#/definitions/stac_extensions"
         }
-      }
+      ]
     },
     {
-      "$ref": "#/definitions/stac_extensions"
+      "$comment": "This is the schema for STAC Collections. This extension requires this for Collection summaries.",
+      "type": "object",
+      "allOf": [
+        {
+          "required": ["type", "summaries"],
+          "properties": {
+            "type": {
+              "const": "Collection"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/fields"
+        },
+        {
+          "$ref": "#/definitions/stac_extensions"
+        }
+      ]
     }
   ],
   "definitions": {
@@ -41,7 +66,7 @@
         "stac_extensions": {
           "type": "array",
           "contains": {
-            "const": "https://linz.github.io/stac/_STAC_VERSION_/aerial-photo/schema.json"
+            "const": "https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json"
           }
         }
       }
@@ -68,6 +93,68 @@
         "aerial-photo:anomalies": {
           "title": "Image anomalies",
           "type": "string"
+        },
+        "summaries": {
+          "type": "object",
+          "required": ["aerial-photo:run", "aerial-photo:sequence_number"],
+          "properties": {
+            "aerial-photo:run": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minItems": 1
+              }
+            },
+            "aerial-photo:sequence_number": {
+              "type": "object",
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Lowest sequence number",
+                  "type": "integer"
+                },
+                "maximum": {
+                  "title": "Highest sequence number",
+                  "type": "integer"
+                }
+              }
+            },
+            "aerial-photo:altitude": {
+              "type": "object",
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Lowest altitude",
+                  "type": "integer"
+                },
+                "maximum": {
+                  "title": "Highest altitude",
+                  "type": "integer"
+                }
+              }
+            },
+            "aerial-photo:scale": {
+              "type": "object",
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Minimum scale",
+                  "type": "integer"
+                },
+                "maximum": {
+                  "title": "Maximum scale",
+                  "type": "integer"
+                }
+              }
+            },
+            "aerial-photo:anomalies": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minItems": 1
+              }
+            }
+          }
         }
       },
       "patternProperties": {

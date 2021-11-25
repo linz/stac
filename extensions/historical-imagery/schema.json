@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://linz.github.io/stac/_STAC_VERSION_/historical-imagery/schema.json",
+  "$id": "https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json",
   "title": "Historical Imagery Extension",
   "description": "STAC Historical Imagery Extension for STAC Items and STAC Collections.",
   "oneOf": [
@@ -38,7 +38,7 @@
       "allOf": [
         {
           "type": "object",
-          "required": ["type", "title", "providers"],
+          "required": ["type", "title", "providers", "summaries"],
           "properties": {
             "type": {
               "const": "Collection"
@@ -46,10 +46,10 @@
           }
         },
         {
-          "$ref": "#/definitions/fields_collection"
+          "$ref": "#/definitions/fields"
         },
         {
-          "$ref": "#/definitions/stac_extensions_collection"
+          "$ref": "#/definitions/stac_extensions"
         }
       ]
     }
@@ -64,7 +64,7 @@
           "allOf": [
             {
               "contains": {
-                "const": "https://linz.github.io/stac/_STAC_VERSION_/historical-imagery/schema.json"
+                "const": "https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json"
               }
             },
             {
@@ -84,41 +84,29 @@
             },
             {
               "contains": {
-                "const": "https://linz.github.io/stac/_STAC_VERSION_/aerial-photo/schema.json"
+                "const": "https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json"
               }
             },
             {
               "contains": {
-                "const": "https://linz.github.io/stac/_STAC_VERSION_/camera/schema.json"
+                "const": "https://stac.linz.govt.nz/_STAC_VERSION_/camera/schema.json"
               }
             },
             {
               "contains": {
-                "const": "https://linz.github.io/stac/_STAC_VERSION_/film/schema.json"
+                "const": "https://stac.linz.govt.nz/_STAC_VERSION_/film/schema.json"
               }
             },
             {
               "contains": {
-                "const": "https://linz.github.io/stac/_STAC_VERSION_/scanning/schema.json"
+                "const": "https://stac.linz.govt.nz/_STAC_VERSION_/scanning/schema.json"
               }
             }
           ]
         }
       }
     },
-    "stac_extensions_collection": {
-      "type": "object",
-      "required": ["stac_extensions"],
-      "properties": {
-        "stac_extensions": {
-          "type": "array",
-          "contains": {
-            "const": "https://linz.github.io/stac/_STAC_VERSION_/historical-imagery/schema.json"
-          }
-        }
-      }
-    },
-    "fields_collection": {
+    "fields": {
       "type": "object",
       "$comment": "Remove licensor and producer when validation against linz STAC extension is included.",
       "properties": {
@@ -169,6 +157,39 @@
               }
             }
           ]
+        },
+        "summaries": {
+          "required": ["platform", "mission", "proj:epsg"],
+          "properties": {
+            "platform": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minItems": 1
+              }
+            },
+            "mission": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minItems": 1
+              }
+            },
+            "instruments": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minItems": 1
+              }
+            },
+            "proj:epsg": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minItems": 1
+              }
+            }
+          }
         }
       }
     }

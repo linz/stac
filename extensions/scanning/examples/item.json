@@ -1,6 +1,6 @@
 {
   "stac_version": "1.0.0",
-  "stac_extensions": ["https://linz.github.io/stac/_STAC_VERSION_/scanning/schema.json"],
+  "stac_extensions": ["https://stac.linz.govt.nz/_STAC_VERSION_/scanning/schema.json"],
   "type": "Feature",
   "id": "72360",
   "geometry": null,
@@ -14,10 +14,9 @@
   },
   "links": [],
   "assets": {
-    "image/tiff; application=geotiff; profile=cloud-optimized": {
+    "visual": {
       "href": "./72360.tiff",
-      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "file:checksum": "1220b7deb18ad9dc6f3f94df60c26dd235a019946b8b6b7d1a36f100a8f9f1889130"
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized"
     }
   }
 }

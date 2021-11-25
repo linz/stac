@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/item.json');
 
-o.spec('historical-imagery item', () => {
+o.spec('Historical Imagery Extension Item', () => {
   o.specTimeout(DefaultTimeoutMillis);
   let validate;
   const ajv = new Ajv(AjvOptions);
@@ -41,7 +41,7 @@ o.spec('historical-imagery item', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.dataPath === '.properties' && error.message === "should have required property '.mission'",
+        (error) => error.instancePath === '/properties' && error.message === "must have required property 'mission'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -57,7 +57,7 @@ o.spec('historical-imagery item', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.dataPath === '.properties' && error.message === "should have required property '.platform'",
+        (error) => error.instancePath === '/properties' && error.message === "must have required property 'platform'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -65,7 +65,7 @@ o.spec('historical-imagery item', () => {
   o("Example without the mandatory 'eo:bands' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
-    delete example.assets['image/tiff; application=geotiff; profile=cloud-optimized']['eo:bands'];
+    delete example.assets['visual']['eo:bands'];
 
     // when
     let valid = validate(example);
@@ -75,8 +75,7 @@ o.spec('historical-imagery item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.dataPath === ".assets['image/tiff; application=geotiff; profile=cloud-optimized']" &&
-          error.message === "should have required property '['eo:bands']'",
+          error.instancePath === '/assets/visual' && error.message === "must have required property 'eo:bands'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });

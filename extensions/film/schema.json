@@ -1,36 +1,61 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://linz.github.io/stac/_STAC_VERSION_/film/schema.json",
+  "$id": "https://stac.linz.govt.nz/_STAC_VERSION_/film/schema.json",
   "title": "Film Extension",
-  "description": "STAC Film Extension for STAC Items.",
-  "allOf": [
+  "description": "STAC Film Extension for STAC Items, and Collection Summaries.",
+  "oneOf": [
     {
-      "type": "object",
-      "required": ["type", "properties", "assets"],
-      "properties": {
-        "type": {
-          "const": "Feature"
-        },
-        "properties": {
-          "allOf": [
-            {
-              "required": ["film:id", "film:negative_sequence"]
-            },
-            {
-              "$ref": "#/definitions/fields"
-            }
-          ]
-        },
-        "assets": {
+      "$comment": "This is the schema for STAC Items.",
+      "allOf": [
+        {
           "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/fields"
+          "required": ["type", "properties", "assets"],
+          "properties": {
+            "type": {
+              "const": "Feature"
+            },
+            "properties": {
+              "allOf": [
+                {
+                  "required": ["film:id", "film:negative_sequence"]
+                },
+                {
+                  "$ref": "#/definitions/fields"
+                }
+              ]
+            },
+            "assets": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/fields"
+              }
+            }
           }
+        },
+        {
+          "$ref": "#/definitions/stac_extensions"
         }
-      }
+      ]
     },
     {
-      "$ref": "#/definitions/stac_extensions"
+      "$comment": "This is the schema for STAC Collections. This extension requires this for Collection summaries.",
+      "type": "object",
+      "allOf": [
+        {
+          "required": ["type", "summaries"],
+          "properties": {
+            "type": {
+              "const": "Collection"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/fields"
+        },
+        {
+          "$ref": "#/definitions/stac_extensions"
+        }
+      ]
     }
   ],
   "definitions": {
@@ -41,7 +66,7 @@
         "stac_extensions": {
           "type": "array",
           "contains": {
-            "const": "https://linz.github.io/stac/_STAC_VERSION_/film/schema.json"
+            "const": "https://stac.linz.govt.nz/_STAC_VERSION_/film/schema.json"
           }
         }
       }
@@ -64,6 +89,47 @@
         "film:physical_size": {
           "title": "Physical Size Format",
           "type": "string"
+        },
+        "summaries": {
+          "type": "object",
+          "required": ["film:id", "film:negative_sequence"],
+          "properties": {
+            "film:id": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minItems": 1
+              }
+            },
+            "film:negative_sequence": {
+              "type": "object",
+              "required": ["minimum", "maximum"],
+              "properties": {
+                "minimum": {
+                  "title": "Lowest negative sequence number",
+                  "type": "integer"
+                },
+                "maximum": {
+                  "title": "Highest negative sequence number",
+                  "type": "integer"
+                }
+              }
+            },
+            "film:physical_condition": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minItems": 1
+              }
+            },
+            "film:physical_size": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minItems": 1
+              }
+            }
+          }
         }
       },
       "patternProperties": {

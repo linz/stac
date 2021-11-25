@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/item.json');
 
-o.spec('Aerial photo item', () => {
+o.spec('Aerial Photo Extension Item', () => {
   o.specTimeout(DefaultTimeoutMillis);
   let validate;
   const ajv = new Ajv(AjvOptions);
@@ -42,7 +42,7 @@ o.spec('Aerial photo item', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.dataPath === ".properties['aerial-photo:run']" && error.message === 'should be string',
+        (error) => error.instancePath === '/properties/aerial-photo:run' && error.message === 'must be string',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -60,7 +60,7 @@ o.spec('Aerial photo item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.dataPath === '.properties' && error.message === "should have required property '['aerial-photo:run']'",
+          error.instancePath === '/properties' && error.message === "must have required property 'aerial-photo:run'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -78,8 +78,8 @@ o.spec('Aerial photo item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.dataPath === '.properties' &&
-          error.message === "should have required property '['aerial-photo:sequence_number']'",
+          error.instancePath === '/properties' &&
+          error.message === "must have required property 'aerial-photo:sequence_number'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
@@ -97,7 +97,7 @@ o.spec('Aerial photo item', () => {
     o(
       validate.errors.some(
         (error) =>
-          error.dataPath === ".properties['aerial-photo:sequence_number']" && error.message === 'should be integer',
+          error.instancePath === '/properties/aerial-photo:sequence_number' && error.message === 'must be integer',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });

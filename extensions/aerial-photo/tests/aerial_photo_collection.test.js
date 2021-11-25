@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/collection.json');
 
-o.spec('Template collection', () => {
+o.spec('Aerial Photo Extension Collection', () => {
   o.specTimeout(DefaultTimeoutMillis);
   let validate;
   const ajv = new Ajv(AjvOptions);
@@ -29,13 +29,10 @@ o.spec('Template collection', () => {
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
-
-  o("Example without mandatory 'template:new_field' field should fail validation", async () => {
+  o("Summaries with no 'aerial-photo:run' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
-    delete example['template:new_field'];
-    delete example['assets'];
-    delete example['item_assets'];
+    delete example.summaries['aerial-photo:run'];
 
     // when
     let valid = validate(example);
@@ -44,7 +41,26 @@ o.spec('Template collection', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.message === "must have required property 'template:new_field'" && error.instancePath === '',
+        (error) =>
+          error.instancePath === '/summaries' && error.message === "must have required property 'aerial-photo:run'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+  o("Summaries with no 'aerial-photo:sequence_number' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.summaries['aerial-photo:sequence_number'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/summaries' &&
+          error.message === "must have required property 'aerial-photo:sequence_number'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });

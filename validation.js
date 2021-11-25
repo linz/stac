@@ -2,9 +2,9 @@ import axios from 'axios';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { promises as fs } from 'fs';
-import iriFormats from 'stac-node-validator/iri.js';
-
 const __dirname = dirname(fileURLToPath(import.meta.url));
+import iriFormats from 'stac-node-validator/iri.js';
+import { fastFormats } from 'ajv-formats/dist/formats.js';
 
 const Schemas = new Map();
 export function loadSchema(uri) {
@@ -21,8 +21,8 @@ export function loadSchema(uri) {
  */
 export async function loadSchemaFromUri(uri) {
   try {
-    if (uri.startsWith('https://linz.github.io/stac/_STAC_VERSION_/')) {
-      const schemaPath = uri.slice('https://linz.github.io/stac/_STAC_VERSION_/'.length);
+    if (uri.startsWith('https://stac.linz.govt.nz/_STAC_VERSION_/')) {
+      const schemaPath = uri.slice('https://stac.linz.govt.nz/_STAC_VERSION_/'.length);
       return JSON.parse(await fs.readFile(join(__dirname, 'extensions', schemaPath)));
     }
 
@@ -33,5 +33,5 @@ export async function loadSchemaFromUri(uri) {
   }
 }
 
-export const AjvOptions = { loadSchema, formats: Object.assign(iriFormats) };
+export const AjvOptions = { loadSchema, formats: Object.assign(fastFormats, iriFormats) };
 export const DefaultTimeoutMillis = 60_000;

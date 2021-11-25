@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/item.json');
 
-o.spec('Camera item', () => {
+o.spec('Scanning Extension Item', () => {
   o.specTimeout(DefaultTimeoutMillis);
   let validate;
   const ajv = new Ajv(AjvOptions);
@@ -30,10 +30,10 @@ o.spec('Camera item', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Example with an incorrect 'camera:sequence_number' field should fail validation", async () => {
+  o("Example with an incorrect 'scan:is_original' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
-    example.properties['camera:sequence_number'] = 'incorrect_value';
+    example.properties['scan:is_original'] = 'notboolean';
 
     // when
     let valid = validate(example);
@@ -42,7 +42,25 @@ o.spec('Camera item', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.dataPath === ".properties['camera:sequence_number']" && error.message === 'should be integer',
+        (error) => error.instancePath === '/properties/scan:is_original' && error.message === 'must be boolean',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
+  o("Example with an incorrect 'scan:scanned' field should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example.properties['scan:scanned'] = '2019/DQ';
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/properties/scan:scanned' && error.message === 'must match pattern "(\\+00:00|Z)$"',
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });

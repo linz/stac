@@ -1,6 +1,6 @@
 {
   "name": "@linzjs/stac",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "type": "module",
   "scripts": {
     "lint": "npx eslint . --fix && yarn format",
@@ -12,8 +12,10 @@
     "test": "npx ospec && ./validate.sh"
   },
   "devDependencies": {
-    "@linzjs/style": "^3.3.0",
+    "@linzjs/style": "^3.4.0",
     "@types/ospec": "^4.0.2",
+    "ajv": "^8.8.2",
+    "ajv-formats": "^2.1.1",
     "conventional-changelog-cli": "^2.1.1",
     "ospec": "^4.1.1",
     "stac-node-validator": "^1.0.0"
