@@ -101,9 +101,9 @@
             "aerial-photo:run": {
               "type": "array",
               "items": {
-                "type": "string",
-                "minItems": 1
-              }
+                "type": "string"
+              },
+              "minItems": 1
             },
             "aerial-photo:sequence_number": {
               "type": "object",
@@ -150,9 +150,9 @@
             "aerial-photo:anomalies": {
               "type": "array",
               "items": {
-                "type": "string",
-                "minItems": 1
-              }
+                "type": "string"
+              },
+              "minItems": 1
             }
           }
         }

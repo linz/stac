@@ -80,6 +80,7 @@ o.spec('Historical Imagery Extension Collection', () => {
       ).equals(true)(JSON.stringify(validate.errors));
     }
   });
+
   o("Summaries with no 'platform' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
@@ -96,6 +97,24 @@ o.spec('Historical Imagery Extension Collection', () => {
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
+
+  o("Summaries with empty 'platform' list should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example.summaries.platform = [];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '/summaries/platform' && error.message === 'must NOT have fewer than 1 items',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o("Summaries with no 'mission' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
@@ -112,6 +131,42 @@ o.spec('Historical Imagery Extension Collection', () => {
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
+
+  o("Summaries with empty 'mission' list should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example.summaries.mission = [];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '/summaries/mission' && error.message === 'must NOT have fewer than 1 items',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
+  o("Summaries with empty 'instruments' list should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example.summaries.instruments = [];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/summaries/instruments' && error.message === 'must NOT have fewer than 1 items',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o("Summaries with no 'proj:epsg' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
@@ -127,5 +182,17 @@ o.spec('Historical Imagery Extension Collection', () => {
         (error) => error.instancePath === '/summaries' && error.message === "must have required property 'proj:epsg'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
+  });
+
+  o("Summaries with empty 'proj:epsg' list should pass validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example.summaries['proj:epsg'] = [];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(true);
   });
 });
