@@ -29,6 +29,7 @@ o.spec('Film Extension Collection', () => {
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
+
   o("Summaries with no 'film:id' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
@@ -45,6 +46,62 @@ o.spec('Film Extension Collection', () => {
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
+
+  o("Summaries with empty 'film:id' list should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example.summaries['film:id'] = [];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '/summaries/film:id' && error.message === 'must NOT have fewer than 1 items',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
+  o("Summaries with empty 'film:physical_condition' list should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example.summaries['film:physical_condition'] = [];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/summaries/film:physical_condition' &&
+          error.message === 'must NOT have fewer than 1 items',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
+  o("Summaries with empty 'film:physical_size' list should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example.summaries['film:physical_size'] = [];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/summaries/film:physical_size' &&
+          error.message === 'must NOT have fewer than 1 items',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o("Summaries with no 'film:negative_sequence' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));

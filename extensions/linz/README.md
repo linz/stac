@@ -34,32 +34,34 @@ extension which adds constraints to default STAC schema fields.
 
 See [ISO/IEC 13249-3:2016(en)](https://www.iso.org/obp/ui/#!iso:std:60343:en) for further information on geometric data types
 
-| Name                  | Additional description                                                                                      |
-| --------------------- | ----------------------------------------------------------------------------------------------------------- |
-| black and white image | Non-georeferenced black and white image                                                                     |
-| circular string       | A continuous collection of arcs (lines with curved interpolation between points)                            |
-| color image           | Non-georeferenced color image                                                                               |
-| compound curve        | A continuous collection of circular strings and/or linestrings                                              |
-| curve polygon         | A polygon that contains circular strings or compound curves                                                 |
-| geometry              | When mixed geometry types are used in the same dataset                                                      |
-| geometry collection   | A collection of mixed geometric types                                                                       |
-| grayscale             | Single band raster, byte datatype, grayscale interpretation, with optional 2nd band for Alpha               |
-| grid                  | Single band raster, non-byte datatype, grayscale interpretation                                             |
-| hyperspectral         | 10+ band raster                                                                                             |
-| multicurve            | A collection of curves (a linestring with non-linear interpolation between points)                          |
-| multilinestring       | A collection of linestrings                                                                                 |
-| multipoint            | A collection of points                                                                                      |
-| multipolygon          | A collection of polygons                                                                                    |
-| multispectral         | 4 or more band raster, including RGBI, but not including RGBA                                               |
-| multisurface          | A collection of surfaces (non-planar polygons)                                                              |
-| linestring            | A 1-dimensional geometric object stored as a sequence of points                                             |
-| point                 | A 0-dimensional geometric object that represents a single location                                          |
-| point cloud           | A set of points in 3D space, generally produced by LiDAR or photogrammetry                                  |
-| polygon               | A 2-dimensional planar geometric object with an exterior boundary and 0 or more interior boundaries (holes) |
-| polyhedral surface    | A contiguous collection of polygons that share common boundary segments                                     |
-| rgb                   | RGB color raster, can also include RGBA where 4th band is defined as Alpha                                  |
-| tin                   | A contiguous collection of triangles that share common boundary segments                                    |
-| triangle              | A 2-dimensional geometric object stored as three points                                                     |
+| Name                           | Additional description                                                                                      |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| black and white image          | Non-georeferenced black and white image                                                                     |
+| black and white infrared image | Non-georeferenced black and white infrared image                                                            |
+| circular string                | A continuous collection of arcs (lines with curved interpolation between points)                            |
+| color image                    | Non-georeferenced color image                                                                               |
+| color infrared image           | Non-georeferenced color infrared image                                                                      |
+| compound curve                 | A continuous collection of circular strings and/or linestrings                                              |
+| curve polygon                  | A polygon that contains circular strings or compound curves                                                 |
+| geometry                       | When mixed geometry types are used in the same dataset                                                      |
+| geometry collection            | A collection of mixed geometric types                                                                       |
+| grayscale                      | Single band raster, byte datatype, grayscale interpretation, with optional 2nd band for Alpha               |
+| grid                           | Single band raster, non-byte datatype, grayscale interpretation                                             |
+| hyperspectral                  | 10+ band raster                                                                                             |
+| multicurve                     | A collection of curves (a linestring with non-linear interpolation between points)                          |
+| multilinestring                | A collection of linestrings                                                                                 |
+| multipoint                     | A collection of points                                                                                      |
+| multipolygon                   | A collection of polygons                                                                                    |
+| multispectral                  | 4 or more band raster, including RGBI, but not including RGBA                                               |
+| multisurface                   | A collection of surfaces (non-planar polygons)                                                              |
+| linestring                     | A 1-dimensional geometric object stored as a sequence of points                                             |
+| point                          | A 0-dimensional geometric object that represents a single location                                          |
+| point cloud                    | A set of points in 3D space, generally produced by LiDAR or photogrammetry                                  |
+| polygon                        | A 2-dimensional planar geometric object with an exterior boundary and 0 or more interior boundaries (holes) |
+| polyhedral surface             | A contiguous collection of polygons that share common boundary segments                                     |
+| rgb                            | RGB color raster, can also include RGBA where 4th band is defined as Alpha                                  |
+| tin                            | A contiguous collection of triangles that share common boundary segments                                    |
+| triangle                       | A 2-dimensional geometric object stored as three points                                                     |
 
 ## Collection Fields
 
@@ -84,12 +86,6 @@ See [ISO/IEC 13249-3:2016(en)](https://www.iso.org/obp/ui/#!iso:std:60343:en) fo
 | created/maximum | date-time | **REQUIRED**. Latest [asset created value](#asset-fields), in UTC.   |
 | updated/minimum | date-time | **REQUIRED**. Earliest [asset updated value](#asset-fields), in UTC. |
 | updated/maximum | date-time | **REQUIRED**. Latest [asset updated value](#asset-fields), in UTC.   |
-
-### Collection Summaries Object Fields
-
-| Field Name | Type   | Description                     |
-| ---------- | ------ | ------------------------------- |
-| title      | string | **REQUIRED**. Collection title. |
 
 ### LINZ Provider Object Fields
 

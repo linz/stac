@@ -49,8 +49,10 @@
                 "type": "string",
                 "enum": [
                   "black and white image",
+                  "black and white infrared image",
                   "circular string",
                   "color image",
+                  "color infrared image",
                   "compound curve",
                   "curve polygon",
                   "geometry",

@@ -30,6 +30,17 @@ o.spec('Historical Imagery Extension Item', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
+  o("Example without optional 'instruments' property should pass validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.properties['instruments'];
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
+  });
+
   o("Example without mandatory 'mission' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
