@@ -17,7 +17,7 @@
             "properties": {
               "type": "object",
               "$comment": "Require fields here for Item Properties.",
-              "required": ["platform", "instruments", "mission"]
+              "required": ["platform", "mission"]
             },
             "assets": {
               "type": "object",
