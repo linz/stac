@@ -30,64 +30,64 @@ o.spec('Historical Imagery Extension Item', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Example without optional 'instruments' property should pass validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    delete example.properties['instruments'];
-    // when
-    let valid = validate(example);
+  //   o("Example without optional 'instruments' property should pass validation", async () => {
+  //     // given
+  //     const example = JSON.parse(await fs.readFile(examplePath));
+  //     delete example.properties['instruments'];
+  //     // when
+  //     let valid = validate(example);
 
-    // then
-    o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
-  });
+  //     // then
+  //     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
+  //   });
 
-  o("Example without mandatory 'mission' property should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    delete example.properties['mission'];
-    // when
-    let valid = validate(example);
+  //   o("Example without mandatory 'mission' property should fail validation", async () => {
+  //     // given
+  //     const example = JSON.parse(await fs.readFile(examplePath));
+  //     delete example.properties['mission'];
+  //     // when
+  //     let valid = validate(example);
 
-    // then
-    o(valid).equals(false);
-    o(
-      validate.errors.some(
-        (error) => error.instancePath === '/properties' && error.message === "must have required property 'mission'",
-      ),
-    ).equals(true)(JSON.stringify(validate.errors));
-  });
+  //     // then
+  //     o(valid).equals(false);
+  //     o(
+  //       validate.errors.some(
+  //         (error) => error.instancePath === '/properties' && error.message === "must have required property 'mission'",
+  //       ),
+  //     ).equals(true)(JSON.stringify(validate.errors));
+  //   });
 
-  o("Example without mandatory 'platform' property should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    delete example.properties['platform'];
-    // when
-    let valid = validate(example);
+  //   o("Example without mandatory 'platform' property should fail validation", async () => {
+  //     // given
+  //     const example = JSON.parse(await fs.readFile(examplePath));
+  //     delete example.properties['platform'];
+  //     // when
+  //     let valid = validate(example);
 
-    // then
-    o(valid).equals(false);
-    o(
-      validate.errors.some(
-        (error) => error.instancePath === '/properties' && error.message === "must have required property 'platform'",
-      ),
-    ).equals(true)(JSON.stringify(validate.errors));
-  });
+  //     // then
+  //     o(valid).equals(false);
+  //     o(
+  //       validate.errors.some(
+  //         (error) => error.instancePath === '/properties' && error.message === "must have required property 'platform'",
+  //       ),
+  //     ).equals(true)(JSON.stringify(validate.errors));
+  //   });
 
-  o("Example without the mandatory 'eo:bands' field should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    delete example.assets['visual']['eo:bands'];
+  //   o("Example without the mandatory 'eo:bands' field should fail validation", async () => {
+  //     // given
+  //     const example = JSON.parse(await fs.readFile(examplePath));
+  //     delete example.assets['visual']['eo:bands'];
 
-    // when
-    let valid = validate(example);
+  //     // when
+  //     let valid = validate(example);
 
-    // then
-    o(valid).equals(false);
-    o(
-      validate.errors.some(
-        (error) =>
-          error.instancePath === '/assets/visual' && error.message === "must have required property 'eo:bands'",
-      ),
-    ).equals(true)(JSON.stringify(validate.errors));
-  });
+  //     // then
+  //     o(valid).equals(false);
+  //     o(
+  //       validate.errors.some(
+  //         (error) =>
+  //           error.instancePath === '/assets/visual' && error.message === "must have required property 'eo:bands'",
+  //       ),
+  //     ).equals(true)(JSON.stringify(validate.errors));
+  //   });
 });
