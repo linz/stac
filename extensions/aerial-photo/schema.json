@@ -31,6 +31,12 @@
                     "$ref": "#/definitions/fields"
                   }
                 ]
+              },
+              "assets": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/definitions/fields"
+                }
               }
             }
           }
