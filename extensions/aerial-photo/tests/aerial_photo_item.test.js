@@ -30,22 +30,22 @@ o.spec('Aerial Photo Extension Item', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Example with an incorrect 'aerial-photo:run' field should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    example.properties['aerial-photo:run'] = 1234;
+    o("Example with an incorrect 'aerial-photo:run' field should fail validation", async () => {
+      // given
+      const example = JSON.parse(await fs.readFile(examplePath));
+      example.properties['aerial-photo:run'] = 1234;
 
-    // when
-    let valid = validate(example);
+      // when
+      let valid = validate(example);
 
-    // then
-    o(valid).equals(false);
-    o(
-      validate.errors.some(
-        (error) => error.instancePath === '/properties/aerial-photo:run' && error.message === 'must be string',
-      ),
-    ).equals(true)(JSON.stringify(validate.errors));
-  });
+      // then
+      o(valid).equals(false);
+      o(
+        validate.errors.some(
+          (error) => error.instancePath === '/properties/aerial-photo:run' && error.message === 'must be string',
+        ),
+      ).equals(true)(JSON.stringify(validate.errors));
+    });
 
   o("Example without the mandatory 'aerial-photo:run' field should fail validation", async () => {
     // given
