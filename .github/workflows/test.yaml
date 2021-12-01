@@ -10,14 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: linz/action-typescript@v1
-
-  build-nix:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: cachix/install-nix-action@v16
-      - uses: cachix/cachix-action@v10
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          name: linz
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - run: nix-shell --pure --run true
+          aws-region: ap-southeast-2
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+      - name: Deploy docs
+        run: | 
+          aws s3 cp package.json s3://${BUCKET_NAME}/
+        env:
+          BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
