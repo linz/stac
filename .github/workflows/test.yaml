@@ -16,7 +16,7 @@ jobs:
           aws-region: ap-southeast-2
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
       - name: Deploy docs
-        run: | 
+        run: |
           aws s3 cp package.json s3://${BUCKET_NAME}/
         env:
           BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
