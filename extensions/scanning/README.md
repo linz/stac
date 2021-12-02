@@ -10,6 +10,13 @@ change**
 - **Scope**: Item, Collection
 - **Extension Classification**: Work In Progress (Before proposal)
 
+- Examples:
+  - [Collection example](https://stac.linz.govt.nz/_STAC_VERSION_/scanning/examples/collection.json): Shows the basic usage of the
+    extension in a STAC Collection
+  - [Item example](https://stac.linz.govt.nz/_STAC_VERSION_/scanning/examples/item.json): Shows the basic usage of the extension
+    in a STAC Item
+- [JSON Schema](https://stac.linz.govt.nz/_STAC_VERSION_/scanning/schema.json)
+
 ## Item Properties or Asset Fields
 
 | Field Name       | Type    | Description                                                                                                                                                                                                                                                            |

@@ -14,6 +14,11 @@ Quality metadata is considered to be data that indicates the geospatial quality 
 
 This extension applies to STAC Collections, as quality and accuracy is most often bound to the Collection level and therefore shared across all items. It is recommended adding these fields to the corresponding the STAC Collection for geospatial datasets.
 
+- Examples:
+  - [Collection example](https://stac.linz.govt.nz/_STAC_VERSION_/quality/examples/collection.json): Shows the basic usage of the
+    extension in a STAC Collection
+- [JSON Schema](https://stac.linz.govt.nz/_STAC_VERSION_/quality/schema.json)
+
 ## Collection Fields
 
 | Field Name                       | Type   | Description                                                                                                  |
