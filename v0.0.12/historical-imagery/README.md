@@ -75,7 +75,7 @@ For more details see
 | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | --------------------------------- |
 | [eo:bands](https://github.com/stac-extensions/eo/blob/v1.0.0/README.md#eobands) | \[[Band Object](https://github.com/stac-extensions/eo/blob/v1.0.0/README.md#band-object)] | **REQUIRED**. The eo:bands array is used to describe the available spectral bands in an Asset. | photo_type or image file metadata |
 
-#### [Aerial Photography Extension](https://stac.linz.govt.nz/v0.0.12/aerial-photo)
+#### [Aerial Photography Extension](https://stac.linz.govt.nz/v0.0.12/aerial-photo/)
 
 | Field Name                   | Type    | Description                                                                                                   | Internal Field Name |
 | ---------------------------- | ------- | ------------------------------------------------------------------------------------------------------------- | ------------------- |
@@ -85,14 +85,14 @@ For more details see
 | aerial-photo:sequence_number | integer | **REQUIRED**. Sequential order of photos taken during a run.                                                  | photo_no            |
 | aerial-photo:anomalies       | string  | Comments about unusual things noticed in the image.                                                           | image_anomalies     |
 
-#### [Camera Extension](https://stac.linz.govt.nz/v0.0.12/camera)
+#### [Camera Extension](https://stac.linz.govt.nz/v0.0.12/camera/)
 
 | Field Name                  | Type    | Description                                                                                                                      | Internal Field Name  |
 | --------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
 | camera:sequence_number      | integer | Also referred to as veder; the sequential order of photos taken by an individual camera.                                         | camera_sequence_no   |
 | camera:nominal_focal_length | integer | Distance in mm from the camera lens centre to the film in the camera at which the image will have the least possible distortion. | nominal_focal_length |
 
-#### [Film Extension](https://stac.linz.govt.nz/v0.0.12/film)
+#### [Film Extension](https://stac.linz.govt.nz/v0.0.12/film/)
 
 | Field Name              | Type    | Description                                                                                      | Internal Field Name     |
 | ----------------------- | ------- | ------------------------------------------------------------------------------------------------ | ----------------------- |
@@ -101,7 +101,7 @@ For more details see
 | film:physical_condition | string  | Comments field about unusual film condition.                                                     | physical_film_condition |
 | film:physical_size      | string  | Physical size of the negatives on a roll of film.                                                | format                  |
 
-#### [Scanning Extension](https://stac.linz.govt.nz/v0.0.12/scanning)
+#### [Scanning Extension](https://stac.linz.govt.nz/v0.0.12/scanning/)
 
 | Field Name       | Type    | Description                                                                                                                                                                                                                                                            | Internal Field Name |
 | ---------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
