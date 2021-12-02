@@ -49,7 +49,7 @@ To create a release:
 ## Adding a new extension
 
 Be sure to add a schemaMap entry to the
-[validate.sh](validate.sh) file with your json-schema
+[validate.sh](https://github.com/linz/stac/blob/master/validate.sh) file with your json-schema
 `$id` url followed by the path to the json-schema locally. This will allow
 `yarn test` to use a local json-schema file rather than retrieving a possibly yet
 un-published json-schema.
