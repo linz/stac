@@ -1,3 +1,24 @@
+## [0.0.12](https://github.com/linz/stac/compare/v0.0.11...v0.0.12) (2021-12-02)
+
+### Bug Fixes
+
+- broken links on readme web pages and link consistency ([#196](https://github.com/linz/stac/issues/196)) ([44f30b2](https://github.com/linz/stac/commit/44f30b289423470c51bec328cf50d4435715b49a))
+- Enforce `minItems` ([#191](https://github.com/linz/stac/issues/191)) ([3b40f03](https://github.com/linz/stac/commit/3b40f031a11df3f2a5789b1823ea846b0a8b3f50))
+- historical imagery should not require instruments field ([#192](https://github.com/linz/stac/issues/192)) ([1c6808c](https://github.com/linz/stac/commit/1c6808cbfbb25fc9e6f508d14bca34beb8a338df))
+- **historical Imagery:** allow null values in proj:epsg summary ([#193](https://github.com/linz/stac/issues/193)) ([bec30ec](https://github.com/linz/stac/commit/bec30ecc15cd691671ed6497abcd812a44fc5e57))
+- Make `linz:language` optional ([#180](https://github.com/linz/stac/issues/180)) ([19ee412](https://github.com/linz/stac/commit/19ee41282bd3af2bface6b00c72d831c363f8efb))
+
+### Features
+
+- Add asset language property ([#173](https://github.com/linz/stac/issues/173)) ([66bd0d5](https://github.com/linz/stac/commit/66bd0d573d279fc2c29e6c47f0232ad952893497))
+- add IR linz:geospatial_types ([#188](https://github.com/linz/stac/issues/188)) ([807cdb2](https://github.com/linz/stac/commit/807cdb2f157993e4163761c2418eb8a46765017a))
+- Add new optional 'linz:update_frequency' field to the linz exte… ([#164](https://github.com/linz/stac/issues/164)) ([22ba48e](https://github.com/linz/stac/commit/22ba48e76f222152b276b484f34d20c43a3f8864))
+- add summaries to historical imagery related extensions ([#176](https://github.com/linz/stac/issues/176)) ([56e130e](https://github.com/linz/stac/commit/56e130ef3df464b7ee76370ec57b98ea331b8ac1))
+- Create asset summaries ([#157](https://github.com/linz/stac/issues/157)) ([497c182](https://github.com/linz/stac/commit/497c18253390cd8e2b6801c93191cc67f165014d))
+- Make summary `updated` and `created` optional ([#187](https://github.com/linz/stac/issues/187)) ([7068e7d](https://github.com/linz/stac/commit/7068e7dfc3e3cc4c47f1feeff9e794da8a2d4529))
+- Tweak geospatial type implementation ([#172](https://github.com/linz/stac/issues/172)) ([966292d](https://github.com/linz/stac/commit/966292d254d163472bbe6feea27b239a6be2c3dc))
+- Use latest ajv ([#166](https://github.com/linz/stac/issues/166)) ([889bc08](https://github.com/linz/stac/commit/889bc08006255fb40e5fe7e7ab96800defa20098))
+
 ## [0.0.11](https://github.com/linz/stac/compare/v0.0.10...v0.0.11) (2021-11-17)
 
 ### Bug Fixes
