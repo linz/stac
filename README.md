@@ -11,13 +11,13 @@ if other data managers find them to be useful.
 
 ## Extensions
 
-- [Aerial Photography](/v0.0.11/aerial-photo/): Aerial photography details for photos.
-- [Camera](/v0.0.11/camera/): Camera details for photos.
-- [Film](/v0.0.11/film/): Film details for photos.
-- [Historical Imagery](/v0.0.11/historical-imagery/): Aerial survey photos.
-- [LINZ](/v0.0.11/linz/): Toitū Te Whenua LINZ-specific settings.
-- [Quality](/v0.0.11/quality/): Dataset accuracy.
-- [Scanning](/v0.0.11/scanning/): Scanning details for photos.
+- [Aerial Photography](/v0.0.12/aerial-photo/): Aerial photography details for photos.
+- [Camera](/v0.0.12/camera/): Camera details for photos.
+- [Film](/v0.0.12/film/): Film details for photos.
+- [Historical Imagery](/v0.0.12/historical-imagery/): Aerial survey photos.
+- [LINZ](/v0.0.12/linz/): Toitū Te Whenua LINZ-specific settings.
+- [Quality](/v0.0.12/quality/): Dataset accuracy.
+- [Scanning](/v0.0.12/scanning/): Scanning details for photos.
 
 ## Running tests
 
@@ -49,7 +49,7 @@ To create a release:
 ## Adding a new extension
 
 Be sure to add a schemaMap entry to the
-[validate.sh](validate.sh) file with your json-schema
+[validate.sh](https://github.com/linz/stac/blob/master/validate.sh) file with your json-schema
 `$id` url followed by the path to the json-schema locally. This will allow
 `yarn test` to use a local json-schema file rather than retrieving a possibly yet
 un-published json-schema.
