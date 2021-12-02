@@ -1,0 +1,22 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": ["https://stac.linz.govt.nz/v0.0.12/scanning/schema.json"],
+  "type": "Feature",
+  "id": "72360",
+  "geometry": null,
+  "properties": {
+    "datetime": "1952-04-22T12:00:00Z",
+    "platform": "Fixed-wing Aircraft",
+    "instruments": ["EAGLE IV"],
+    "mission": "SURVEY_1",
+    "scan:is_original": true,
+    "scan:scanned": "2018-09-30T11:00:00Z"
+  },
+  "links": [],
+  "assets": {
+    "visual": {
+      "href": "./72360.tiff",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized"
+    }
+  }
+}

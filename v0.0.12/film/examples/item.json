@@ -1,0 +1,24 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": ["https://stac.linz.govt.nz/v0.0.12/film/schema.json"],
+  "type": "Feature",
+  "id": "72360",
+  "geometry": null,
+  "properties": {
+    "datetime": "1952-04-22T12:00:00Z",
+    "platform": "Fixed-wing Aircraft",
+    "instruments": ["EAGLE IV"],
+    "mission": "SURVEY_1",
+    "film:id": "TL109A",
+    "film:negative_sequence": 19,
+    "film:physical_condition": "Metadata manually populated, Flight chart not available",
+    "film:physical_size": "18cm x 23cm"
+  },
+  "links": [],
+  "assets": {
+    "visual": {
+      "href": "./72360.tiff",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized"
+    }
+  }
+}

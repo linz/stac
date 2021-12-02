@@ -1,0 +1,22 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": ["https://stac.linz.govt.nz/v0.0.12/camera/schema.json"],
+  "type": "Feature",
+  "id": "72360",
+  "geometry": null,
+  "properties": {
+    "datetime": "1952-04-22T12:00:00Z",
+    "platform": "Fixed-wing Aircraft",
+    "instruments": ["EAGLE IV"],
+    "mission": "SURVEY_1",
+    "camera:sequence_number": 89554,
+    "camera:nominal_focal_length": 508
+  },
+  "links": [],
+  "assets": {
+    "visual": {
+      "href": "./72360.tiff",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized"
+    }
+  }
+}
