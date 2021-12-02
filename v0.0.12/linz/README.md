@@ -122,7 +122,7 @@ This extension includes these other extensions:
 
 - [processing](https://github.com/stac-extensions/processing)
 - [projection](https://github.com/stac-extensions/projection)
-- [quality](https://stac.linz.govt.nz/v0.0.12/quality)
+- [quality](https://stac.linz.govt.nz/v0.0.12/quality/)
 - [version](https://github.com/stac-extensions/version)
 
 ## Contributing
