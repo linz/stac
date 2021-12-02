@@ -3,55 +3,63 @@
   "$id": "https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json",
   "title": "Historical Imagery Extension",
   "description": "STAC Historical Imagery Extension for STAC Items and STAC Collections.",
-  "oneOf": [
+  "allOf": [
     {
-      "$comment": "This is the schema for STAC Items.",
-      "allOf": [
-        {
-          "type": "object",
-          "required": ["type", "properties", "assets"],
-          "properties": {
-            "type": {
-              "const": "Feature"
-            },
+      "$ref": "#/definitions/stac_extensions"
+    },
+    {
+      "$ref": "#/definitions/fields"
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "Feature"
+          }
+        }
+      },
+      "then": {
+        "$comment": "This is the schema for STAC Items.",
+        "allOf": [
+          {
+            "type": "object",
+            "required": ["type", "properties", "assets"],
             "properties": {
-              "type": "object",
-              "$comment": "Require fields here for Item Properties.",
-              "required": ["platform", "mission"]
-            },
-            "assets": {
-              "type": "object",
-              "$comment": "Require fields here for Item Asset Properties.",
-              "additionalProperties": {
-                "required": ["eo:bands"]
+              "properties": {
+                "type": "object",
+                "$comment": "Require fields here for Item Properties.",
+                "required": ["platform", "mission"]
+              },
+              "assets": {
+                "type": "object",
+                "$comment": "Require fields here for Item Asset Properties.",
+                "additionalProperties": {
+                  "required": ["eo:bands"]
+                }
               }
             }
           }
-        },
-        {
-          "$ref": "#/definitions/stac_extensions"
-        }
-      ]
-    },
-    {
-      "$comment": "This is the schema for STAC Collections. Require fields here for Collections (top-level).",
-      "allOf": [
-        {
-          "type": "object",
-          "required": ["type", "title", "providers", "summaries"],
+        ]
+      },
+      "else": {
+        "if": {
           "properties": {
             "type": {
               "const": "Collection"
             }
           }
         },
-        {
-          "$ref": "#/definitions/fields"
+        "then": {
+          "$comment": "This is the schema for STAC Collections. Require fields here for Collections (top-level).",
+          "allOf": [
+            {
+              "type": "object",
+              "required": ["type", "title", "providers", "summaries"]
+            }
+          ]
         },
-        {
-          "$ref": "#/definitions/stac_extensions"
-        }
-      ]
+        "else": false
+      }
     }
   ],
   "definitions": {

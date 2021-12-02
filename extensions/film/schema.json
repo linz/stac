@@ -3,59 +3,67 @@
   "$id": "https://stac.linz.govt.nz/_STAC_VERSION_/film/schema.json",
   "title": "Film Extension",
   "description": "STAC Film Extension for STAC Items, and Collection Summaries.",
-  "oneOf": [
+  "allOf": [
     {
-      "$comment": "This is the schema for STAC Items.",
-      "allOf": [
-        {
-          "type": "object",
-          "required": ["type", "properties", "assets"],
-          "properties": {
-            "type": {
-              "const": "Feature"
-            },
+      "$ref": "#/definitions/stac_extensions"
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "Feature"
+          }
+        }
+      },
+      "then": {
+        "$comment": "This is the schema for STAC Items.",
+        "allOf": [
+          {
+            "type": "object",
+            "required": ["type", "properties", "assets"],
             "properties": {
-              "allOf": [
-                {
-                  "required": ["film:id", "film:negative_sequence"]
-                },
-                {
+              "properties": {
+                "allOf": [
+                  {
+                    "required": ["film:id", "film:negative_sequence"]
+                  },
+                  {
+                    "$ref": "#/definitions/fields"
+                  }
+                ]
+              },
+              "assets": {
+                "type": "object",
+                "additionalProperties": {
                   "$ref": "#/definitions/fields"
                 }
-              ]
-            },
-            "assets": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/fields"
               }
             }
           }
-        },
-        {
-          "$ref": "#/definitions/stac_extensions"
-        }
-      ]
-    },
-    {
-      "$comment": "This is the schema for STAC Collections. This extension requires this for Collection summaries.",
-      "type": "object",
-      "allOf": [
-        {
-          "required": ["type", "summaries"],
+        ]
+      },
+      "else": {
+        "if": {
           "properties": {
             "type": {
               "const": "Collection"
             }
           }
         },
-        {
-          "$ref": "#/definitions/fields"
+        "then": {
+          "$comment": "This is the schema for STAC Collections. This extension requires this for Collection summaries.",
+          "type": "object",
+          "allOf": [
+            {
+              "required": ["type", "summaries"]
+            },
+            {
+              "$ref": "#/definitions/fields"
+            }
+          ]
         },
-        {
-          "$ref": "#/definitions/stac_extensions"
-        }
-      ]
+        "else": false
+      }
     }
   ],
   "definitions": {

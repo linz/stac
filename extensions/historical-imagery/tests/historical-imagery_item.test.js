@@ -30,6 +30,38 @@ o.spec('Historical Imagery Extension Item', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
+  o("Example with an invalid 'type' field should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['type'] = 'incorrect_example';
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(validate.errors.some((error) => error.instancePath === '' && error.message === 'boolean schema is false')).equals(
+      true,
+    )(JSON.stringify(validate.errors));
+  });
+
+  o("Example with a Collection 'type' field should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['type'] = 'Collection';
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '' && error.message === "must have required property 'title'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o("Example without optional 'instruments' property should pass validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
