@@ -20,6 +20,7 @@
             "properties": {
               "allOf": [
                 {
+                  "type": "object",
                   "$comment": "Require fields here for Item Properties.",
                   "required": ["template:new_field"]
                 },
@@ -142,9 +143,9 @@
     "require_any_field": {
       "$comment": "Please list all fields here so that we can force the existence of one of them in other parts of the schemas.",
       "anyOf": [
-        { "required": ["template:new_field"] },
-        { "required": ["template:xyz"] },
-        { "required": ["template:another_one"] }
+        { "type": "object", "required": ["template:new_field"] },
+        { "type": "object", "required": ["template:xyz"] },
+        { "type": "object", "required": ["template:another_one"] }
       ]
     },
     "fields": {

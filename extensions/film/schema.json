@@ -9,6 +9,7 @@
     },
     {
       "if": {
+        "type": "object",
         "properties": {
           "type": {
             "const": "Feature"
@@ -25,6 +26,7 @@
               "properties": {
                 "allOf": [
                   {
+                    "type": "object",
                     "required": ["film:id", "film:negative_sequence"]
                   },
                   {
@@ -44,6 +46,7 @@
       },
       "else": {
         "if": {
+          "type": "object",
           "properties": {
             "type": {
               "const": "Collection"
