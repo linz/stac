@@ -1,0 +1,50 @@
+{
+  "extensions": {
+    "aerial-photo": "Aerial Photo",
+    "camera": "Camera",
+    "film": "Film",
+    "historical-imagery": "Historical Imagery",
+    "scannning": "Scanning"
+  },
+  "metadata": {
+    "film:id": {
+      "summary": "v"
+    },
+    "film:negative_sequence": {
+      "summary": "r"
+    },
+    "film:physical_condition": {
+      "summary": "v"
+    },
+    "film:physical_size": {
+      "summary": "v"
+    },
+    "aerial-photo:run": {
+      "summary": "v"
+    },
+    "aerial-photo:sequence_number": {
+      "summary": "r"
+    },
+    "aerial-photo:altitude": {
+      "summary": "r"
+    },
+    "aerial-photo:scale": {
+      "summary": "r"
+    },
+    "aerial-photo:anomalies": {
+      "summary": "v"
+    },
+    "camera:sequence_number": {
+      "summary": "r"
+    },
+    "camera:nominal_focal_length": {
+      "summary": "r"
+    },
+    "scan:is_original": {
+      "summary": "v"
+    },
+    "scan:scanned": {
+      "summary": "r"
+    }
+  }
+}
