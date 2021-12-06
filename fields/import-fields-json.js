@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as https from 'https';
 
-const stac_fields_url = 'https://cdn.jsdelivr.net/npm/@radiantearth/stac-fields/fields-normalized.json';
+const stac_fields_url = 'https://cdn.jsdelivr.net/npm/@radiantearth/stac-fields@1.0.0-beta.10/fields.json';
 
 function extendJsonSchema(baseSchema, extendingSchema) {
   let extendedSchema = Object.assign({}, baseSchema);
