@@ -1,8 +1,10 @@
 name: Build Fields
 on:
   push:
+    branches-ignore:
+      - master
     paths:
-      - 'fields/custom-fields.json'
+      - fields/custom-fields.json
 
 jobs:
   build:
