@@ -1,6 +1,6 @@
 name: Build Fields
 on:
-  pull_request:
+  push:
     paths:
       - 'fields/custom-fields.json'
 
