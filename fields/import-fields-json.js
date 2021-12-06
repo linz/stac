@@ -27,5 +27,5 @@ https
     });
   })
   .on('error', (err) => {
-    console.log(err.message);
+    throw new Error(err);
   });
