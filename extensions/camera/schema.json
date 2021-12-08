@@ -9,6 +9,7 @@
     },
     {
       "if": {
+        "type": "object",
         "properties": {
           "type": {
             "const": "Feature"
@@ -37,6 +38,7 @@
       },
       "else": {
         "if": {
+          "type": "object",
           "properties": {
             "type": {
               "const": "Collection"
