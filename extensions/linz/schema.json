@@ -22,6 +22,7 @@
     {
       "$comment": "Type-specific schemas",
       "if": {
+        "type": "object",
         "properties": {
           "type": {
             "const": "Collection"
@@ -88,6 +89,7 @@
       },
       "else": {
         "if": {
+          "type": "object",
           "properties": {
             "type": {
               "const": "Feature"
@@ -940,9 +942,11 @@
           }
         },
         "linz:asset_summaries": {
+          "type": "object",
           "required": ["created", "updated"],
           "properties": {
             "created": {
+              "type": "object",
               "required": ["minimum", "maximum"],
               "properties": {
                 "minimum": {
@@ -956,6 +960,7 @@
               }
             },
             "updated": {
+              "type": "object",
               "required": ["minimum", "maximum"],
               "properties": {
                 "minimum": {
@@ -984,8 +989,10 @@
           "allOf": [
             {
               "contains": {
+                "type": "object",
                 "properties": {
                   "roles": {
+                    "type": "array",
                     "contains": {
                       "const": "manager"
                     }
@@ -995,8 +1002,10 @@
             },
             {
               "contains": {
+                "type": "object",
                 "properties": {
                   "roles": {
+                    "type": "array",
                     "contains": {
                       "const": "custodian"
                     }
@@ -1045,9 +1054,12 @@
         "providers": {
           "allOf": [
             {
+              "type": "array",
               "contains": {
+                "type": "object",
                 "properties": {
                   "roles": {
+                    "type": "array",
                     "contains": {
                       "const": "licensor"
                     }
@@ -1056,9 +1068,12 @@
               }
             },
             {
+              "type": "array",
               "contains": {
+                "type": "object",
                 "properties": {
                   "roles": {
+                    "type": "array",
                     "contains": {
                       "const": "producer"
                     }

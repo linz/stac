@@ -15,12 +15,12 @@ This is LINZ top level
 extension which adds constraints to default STAC schema fields.
 
 - Examples:
-  - [Collection example](examples/collection.json): Shows the basic usage of the
+  - [Collection example](https://stac.linz.govt.nz/_STAC_VERSION_/linz/examples/collection.json): Shows the basic usage of the
     extension in a STAC Collection
-  - [Item example](examples/item.json): Shows the basic usage of the extension
+  - [Item example](https://stac.linz.govt.nz/_STAC_VERSION_/linz/examples/item.json): Shows the basic usage of the extension
     in a STAC Item
-- [JSON Schema](./schema.json)
-- [Changelog](./CHANGELOG.md)
+- [JSON Schema](https://stac.linz.govt.nz/_STAC_VERSION_/linz/schema.json)
+- [Changelog](https://stac.linz.govt.nz/_STAC_VERSION_/linz/CHANGELOG.md)
 
 ## Item Fields
 
@@ -122,7 +122,7 @@ This extension includes these other extensions:
 
 - [processing](https://github.com/stac-extensions/processing)
 - [projection](https://github.com/stac-extensions/projection)
-- [quality](../quality)
+- [quality](https://stac.linz.govt.nz/_STAC_VERSION_/quality)
 - [version](https://github.com/stac-extensions/version)
 
 ## Contributing

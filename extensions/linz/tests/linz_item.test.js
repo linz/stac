@@ -95,4 +95,21 @@ o.spec('LINZ item', () => {
     // then
     o(valid).equals(true);
   });
+
+  o("Example with an incorrect 'created' asset field type should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['assets']['example']['created'] = 1234;
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '/assets/example/created' && error.message === 'must be string',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
 });

@@ -3,59 +3,70 @@
   "$id": "https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json",
   "title": "Aerial Photography Extension",
   "description": "STAC Aerial Photography Extension for STAC Items, and Collection Summaries.",
-  "oneOf": [
+  "allOf": [
     {
-      "$comment": "This is the schema for STAC Items.",
-      "allOf": [
-        {
-          "type": "object",
-          "required": ["type", "properties", "assets"],
-          "properties": {
-            "type": {
-              "const": "Feature"
-            },
+      "$ref": "#/definitions/stac_extensions"
+    },
+    {
+      "if": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "const": "Feature"
+          }
+        }
+      },
+      "then": {
+        "$comment": "This is the schema for STAC Items.",
+        "allOf": [
+          {
+            "type": "object",
+            "required": ["type", "properties", "assets"],
             "properties": {
-              "allOf": [
-                {
-                  "required": ["aerial-photo:run", "aerial-photo:sequence_number"]
-                },
-                {
+              "properties": {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "required": ["aerial-photo:run", "aerial-photo:sequence_number"]
+                  },
+                  {
+                    "$ref": "#/definitions/fields"
+                  }
+                ]
+              },
+              "assets": {
+                "type": "object",
+                "additionalProperties": {
                   "$ref": "#/definitions/fields"
                 }
-              ]
-            },
-            "assets": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/fields"
               }
             }
           }
-        },
-        {
-          "$ref": "#/definitions/stac_extensions"
-        }
-      ]
-    },
-    {
-      "$comment": "This is the schema for STAC Collections. This extension requires this for Collection summaries.",
-      "type": "object",
-      "allOf": [
-        {
-          "required": ["type", "summaries"],
+        ]
+      },
+      "else": {
+        "if": {
+          "type": "object",
           "properties": {
             "type": {
               "const": "Collection"
             }
           }
         },
-        {
-          "$ref": "#/definitions/fields"
+        "then": {
+          "$comment": "This is the schema for STAC Collections. This extension requires this for Collection summaries.",
+          "type": "object",
+          "allOf": [
+            {
+              "required": ["type", "summaries"]
+            },
+            {
+              "$ref": "#/definitions/fields"
+            }
+          ]
         },
-        {
-          "$ref": "#/definitions/stac_extensions"
-        }
-      ]
+        "else": false
+      }
     }
   ],
   "definitions": {

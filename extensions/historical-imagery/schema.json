@@ -3,55 +3,66 @@
   "$id": "https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json",
   "title": "Historical Imagery Extension",
   "description": "STAC Historical Imagery Extension for STAC Items and STAC Collections.",
-  "oneOf": [
+  "allOf": [
     {
-      "$comment": "This is the schema for STAC Items.",
-      "allOf": [
-        {
-          "type": "object",
-          "required": ["type", "properties", "assets"],
-          "properties": {
-            "type": {
-              "const": "Feature"
-            },
+      "$ref": "#/definitions/stac_extensions"
+    },
+    {
+      "$ref": "#/definitions/fields"
+    },
+    {
+      "if": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "const": "Feature"
+          }
+        }
+      },
+      "then": {
+        "$comment": "This is the schema for STAC Items.",
+        "allOf": [
+          {
+            "type": "object",
+            "required": ["type", "properties", "assets"],
             "properties": {
-              "type": "object",
-              "$comment": "Require fields here for Item Properties.",
-              "required": ["platform", "mission"]
-            },
-            "assets": {
-              "type": "object",
-              "$comment": "Require fields here for Item Asset Properties.",
-              "additionalProperties": {
-                "required": ["eo:bands"]
+              "properties": {
+                "type": "object",
+                "$comment": "Require fields here for Item Properties.",
+                "required": ["platform", "mission"]
+              },
+              "assets": {
+                "type": "object",
+                "$comment": "Require fields here for Item Asset Properties.",
+                "additionalProperties": {
+                  "type": "object",
+                  "required": ["eo:bands"]
+                }
               }
             }
           }
-        },
-        {
-          "$ref": "#/definitions/stac_extensions"
-        }
-      ]
-    },
-    {
-      "$comment": "This is the schema for STAC Collections. Require fields here for Collections (top-level).",
-      "allOf": [
-        {
+        ]
+      },
+      "else": {
+        "if": {
           "type": "object",
-          "required": ["type", "title", "providers", "summaries"],
           "properties": {
             "type": {
               "const": "Collection"
             }
           }
         },
-        {
-          "$ref": "#/definitions/fields"
+        "then": {
+          "$comment": "This is the schema for STAC Collections. Require fields here for Collections (top-level).",
+          "allOf": [
+            {
+              "type": "object",
+              "required": ["type", "title", "providers", "summaries"]
+            }
+          ]
         },
-        {
-          "$ref": "#/definitions/stac_extensions"
-        }
-      ]
+        "else": false
+      }
     }
   ],
   "definitions": {
@@ -113,9 +124,12 @@
         "providers": {
           "allOf": [
             {
+              "type": "array",
               "contains": {
+                "type": "object",
                 "properties": {
                   "roles": {
+                    "type": "array",
                     "contains": {
                       "const": "licensor"
                     }
@@ -124,9 +138,12 @@
               }
             },
             {
+              "type": "array",
               "contains": {
+                "type": "object",
                 "properties": {
                   "roles": {
+                    "type": "array",
                     "contains": {
                       "const": "producer"
                     }
@@ -135,9 +152,12 @@
               }
             },
             {
+              "type": "array",
               "contains": {
+                "type": "object",
                 "properties": {
                   "roles": {
+                    "type": "array",
                     "contains": {
                       "const": "processor"
                     }
@@ -146,9 +166,12 @@
               }
             },
             {
+              "type": "array",
               "contains": {
+                "type": "object",
                 "properties": {
                   "roles": {
+                    "type": "array",
                     "contains": {
                       "const": "host"
                     }
@@ -159,6 +182,7 @@
           ]
         },
         "summaries": {
+          "type": "object",
           "required": ["platform", "mission", "proj:epsg"],
           "properties": {
             "platform": {

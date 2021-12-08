@@ -21,12 +21,44 @@ o.spec('Historical Imagery Extension Collection', () => {
     validate = await ajv.compileAsync(data);
   });
 
+  o("Example with an invalid 'type' field should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['type'] = 'incorrect_example';
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(validate.errors.some((error) => error.instancePath === '' && error.message === 'boolean schema is false')).equals(
+      true,
+    )(JSON.stringify(validate.errors));
+  });
+
+  o("Example with an Item 'type' field should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['type'] = 'Feature';
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '' && error.message === "must have required property 'properties'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o('Example should pass validation', async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
