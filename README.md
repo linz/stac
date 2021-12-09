@@ -11,13 +11,13 @@ if other data managers find them to be useful.
 
 ## Extensions
 
-- [Aerial Photography](/v0.0.12/aerial-photo/): Aerial photography details for photos.
-- [Camera](/v0.0.12/camera/): Camera details for photos.
-- [Film](/v0.0.12/film/): Film details for photos.
-- [Historical Imagery](/v0.0.12/historical-imagery/): Aerial survey photos.
-- [LINZ](/v0.0.12/linz/): Toitū Te Whenua LINZ-specific settings.
-- [Quality](/v0.0.12/quality/): Dataset accuracy.
-- [Scanning](/v0.0.12/scanning/): Scanning details for photos.
+- [Aerial Photography](/v0.0.13/aerial-photo/): Aerial photography details for photos.
+- [Camera](/v0.0.13/camera/): Camera details for photos.
+- [Film](/v0.0.13/film/): Film details for photos.
+- [Historical Imagery](/v0.0.13/historical-imagery/): Aerial survey photos.
+- [LINZ](/v0.0.13/linz/): Toitū Te Whenua LINZ-specific settings.
+- [Quality](/v0.0.13/quality/): Dataset accuracy.
+- [Scanning](/v0.0.13/scanning/): Scanning details for photos.
 
 ## Running tests
 
