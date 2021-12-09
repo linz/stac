@@ -1,3 +1,9 @@
+## [0.0.14](https://github.com/linz/stac/compare/v0.0.13...v0.0.14) (2021-12-09)
+
+### Features
+
+- require additional fields for historical imagery (require linz extension) ([#199](https://github.com/linz/stac/issues/199)) ([839821f](https://github.com/linz/stac/commit/839821fd982046be58f869ac61d574e36c93ad1e))
+
 ## [0.0.13](https://github.com/linz/stac/compare/v0.0.12...v0.0.13) (2021-12-09)
 
 ### Features
