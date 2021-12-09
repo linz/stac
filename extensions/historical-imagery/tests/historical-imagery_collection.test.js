@@ -245,7 +245,7 @@ o.spec('Historical Imagery Extension Collection', () => {
     o(valid).equals(true);
   });
 
-  o("Summaries with no 'summaries' should fail validation", async () => {
+  o("Example with no 'summaries' should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.summaries;
