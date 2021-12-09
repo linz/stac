@@ -1,0 +1,25 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": ["https://stac.linz.govt.nz/v0.0.14/aerial-photo/schema.json"],
+  "type": "Feature",
+  "id": "72360",
+  "geometry": null,
+  "properties": {
+    "datetime": "1952-04-22T12:00:00Z",
+    "platform": "Fixed-wing Aircraft",
+    "instruments": ["EAGLE IV"],
+    "mission": "SURVEY_1",
+    "aerial-photo:run": "P1",
+    "aerial-photo:altitude": 3325,
+    "aerial-photo:scale": 4800,
+    "aerial-photo:sequence_number": 14,
+    "aerial-photo:anomalies": "Cloud shadow"
+  },
+  "links": [],
+  "assets": {
+    "visual": {
+      "href": "./72360.tiff",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized"
+    }
+  }
+}
