@@ -1,3 +1,11 @@
+## [0.0.13](https://github.com/linz/stac/compare/v0.0.12...v0.0.13) (2021-12-09)
+
+### Features
+
+- fields.json ([#197](https://github.com/linz/stac/issues/197)) ([29c742f](https://github.com/linz/stac/commit/29c742f2885e184c7e62448549ce851f360a2aa4))
+- Fix strict ajv warnings ([#167](https://github.com/linz/stac/issues/167)) ([d2f7daa](https://github.com/linz/stac/commit/d2f7daa67d010ac8ffe1c8ff380cbc2fc9453d96))
+- Verify ospec stderr output ([#198](https://github.com/linz/stac/issues/198)) ([5017d6c](https://github.com/linz/stac/commit/5017d6c6025a248d618dbd50d6870ff8809a2826))
+
 ## [0.0.12](https://github.com/linz/stac/compare/v0.0.11...v0.0.12) (2021-12-02)
 
 ### Bug Fixes
