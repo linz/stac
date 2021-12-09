@@ -134,7 +134,8 @@ o.spec('Historical Imagery Extension Item', () => {
     o(valid).equals(false);
     o(
       validate.errors.some(
-        (error) => error.instancePath === '/properties' && error.message === "must have required property 'processing:software'",
+        (error) =>
+          error.instancePath === '/properties' && error.message === "must have required property 'processing:software'",
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
