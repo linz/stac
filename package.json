@@ -1,6 +1,6 @@
 {
   "name": "@linzjs/stac",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "type": "module",
   "scripts": {
     "lint": "npx eslint . --fix && yarn format",
