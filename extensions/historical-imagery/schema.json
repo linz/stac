@@ -29,7 +29,7 @@
               "properties": {
                 "type": "object",
                 "$comment": "Require fields here for Item Properties.",
-                "required": ["platform", "mission"]
+                "required": ["platform", "mission", "processing:software"]
               },
               "assets": {
                 "type": "object",
@@ -57,7 +57,7 @@
           "allOf": [
             {
               "type": "object",
-              "required": ["type", "title", "providers", "summaries"]
+              "required": ["type", "title", "providers", "summaries", "processing:software"]
             }
           ]
         },
@@ -76,6 +76,11 @@
             {
               "contains": {
                 "const": "https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json"
+              }
+            },
+            {
+              "contains": {
+                "const": "https://stac.linz.govt.nz/_STAC_VERSION_/linz/schema.json"
               }
             },
             {

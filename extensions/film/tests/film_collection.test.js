@@ -30,6 +30,18 @@ o.spec('Film Extension Collection', () => {
     o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
   });
 
+  o('Missing summaries section should pass validation', async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.summaries;
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
+  });
+
   o("Summaries with no 'film:id' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));

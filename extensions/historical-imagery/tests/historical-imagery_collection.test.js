@@ -79,6 +79,23 @@ o.spec('Historical Imagery Extension Collection', () => {
     );
   });
 
+  o("Example with missing 'processing:software' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['processing:software'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '' && error.message === "must have required property 'processing:software'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
   o("Example without 'providers' should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
@@ -226,5 +243,22 @@ o.spec('Historical Imagery Extension Collection', () => {
 
     // then
     o(valid).equals(true);
+  });
+
+  o("Example with no 'summaries' should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.summaries;
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '' && error.message === "must have required property 'summaries'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
   });
 });
