@@ -1,16 +1,19 @@
 {
+  "type": "Feature",
   "stac_version": "1.0.0",
   "stac_extensions": [
     "https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json",
+    "https://stac.linz.govt.nz/_STAC_VERSION_/linz/schema.json",
     "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/processing/v1.0.0/schema.json",
     "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
     "https://stac-extensions.github.io/file/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/version/v1.0.0/schema.json",
     "https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json",
     "https://stac.linz.govt.nz/_STAC_VERSION_/camera/schema.json",
     "https://stac.linz.govt.nz/_STAC_VERSION_/film/schema.json",
     "https://stac.linz.govt.nz/_STAC_VERSION_/scanning/schema.json"
   ],
-  "type": "Feature",
   "id": "215354",
   "bbox": [170.54524, -45.80237, 170.56431, -45.81345],
   "geometry": {
@@ -44,7 +47,11 @@
     "film:physical_condition": "Film scratched",
     "film:physical_size": "18cm x 23cm",
     "scan:is_original": true,
-    "scan:scanned": "2018-09-30T11:00:00Z"
+    "scan:scanned": "2018-09-30T11:00:00Z",
+    "processing:software": {
+      "Topo Processor": "0.1.0"
+    },
+    "version": "1"
   },
   "links": [
     {
@@ -68,7 +75,9 @@
           "name": "gray",
           "common_name": "pan"
         }
-      ]
+      ],
+      "created": "2021-12-09T00:04:09Z",
+      "updated": "2021-12-09T00:04:09Z"
     }
   },
   "collection": "01FJ0SE46TT5TGBHBVX64TMEPA"

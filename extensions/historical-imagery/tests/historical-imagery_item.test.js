@@ -122,4 +122,20 @@ o.spec('Historical Imagery Extension Item', () => {
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
+
+  o("Example without mandatory 'processing:software' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example.properties['processing:software'];
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '/properties' && error.message === "must have required property 'processing:software'",
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
 });

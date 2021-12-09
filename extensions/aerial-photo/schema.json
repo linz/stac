@@ -58,7 +58,7 @@
           "type": "object",
           "allOf": [
             {
-              "required": ["type", "summaries"]
+              "required": ["type"]
             },
             {
               "$ref": "#/definitions/fields"

@@ -3,9 +3,13 @@
   "stac_version": "1.0.0",
   "stac_extensions": [
     "https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json",
+    "https://stac.linz.govt.nz/_STAC_VERSION_/linz/schema.json",
+    "https://stac.linz.govt.nz/_STAC_VERSION_/quality/schema.json",
     "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/processing/v1.0.0/schema.json",
     "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
     "https://stac-extensions.github.io/file/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/version/v1.0.0/schema.json",
     "https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json",
     "https://stac.linz.govt.nz/_STAC_VERSION_/camera/schema.json",
     "https://stac.linz.govt.nz/_STAC_VERSION_/film/schema.json",
@@ -23,6 +27,32 @@
       "interval": [["1947-03-28T12:00:00Z", "1952-04-22T12:00:00Z"]]
     }
   },
+  "linz:security_classification": "unclassified",
+  "linz:lifecycle": "completed",
+  "linz:history": "LINZ and its predecessors, Lands & Survey and Department of Survey and Land Information (DOSLI), commissioned aerial photography for the Crown between 1936 and 2008.\nOne of the predominant uses of the aerial photography at the time was the photogrammetric mapping of New Zealand, initially at 1inch to 1mile followed by the NZMS 260 and Topo50 map series at 1:50,000.\nThese photographs were scanned through the Crown Aerial Film Archive scanning project.",
+  "linz:providers": [
+    {
+      "name": "Toitū Te Whenua LINZ",
+      "description": "The New Zealand Government's lead agency for location and property information, Crown land and managing overseas investment.",
+      "roles": ["custodian"],
+      "url": "https://www.linz.govt.nz/about-linz/what-were-doing/projects/crown-aerial-film-archive-historical-imagery-scanning-project"
+    },
+    {
+      "name": "Manager Partnership Programmes",
+      "roles": ["manager"]
+    }
+  ],
+  "linz:geospatial_type": "black and white image",
+  "linz:asset_summaries": {
+    "created": {
+      "minimum": "1999-01-01T00:00:00Z",
+      "maximum": "2021-12-09T00:04:09Z"
+    },
+    "updated": {
+      "minimum": "1999-01-02T00:00:00Z",
+      "maximum": "2021-12-09T00:04:09Z"
+    }
+  },
   "providers": [
     {
       "name": "NZ Aerial Mapping",
@@ -36,6 +66,10 @@
       "url": "https://www.linz.govt.nz/about-linz/what-were-doing/projects/crown-aerial-film-archive-historical-imagery-scanning-project"
     }
   ],
+  "processing:software": {
+    "Topo Processor": "0.1.0"
+  },
+  "version": "1",
   "summaries": {
     "platform": ["Fixed-wing Aircraft"],
     "instruments": ["EAGLE IV"],
