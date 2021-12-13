@@ -18,6 +18,6 @@
     "ajv-formats": "^2.1.1",
     "conventional-changelog-cli": "^2.1.1",
     "ospec": "^4.1.1",
-    "stac-node-validator": "^1.0.0"
+    "stac-node-validator": "^1.2.1"
   }
 }
