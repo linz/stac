@@ -57,7 +57,7 @@
           "allOf": [
             {
               "type": "object",
-              "required": ["type", "title", "providers", "summaries", "processing:software"]
+              "required": ["type", "title", "providers", "summaries"]
             }
           ]
         },
