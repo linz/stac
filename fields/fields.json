@@ -553,7 +553,7 @@
     "processing:software": {
       "label": "Software",
       "format": "Software",
-      "summary": "v"
+      "summary": false
     },
     "proj:epsg": {
       "label": "EPSG Code",
