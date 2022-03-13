@@ -126,14 +126,6 @@
       "minimum": 10000,
       "maximum": 11000
     },
-    "processing:software": [
-      {
-        "Topo Processor": "v0.1.0"
-      },
-      {
-        "Topo Processor": "v0.3.0"
-      }
-    ],
     "aerial-photo:scale": {
       "minimum": 6600,
       "maximum": 6600
