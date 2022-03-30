@@ -29,7 +29,7 @@
               "properties": {
                 "type": "object",
                 "$comment": "Require fields here for Item Properties.",
-                "required": ["platform", "mission", "processing:software"]
+                "required": ["platform", "mission"]
               },
               "assets": {
                 "type": "object",
@@ -57,7 +57,7 @@
           "allOf": [
             {
               "type": "object",
-              "required": ["type", "title", "providers", "summaries", "processing:software"]
+              "required": ["type", "title", "providers", "summaries"]
             }
           ]
         },
