@@ -1,3 +1,14 @@
+## [0.0.15](https://github.com/linz/stac/compare/v0.0.14...v0.0.15) (2022-03-30)
+
+### Bug Fixes
+
+- remove requirement for processing:software field in Historical Imagery extension TDE-343 ([#220](https://github.com/linz/stac/issues/220)) ([aebe081](https://github.com/linz/stac/commit/aebe081ce9256b3c98dbab5fb10653a284fe3f15))
+- tidy historical imagery examples TDE-338 ([#222](https://github.com/linz/stac/issues/222)) ([55e6de6](https://github.com/linz/stac/commit/55e6de63c08e40d1421cfb5d383c5c95b65c1c31))
+
+### Features
+
+- **historical-imagery:** add quality:description to collection ([#217](https://github.com/linz/stac/issues/217)) ([6c68da3](https://github.com/linz/stac/commit/6c68da3d6574af75fdc89d2dd1852d095bbd63dc))
+
 ## [0.0.14](https://github.com/linz/stac/compare/v0.0.13...v0.0.14) (2021-12-09)
 
 ### Features
