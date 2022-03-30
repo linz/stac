@@ -19,8 +19,8 @@
   ],
   "stac_extensions": [
     "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
     "https://stac-extensions.github.io/file/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
     "https://stac-extensions.github.io/version/v1.0.0/schema.json",
     "https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json",
     "https://stac.linz.govt.nz/_STAC_VERSION_/camera/schema.json",
