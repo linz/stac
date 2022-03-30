@@ -6,7 +6,6 @@
     "https://stac.linz.govt.nz/_STAC_VERSION_/linz/schema.json",
     "https://stac.linz.govt.nz/_STAC_VERSION_/quality/schema.json",
     "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/processing/v1.0.0/schema.json",
     "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
     "https://stac-extensions.github.io/file/v2.0.0/schema.json",
     "https://stac-extensions.github.io/version/v1.0.0/schema.json",
@@ -67,9 +66,6 @@
       "url": "https://www.linz.govt.nz/about-linz/what-were-doing/projects/crown-aerial-film-archive-historical-imagery-scanning-project"
     }
   ],
-  "processing:software": {
-    "Topo Processor": "0.1.0"
-  },
   "version": "1",
   "summaries": {
     "platform": ["Fixed-wing Aircraft"],
