@@ -122,5 +122,4 @@ o.spec('Historical Imagery Extension Item', () => {
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
-
 });
