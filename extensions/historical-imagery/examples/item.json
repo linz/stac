@@ -1,20 +1,29 @@
 {
   "type": "Feature",
   "stac_version": "1.0.0",
-  "stac_extensions": [
-    "https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json",
-    "https://stac.linz.govt.nz/_STAC_VERSION_/linz/schema.json",
-    "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/file/v2.0.0/schema.json",
-    "https://stac-extensions.github.io/version/v1.0.0/schema.json",
-    "https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json",
-    "https://stac.linz.govt.nz/_STAC_VERSION_/camera/schema.json",
-    "https://stac.linz.govt.nz/_STAC_VERSION_/film/schema.json",
-    "https://stac.linz.govt.nz/_STAC_VERSION_/scanning/schema.json"
-  ],
   "id": "215354",
-  "bbox": [170.54524, -45.80237, 170.56431, -45.81345],
+  "properties": {
+    "version": "1",
+    "mission": "399",
+    "platform": "Fixed-wing Aircraft",
+    "instruments": ["EAGLE IV"],
+    "aerial-photo:run": "H",
+    "aerial-photo:sequence_number": 39,
+    "aerial-photo:anomalies": "Cloud, Chemical stain",
+    "aerial-photo:altitude": 11000,
+    "aerial-photo:scale": 6600,
+    "camera:sequence_number": 58064,
+    "camera:nominal_focal_length": 508,
+    "film:id": "579",
+    "film:negative_sequence": 34,
+    "film:physical_condition": "Film scratched",
+    "film:physical_size": "18cm x 23cm",
+    "proj:centroid": { "lat": -45.8284, "lon": 170.4842 },
+    "proj:epsg": 4167,
+    "scan:is_original": true,
+    "scan:scanned": "2018-09-30T11:00:00Z",
+    "datetime": "1949-03-09T12:00:00Z"
+  },
   "geometry": {
     "type": "Polygon",
     "coordinates": [
@@ -27,45 +36,30 @@
       ]
     ]
   },
-  "properties": {
-    "datetime": "1949-03-09T12:00:00Z",
-    "platform": "Fixed-wing Aircraft",
-    "instruments": ["EAGLE IV"],
-    "mission": "399",
-    "proj:epsg": 4167,
-    "proj:centroid": { "lat": -45.8284, "lon": 170.4842 },
-    "aerial-photo:run": "H",
-    "aerial-photo:altitude": 11000,
-    "aerial-photo:scale": 6600,
-    "aerial-photo:sequence_number": 39,
-    "aerial-photo:anomalies": "Cloud, Chemical stain",
-    "camera:sequence_number": 58064,
-    "camera:nominal_focal_length": 508,
-    "film:id": "579",
-    "film:negative_sequence": 34,
-    "film:physical_condition": "Film scratched",
-    "film:physical_size": "18cm x 23cm",
-    "scan:is_original": true,
-    "scan:scanned": "2018-09-30T11:00:00Z",
-    "version": "1"
-  },
   "links": [
+    {
+      "rel": "root",
+      "href": "./collection.json",
+      "type": "application/json",
+      "title": "NEW ZEALAND (MAINLAND)"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json",
+      "title": "NEW ZEALAND (MAINLAND)"
+    },
     {
       "rel": "collection",
       "href": "./collection.json",
-      "type": "application/json"
-    },
-    {
-      "rel": "item",
-      "href": "./item.json",
-      "type": "application/json"
+      "type": "application/json",
+      "title": "NEW ZEALAND (MAINLAND)"
     }
   ],
   "assets": {
     "visual": {
       "href": "./215354.tiff",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "file:checksum": "1220b7deb18ad9dc6f3f94df60c26dd235a019946b8b6b7d1a36f100a8f9f1889130",
       "eo:bands": [
         {
           "name": "gray",
@@ -73,8 +67,22 @@
         }
       ],
       "created": "2021-12-09T00:04:09Z",
-      "updated": "2021-12-09T00:04:09Z"
+      "updated": "2021-12-09T00:04:09Z",
+      "file:checksum": "1220b7deb18ad9dc6f3f94df60c26dd235a019946b8b6b7d1a36f100a8f9f1889130"
     }
   },
+  "bbox": [170.54524, -45.80237, 170.56431, -45.81345],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/version/v1.0.0/schema.json",
+    "https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json",
+    "https://stac.linz.govt.nz/_STAC_VERSION_/camera/schema.json",
+    "https://stac.linz.govt.nz/_STAC_VERSION_/film/schema.json",
+    "https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json",
+    "https://stac.linz.govt.nz/_STAC_VERSION_/linz/schema.json",
+    "https://stac.linz.govt.nz/_STAC_VERSION_/scanning/schema.json"
+  ],
   "collection": "01FJ0SE46TT5TGBHBVX64TMEPA"
 }
