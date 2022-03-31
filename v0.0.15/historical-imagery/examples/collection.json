@@ -1,0 +1,158 @@
+{
+  "type": "Collection",
+  "id": "01FJ0SE46TT5TGBHBVX64TMEPA",
+  "stac_version": "1.0.0",
+  "description": "Survey 399 of the Crown Aerial Film Archive",
+  "links": [
+    {
+      "rel": "root",
+      "href": "./collection.json",
+      "type": "application/json",
+      "title": "NEW ZEALAND (MAINLAND)"
+    },
+    {
+      "rel": "item",
+      "href": "./item.json",
+      "type": "application/json",
+      "title": "NEW ZEALAND (MAINLAND)"
+    }
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/version/v1.0.0/schema.json",
+    "https://stac.linz.govt.nz/v0.0.15/aerial-photo/schema.json",
+    "https://stac.linz.govt.nz/v0.0.15/camera/schema.json",
+    "https://stac.linz.govt.nz/v0.0.15/film/schema.json",
+    "https://stac.linz.govt.nz/v0.0.15/historical-imagery/schema.json",
+    "https://stac.linz.govt.nz/v0.0.15/linz/schema.json",
+    "https://stac.linz.govt.nz/v0.0.15/quality/schema.json",
+    "https://stac.linz.govt.nz/v0.0.15/scanning/schema.json"
+  ],
+  "version": "1",
+  "linz:security_classification": "unclassified",
+  "linz:history": "LINZ and its predecessors, Lands & Survey and Department of Survey and Land Information (DOSLI), commissioned aerial photography for the Crown between 1936 and 2008.\nOne of the predominant uses of the aerial photography at the time was the photogrammetric mapping of New Zealand, initially at 1inch to 1mile followed by the NZMS 260 and Topo50 map series at 1:50,000.\nThese photographs were scanned through the Crown Aerial Film Archive scanning project.",
+  "linz:lifecycle": "completed",
+  "quality:description": "The spatial extents provided are only an approximate coverage for the ungeoreferenced aerial photographs.",
+  "linz:providers": [
+    {
+      "name": "Toitū Te Whenua LINZ",
+      "description": "The New Zealand Government's lead agency for location and property information, Crown land and managing overseas investment.",
+      "roles": ["custodian"],
+      "url": "https://www.linz.govt.nz/about-linz/what-were-doing/projects/crown-aerial-film-archive-historical-imagery-scanning-project"
+    },
+    {
+      "name": "Manager Partnership Programmes",
+      "roles": ["manager"]
+    }
+  ],
+  "linz:geospatial_type": "black and white image",
+  "linz:asset_summaries": {
+    "created": {
+      "minimum": "1999-01-01T00:00:00Z",
+      "maximum": "2021-12-09T00:04:09Z"
+    },
+    "updated": {
+      "minimum": "1999-01-02T00:00:00Z",
+      "maximum": "2021-12-09T00:04:09Z"
+    }
+  },
+  "title": "NEW ZEALAND (MAINLAND)",
+  "extent": {
+    "spatial": {
+      "bbox": [[170.54524, -45.80237, 170.56431, -45.81345]]
+    },
+    "temporal": {
+      "interval": [["1947-03-28T12:00:00Z", "1952-04-22T12:00:00Z"]]
+    }
+  },
+  "license": "CC-BY-4.0",
+  "providers": [
+    {
+      "name": "NZ Aerial Mapping",
+      "description": "Aerial survey and geospatial services firm. Went into liquidation in 2014.",
+      "roles": ["producer"]
+    },
+    {
+      "name": "Toitū Te Whenua LINZ",
+      "description": "The New Zealand Government's lead agency for location and property information, Crown land and managing overseas investment.",
+      "roles": ["host", "licensor", "processor"],
+      "url": "https://www.linz.govt.nz/about-linz/what-were-doing/projects/crown-aerial-film-archive-historical-imagery-scanning-project"
+    }
+  ],
+  "summaries": {
+    "mission": ["399"],
+    "platform": ["Fixed-wing Aircraft"],
+    "instruments": ["EAGLE IV"],
+    "film:id": ["464", "465", "466", "470", "476", "486", "577", "579", "580", "728", "731", "732"],
+    "film:physical_condition": ["Film scratched", "NOT 10/03/1949", "NOT 16/04/1947"],
+    "film:physical_size": ["18cm x 23cm"],
+    "aerial-photo:run": [
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L",
+      "M",
+      "N",
+      "O",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "U",
+      "V",
+      "W",
+      "X"
+    ],
+    "aerial-photo:anomalies": [
+      "Bottom of frame obscured by splice tape",
+      "Chemical stain",
+      "Chemical stain, Fogging present, Static",
+      "Chemical stain, Static",
+      "Cloud",
+      "Cloud Shadow",
+      "Cloud, Chemical stain",
+      "Cloud, Static",
+      "Fogging present",
+      "Fogging present, Chemical stain",
+      "Static",
+      "Top of frame fogged, No instrument panel"
+    ],
+    "scan:is_original": [true, false],
+    "scan:scanned": {
+      "minimum": "2018-06-30T12:00:00Z",
+      "maximum": "2019-12-31T11:00:00Z"
+    },
+    "proj:epsg": [2193],
+    "aerial-photo:altitude": {
+      "minimum": 10000,
+      "maximum": 11000
+    },
+    "aerial-photo:scale": {
+      "minimum": 6600,
+      "maximum": 6600
+    },
+    "aerial-photo:sequence_number": {
+      "minimum": 1,
+      "maximum": 89
+    },
+    "camera:sequence_number": {
+      "minimum": 32724,
+      "maximum": 89642
+    },
+    "camera:nominal_focal_length": {
+      "minimum": 508,
+      "maximum": 508
+    },
+    "film:negative_sequence": {
+      "minimum": 1,
+      "maximum": 184
+    }
+  }
+}
