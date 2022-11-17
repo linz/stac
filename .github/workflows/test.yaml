@@ -9,7 +9,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: linz/action-typescript@v1
+      - uses: linz/action-typescript@v18
       - name: Verify that there are no unknown ospec stderr lines
         run: '! (npx ospec 3>&2 2>&1 1>&3-) 2>/dev/null | grep --fixed-strings --invert-match --regex=stac-extensions.github.io --regex=schemas.stacspec.org'
 
