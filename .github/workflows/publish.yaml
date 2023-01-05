@@ -25,7 +25,7 @@ jobs:
         run: echo "::set-output name=tag::${GITHUB_REF##*/}"
 
       - name: Deploy JSON Schema for version ${{ env.GITHUB_REF }}
-        uses: peaceiris/actions-gh-pages@v3.9.0
+        uses: peaceiris/actions-gh-pages@v3.9.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: extensions
