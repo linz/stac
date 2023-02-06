@@ -12,7 +12,7 @@
     "test": "npx ospec && ./validate.sh"
   },
   "devDependencies": {
-    "@linzjs/style": "^3.14.0",
+    "@linzjs/style": "^3.15.0",
     "@types/ospec": "^4.0.5",
     "ajv": "^8.12.0",
     "ajv-formats": "^2.1.1",
