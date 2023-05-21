@@ -1,0 +1,21 @@
+{
+    "type": "Collection",
+    "stac_version": "1.0.0",
+    "id": "01GHD4BHWJ4PJAS2T7M5G45JQT",
+    "title": "Bay of Plenty 0.2m Aerial Photos (2021-2022)",
+    "description": "Bay of Plenty 0.2m Rural Aerial Photos",
+    "license": "CC-BY-4.0",
+    "links": [
+      { "rel": "self", "href": "./collection.json", "type": "application/json" },
+      { "rel": "item", "href": "./BC40_2000_2421.json", "type": "application/json" }
+    ],
+    "providers": [
+      { "name": "BOPLASS", "roles": ["licensor"] },
+      { "name": "AAM NZ", "roles": ["producer"] },
+      { "name": "Toitū Te Whenua Land Information New Zealand", "roles": ["host", "processor"] }
+    ],
+    "extent": {
+      "spatial": { "bbox": [[176.4620537, -38.8704907, 178.1159018, -37.5040892]] },
+      "temporal": { "interval": [["2021-12-01T11:00:00Z", "2022-05-05T12:00:00Z"]] }
+    }
+  }
