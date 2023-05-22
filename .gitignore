@@ -1,4 +1,1 @@
-/.idea/
-.ipynb_checkpoints/
-/.venv/
-/node_modules/
+node_modules/
