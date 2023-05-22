@@ -3,16 +3,16 @@
   "version": "0.0.15",
   "type": "module",
   "scripts": {
-    "lint": "npx eslint . --fix && yarn format",
-    "format": "yarn format:markdown && yarn format:yaml",
+    "lint": "npx eslint . --fix && npm run format",
+    "format": "npm run format:markdown && npm run format:yaml",
     "format:markdown": "npx prettier **/*.md --write",
     "format:yaml": "npx prettier **/*.yaml --write",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && yarn format && git add CHANGELOG.md",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && npm run format && git add CHANGELOG.md",
     "version-schema": "find extensions -type f -print0 | xargs -0 sed -i \"s/_STAC_VERSION_/v$npm_package_version/\"",
     "test": "npx ospec && ./validate.sh"
   },
   "devDependencies": {
-    "@linzjs/style": "^3.15.0",
+    "@linzjs/style": "^4.0.0",
     "@types/ospec": "^4.0.5",
     "ajv": "^8.12.0",
     "ajv-formats": "^2.1.1",

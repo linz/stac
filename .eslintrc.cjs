@@ -1,6 +1,3 @@
-const cfg = require('@linzjs/style/.eslintrc.js');
-
-cfg.parserOptions.ecmaVersion = 2021;
+const cfg = require('@linzjs/style/.eslintrc.cjs');
 
 module.exports = cfg;
-
