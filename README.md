@@ -23,27 +23,27 @@ if other data managers find them to be useful.
 
 1. Install packages:
 
-   ```shell
-   yarn
-   ```
+```shell
+npm install
+```
 
 2. Run tests:
 
-   ```shell
-   yarn test
-   ```
+```shell
+npm run test
+```
 
 ## Development
 
-Install packages by running `yarn`.
+Install packages by running `npm install`.
 
-Verify changes by running `yarn lint && yarn test` before committing.
+Verify changes by running `npm run lint && npm run test` before committing.
 
 ### Releases
 
 To create a release:
 
-1. Run `yarn version --new-version <patch|minor|major>` which will create a change log commit and version tag.
+1. Run `npm version --new-version <patch|minor|major>` which will create a change log commit and version tag.
 2. Run `git push --atomic origin master TAG` (e.g. `git push --atomic origin master v0.0.14`) which will trigger a GitHub release job.
    This will publish the new version to the "gh-pages" branch.
 
@@ -52,7 +52,7 @@ To create a release:
 Be sure to add a schemaMap entry to the
 [validate.sh](https://github.com/linz/stac/blob/master/validate.sh) file with your json-schema
 `$id` url followed by the path to the json-schema locally. This will allow
-`yarn test` to use a local json-schema file rather than retrieving a possibly yet
+`npm run test` to use a local json-schema file rather than retrieving a possibly yet
 un-published json-schema.
 
 ## [License](LICENSE)
