@@ -1,8 +1,9 @@
-import o from 'ospec';
 import Ajv from 'ajv';
+import { promises as fs } from 'fs';
+import o from 'ospec';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-import { promises as fs } from 'fs';
+
 import { AjvOptions, DefaultTimeoutMillis } from '../../../validation.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -98,7 +99,7 @@ o.spec('Historical Imagery Extension Collection', () => {
     // given
     for (const role of ['producer', 'licensor', 'processor', 'host']) {
       const example = JSON.parse(await fs.readFile(examplePath));
-      example.providers = example.providers.filter((provider) => !role in provider.roles);
+      example.providers = example.providers.filter((provider) => (!role) in provider.roles);
 
       // when
       let valid = validate(example);

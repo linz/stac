@@ -1,8 +1,9 @@
-import o from 'ospec';
 import Ajv from 'ajv';
+import { promises as fs } from 'fs';
+import o from 'ospec';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-import { promises as fs } from 'fs';
+
 import { AjvOptions, DefaultTimeoutMillis } from '../../../validation.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
