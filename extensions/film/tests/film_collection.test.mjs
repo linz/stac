@@ -4,7 +4,7 @@ import o from 'ospec';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
-import { AjvOptions, DefaultTimeoutMillis } from '../../../validation.js';
+import { AjvOptions, DefaultTimeoutMillis } from '../../../validation.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
