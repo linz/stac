@@ -46,6 +46,12 @@
               "type"
             ],
             "properties": {
+              "linz:geographic_description": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Human-readable description of the area covered by the collection.",
+                "examples": ["Waikato River", "Southland excluding islands"]
+              },
               "linz:geospatial_type": {
                 "type": "string",
                 "enum": [
@@ -1001,6 +1007,7 @@
             }
           }
         },
+        "linz:geographic_description": {},
         "linz:geospatial_type": {},
         "linz:history": {
           "title": "History",
