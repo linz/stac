@@ -76,6 +76,32 @@
                   "tin",
                   "triangle"
                 ]
+              },
+              "linz:region": {
+                "type": "string",
+                "description": "ASCII, lowercase, hyphenated region name covering the entire collection.",
+                "enum": [
+                  "antarctica",
+                  "auckland",
+                  "bay-of-plenty",
+                  "canterbury",
+                  "gisborne",
+                  "global",
+                  "hawkes-bay",
+                  "manawatu-whanganui",
+                  "marlborough",
+                  "nelson",
+                  "new-zealand",
+                  "northland",
+                  "otago",
+                  "pacific-islands",
+                  "southland",
+                  "taranaki",
+                  "tasman",
+                  "waikato",
+                  "wellington",
+                  "west-coast"
+                ]
               }
             }
           },
@@ -1043,6 +1069,7 @@
             }
           }
         },
+        "linz:region": {},
         "linz:security_classification": {
           "type": "string",
           "enum": ["unclassified", "in-confidence", "sensitive", "restricted", "confidential", "secret", "top-secret"]
