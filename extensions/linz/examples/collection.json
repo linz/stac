@@ -37,6 +37,7 @@
       "url": "https://www.exampleurl.com"
     }
   ],
+  "linz:region": "new-zealand",
   "linz:security_classification": "unclassified",
   "extent": {
     "spatial": {
