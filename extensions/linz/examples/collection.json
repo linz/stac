@@ -23,6 +23,7 @@
     }
   },
   "linz:lifecycle": "under development",
+  "linz:geographic_description": "Underhill",
   "linz:providers": [
     {
       "name": "Example",

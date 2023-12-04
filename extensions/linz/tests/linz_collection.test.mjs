@@ -518,4 +518,35 @@ o.spec('LINZ collection', () => {
     // then
     o(valid).equals(true);
   });
+
+  o("Collection with invalid 'linz:geographic_description' value should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:geographic_description'] = '';
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/linz:geographic_description' &&
+          error.message === 'must NOT have fewer than 1 characters',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
+  o("Collection with no 'linz:geographic_description' property should pass validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:geographic_description'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(true);
+  });
 });
