@@ -46,6 +46,12 @@
               "type"
             ],
             "properties": {
+              "linz:event_name": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Human-readable description of the event associated with the collection.",
+                "examples": ["Kaikōura earthquake", "Fiordland tsunami"]
+              },
               "linz:geographic_description": {
                 "type": "string",
                 "minLength": 1,
@@ -1007,6 +1013,7 @@
             }
           }
         },
+        "linz:event_name": {},
         "linz:geographic_description": {},
         "linz:geospatial_type": {},
         "linz:history": {
