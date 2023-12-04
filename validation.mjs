@@ -1,10 +1,10 @@
 import axios from 'axios';
+import { promises as fs } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-import { promises as fs } from 'fs';
 const __dirname = dirname(fileURLToPath(import.meta.url));
-import iriFormats from 'stac-node-validator/iri.js';
 import { fastFormats } from 'ajv-formats/dist/formats.js';
+import iriFormats from 'stac-node-validator/iri.js';
 
 const Schemas = new Map();
 export function loadSchema(uri) {

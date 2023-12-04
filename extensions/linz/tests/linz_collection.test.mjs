@@ -1,8 +1,9 @@
-import o from 'ospec';
 import Ajv from 'ajv';
+import { promises as fs } from 'fs';
+import o from 'ospec';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-import { promises as fs } from 'fs';
+
 import { AjvOptions, DefaultTimeoutMillis } from '../../../validation.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -404,7 +405,7 @@ o.spec('LINZ collection', () => {
     // given
     for (const role of ['producer', 'licensor']) {
       const example = JSON.parse(await fs.readFile(examplePath));
-      example.providers = example.providers.filter((provider) => !role in provider.roles);
+      example.providers = example.providers.filter((provider) => (!role) in provider.roles);
 
       // when
       let valid = validate(example);
@@ -423,7 +424,7 @@ o.spec('LINZ collection', () => {
     // given
     for (const role of ['manager', 'custodian']) {
       const example = JSON.parse(await fs.readFile(examplePath));
-      example['linz:providers'] = example['linz:providers'].filter((provider) => !role in provider.roles);
+      example['linz:providers'] = example['linz:providers'].filter((provider) => (!role) in provider.roles);
 
       // when
       let valid = validate(example);
