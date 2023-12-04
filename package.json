@@ -10,7 +10,7 @@
     "format:yaml": "npx prettier **/*.yaml --write",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && npm run format && git add CHANGELOG.md",
     "version-schema": "find extensions -type f -print0 | xargs -0 sed -i \"s/_STAC_VERSION_/v$npm_package_version/\"",
-    "test": "npx ospec && ./validate.sh"
+    "test": "npx ospec extensions/*/tests/*.test.mjs && ./validate.sh"
   },
   "devDependencies": {
     "@linzjs/style": "^5.1.0",
