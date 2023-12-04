@@ -549,4 +549,34 @@ o.spec('LINZ collection', () => {
     // then
     o(valid).equals(true);
   });
+
+  o("Collection with invalid 'linz:event_name' value should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:event_name'] = '';
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/linz:event_name' && error.message === 'must NOT have fewer than 1 characters',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
+  o("Collection with no 'linz:event_name' property should pass validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:event_name'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(true);
+  });
 });
