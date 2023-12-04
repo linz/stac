@@ -97,9 +97,10 @@ o.spec('Historical Imagery Extension Collection', () => {
 
   o('Collection without required provider roles should fail validation', async () => {
     // given
-    for (const role of ['producer', 'licensor', 'processor', 'host']) {
+    const requiredProviderRoles = ['producer', 'licensor', 'processor', 'host'];
+    for (const role of requiredProviderRoles) {
       const example = JSON.parse(await fs.readFile(examplePath));
-      example.providers = example.providers.filter((provider) => (!role) in provider.roles);
+      example.providers = requiredProviderRoles.filter((entry) => entry !== role);
 
       // when
       let valid = validate(example);
