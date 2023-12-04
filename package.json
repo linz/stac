@@ -3,8 +3,9 @@
   "version": "0.0.15",
   "type": "module",
   "scripts": {
-    "lint": "npx eslint . --fix && npm run format",
-    "format": "npm run format:markdown && npm run format:yaml",
+    "lint": "npx eslint . && npm run format",
+    "format": "npm run format:js && npm run format:markdown && npm run format:yaml",
+    "format:js": "npx eslint --fix .",
     "format:markdown": "npx prettier **/*.md --write",
     "format:yaml": "npx prettier **/*.yaml --write",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && npm run format && git add CHANGELOG.md",
