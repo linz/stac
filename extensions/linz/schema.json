@@ -46,6 +46,18 @@
               "type"
             ],
             "properties": {
+              "linz:event_name": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Human-readable description of the event associated with the collection.",
+                "examples": ["Kaikōura earthquake", "Fiordland tsunami"]
+              },
+              "linz:geographic_description": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Human-readable description of the area covered by the collection.",
+                "examples": ["Waikato River", "Southland excluding islands"]
+              },
               "linz:geospatial_type": {
                 "type": "string",
                 "enum": [
@@ -75,6 +87,32 @@
                   "rgb",
                   "tin",
                   "triangle"
+                ]
+              },
+              "linz:region": {
+                "type": "string",
+                "description": "ASCII, lowercase, hyphenated region name covering the entire collection.",
+                "enum": [
+                  "antarctica",
+                  "auckland",
+                  "bay-of-plenty",
+                  "canterbury",
+                  "gisborne",
+                  "global",
+                  "hawkes-bay",
+                  "manawatu-whanganui",
+                  "marlborough",
+                  "nelson",
+                  "new-zealand",
+                  "northland",
+                  "otago",
+                  "pacific-islands",
+                  "southland",
+                  "taranaki",
+                  "tasman",
+                  "waikato",
+                  "wellington",
+                  "west-coast"
                 ]
               }
             }
@@ -975,6 +1013,8 @@
             }
           }
         },
+        "linz:event_name": {},
+        "linz:geographic_description": {},
         "linz:geospatial_type": {},
         "linz:history": {
           "title": "History",
@@ -1043,6 +1083,7 @@
             }
           }
         },
+        "linz:region": {},
         "linz:security_classification": {
           "type": "string",
           "enum": ["unclassified", "in-confidence", "sensitive", "restricted", "confidential", "secret", "top-secret"]

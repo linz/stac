@@ -22,7 +22,9 @@
       "maximum": "2010-01-01T00:00:00Z"
     }
   },
+  "linz:event_name": "Forest assessment",
   "linz:lifecycle": "under development",
+  "linz:geographic_description": "Underhill",
   "linz:providers": [
     {
       "name": "Example",
@@ -37,6 +39,7 @@
       "url": "https://www.exampleurl.com"
     }
   ],
+  "linz:region": "new-zealand",
   "linz:security_classification": "unclassified",
   "extent": {
     "spatial": {
