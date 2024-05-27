@@ -1,9 +1,10 @@
 name: Test
 on:
   push:
-
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: linz/action-typescript@dee99184c4305aea6c380a52db9b2d7abaaa3e78 # v3
+        with:
+          node-version: 20.x
