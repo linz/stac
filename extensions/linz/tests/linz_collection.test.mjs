@@ -488,4 +488,95 @@ o.spec('LINZ collection', () => {
       ),
     ).equals(true)(JSON.stringify(validate.errors));
   });
+
+  o("Collection with incorrect 'linz:region' value should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:region'] = '';
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/linz:region' && error.message === 'must be equal to one of the allowed values',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
+  o("Collection with no 'linz:region' property should pass validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:region'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(true);
+  });
+
+  o("Collection with invalid 'linz:geographic_description' value should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:geographic_description'] = '';
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/linz:geographic_description' &&
+          error.message === 'must NOT have fewer than 1 characters',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
+  o("Collection with no 'linz:geographic_description' property should pass validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:geographic_description'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(true);
+  });
+
+  o("Collection with invalid 'linz:event_name' value should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:event_name'] = '';
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/linz:event_name' && error.message === 'must NOT have fewer than 1 characters',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
+
+  o("Collection with no 'linz:event_name' property should pass validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:event_name'];
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(true);
+  });
 });
