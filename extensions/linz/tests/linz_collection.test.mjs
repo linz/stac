@@ -579,4 +579,21 @@ o.spec('LINZ collection', () => {
     // then
     o(valid).equals(true);
   });
+
+  o("Collection with invalid 'linz:slug' value should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:slug'] = '';
+
+    // when
+    let valid = validate(example);
+
+    // then
+    o(valid).equals(false);
+    o(
+      validate.errors.some(
+        (error) => error.instancePath === '/linz:slug' && error.message === 'must NOT have fewer than 1 characters',
+      ),
+    ).equals(true)(JSON.stringify(validate.errors));
+  });
 });
