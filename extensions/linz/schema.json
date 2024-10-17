@@ -114,6 +114,12 @@
                   "wellington",
                   "west-coast"
                 ]
+              },
+              "linz:slug": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The '<name>-<date>-<GSD>' part of the Open Data Registry path.",
+                "examples": ["banks-peninsula_2019-2020_0.075m", "new-zealand_2015_1m"]
               }
             }
           },
@@ -1088,6 +1094,7 @@
           "type": "string",
           "enum": ["unclassified", "in-confidence", "sensitive", "restricted", "confidential", "secret", "top-secret"]
         },
+        "linz:slug": {},
         "linz:update_frequency": {
           "type": "string",
           "format": "duration"

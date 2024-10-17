@@ -70,6 +70,7 @@
   "quality:horizontal_accuracy_type": "nominal",
   "linz:history": "This is an example dataset lineage description.",
   "linz:update_frequency": "P1Y",
+  "linz:slug": "new-zealand_2015_1m",
   "providers": [
     {
       "name": "Example",
