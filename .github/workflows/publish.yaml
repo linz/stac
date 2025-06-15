@@ -20,14 +20,19 @@ jobs:
       - name: Version schema
         run: yarn run version-schema
 
-      - name: Prepare tag
-        id: git
-        run: echo "::set-output name=tag::${GITHUB_REF##*/}"
-
       - name: Deploy JSON Schema for version ${{ env.GITHUB_REF }}
-        uses: peaceiris/actions-gh-pages@373f7f263a76c20808c831209c920827a82a2847 # v3.9.3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: extensions
-          enable_jekyll: true
-          destination_dir: ${{ steps.git.outputs.tag }}
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          TAG_NAME="${GITHUB_REF##*/}"
+
+          git fetch origin gh-pages
+          git checkout gh-pages
+
+          mkdir -p ${TAG_NAME}
+          cp -r ../extensions/* ${TAG_NAME}/
+
+          git add ${TAG_NAME}
+          git commit -m "chore(schema): publish schema for ${TAG_NAME}" || echo "Nothing to commit"
+          git push origin gh-pages
