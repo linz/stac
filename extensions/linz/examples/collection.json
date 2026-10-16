@@ -12,33 +12,9 @@
   "title": "A title",
   "description": "A description",
   "license": "Apache-2.0",
-  "linz:asset_summaries": {
-    "created": {
-      "minimum": "1999-01-01T00:00:00Z",
-      "maximum": "2010-01-01T00:00:00Z"
-    },
-    "updated": {
-      "minimum": "1999-01-01T00:00:00Z",
-      "maximum": "2010-01-01T00:00:00Z"
-    }
-  },
   "linz:event_name": "Forest assessment",
   "linz:lifecycle": "under development",
   "linz:geographic_description": "Underhill",
-  "linz:providers": [
-    {
-      "name": "Example",
-      "description": "Example description.",
-      "roles": ["custodian"],
-      "url": "https://www.exampleurl.com"
-    },
-    {
-      "name": "Example",
-      "description": "Example description.",
-      "roles": ["manager"],
-      "url": "https://www.exampleurl.com"
-    }
-  ],
   "linz:region": "new-zealand",
   "linz:security_classification": "unclassified",
   "extent": {
@@ -49,27 +25,10 @@
       "interval": [["2015-06-23T00:00:00Z", null]]
     }
   },
-  "summaries": {
-    "created": {
-      "minimum": "1999-01-01T00:00:00Z",
-      "maximum": "2010-01-01T00:00:00Z"
-    },
-    "updated": {
-      "minimum": "1999-01-02T00:00:00Z",
-      "maximum": "2010-01-02T00:00:00Z"
-    },
-    "datetime": {
-      "minimum": "2015-06-23T00:00:00Z",
-      "maximum": "2019-07-10T13:44:56Z"
-    }
-  },
   "links": [],
-  "linz:geospatial_type": "polygon",
   "quality:description": "Example quality description",
   "quality:horizontal_accuracy": 1,
   "quality:horizontal_accuracy_type": "nominal",
-  "linz:history": "This is an example dataset lineage description.",
-  "linz:update_frequency": "P1Y",
   "linz:slug": "new-zealand_2015_1m",
   "providers": [
     {
@@ -92,7 +51,6 @@
       "created": "2000-01-01T00:00:00Z",
       "updated": "2020-01-01T00:00:00Z",
       "file:checksum": "1220e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "linz:language": "en-NZ",
       "proj:epsg": 32659
     }
   }
