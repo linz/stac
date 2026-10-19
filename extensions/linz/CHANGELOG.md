@@ -19,7 +19,7 @@ and this project adheres to
 - `linz:asset_summaries`, `linz:geospatial_type`, `linz:history`, `linz:providers` and `linz:update_frequency`
   collection fields removed (not used in production).
 - `linz:language` asset field removed (not used in production).
-- `summaries.created` and `summaries.updated` removed (not used in production).
+- `summaries.created`, `summaries.updated` and `summaries.datetime` removed (not used in production).
 
 ### Fixed
 
