@@ -16,6 +16,11 @@ and this project adheres to
 
 ### Removed
 
+- `linz:asset_summaries`, `linz:geospatial_type`, `linz:history`, `linz:providers` and `linz:update_frequency`
+  collection fields removed (not used in production).
+- `linz:language` asset field removed (not used in production).
+- `summaries.created`, `summaries.updated` and `summaries.datetime` removed (not used in production).
+
 ### Fixed
 
 [unreleased]: https://github.com/stac/extensions/linz/compare/v1.0.0...HEAD
