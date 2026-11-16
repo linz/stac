@@ -26,7 +26,7 @@ describe('Film item', { timeout: DefaultTimeoutMillis }, () => {
     const example = JSON.parse(await fs.readFile(examplePath));
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
@@ -38,7 +38,7 @@ describe('Film item', { timeout: DefaultTimeoutMillis }, () => {
     example.properties['film:id'] = 1234;
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -57,7 +57,7 @@ describe('Film item', { timeout: DefaultTimeoutMillis }, () => {
     delete example.properties['film:id'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -76,7 +76,7 @@ describe('Film item', { timeout: DefaultTimeoutMillis }, () => {
     example.properties['film:negative_sequence'] = 'incorrect_example';
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -95,7 +95,7 @@ describe('Film item', { timeout: DefaultTimeoutMillis }, () => {
     delete example.properties['film:negative_sequence'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);

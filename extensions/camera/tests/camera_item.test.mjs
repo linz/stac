@@ -26,7 +26,7 @@ describe('Camera item', { timeout: DefaultTimeoutMillis }, () => {
     const example = JSON.parse(await fs.readFile(examplePath));
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
@@ -38,7 +38,7 @@ describe('Camera item', { timeout: DefaultTimeoutMillis }, () => {
     example.properties['camera:sequence_number'] = 'incorrect_value';
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);

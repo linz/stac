@@ -38,7 +38,7 @@ describe('LINZ item', { timeout: DefaultTimeoutMillis }, () => {
     delete example['assets']['example']['created'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -58,7 +58,7 @@ describe('LINZ item', { timeout: DefaultTimeoutMillis }, () => {
     delete example['assets']['example']['updated'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -78,7 +78,7 @@ describe('LINZ item', { timeout: DefaultTimeoutMillis }, () => {
     delete example['assets']['example']['file:checksum'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -98,7 +98,7 @@ describe('LINZ item', { timeout: DefaultTimeoutMillis }, () => {
     example['assets']['example']['created'] = 1234;
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);

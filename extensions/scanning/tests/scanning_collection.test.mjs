@@ -26,7 +26,7 @@ describe('Scanning Extension Collection', { timeout: DefaultTimeoutMillis }, () 
     const example = JSON.parse(await fs.readFile(examplePath));
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
@@ -38,7 +38,7 @@ describe('Scanning Extension Collection', { timeout: DefaultTimeoutMillis }, () 
     delete example.summaries;
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));

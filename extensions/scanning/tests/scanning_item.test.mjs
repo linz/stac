@@ -26,7 +26,7 @@ describe('Scanning Extension Item', { timeout: DefaultTimeoutMillis }, () => {
     const example = JSON.parse(await fs.readFile(examplePath));
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
@@ -38,7 +38,7 @@ describe('Scanning Extension Item', { timeout: DefaultTimeoutMillis }, () => {
     example.properties['scan:is_original'] = 'notboolean';
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -57,7 +57,7 @@ describe('Scanning Extension Item', { timeout: DefaultTimeoutMillis }, () => {
     example.properties['scan:scanned'] = '2019/DQ';
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);

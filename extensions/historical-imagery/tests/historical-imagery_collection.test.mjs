@@ -29,7 +29,7 @@ describe('Historical Imagery Extension Collection', { timeout: DefaultTimeoutMil
     example['type'] = 'incorrect_example';
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -46,7 +46,7 @@ describe('Historical Imagery Extension Collection', { timeout: DefaultTimeoutMil
     example['type'] = 'Feature';
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -76,7 +76,7 @@ describe('Historical Imagery Extension Collection', { timeout: DefaultTimeoutMil
     delete example.title;
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -93,7 +93,7 @@ describe('Historical Imagery Extension Collection', { timeout: DefaultTimeoutMil
     delete example.providers;
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -112,7 +112,7 @@ describe('Historical Imagery Extension Collection', { timeout: DefaultTimeoutMil
       example.providers = requiredProviderRoles.filter((entry) => entry !== role);
 
       // when
-      let valid = validate(example);
+      const valid = validate(example);
 
       // then
       assert.equal(valid, false);
@@ -132,7 +132,7 @@ describe('Historical Imagery Extension Collection', { timeout: DefaultTimeoutMil
     delete example.summaries.platform;
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -151,7 +151,7 @@ describe('Historical Imagery Extension Collection', { timeout: DefaultTimeoutMil
     example.summaries.platform = [];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -170,7 +170,7 @@ describe('Historical Imagery Extension Collection', { timeout: DefaultTimeoutMil
     delete example.summaries.mission;
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -189,7 +189,7 @@ describe('Historical Imagery Extension Collection', { timeout: DefaultTimeoutMil
     example.summaries.mission = [];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -208,7 +208,7 @@ describe('Historical Imagery Extension Collection', { timeout: DefaultTimeoutMil
     example.summaries.instruments = [];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -228,7 +228,7 @@ describe('Historical Imagery Extension Collection', { timeout: DefaultTimeoutMil
     delete example.summaries['proj:epsg'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -247,7 +247,7 @@ describe('Historical Imagery Extension Collection', { timeout: DefaultTimeoutMil
     example.summaries['proj:epsg'] = [null];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, true);
@@ -259,7 +259,7 @@ describe('Historical Imagery Extension Collection', { timeout: DefaultTimeoutMil
     delete example.summaries;
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
