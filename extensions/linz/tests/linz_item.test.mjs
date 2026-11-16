@@ -1,6 +1,8 @@
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
 import Ajv from 'ajv';
 import { promises as fs } from 'fs';
-import o from 'ospec';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -10,17 +12,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/item.json');
 
-o.spec('LINZ item', () => {
-  o.specTimeout(DefaultTimeoutMillis);
+describe('LINZ item', { timeout: DefaultTimeoutMillis }, () => {
   let validate;
   const ajv = new Ajv(AjvOptions);
 
-  o.before(async () => {
+  before(async () => {
     const data = JSON.parse(await fs.readFile(schemaPath));
     validate = await ajv.compileAsync(data);
   });
 
-  o('Example should pass validation', async () => {
+  it('Example should pass validation', async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
 
@@ -28,10 +29,10 @@ o.spec('LINZ item', () => {
     const valid = validate(example);
 
     // then
-    o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
+    assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Asset with no 'created' property should fail validation", async () => {
+  it("Asset with no 'created' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example['assets']['example']['created'];
@@ -40,16 +41,18 @@ o.spec('LINZ item', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/assets/example' && error.message === "must have required property 'created'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Asset with no 'updated' property should fail validation", async () => {
+  it("Asset with no 'updated' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example['assets']['example']['updated'];
@@ -58,16 +61,18 @@ o.spec('LINZ item', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/assets/example' && error.message === "must have required property 'updated'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Asset with no 'file:checksum' property should fail validation", async () => {
+  it("Asset with no 'file:checksum' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example['assets']['example']['file:checksum'];
@@ -76,16 +81,18 @@ o.spec('LINZ item', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/assets/example' && error.message === "must have required property 'file:checksum'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Example with an incorrect 'created' asset field type should fail validation", async () => {
+  it("Example with an incorrect 'created' asset field type should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example['assets']['example']['created'] = 1234;
@@ -94,11 +101,13 @@ o.spec('LINZ item', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '/assets/example/created' && error.message === 'must be string',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 });

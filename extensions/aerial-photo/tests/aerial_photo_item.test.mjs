@@ -46,7 +46,6 @@ describe('Aerial Photo Extension Item', { timeout: DefaultTimeoutMillis }, () =>
       validate.errors.some(
         (error) => error.instancePath === '/properties/aerial-photo:run' && error.message === 'must be string',
       ),
-
       true,
       JSON.stringify(validate.errors),
     );
@@ -62,7 +61,6 @@ describe('Aerial Photo Extension Item', { timeout: DefaultTimeoutMillis }, () =>
 
     // then
     assert.equal(valid, false);
-
     assert.equal(
       validate.errors.some(
         (error) =>
@@ -83,7 +81,6 @@ describe('Aerial Photo Extension Item', { timeout: DefaultTimeoutMillis }, () =>
 
     // then
     assert.equal(valid, false);
-
     assert.equal(
       validate.errors.some(
         (error) =>

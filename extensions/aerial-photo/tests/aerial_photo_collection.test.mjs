@@ -54,7 +54,6 @@ describe('Aerial Photo Extension Collection', { timeout: DefaultTimeoutMillis },
 
     // then
     assert.equal(valid, false);
-
     assert.equal(
       validate.errors.some(
         (error) =>
@@ -75,7 +74,6 @@ describe('Aerial Photo Extension Collection', { timeout: DefaultTimeoutMillis },
 
     // then
     assert.equal(valid, false);
-
     assert.equal(
       validate.errors.some(
         (error) =>
@@ -97,7 +95,6 @@ describe('Aerial Photo Extension Collection', { timeout: DefaultTimeoutMillis },
 
     // then
     assert.equal(valid, false);
-
     assert.equal(
       validate.errors.some(
         (error) =>

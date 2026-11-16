@@ -1,6 +1,8 @@
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
 import Ajv from 'ajv';
 import { promises as fs } from 'fs';
-import o from 'ospec';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -10,17 +12,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/collection.json');
 
-o.spec('Quality collection', () => {
-  o.specTimeout(DefaultTimeoutMillis);
+describe('Quality collection', { timeout: DefaultTimeoutMillis }, () => {
   let validate;
   const ajv = new Ajv(AjvOptions);
 
-  o.before(async () => {
+  before(async () => {
     const data = JSON.parse(await fs.readFile(schemaPath));
     validate = await ajv.compileAsync(data);
   });
 
-  o('Example should pass validation', async () => {
+  it('Example should pass validation', async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
 
@@ -28,10 +29,10 @@ o.spec('Quality collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
+    assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Example with an incorrect 'quality:description' field should fail validation", async () => {
+  it("Example with an incorrect 'quality:description' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example['quality:description'] = 1234;
@@ -40,55 +41,55 @@ o.spec('Quality collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '/quality:description' && error.message === 'must be string',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o(
-    "Example which contains a value for the 'quality:horizontal_accuracy_type' field which isn't one of the enumerated values should fail validation",
-    async () => {
-      // given
-      const example = JSON.parse(await fs.readFile(examplePath));
-      example['quality:horizontal_accuracy_type'] = 'Good';
+  it("Example which contains a value for the 'quality:horizontal_accuracy_type' field which isn't one of the enumerated values should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['quality:horizontal_accuracy_type'] = 'Good';
 
-      // when
-      let valid = validate(example);
+    // when
+    let valid = validate(example);
 
-      // then
-      o(valid).equals(false);
-      o(
-        validate.errors.some(
-          (error) =>
-            error.instancePath === '/quality:horizontal_accuracy_type' &&
-            error.message === 'must be equal to one of the allowed values',
-        ),
-      ).equals(true)(JSON.stringify(validate.errors));
-    },
-  );
+    // then
+    assert.equal(valid, false);
+    assert.equal(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/quality:horizontal_accuracy_type' &&
+          error.message === 'must be equal to one of the allowed values',
+      ),
+      true,
+      JSON.stringify(validate.errors),
+    );
+  });
 
-  o(
-    "Example which contains a value for the 'quality:vertical_accuracy_type' field which isn't one of the enumerated values should fail validation",
-    async () => {
-      // given
-      const example = JSON.parse(await fs.readFile(examplePath));
-      example['quality:vertical_accuracy_type'] = 'Good';
+  it("Example which contains a value for the 'quality:vertical_accuracy_type' field which isn't one of the enumerated values should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['quality:vertical_accuracy_type'] = 'Good';
 
-      // when
-      let valid = validate(example);
+    // when
+    let valid = validate(example);
 
-      // then
-      o(valid).equals(false);
-      o(
-        validate.errors.some(
-          (error) =>
-            error.instancePath === '/quality:vertical_accuracy_type' &&
-            error.message === 'must be equal to one of the allowed values',
-        ),
-      ).equals(true)(JSON.stringify(validate.errors));
-    },
-  );
+    // then
+    assert.equal(valid, false);
+    assert.equal(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/quality:vertical_accuracy_type' &&
+          error.message === 'must be equal to one of the allowed values',
+      ),
+      true,
+      JSON.stringify(validate.errors),
+    );
+  });
 });

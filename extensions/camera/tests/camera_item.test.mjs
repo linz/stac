@@ -42,7 +42,6 @@ describe('Camera item', { timeout: DefaultTimeoutMillis }, () => {
 
     // then
     assert.equal(valid, false);
-
     assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '/properties/camera:sequence_number' && error.message === 'must be integer',
