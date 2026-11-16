@@ -1,6 +1,8 @@
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
 import Ajv from 'ajv';
 import { promises as fs } from 'fs';
-import o from 'ospec';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -10,17 +12,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/item.json');
 
-o.spec('Aerial Photo Extension Item', () => {
-  o.specTimeout(DefaultTimeoutMillis);
+describe('Aerial Photo Extension Item', { timeout: DefaultTimeoutMillis }, () => {
   let validate;
   const ajv = new Ajv(AjvOptions);
 
-  o.before(async () => {
+  before(async () => {
     const data = JSON.parse(await fs.readFile(schemaPath));
     validate = await ajv.compileAsync(data);
   });
 
-  o('Example should pass validation', async () => {
+  it('Example should pass validation', async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
 
@@ -28,10 +29,10 @@ o.spec('Aerial Photo Extension Item', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
+    assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Example with an incorrect 'aerial-photo:run' field should fail validation", async () => {
+  it("Example with an incorrect 'aerial-photo:run' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example.properties['aerial-photo:run'] = 1234;
@@ -40,15 +41,18 @@ o.spec('Aerial Photo Extension Item', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '/properties/aerial-photo:run' && error.message === 'must be string',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Example without the mandatory 'aerial-photo:run' field should fail validation", async () => {
+  it("Example without the mandatory 'aerial-photo:run' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.properties['aerial-photo:run'];
@@ -57,16 +61,19 @@ o.spec('Aerial Photo Extension Item', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/properties' && error.message === "must have required property 'aerial-photo:run'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Example without a mandatory 'aerial-photo:sequence_number' field should fail validation", async () => {
+  it("Example without a mandatory 'aerial-photo:sequence_number' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.properties['aerial-photo:sequence_number'];
@@ -75,17 +82,20 @@ o.spec('Aerial Photo Extension Item', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/properties' &&
           error.message === "must have required property 'aerial-photo:sequence_number'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Example with an incorrect 'aerial-photo:sequence_number' field should fail validation", async () => {
+  it("Example with an incorrect 'aerial-photo:sequence_number' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example.properties['aerial-photo:sequence_number'] = 'incorrect_example';
@@ -94,12 +104,14 @@ o.spec('Aerial Photo Extension Item', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/properties/aerial-photo:sequence_number' && error.message === 'must be integer',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 });

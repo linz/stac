@@ -1,6 +1,8 @@
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
 import Ajv from 'ajv';
 import { promises as fs } from 'fs';
-import o from 'ospec';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -10,17 +12,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/collection.json');
 
-o.spec('Aerial Photo Extension Collection', () => {
-  o.specTimeout(DefaultTimeoutMillis);
+describe('Aerial Photo Extension Collection', { timeout: DefaultTimeoutMillis }, () => {
   let validate;
   const ajv = new Ajv(AjvOptions);
 
-  o.before(async () => {
+  before(async () => {
     const data = JSON.parse(await fs.readFile(schemaPath));
     validate = await ajv.compileAsync(data);
   });
 
-  o('Example should pass validation', async () => {
+  it('Example should pass validation', async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
 
@@ -28,10 +29,10 @@ o.spec('Aerial Photo Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
+    assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
   });
 
-  o('Missing summaries section should pass validation', async () => {
+  it('Missing summaries section should pass validation', async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.summaries;
@@ -40,10 +41,10 @@ o.spec('Aerial Photo Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
+    assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Summaries with no 'aerial-photo:run' property should fail validation", async () => {
+  it("Summaries with no 'aerial-photo:run' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.summaries['aerial-photo:run'];
@@ -52,16 +53,19 @@ o.spec('Aerial Photo Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/summaries' && error.message === "must have required property 'aerial-photo:run'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Summaries with empty 'aerial-photo:anomalies' list should fail validation", async () => {
+  it("Summaries with empty 'aerial-photo:anomalies' list should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example.summaries['aerial-photo:anomalies'] = [];
@@ -70,17 +74,20 @@ o.spec('Aerial Photo Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/summaries/aerial-photo:anomalies' &&
           error.message === 'must NOT have fewer than 1 items',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Summaries with empty 'aerial-photo:run' list should fail validation", async () => {
+  it("Summaries with empty 'aerial-photo:run' list should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example.summaries['aerial-photo:run'] = [];
@@ -89,16 +96,19 @@ o.spec('Aerial Photo Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/summaries/aerial-photo:run' && error.message === 'must NOT have fewer than 1 items',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Summaries with no 'aerial-photo:sequence_number' property should fail validation", async () => {
+  it("Summaries with no 'aerial-photo:sequence_number' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.summaries['aerial-photo:sequence_number'];
@@ -107,13 +117,15 @@ o.spec('Aerial Photo Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/summaries' &&
           error.message === "must have required property 'aerial-photo:sequence_number'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 });
