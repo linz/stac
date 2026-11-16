@@ -1,8 +1,7 @@
-import assert from 'node:assert/strict';
-import { before, describe, it } from 'node:test';
-
 import Ajv from 'ajv';
 import { promises as fs } from 'fs';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
