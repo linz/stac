@@ -7,7 +7,7 @@
     "format": "npm run format:js && npm run format:markdown && npm run format:yaml",
     "format:js": "npx eslint --fix .",
     "format:markdown": "npx prettier **/*.md --write",
-    "format:yaml": "npx prettier **/*.yaml --write",
+    "format:yaml": "npx prettier \"**/*.{yaml,yml}\" --write",
     "version-schema": "find extensions -type f -print0 | xargs -0 sed -i \"s/_STAC_VERSION_/v$npm_package_version/\"",
     "test": "npx ospec extensions/*/tests/*.test.mjs && ./validate.sh"
   },
