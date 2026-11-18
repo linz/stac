@@ -1,0 +1,59 @@
+name: release-please
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    steps:
+      - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        id: release
+        with:
+          token: ${{ secrets.LINZ_GITHUB_AUTOMATION }}
+
+  publish-schema:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      TAG_NAME: ${{ needs.release-please.outputs.tag_name }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.release-please.outputs.tag_name }}
+          fetch-depth: 0
+
+      - name: Version schema
+        run: npm run version-schema
+
+      - name: Publish JSON schema to gh-pages for ${{ needs.release-please.outputs.tag_name }}
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          # Keep a copy of the versioned extensions before switching branches
+          cp -r extensions "${RUNNER_TEMP}/extensions"
+          git checkout -- extensions
+
+          git fetch origin gh-pages
+          git checkout gh-pages
+
+          # Never overwrite an existing published version
+          if [ -e "${TAG_NAME}" ]; then
+            echo "${TAG_NAME} is already published on gh-pages"
+            exit 1
+          fi
+
+          mkdir "${TAG_NAME}"
+          cp -r "${RUNNER_TEMP}/extensions/." "${TAG_NAME}/"
+
+          git add "${TAG_NAME}"
+          git commit -m "chore(schema): publish schema for ${TAG_NAME}"
+          git push origin gh-pages
