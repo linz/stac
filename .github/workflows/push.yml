@@ -1,4 +1,4 @@
-name: Test
+name: Build
 on:
   push:
 jobs:
@@ -8,6 +8,12 @@ jobs:
       - uses: linz/action-typescript@47be81e60ed1d891c696c3fb7f558876ba9a2b57 # v3.2.0
         with:
           node-version: 24.x
+
+      - name: Download actionlint
+        run: docker build --tag actionlint - < .github/workflows/actionlint.dockerfile
+
+      - name: Run actionlint to check workflow files
+        run: docker run --volume="${PWD}:/repo" --workdir=/repo actionlint -color
 
   ci-ok:
     if: always()
