@@ -4,7 +4,7 @@ import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 import { fastFormats } from 'ajv-formats/dist/formats.js';
-import iriFormats from 'stac-node-validator/iri.js';
+import iriFormats from 'stac-node-validator/src/iri.js';
 
 const Schemas = new Map();
 export function loadSchema(uri) {
