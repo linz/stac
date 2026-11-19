@@ -26,9 +26,9 @@ export async function loadSchemaFromUri(uri) {
       return JSON.parse(await fs.readFile(join(__dirname, 'extensions', schemaPath)));
     }
 
-    let response = await axios.get(uri);
+    const response = await axios.get(uri);
     return response.data;
-  } catch (error) {
+  } catch {
     throw new Error(`-- Schema at '${uri}' not found. Please ensure all entries in 'stac_extensions' are valid.`);
   }
 }

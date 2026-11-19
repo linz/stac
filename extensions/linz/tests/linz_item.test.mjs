@@ -1,8 +1,7 @@
-import assert from 'node:assert/strict';
-import { before, describe, it } from 'node:test';
-
 import Ajv from 'ajv';
 import { promises as fs } from 'fs';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -38,7 +37,7 @@ describe('LINZ item', { timeout: DefaultTimeoutMillis }, () => {
     delete example['assets']['example']['created'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -58,7 +57,7 @@ describe('LINZ item', { timeout: DefaultTimeoutMillis }, () => {
     delete example['assets']['example']['updated'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -78,7 +77,7 @@ describe('LINZ item', { timeout: DefaultTimeoutMillis }, () => {
     delete example['assets']['example']['file:checksum'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -98,7 +97,7 @@ describe('LINZ item', { timeout: DefaultTimeoutMillis }, () => {
     example['assets']['example']['created'] = 1234;
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);

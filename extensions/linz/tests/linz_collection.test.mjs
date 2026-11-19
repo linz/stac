@@ -1,8 +1,7 @@
-import assert from 'node:assert/strict';
-import { before, describe, it } from 'node:test';
-
 import Ajv from 'ajv';
 import { promises as fs } from 'fs';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -39,7 +38,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     example[parameterName] = 1;
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -60,7 +59,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     example[parameterName] = 1;
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -80,7 +79,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     example['assets']['example']['proj:epsg'] = 'string';
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -99,7 +98,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     delete example['assets']['example']['created'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -119,7 +118,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     delete example['assets']['example']['updated'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -139,7 +138,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     delete example['linz:lifecycle'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -158,7 +157,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     delete example['linz:security_classification'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -178,7 +177,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     delete example.providers;
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -196,7 +195,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
       example.providers = example.providers.filter((provider) => (!role) in provider.roles);
 
       // when
-      let valid = validate(example);
+      const valid = validate(example);
 
       // then
       assert.equal(valid, false);
@@ -216,7 +215,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     delete example.title;
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -235,7 +234,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     delete example.version;
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -252,7 +251,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     example['linz:region'] = '';
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -272,7 +271,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     delete example['linz:region'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, true);
@@ -284,7 +283,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     example['linz:geographic_description'] = '';
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -305,7 +304,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     delete example['linz:geographic_description'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, true);
@@ -317,7 +316,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     example['linz:event_name'] = '';
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -337,7 +336,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     delete example['linz:event_name'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, true);
@@ -349,7 +348,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     example['linz:slug'] = '';
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);

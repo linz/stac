@@ -1,8 +1,7 @@
-import assert from 'node:assert/strict';
-import { before, describe, it } from 'node:test';
-
 import Ajv from 'ajv';
 import { promises as fs } from 'fs';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -38,7 +37,7 @@ describe('Historical Imagery Extension Item', { timeout: DefaultTimeoutMillis },
     example['type'] = 'incorrect_example';
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -55,7 +54,7 @@ describe('Historical Imagery Extension Item', { timeout: DefaultTimeoutMillis },
     example['type'] = 'Collection';
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -73,7 +72,7 @@ describe('Historical Imagery Extension Item', { timeout: DefaultTimeoutMillis },
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.properties['instruments'];
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
@@ -84,7 +83,7 @@ describe('Historical Imagery Extension Item', { timeout: DefaultTimeoutMillis },
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.properties['mission'];
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -102,7 +101,7 @@ describe('Historical Imagery Extension Item', { timeout: DefaultTimeoutMillis },
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.properties['platform'];
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -121,7 +120,7 @@ describe('Historical Imagery Extension Item', { timeout: DefaultTimeoutMillis },
     delete example.assets['visual']['eo:bands'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);

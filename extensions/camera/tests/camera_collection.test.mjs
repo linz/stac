@@ -1,8 +1,7 @@
-import assert from 'node:assert/strict';
-import { before, describe, it } from 'node:test';
-
 import Ajv from 'ajv';
 import { promises as fs } from 'fs';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -26,7 +25,7 @@ describe('Camera Extension Collection', { timeout: DefaultTimeoutMillis }, () =>
     const example = JSON.parse(await fs.readFile(examplePath));
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
@@ -38,7 +37,7 @@ describe('Camera Extension Collection', { timeout: DefaultTimeoutMillis }, () =>
     delete example.summaries;
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));

@@ -1,8 +1,7 @@
-import assert from 'node:assert/strict';
-import { before, describe, it } from 'node:test';
-
 import Ajv from 'ajv';
 import { promises as fs } from 'fs';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -26,7 +25,7 @@ describe('Film Extension Collection', { timeout: DefaultTimeoutMillis }, () => {
     const example = JSON.parse(await fs.readFile(examplePath));
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
@@ -38,7 +37,7 @@ describe('Film Extension Collection', { timeout: DefaultTimeoutMillis }, () => {
     delete example.summaries;
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
@@ -50,7 +49,7 @@ describe('Film Extension Collection', { timeout: DefaultTimeoutMillis }, () => {
     delete example.summaries['film:id'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -69,7 +68,7 @@ describe('Film Extension Collection', { timeout: DefaultTimeoutMillis }, () => {
     example.summaries['film:id'] = [];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -88,7 +87,7 @@ describe('Film Extension Collection', { timeout: DefaultTimeoutMillis }, () => {
     example.summaries['film:physical_condition'] = [];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -109,7 +108,7 @@ describe('Film Extension Collection', { timeout: DefaultTimeoutMillis }, () => {
     example.summaries['film:physical_size'] = [];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
@@ -130,7 +129,7 @@ describe('Film Extension Collection', { timeout: DefaultTimeoutMillis }, () => {
     delete example.summaries['film:negative_sequence'];
 
     // when
-    let valid = validate(example);
+    const valid = validate(example);
 
     // then
     assert.equal(valid, false);
