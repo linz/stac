@@ -9,6 +9,28 @@
 
 - **historical-imagery:** add quality:description to collection ([#217](https://github.com/linz/stac/issues/217)) ([6c68da3](https://github.com/linz/stac/commit/6c68da3d6574af75fdc89d2dd1852d095bbd63dc))
 
+## [0.1.0](https://github.com/linz/stac/compare/v0.0.15...v0.1.0) (2026-11-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove LINZ extension fields that have never been used in prod TDE-2119 ([#327](https://github.com/linz/stac/issues/327))
+
+### Features
+
+* Add `linz:slug` field TDE-1283 ([#310](https://github.com/linz/stac/issues/310)) ([fc13e68](https://github.com/linz/stac/commit/fc13e687932efaee51e6910127e92503e05e0820))
+* add new LINZ extension fields TDE-985 ([#281](https://github.com/linz/stac/issues/281)) ([6054f13](https://github.com/linz/stac/commit/6054f1358c220d6d6faec55ae6887c0aec613a80))
+* Pin actions to hashes TDE-934 ([#273](https://github.com/linz/stac/issues/273)) ([e39b6b7](https://github.com/linz/stac/commit/e39b6b78780aeb976a52e7e5086f7fc316c3d21b))
+* remove LINZ extension fields that have never been used in prod TDE-2119 ([#327](https://github.com/linz/stac/issues/327)) ([5d928d1](https://github.com/linz/stac/commit/5d928d15029f1d7d8d7573193645f4f1a1572efb))
+* start Aerial Imagery extension ([#260](https://github.com/linz/stac/issues/260)) ([64012fa](https://github.com/linz/stac/commit/64012fa7d4da7445e0578c37e2a076a5be3c0cde))
+
+
+### Bug Fixes
+
+* actually check formatting rather than fixing it silently ([#278](https://github.com/linz/stac/issues/278)) ([6d0748b](https://github.com/linz/stac/commit/6d0748bc21cf5ae5f77e9b2cd57ddb0c9a1dd355))
+* run ospec tests ([#279](https://github.com/linz/stac/issues/279)) ([0e82f66](https://github.com/linz/stac/commit/0e82f6611bda63a74a6bf20f13e84893dcb31a73))
+* Use specific action versions ([#228](https://github.com/linz/stac/issues/228)) ([f3085c5](https://github.com/linz/stac/commit/f3085c52f98e95f1b9f4491860324671d4f61a49))
+
 ## [0.0.14](https://github.com/linz/stac/compare/v0.0.13...v0.0.14) (2021-12-09)
 
 ### Features
