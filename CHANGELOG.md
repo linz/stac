@@ -9,6 +9,13 @@
 
 - **historical-imagery:** add quality:description to collection ([#217](https://github.com/linz/stac/issues/217)) ([6c68da3](https://github.com/linz/stac/commit/6c68da3d6574af75fdc89d2dd1852d095bbd63dc))
 
+## [0.1.1](https://github.com/linz/stac/compare/v0.1.0...v0.1.1) (2026-11-19)
+
+
+### Bug Fixes
+
+* **quality:** don't pin quality extension to STAC 1.0.0 ([#343](https://github.com/linz/stac/issues/343)) ([a4b9ffc](https://github.com/linz/stac/commit/a4b9ffc12d8b8c000a71d2adae9243385b221f01))
+
 ## [0.1.0](https://github.com/linz/stac/compare/v0.0.15...v0.1.0) (2026-11-19)
 
 
