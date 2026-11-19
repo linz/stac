@@ -1,6 +1,8 @@
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
 import Ajv from 'ajv';
 import { promises as fs } from 'fs';
-import o from 'ospec';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -12,17 +14,16 @@ const examplePath = join(__dirname, '..', 'examples/collection.json');
 
 // Note that tests for summaries will be written once the rules are decided for mandatory summary data
 
-o.spec('Historical Imagery Extension Collection', () => {
-  o.specTimeout(DefaultTimeoutMillis);
+describe('Historical Imagery Extension Collection', { timeout: DefaultTimeoutMillis }, () => {
   let validate;
   const ajv = new Ajv(AjvOptions);
 
-  o.before(async () => {
+  before(async () => {
     const data = JSON.parse(await fs.readFile(schemaPath));
     validate = await ajv.compileAsync(data);
   });
 
-  o("Example with an invalid 'type' field should fail validation", async () => {
+  it("Example with an invalid 'type' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example['type'] = 'incorrect_example';
@@ -31,13 +32,15 @@ o.spec('Historical Imagery Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(validate.errors.some((error) => error.instancePath === '' && error.message === 'boolean schema is false')).equals(
+    assert.equal(valid, false);
+    assert.equal(
+      validate.errors.some((error) => error.instancePath === '' && error.message === 'boolean schema is false'),
       true,
-    )(JSON.stringify(validate.errors));
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Example with an Item 'type' field should fail validation", async () => {
+  it("Example with an Item 'type' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example['type'] = 'Feature';
@@ -46,15 +49,17 @@ o.spec('Historical Imagery Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '' && error.message === "must have required property 'properties'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o('Example should pass validation', async () => {
+  it('Example should pass validation', async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
 
@@ -62,10 +67,10 @@ o.spec('Historical Imagery Extension Collection', () => {
     const valid = validate(example);
 
     // then
-    o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
+    assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Example without 'title' property should fail validation", async () => {
+  it("Example without 'title' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.title;
@@ -74,13 +79,15 @@ o.spec('Historical Imagery Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "must have required property 'title'")).equals(true)(
+    assert.equal(valid, false);
+    assert.equal(
+      validate.errors.some((error) => error.message === "must have required property 'title'"),
+      true,
       JSON.stringify(validate.errors),
     );
   });
 
-  o("Example without 'providers' should fail validation", async () => {
+  it("Example without 'providers' should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.providers;
@@ -89,13 +96,15 @@ o.spec('Historical Imagery Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "must have required property 'providers'")).equals(true)(
+    assert.equal(valid, false);
+    assert.equal(
+      validate.errors.some((error) => error.message === "must have required property 'providers'"),
+      true,
       JSON.stringify(validate.errors),
     );
   });
 
-  o('Collection without required provider roles should fail validation', async () => {
+  it('Collection without required provider roles should fail validation', async () => {
     // given
     const requiredProviderRoles = ['producer', 'licensor', 'processor', 'host'];
     for (const role of requiredProviderRoles) {
@@ -106,16 +115,18 @@ o.spec('Historical Imagery Extension Collection', () => {
       let valid = validate(example);
 
       // then
-      o(valid).equals(false);
-      o(
+      assert.equal(valid, false);
+      assert.equal(
         validate.errors.some(
           (error) => error.instancePath === '/providers' && error.message === 'must contain at least 1 valid item(s)',
         ),
-      ).equals(true)(JSON.stringify(validate.errors));
+        true,
+        JSON.stringify(validate.errors),
+      );
     }
   });
 
-  o("Summaries with no 'platform' property should fail validation", async () => {
+  it("Summaries with no 'platform' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.summaries.platform;
@@ -124,15 +135,17 @@ o.spec('Historical Imagery Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '/summaries' && error.message === "must have required property 'platform'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Summaries with empty 'platform' list should fail validation", async () => {
+  it("Summaries with empty 'platform' list should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example.summaries.platform = [];
@@ -141,15 +154,17 @@ o.spec('Historical Imagery Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '/summaries/platform' && error.message === 'must NOT have fewer than 1 items',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Summaries with no 'mission' property should fail validation", async () => {
+  it("Summaries with no 'mission' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.summaries.mission;
@@ -158,15 +173,17 @@ o.spec('Historical Imagery Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '/summaries' && error.message === "must have required property 'mission'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Summaries with empty 'mission' list should fail validation", async () => {
+  it("Summaries with empty 'mission' list should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example.summaries.mission = [];
@@ -175,15 +192,17 @@ o.spec('Historical Imagery Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '/summaries/mission' && error.message === 'must NOT have fewer than 1 items',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Summaries with empty 'instruments' list should fail validation", async () => {
+  it("Summaries with empty 'instruments' list should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example.summaries.instruments = [];
@@ -192,16 +211,18 @@ o.spec('Historical Imagery Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/summaries/instruments' && error.message === 'must NOT have fewer than 1 items',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Summaries with no 'proj:epsg' property should fail validation", async () => {
+  it("Summaries with no 'proj:epsg' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.summaries['proj:epsg'];
@@ -210,15 +231,17 @@ o.spec('Historical Imagery Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '/summaries' && error.message === "must have required property 'proj:epsg'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Summaries with null value in 'proj:epsg' should pass validation", async () => {
+  it("Summaries with null value in 'proj:epsg' should pass validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example.summaries['proj:epsg'] = [null];
@@ -227,10 +250,10 @@ o.spec('Historical Imagery Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(true);
+    assert.equal(valid, true);
   });
 
-  o("Example with no 'summaries' should fail validation", async () => {
+  it("Example with no 'summaries' should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.summaries;
@@ -239,11 +262,13 @@ o.spec('Historical Imagery Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '' && error.message === "must have required property 'summaries'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 });

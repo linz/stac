@@ -1,6 +1,8 @@
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
 import Ajv from 'ajv';
 import { promises as fs } from 'fs';
-import o from 'ospec';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -10,17 +12,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/collection.json');
 
-o.spec('Film Extension Collection', () => {
-  o.specTimeout(DefaultTimeoutMillis);
+describe('Film Extension Collection', { timeout: DefaultTimeoutMillis }, () => {
   let validate;
   const ajv = new Ajv(AjvOptions);
 
-  o.before(async () => {
+  before(async () => {
     const data = JSON.parse(await fs.readFile(schemaPath));
     validate = await ajv.compileAsync(data);
   });
 
-  o('Example should pass validation', async () => {
+  it('Example should pass validation', async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
 
@@ -28,10 +29,10 @@ o.spec('Film Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
+    assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
   });
 
-  o('Missing summaries section should pass validation', async () => {
+  it('Missing summaries section should pass validation', async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.summaries;
@@ -40,10 +41,10 @@ o.spec('Film Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
+    assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Summaries with no 'film:id' property should fail validation", async () => {
+  it("Summaries with no 'film:id' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.summaries['film:id'];
@@ -52,15 +53,17 @@ o.spec('Film Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '/summaries' && error.message === "must have required property 'film:id'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Summaries with empty 'film:id' list should fail validation", async () => {
+  it("Summaries with empty 'film:id' list should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example.summaries['film:id'] = [];
@@ -69,15 +72,17 @@ o.spec('Film Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '/summaries/film:id' && error.message === 'must NOT have fewer than 1 items',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Summaries with empty 'film:physical_condition' list should fail validation", async () => {
+  it("Summaries with empty 'film:physical_condition' list should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example.summaries['film:physical_condition'] = [];
@@ -86,17 +91,19 @@ o.spec('Film Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/summaries/film:physical_condition' &&
           error.message === 'must NOT have fewer than 1 items',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Summaries with empty 'film:physical_size' list should fail validation", async () => {
+  it("Summaries with empty 'film:physical_size' list should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example.summaries['film:physical_size'] = [];
@@ -105,17 +112,19 @@ o.spec('Film Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/summaries/film:physical_size' &&
           error.message === 'must NOT have fewer than 1 items',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Summaries with no 'film:negative_sequence' property should fail validation", async () => {
+  it("Summaries with no 'film:negative_sequence' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.summaries['film:negative_sequence'];
@@ -124,13 +133,15 @@ o.spec('Film Extension Collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/summaries' &&
           error.message === "must have required property 'film:negative_sequence'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 });

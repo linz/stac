@@ -9,14 +9,12 @@
     "format:markdown": "npx prettier **/*.md --write",
     "format:yaml": "npx prettier \"**/*.{yaml,yml}\" --write",
     "version-schema": "find extensions -type f -print0 | xargs -0 sed -i \"s/_STAC_VERSION_/v$npm_package_version/\"",
-    "test": "npx ospec extensions/*/tests/*.test.mjs && ./validate.sh"
+    "test": "node --test 'extensions/*/tests/*.test.mjs' && ./validate.sh"
   },
   "devDependencies": {
     "@linzjs/style": "^5.4.0",
-    "@types/ospec": "^4.2.0",
     "ajv": "^8.16.0",
     "ajv-formats": "^3.0.1",
-    "ospec": "^4.2.1",
     "stac-node-validator": "^1.3.1"
   },
   "engines": {

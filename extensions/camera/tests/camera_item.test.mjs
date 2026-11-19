@@ -1,6 +1,8 @@
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
 import Ajv from 'ajv';
 import { promises as fs } from 'fs';
-import o from 'ospec';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -10,17 +12,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/item.json');
 
-o.spec('Camera item', () => {
-  o.specTimeout(DefaultTimeoutMillis);
+describe('Camera item', { timeout: DefaultTimeoutMillis }, () => {
   let validate;
   const ajv = new Ajv(AjvOptions);
 
-  o.before(async () => {
+  before(async () => {
     const data = JSON.parse(await fs.readFile(schemaPath));
     validate = await ajv.compileAsync(data);
   });
 
-  o('Example should pass validation', async () => {
+  it('Example should pass validation', async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
 
@@ -28,10 +29,10 @@ o.spec('Camera item', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
+    assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Example with an incorrect 'camera:sequence_number' field should fail validation", async () => {
+  it("Example with an incorrect 'camera:sequence_number' field should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example.properties['camera:sequence_number'] = 'incorrect_value';
@@ -40,11 +41,13 @@ o.spec('Camera item', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '/properties/camera:sequence_number' && error.message === 'must be integer',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 });

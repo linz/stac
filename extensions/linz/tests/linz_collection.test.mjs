@@ -1,6 +1,8 @@
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
 import Ajv from 'ajv';
 import { promises as fs } from 'fs';
-import o from 'ospec';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -10,17 +12,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '..', 'schema.json');
 const examplePath = join(__dirname, '..', 'examples/collection.json');
 
-o.spec('LINZ collection', () => {
-  o.specTimeout(DefaultTimeoutMillis);
+describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
   let validate;
   const ajv = new Ajv(AjvOptions);
 
-  o.before(async () => {
+  before(async () => {
     const data = JSON.parse(await fs.readFile(schemaPath));
     validate = await ajv.compileAsync(data);
   });
 
-  o('Example should pass validation', async () => {
+  it('Example should pass validation', async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
 
@@ -28,10 +29,10 @@ o.spec('LINZ collection', () => {
     const valid = validate(example);
 
     // then
-    o(valid).equals(true)(JSON.stringify(validate.errors, null, 2));
+    assert.equal(valid, true, JSON.stringify(validate.errors, null, 2));
   });
 
-  o("Example with unsupported 'linz:*' property should fail validation", async () => {
+  it("Example with unsupported 'linz:*' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     const parameterName = 'linz:unknown';
@@ -41,16 +42,18 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.params.additionalProperty === parameterName && error.message === 'must NOT have additional properties',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Example with unsupported 'quality:*' property should fail validation", async () => {
+  it("Example with unsupported 'quality:*' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     const parameterName = 'quality:unknown';
@@ -60,16 +63,18 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.params.additionalProperty === parameterName && error.message === 'must NOT have additional properties',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Example with invalid 'proj:epsg' value should fail validation", async () => {
+  it("Example with invalid 'proj:epsg' value should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example['assets']['example']['proj:epsg'] = 'string';
@@ -78,15 +83,17 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '/assets/example/proj:epsg' && error.message === 'must be integer,null',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Asset with no 'created' property should fail validation", async () => {
+  it("Asset with no 'created' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example['assets']['example']['created'];
@@ -95,16 +102,18 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/assets/example' && error.message === "must have required property 'created'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Asset with no 'updated' property should fail validation", async () => {
+  it("Asset with no 'updated' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example['assets']['example']['updated'];
@@ -113,16 +122,18 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/assets/example' && error.message === "must have required property 'updated'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Example without 'linz:lifecycle' property should fail validation", async () => {
+  it("Example without 'linz:lifecycle' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example['linz:lifecycle'];
@@ -131,15 +142,17 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '' && error.message === "must have required property 'linz:lifecycle'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Example without 'linz:security_classification' property should fail validation", async () => {
+  it("Example without 'linz:security_classification' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example['linz:security_classification'];
@@ -148,16 +161,18 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '' && error.message === "must have required property 'linz:security_classification'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Example without 'providers' property should fail validation", async () => {
+  it("Example without 'providers' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.providers;
@@ -166,13 +181,15 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "must have required property 'providers'")).equals(true)(
+    assert.equal(valid, false);
+    assert.equal(
+      validate.errors.some((error) => error.message === "must have required property 'providers'"),
+      true,
       JSON.stringify(validate.errors),
     );
   });
 
-  o('Collection without required provider roles should fail validation', async () => {
+  it('Collection without required provider roles should fail validation', async () => {
     // given
     for (const role of ['producer', 'licensor']) {
       const example = JSON.parse(await fs.readFile(examplePath));
@@ -182,16 +199,18 @@ o.spec('LINZ collection', () => {
       let valid = validate(example);
 
       // then
-      o(valid).equals(false);
-      o(
+      assert.equal(valid, false);
+      assert.equal(
         validate.errors.some(
           (error) => error.instancePath === '/providers' && error.message === 'must contain at least 1 valid item(s)',
         ),
-      ).equals(true)(JSON.stringify(validate.errors));
+        true,
+        JSON.stringify(validate.errors),
+      );
     }
   });
 
-  o("Example without 'title' property should fail validation", async () => {
+  it("Example without 'title' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.title;
@@ -200,15 +219,17 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '' && error.message === "must have required property 'title'",
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Example without 'version' property should fail validation", async () => {
+  it("Example without 'version' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example.version;
@@ -217,13 +238,15 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(validate.errors.some((error) => error.message === "must have required property 'version'")).equals(true)(
+    assert.equal(valid, false);
+    assert.equal(
+      validate.errors.some((error) => error.message === "must have required property 'version'"),
+      true,
       JSON.stringify(validate.errors),
     );
   });
 
-  o("Collection with incorrect 'linz:region' value should fail validation", async () => {
+  it("Collection with incorrect 'linz:region' value should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example['linz:region'] = '';
@@ -232,16 +255,18 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/linz:region' && error.message === 'must be equal to one of the allowed values',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Collection with no 'linz:region' property should pass validation", async () => {
+  it("Collection with no 'linz:region' property should pass validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example['linz:region'];
@@ -250,10 +275,10 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(true);
+    assert.equal(valid, true);
   });
 
-  o("Collection with invalid 'linz:geographic_description' value should fail validation", async () => {
+  it("Collection with invalid 'linz:geographic_description' value should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example['linz:geographic_description'] = '';
@@ -262,17 +287,19 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/linz:geographic_description' &&
           error.message === 'must NOT have fewer than 1 characters',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Collection with no 'linz:geographic_description' property should pass validation", async () => {
+  it("Collection with no 'linz:geographic_description' property should pass validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example['linz:geographic_description'];
@@ -281,10 +308,10 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(true);
+    assert.equal(valid, true);
   });
 
-  o("Collection with invalid 'linz:event_name' value should fail validation", async () => {
+  it("Collection with invalid 'linz:event_name' value should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example['linz:event_name'] = '';
@@ -293,16 +320,18 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) =>
           error.instancePath === '/linz:event_name' && error.message === 'must NOT have fewer than 1 characters',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 
-  o("Collection with no 'linz:event_name' property should pass validation", async () => {
+  it("Collection with no 'linz:event_name' property should pass validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example['linz:event_name'];
@@ -311,10 +340,10 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(true);
+    assert.equal(valid, true);
   });
 
-  o("Collection with invalid 'linz:slug' value should fail validation", async () => {
+  it("Collection with invalid 'linz:slug' value should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     example['linz:slug'] = '';
@@ -323,11 +352,13 @@ o.spec('LINZ collection', () => {
     let valid = validate(example);
 
     // then
-    o(valid).equals(false);
-    o(
+    assert.equal(valid, false);
+    assert.equal(
       validate.errors.some(
         (error) => error.instancePath === '/linz:slug' && error.message === 'must NOT have fewer than 1 characters',
       ),
-    ).equals(true)(JSON.stringify(validate.errors));
+      true,
+      JSON.stringify(validate.errors),
+    );
   });
 });
