@@ -15,4 +15,4 @@ validator_command=(
     --schemaMap=https://stac.linz.govt.nz/_STAC_VERSION_/linz/schema.json=extensions/linz/schema.json
 )
 
-"${validator_command[@]}" ./**/examples/*.json
+"${validator_command[@]}" -- ./**/examples/*.json
