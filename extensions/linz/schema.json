@@ -8,12 +8,6 @@
       "$ref": "https://stac-extensions.github.io/file/v2.0.0/schema.json#"
     },
     {
-      "$ref": "https://stac-extensions.github.io/version/v1.0.0/schema.json#"
-    },
-    {
-      "$ref": "https://stac-extensions.github.io/projection/v1.0.0/schema.json#"
-    },
-    {
       "$ref": "#/definitions/fields"
     },
     {
@@ -84,9 +78,6 @@
           },
           {
             "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
-          },
-          {
-            "$ref": "https://stac.linz.govt.nz/_STAC_VERSION_/quality/schema.json#"
           }
         ]
       },

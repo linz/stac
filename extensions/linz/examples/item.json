@@ -2,9 +2,7 @@
   "stac_version": "1.0.0",
   "stac_extensions": [
     "https://stac.linz.govt.nz/_STAC_VERSION_/linz/schema.json",
-    "https://stac-extensions.github.io/file/v2.0.0/schema.json",
-    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/version/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/file/v2.0.0/schema.json"
   ],
   "type": "Feature",
   "id": "item",
@@ -23,8 +21,6 @@
   },
   "properties": {
     "datetime": "2020-12-11T22:38:32Z",
-    "proj:epsg": 123,
-    "version": "1.0.0",
     "processing:software": {
       "pystac": "v1.2.0"
     }
