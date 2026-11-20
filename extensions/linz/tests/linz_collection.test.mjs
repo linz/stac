@@ -188,6 +188,47 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     );
   });
 
+  it("Example without 'linz:geospatial_category' property should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:geospatial_category'];
+
+    // when
+    const valid = validate(example);
+
+    // then
+    assert.equal(valid, false);
+    assert.equal(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '' && error.message === "must have required property 'linz:geospatial_category'",
+      ),
+      true,
+      JSON.stringify(validate.errors),
+    );
+  });
+
+  it("Collection with incorrect 'linz:geospatial_category' value should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:geospatial_category'] = 'not-a-category';
+
+    // when
+    const valid = validate(example);
+
+    // then
+    assert.equal(valid, false);
+    assert.equal(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/linz:geospatial_category' &&
+          error.message === 'must be equal to one of the allowed values',
+      ),
+      true,
+      JSON.stringify(validate.errors),
+    );
+  });
+
   it("Collection with incorrect 'linz:region' value should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));

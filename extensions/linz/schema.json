@@ -28,7 +28,14 @@
         "allOf": [
           {
             "type": "object",
-            "required": ["linz:lifecycle", "linz:security_classification", "providers", "title", "type"],
+            "required": [
+              "linz:geospatial_category",
+              "linz:lifecycle",
+              "linz:security_classification",
+              "providers",
+              "title",
+              "type"
+            ],
             "properties": {
               "linz:event_name": {
                 "type": "string",
@@ -141,6 +148,27 @@
         },
         "linz:event_name": {},
         "linz:geographic_description": {},
+        "linz:geospatial_category": {
+          "title": "Geospatial Category",
+          "type": "string",
+          "description": "Geospatial category of the data in the collection.",
+          "enum": [
+            "ancillary-aerial-photos",
+            "ancillary-near-infrared-aerial-photos",
+            "dem",
+            "dem-hillshade",
+            "dem-hillshade-igor",
+            "dsm",
+            "dsm-hillshade",
+            "dsm-hillshade-igor",
+            "near-infrared-aerial-photos",
+            "near-infrared-satellite-imagery",
+            "rural-aerial-photos",
+            "satellite-imagery",
+            "scanned-aerial-photos",
+            "urban-aerial-photos"
+          ]
+        },
         "linz:lifecycle": {
           "title": "Life Cycle",
           "type": "string",
