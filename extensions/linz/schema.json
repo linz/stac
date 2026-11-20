@@ -43,6 +43,12 @@
                 "description": "Human-readable description of the event associated with the collection.",
                 "examples": ["Kaikōura earthquake", "Fiordland tsunami"]
               },
+              "linz:historic_survey_number": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Historic survey number. Required for scanned aerial photos.",
+                "examples": ["SNC8844"]
+              },
               "linz:geographic_description": {
                 "type": "string",
                 "minLength": 1,
@@ -86,6 +92,14 @@
           },
           {
             "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
+          },
+          {
+            "if": {
+              "type": "object",
+              "properties": { "linz:geospatial_category": { "const": "scanned-aerial-photos" } },
+              "required": ["linz:geospatial_category"]
+            },
+            "then": { "type": "object", "required": ["linz:historic_survey_number"] }
           }
         ]
       },
@@ -170,6 +184,7 @@
             "urban-aerial-photos"
           ]
         },
+        "linz:historic_survey_number": {},
         "linz:lifecycle": {
           "title": "Life Cycle",
           "type": "string",
