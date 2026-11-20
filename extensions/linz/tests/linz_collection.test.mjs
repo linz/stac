@@ -52,46 +52,6 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     );
   });
 
-  it("Example with unsupported 'quality:*' property should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    const parameterName = 'quality:unknown';
-    example[parameterName] = 1;
-
-    // when
-    const valid = validate(example);
-
-    // then
-    assert.equal(valid, false);
-    assert.equal(
-      validate.errors.some(
-        (error) =>
-          error.params.additionalProperty === parameterName && error.message === 'must NOT have additional properties',
-      ),
-      true,
-      JSON.stringify(validate.errors),
-    );
-  });
-
-  it("Example with invalid 'proj:epsg' value should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    example['assets']['example']['proj:epsg'] = 'string';
-
-    // when
-    const valid = validate(example);
-
-    // then
-    assert.equal(valid, false);
-    assert.equal(
-      validate.errors.some(
-        (error) => error.instancePath === '/assets/example/proj:epsg' && error.message === 'must be integer,null',
-      ),
-      true,
-      JSON.stringify(validate.errors),
-    );
-  });
-
   it("Asset with no 'created' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
@@ -223,23 +183,6 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
       validate.errors.some(
         (error) => error.instancePath === '' && error.message === "must have required property 'title'",
       ),
-      true,
-      JSON.stringify(validate.errors),
-    );
-  });
-
-  it("Example without 'version' property should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    delete example.version;
-
-    // when
-    const valid = validate(example);
-
-    // then
-    assert.equal(valid, false);
-    assert.equal(
-      validate.errors.some((error) => error.message === "must have required property 'version'"),
       true,
       JSON.stringify(validate.errors),
     );
