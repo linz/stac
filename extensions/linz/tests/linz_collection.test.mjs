@@ -344,4 +344,16 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
       JSON.stringify(validate.errors),
     );
   });
+
+  it("Collection with 'chatham-islands' region should pass validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:region'] = 'chatham-islands';
+
+    // when
+    const valid = validate(example);
+
+    // then
+    assert.equal(valid, true, JSON.stringify(validate.errors));
+  });
 });
