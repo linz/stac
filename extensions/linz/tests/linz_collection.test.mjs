@@ -326,6 +326,70 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     assert.equal(valid, true);
   });
 
+  it("Collection with invalid 'linz:historic_survey_number' value should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:historic_survey_number'] = '';
+
+    // when
+    const valid = validate(example);
+
+    // then
+    assert.equal(valid, false);
+    assert.equal(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/linz:historic_survey_number' &&
+          error.message === 'must NOT have fewer than 1 characters',
+      ),
+      true,
+      JSON.stringify(validate.errors),
+    );
+  });
+
+  it("Collection with no 'linz:historic_survey_number' property should pass validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    delete example['linz:historic_survey_number'];
+
+    // when
+    const valid = validate(example);
+
+    // then
+    assert.equal(valid, true);
+  });
+
+  it("Scanned aerial photos collection without 'linz:historic_survey_number' should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:geospatial_category'] = 'scanned-aerial-photos';
+    delete example['linz:historic_survey_number'];
+
+    // when
+    const valid = validate(example);
+
+    // then
+    assert.equal(valid, false);
+    assert.equal(
+      validate.errors.some((error) => error.message === "must have required property 'linz:historic_survey_number'"),
+      true,
+      JSON.stringify(validate.errors),
+    );
+  });
+
+  it("Scanned aerial photos collection with 'linz:historic_survey_number' should pass validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:geospatial_category'] = 'scanned-aerial-photos';
+    example['linz:historic_survey_number'] = 'SNC8844';
+
+    // when
+    const valid = validate(example);
+
+    // then
+    assert.equal(valid, true, JSON.stringify(validate.errors));
+  });
+
   it("Collection with invalid 'linz:slug' value should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
