@@ -10,8 +10,8 @@ and this project adheres to
 
 ### Added
 
-- `linz:geospatial_category` required collection field.
-- `linz:historic_survey_number` collection field, required when `linz:geospatial_category` is `scanned-aerial-photos`.
+- `linz:geospatial_category` collection field.
+- `linz:historic_survey_number` collection field.
 - `chatham-islands` value for `linz:region`.
 
 ### Changed

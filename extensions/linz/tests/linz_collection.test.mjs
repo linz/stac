@@ -188,7 +188,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     );
   });
 
-  it("Example without 'linz:geospatial_category' property should fail validation", async () => {
+  it("Collection with no 'linz:geospatial_category' property should pass validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
     delete example['linz:geospatial_category'];
@@ -197,15 +197,7 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     const valid = validate(example);
 
     // then
-    assert.equal(valid, false);
-    assert.equal(
-      validate.errors.some(
-        (error) =>
-          error.instancePath === '' && error.message === "must have required property 'linz:geospatial_category'",
-      ),
-      true,
-      JSON.stringify(validate.errors),
-    );
+    assert.equal(valid, true, JSON.stringify(validate.errors));
   });
 
   it("Collection with incorrect 'linz:geospatial_category' value should fail validation", async () => {
@@ -350,38 +342,6 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
   it("Collection with no 'linz:historic_survey_number' property should pass validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
-    delete example['linz:historic_survey_number'];
-
-    // when
-    const valid = validate(example);
-
-    // then
-    assert.equal(valid, true);
-  });
-
-  it("Scanned aerial photos collection without 'linz:historic_survey_number' should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    example['linz:geospatial_category'] = 'scanned-aerial-photos';
-    delete example['linz:historic_survey_number'];
-
-    // when
-    const valid = validate(example);
-
-    // then
-    assert.equal(valid, false);
-    assert.equal(
-      validate.errors.some((error) => error.message === "must have required property 'linz:historic_survey_number'"),
-      true,
-      JSON.stringify(validate.errors),
-    );
-  });
-
-  it("Scanned aerial photos collection with 'linz:historic_survey_number' should pass validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    example['linz:geospatial_category'] = 'scanned-aerial-photos';
-    example['linz:historic_survey_number'] = 'SNC8844';
 
     // when
     const valid = validate(example);

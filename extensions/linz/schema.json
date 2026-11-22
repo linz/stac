@@ -28,14 +28,7 @@
         "allOf": [
           {
             "type": "object",
-            "required": [
-              "linz:geospatial_category",
-              "linz:lifecycle",
-              "linz:security_classification",
-              "providers",
-              "title",
-              "type"
-            ],
+            "required": ["linz:lifecycle", "linz:security_classification", "providers", "title", "type"],
             "properties": {
               "linz:event_name": {
                 "type": "string",
@@ -46,7 +39,7 @@
               "linz:historic_survey_number": {
                 "type": "string",
                 "minLength": 1,
-                "description": "Historic survey number. Required for scanned aerial photos.",
+                "description": "Historic survey number.",
                 "examples": ["SNC8844"]
               },
               "linz:geographic_description": {
@@ -92,14 +85,6 @@
           },
           {
             "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
-          },
-          {
-            "if": {
-              "type": "object",
-              "properties": { "linz:geospatial_category": { "const": "scanned-aerial-photos" } },
-              "required": ["linz:geospatial_category"]
-            },
-            "then": { "type": "object", "required": ["linz:historic_survey_number"] }
           }
         ]
       },
