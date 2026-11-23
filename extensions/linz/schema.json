@@ -78,7 +78,7 @@
               "linz:slug": {
                 "type": "string",
                 "minLength": 1,
-                "description": "The '<name>-<date>-<GSD>' part of the Open Data Registry path.",
+                "description": "The '<name>_<date>_<GSD>' part of the Open Data Registry path.",
                 "examples": ["banks-peninsula_2019-2020_0.075m", "new-zealand_2015_1m"]
               }
             }

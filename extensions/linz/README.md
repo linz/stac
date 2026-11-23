@@ -68,6 +68,7 @@ These fields apply to assets within both items and collections.
 
 This extension includes these other extensions:
 
+- [file](https://github.com/stac-extensions/file)
 - [processing](https://github.com/stac-extensions/processing)
 
 ## Contributing
