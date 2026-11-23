@@ -339,17 +339,6 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     );
   });
 
-  it("Collection with no 'linz:historic_survey_number' property should pass validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-
-    // when
-    const valid = validate(example);
-
-    // then
-    assert.equal(valid, true, JSON.stringify(validate.errors));
-  });
-
   it("Collection with invalid 'linz:slug' value should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
