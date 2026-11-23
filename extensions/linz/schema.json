@@ -8,12 +8,6 @@
       "$ref": "https://stac-extensions.github.io/file/v2.0.0/schema.json#"
     },
     {
-      "$ref": "https://stac-extensions.github.io/version/v1.0.0/schema.json#"
-    },
-    {
-      "$ref": "https://stac-extensions.github.io/projection/v1.0.0/schema.json#"
-    },
-    {
       "$ref": "#/definitions/fields"
     },
     {
@@ -42,6 +36,12 @@
                 "description": "Human-readable description of the event associated with the collection.",
                 "examples": ["Kaikōura earthquake", "Fiordland tsunami"]
               },
+              "linz:historic_survey_number": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Historic survey number.",
+                "examples": ["SNC8844"]
+              },
               "linz:geographic_description": {
                 "type": "string",
                 "minLength": 1,
@@ -56,6 +56,7 @@
                   "auckland",
                   "bay-of-plenty",
                   "canterbury",
+                  "chatham-islands",
                   "gisborne",
                   "global",
                   "hawkes-bay",
@@ -77,16 +78,13 @@
               "linz:slug": {
                 "type": "string",
                 "minLength": 1,
-                "description": "The '<name>-<date>-<GSD>' part of the Open Data Registry path.",
+                "description": "The '<name>_<date>_<GSD>' part of the Open Data Registry path.",
                 "examples": ["banks-peninsula_2019-2020_0.075m", "new-zealand_2015_1m"]
               }
             }
           },
           {
             "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
-          },
-          {
-            "$ref": "https://stac.linz.govt.nz/_STAC_VERSION_/quality/schema.json#"
           }
         ]
       },
@@ -150,6 +148,28 @@
         },
         "linz:event_name": {},
         "linz:geographic_description": {},
+        "linz:geospatial_category": {
+          "title": "Geospatial Category",
+          "type": "string",
+          "description": "Geospatial category of the data in the collection.",
+          "enum": [
+            "ancillary-aerial-photos",
+            "ancillary-near-infrared-aerial-photos",
+            "dem",
+            "dem-hillshade",
+            "dem-hillshade-igor",
+            "dsm",
+            "dsm-hillshade",
+            "dsm-hillshade-igor",
+            "near-infrared-aerial-photos",
+            "near-infrared-satellite-imagery",
+            "rural-aerial-photos",
+            "satellite-imagery",
+            "scanned-aerial-photos",
+            "urban-aerial-photos"
+          ]
+        },
+        "linz:historic_survey_number": {},
         "linz:lifecycle": {
           "title": "Life Cycle",
           "type": "string",

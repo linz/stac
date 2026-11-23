@@ -10,7 +10,14 @@ and this project adheres to
 
 ### Added
 
+- `linz:geospatial_category` collection field.
+- `linz:historic_survey_number` collection field.
+- `chatham-islands` value for `linz:region`.
+
 ### Changed
+
+- `linz:slug` collection field documented in README.
+- README extensions list updated to match the schema (`file` included, `processing` recommended).
 
 ### Deprecated
 
@@ -20,7 +27,6 @@ and this project adheres to
   collection fields removed (not used in production).
 - `linz:language` asset field removed (not used in production).
 - `summaries.created`, `summaries.updated` and `summaries.datetime` removed (not used in production).
+- Projection, quality and version extensions are no longer included in the LINZ extension.
 
 ### Fixed
-
-[unreleased]: https://github.com/stac/extensions/linz/compare/v1.0.0...HEAD

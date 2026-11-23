@@ -52,46 +52,6 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     );
   });
 
-  it("Example with unsupported 'quality:*' property should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    const parameterName = 'quality:unknown';
-    example[parameterName] = 1;
-
-    // when
-    const valid = validate(example);
-
-    // then
-    assert.equal(valid, false);
-    assert.equal(
-      validate.errors.some(
-        (error) =>
-          error.params.additionalProperty === parameterName && error.message === 'must NOT have additional properties',
-      ),
-      true,
-      JSON.stringify(validate.errors),
-    );
-  });
-
-  it("Example with invalid 'proj:epsg' value should fail validation", async () => {
-    // given
-    const example = JSON.parse(await fs.readFile(examplePath));
-    example['assets']['example']['proj:epsg'] = 'string';
-
-    // when
-    const valid = validate(example);
-
-    // then
-    assert.equal(valid, false);
-    assert.equal(
-      validate.errors.some(
-        (error) => error.instancePath === '/assets/example/proj:epsg' && error.message === 'must be integer,null',
-      ),
-      true,
-      JSON.stringify(validate.errors),
-    );
-  });
-
   it("Asset with no 'created' property should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
@@ -228,10 +188,22 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     );
   });
 
-  it("Example without 'version' property should fail validation", async () => {
+  it("Collection with no 'linz:geospatial_category' property should pass validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
-    delete example.version;
+    delete example['linz:geospatial_category'];
+
+    // when
+    const valid = validate(example);
+
+    // then
+    assert.equal(valid, true, JSON.stringify(validate.errors));
+  });
+
+  it("Collection with incorrect 'linz:geospatial_category' value should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:geospatial_category'] = 'not-a-category';
 
     // when
     const valid = validate(example);
@@ -239,7 +211,11 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     // then
     assert.equal(valid, false);
     assert.equal(
-      validate.errors.some((error) => error.message === "must have required property 'version'"),
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/linz:geospatial_category' &&
+          error.message === 'must be equal to one of the allowed values',
+      ),
       true,
       JSON.stringify(validate.errors),
     );
@@ -342,6 +318,27 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
     assert.equal(valid, true);
   });
 
+  it("Collection with invalid 'linz:historic_survey_number' value should fail validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:historic_survey_number'] = '';
+
+    // when
+    const valid = validate(example);
+
+    // then
+    assert.equal(valid, false);
+    assert.equal(
+      validate.errors.some(
+        (error) =>
+          error.instancePath === '/linz:historic_survey_number' &&
+          error.message === 'must NOT have fewer than 1 characters',
+      ),
+      true,
+      JSON.stringify(validate.errors),
+    );
+  });
+
   it("Collection with invalid 'linz:slug' value should fail validation", async () => {
     // given
     const example = JSON.parse(await fs.readFile(examplePath));
@@ -359,5 +356,17 @@ describe('LINZ collection', { timeout: DefaultTimeoutMillis }, () => {
       true,
       JSON.stringify(validate.errors),
     );
+  });
+
+  it("Collection with 'chatham-islands' region should pass validation", async () => {
+    // given
+    const example = JSON.parse(await fs.readFile(examplePath));
+    example['linz:region'] = 'chatham-islands';
+
+    // when
+    const valid = validate(example);
+
+    // then
+    assert.equal(valid, true, JSON.stringify(validate.errors));
   });
 });

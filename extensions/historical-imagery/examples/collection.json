@@ -33,6 +33,8 @@
   "version": "1",
   "linz:security_classification": "unclassified",
   "linz:lifecycle": "completed",
+  "linz:geospatial_category": "scanned-aerial-photos",
+  "linz:historic_survey_number": "SNC8844",
   "quality:description": "The spatial extents provided are only an approximate coverage for the ungeoreferenced aerial photographs.",
   "title": "NEW ZEALAND (MAINLAND)",
   "extent": {
