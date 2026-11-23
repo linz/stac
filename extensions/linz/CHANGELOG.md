@@ -17,6 +17,7 @@ and this project adheres to
 ### Changed
 
 - `linz:slug` collection field documented in README.
+- README extensions list updated to match the schema (`file` included, `processing` recommended).
 
 ### Deprecated
 
