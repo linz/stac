@@ -40,8 +40,8 @@ Install packages by running `npm install`.
 Verify changes by running `npm run lint && npm run test` before committing.
 
 Use [Conventional Commits](https://www.conventionalcommits.org/) for pull request titles, as they are used to
-work out the next version and to write the [changelog](CHANGELOG.md). Use the extension name as the scope when a
-change affects a single extension, e.g. `feat(linz): add linz:example field`.
+work out the next version and to write the changelogs. Changes are added to an extension's changelog based on
+the files they touch, so a scope is optional, but it helps readers, e.g. `feat(linz): add linz:example field`.
 
 ### Releases
 
@@ -49,8 +49,9 @@ Releases are managed by [release-please](https://github.com/googleapis/release-p
 
 1. When pull requests are merged to `master`, release-please opens or updates a `release: x.y.z` pull request
    listing the unreleased changes.
-2. Merging the release pull request updates [CHANGELOG.md](CHANGELOG.md), creates the version tag and creates a GitHub
-   release.
+2. Merging the release pull request updates the root [CHANGELOG.md](CHANGELOG.md) and the `CHANGELOG.md` of each
+   changed extension, creates the version tags and creates GitHub releases. All extensions share the same version
+   as the repository.
 3. The release then publishes the extensions to a new version folder (e.g. `/v0.1.2/`) on the `gh-pages` branch and
    regenerates the [stac.linz.govt.nz](https://stac.linz.govt.nz) homepage from this README, with the extension
    links pointing to the new version. Previously published versions are never changed.
@@ -58,6 +59,9 @@ Releases are managed by [release-please](https://github.com/googleapis/release-p
 The homepage is generated from the repository [README.md](https://github.com/linz/stac/blob/master/README.md) on
 each release, so don't edit `README.md` on the `gh-pages` branch by hand.
 [Edit the repository README](https://github.com/linz/stac/edit/master/README.md) instead.
+
+The changelogs, `version.txt` files and `.release-please-manifest.json` are managed by release-please, so don't
+edit them by hand.
 
 ## Adding a new extension
 
@@ -70,7 +74,18 @@ un-published json-schema.
 Add the extension to the [Extensions](#extensions) list above to include it on the
 [stac.linz.govt.nz](https://stac.linz.govt.nz) homepage.
 
+<<<<<<< HEAD
 ## [License](https://github.com/linz/stac/blob/master/LICENSE)
+=======
+Add the extension to release-please so it gets its own changelog:
+
+- add a package for `extensions/<name>` with its `component` in
+  [release-please-config.json](release-please-config.json), and add the component to the `linked-versions` plugin
+- add `extensions/<name>` to [.release-please-manifest.json](.release-please-manifest.json) with the current version
+- add `extensions/<name>/version.txt` containing the current version
+
+## [License](LICENSE)
+>>>>>>> 08bb54d (docs: update README)
 
 [![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
 
