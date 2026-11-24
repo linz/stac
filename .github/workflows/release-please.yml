@@ -38,8 +38,10 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          # Keep a copy of the versioned extensions before switching branches
+          # Keep a copy of the versioned extensions and the homepage before switching branches
+          # (the homepage is the repo README with ./extensions/<name> links rewritten to /<tag>/<name>/)
           cp -r extensions "${RUNNER_TEMP}/extensions"
+          sed -E "s#\(\./extensions/([a-z0-9-]+)/?\)#(/${TAG_NAME}/\1/)#g" README.md > "${RUNNER_TEMP}/README.md"
           git checkout -- extensions
 
           git fetch origin gh-pages
@@ -53,7 +55,8 @@ jobs:
 
           mkdir "${TAG_NAME}"
           cp -r "${RUNNER_TEMP}/extensions/." "${TAG_NAME}/"
+          cp "${RUNNER_TEMP}/README.md" README.md
 
-          git add "${TAG_NAME}"
-          git commit -m "chore(schema): publish schema for ${TAG_NAME}"
+          git add "${TAG_NAME}" README.md
+          git commit -m "chore(schema): publish schema and homepage for ${TAG_NAME}"
           git push origin gh-pages
