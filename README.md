@@ -49,12 +49,13 @@ Releases are managed by [release-please](https://github.com/googleapis/release-p
 
 1. When pull requests are merged to `master`, release-please opens or updates a `release: x.y.z` pull request
    listing the unreleased changes.
-2. Merging the release pull request updates the root [CHANGELOG.md](CHANGELOG.md) and the `CHANGELOG.md` of each
-   changed extension, creates the version tags and creates GitHub releases. All extensions share the same version
-   as the repository.
-3. The release then publishes the extensions to a new version folder (e.g. `/v0.1.2/`) on the `gh-pages` branch and
-   regenerates the [stac.linz.govt.nz](https://stac.linz.govt.nz) homepage from this README, with the extension
-   links pointing to the new version. Previously published versions are never changed.
+2. Merging the release pull request updates the root [CHANGELOG.md](CHANGELOG.md), plus the `CHANGELOG.md` and
+   `version.txt` of each extension that changed, then creates the version tags and GitHub releases. Each extension
+   has its own version (tagged e.g. `linz-v0.2.0`). The repository version (tagged e.g. `v0.1.5`) increases with
+   every release.
+3. The release then publishes all extensions to a new folder named after the repository version (e.g. `/v0.1.5/`)
+   on the `gh-pages` branch, and regenerates the [stac.linz.govt.nz](https://stac.linz.govt.nz) homepage from this
+   README, with the extension links pointing to the new folder. Previously published versions are never changed.
 
 The homepage is generated from the repository [README.md](https://github.com/linz/stac/blob/master/README.md) on
 each release, so don't edit `README.md` on the `gh-pages` branch by hand.

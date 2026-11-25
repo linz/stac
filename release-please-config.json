@@ -9,7 +9,6 @@
   "bump-patch-for-minor-pre-major": true,
   "packages": {
     ".": {
-      "component": "stac",
       "release-type": "node",
       "include-component-in-tag": false
     },
@@ -34,12 +33,5 @@
     "extensions/scanning": {
       "component": "scanning"
     }
-  },
-  "plugins": [
-    {
-      "type": "linked-versions",
-      "groupName": "stac-extensions",
-      "components": ["aerial-photo", "camera", "film", "historical-imagery", "linz", "quality", "scanning", "stac"]
-    }
-  ]
+  }
 }
