@@ -19,8 +19,7 @@ specification. This is the place to add a short introduction.
     in a STAC Item
   - [Collection example](examples/collection.json): Shows the basic usage of the
     extension in a STAC Collection
-- [JSON Schema](json-schema/schema.json)
-- [Changelog](./CHANGELOG.md)
+- [JSON Schema](schema.json)
 
 ## Item Properties and Collection Fields
 
