@@ -55,7 +55,12 @@ jobs:
 
           mkdir "${TAG_NAME}"
           cp -r "${RUNNER_TEMP}/extensions/." "${TAG_NAME}/"
-          cp "${RUNNER_TEMP}/README.md" README.md
+          LATEST="$(find . -maxdepth 1 -type d -name 'v*' -printf '%f\n' | sort --version-sort | tail -n 1)"
+          if [ "${LATEST}" = "${TAG_NAME}" ]; then
+            cp "${RUNNER_TEMP}/README.md" README.md
+          else
+            echo "${TAG_NAME} is older than ${LATEST}, so not updating the homepage"
+          fi
 
           git add "${TAG_NAME}" README.md
           git commit -m "chore(schema): publish schema and homepage for ${TAG_NAME}"
