@@ -55,8 +55,9 @@ Releases are managed by [release-please](https://github.com/googleapis/release-p
    regenerates the [stac.linz.govt.nz](https://stac.linz.govt.nz) homepage from this README, with the extension
    links pointing to the new version. Previously published versions are never changed.
 
-The homepage is generated on each release, so don't edit `README.md` on the `gh-pages` branch by hand. Change this
-README instead.
+The homepage is generated from the repository [README.md](https://github.com/linz/stac/blob/master/README.md) on
+each release, so don't edit `README.md` on the `gh-pages` branch by hand.
+[Edit the repository README](https://github.com/linz/stac/edit/master/README.md) instead.
 
 ## Adding a new extension
 
