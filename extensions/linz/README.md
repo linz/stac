@@ -20,7 +20,7 @@ extension which adds constraints to default STAC schema fields.
   - [Item example](https://stac.linz.govt.nz/_STAC_VERSION_/linz/examples/item.json): Shows the basic usage of the extension
     in a STAC Item
 - [JSON Schema](https://stac.linz.govt.nz/_STAC_VERSION_/linz/schema.json)
-- [Changelog](https://github.com/linz/stac/blob/master/CHANGELOG.md)
+- [Changelog](https://stac.linz.govt.nz/_STAC_VERSION_/CHANGELOG.md)
 
 ## Item Fields
 
