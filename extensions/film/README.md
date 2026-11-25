@@ -15,6 +15,7 @@
   - [Item example](https://stac.linz.govt.nz/_STAC_VERSION_/film/examples/item.json): Shows the basic usage of the extension
     in a STAC Item
 - [JSON Schema](https://stac.linz.govt.nz/_STAC_VERSION_/film/schema.json)
+- [Changelog](https://stac.linz.govt.nz/_STAC_VERSION_/film/CHANGELOG.md)
 
 ## Item Properties or Asset Fields
 

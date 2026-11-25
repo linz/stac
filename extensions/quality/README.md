@@ -18,6 +18,7 @@ This extension applies to STAC Collections, as quality and accuracy is most ofte
   - [Collection example](https://stac.linz.govt.nz/_STAC_VERSION_/quality/examples/collection.json): Shows the basic usage of the
     extension in a STAC Collection
 - [JSON Schema](https://stac.linz.govt.nz/_STAC_VERSION_/quality/schema.json)
+- [Changelog](https://stac.linz.govt.nz/_STAC_VERSION_/quality/CHANGELOG.md)
 
 ## Collection Fields
 

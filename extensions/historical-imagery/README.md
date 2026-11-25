@@ -28,6 +28,7 @@ For more details see
   - [Item example](https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/examples/item.json): Shows the basic usage of the extension
     in a STAC Item
 - [JSON Schema](https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/schema.json)
+- [Changelog](https://stac.linz.govt.nz/_STAC_VERSION_/historical-imagery/CHANGELOG.md)
 
 ## STAC Collections
 

@@ -15,6 +15,7 @@
   - [Item example](https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/examples/item.json): Shows the basic usage of the extension
     in a STAC Item
 - [JSON Schema](https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/schema.json)
+- [Changelog](https://stac.linz.govt.nz/_STAC_VERSION_/aerial-photo/CHANGELOG.md)
 
 ## Item Properties or Asset Fields
 
