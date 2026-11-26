@@ -8,7 +8,7 @@
     "lint:fmt": "oxfmt --check .",
     "lint:fix": "oxlint --fix && oxfmt --write .",
     "format": "oxfmt --write .",
-    "version-schema": "find extensions -type f -print0 | xargs -0 sed -i \"s/_STAC_VERSION_/v$npm_package_version/\"",
+    "version-schema": "for d in extensions/*/; do [ -f \"$d/version.txt\" ] || continue; v=$(cat \"$d/version.txt\"); find \"$d\" -type f -print0 | xargs -0 sed -i \"s/_STAC_VERSION_/v$v/\"; done",
     "test": "node --test 'extensions/*/tests/*.test.mjs' && ./validate.sh"
   },
   "devDependencies": {
