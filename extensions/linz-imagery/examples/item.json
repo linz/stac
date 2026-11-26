@@ -6,7 +6,7 @@
     {
       "rel": "self",
       "href": "./BC40_2000_2421.json",
-      "type": "application/json"
+      "type": "application/geo+json"
     },
     {
       "rel": "collection",
