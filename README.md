@@ -75,21 +75,14 @@ un-published json-schema.
 Add the extension to the [Extensions](#extensions) list above to include it on the
 [stac.linz.govt.nz](https://stac.linz.govt.nz) homepage.
 
-<<<<<<< HEAD
-
-## [License](https://github.com/linz/stac/blob/master/LICENSE)
-
-=======
 Add the extension to release-please so it gets its own changelog:
 
 - add a package for `extensions/<name>` with its `component` in
-  [release-please-config.json](release-please-config.json), and add the component to the `linked-versions` plugin
-- add `extensions/<name>` to [.release-please-manifest.json](.release-please-manifest.json) with the current version
+  [release-please-config.json](https://github.com/linz/stac/blob/master/release-please-config.json), and add the component to the `linked-versions` plugin
+- add `extensions/<name>` to [.release-please-manifest.json](https://github.com/linz/stac/blob/master/.release-please-manifest.json) with the current version
 - add `extensions/<name>/version.txt` containing the current version
 
-## [License](LICENSE)
-
-> > > > > > > 08bb54d (docs: update README)
+## [License](https://github.com/linz/stac/blob/master/LICENSE)
 
 [![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
 
