@@ -52,10 +52,14 @@ Releases are managed by [release-please](https://github.com/googleapis/release-p
 2. Merging the release pull request updates the root [CHANGELOG.md](CHANGELOG.md), plus the `CHANGELOG.md` and
    `version.txt` of each extension that changed, then creates the version tags and GitHub releases. Each extension
    has its own version (tagged e.g. `linz-v0.2.0`). The repository version (tagged e.g. `v0.1.5`) increases with
-   every release.
-3. The release then publishes all extensions to a new folder named after the repository version (e.g. `/v0.1.5/`)
-   on the `gh-pages` branch, and regenerates the [stac.linz.govt.nz](https://stac.linz.govt.nz) homepage from this
-   README, with the extension links pointing to the new folder. Previously published versions are never changed.
+   every release, but isn't used in the published URLs.
+3. The release then publishes each extension that changed to a folder named after its own version (e.g.
+   `/v0.2.0/linz/`) on the `gh-pages` branch, and regenerates the [stac.linz.govt.nz](https://stac.linz.govt.nz)
+   homepage from this README, with each extension linking to its latest version. Previously published versions are
+   never changed.
+
+A version folder (e.g. `/v0.2.0/`) only contains the extensions released at that version, so use the
+[Extensions](#extensions) links above to find each extension's latest version.
 
 The homepage is generated from the repository [README.md](https://github.com/linz/stac/blob/master/README.md) on
 each release, so don't edit `README.md` on the `gh-pages` branch by hand.
@@ -75,12 +79,13 @@ un-published json-schema.
 Add the extension to the [Extensions](#extensions) list above to include it on the
 [stac.linz.govt.nz](https://stac.linz.govt.nz) homepage.
 
-Add the extension to release-please so it gets its own changelog:
+Add the extension to release-please so it gets its own changelog and version:
 
 - add a package for `extensions/<name>` with its `component` in
-  [release-please-config.json](https://github.com/linz/stac/blob/master/release-please-config.json), and add the component to the `linked-versions` plugin
+  [release-please-config.json](https://github.com/linz/stac/blob/master/release-please-config.json)
 - add `extensions/<name>` to [.release-please-manifest.json](https://github.com/linz/stac/blob/master/.release-please-manifest.json) with the current version
-- add `extensions/<name>/version.txt` containing the current version
+- add `extensions/<name>/version.txt` containing the current version. Extensions without a `version.txt` aren't
+  published
 
 ## [License](https://github.com/linz/stac/blob/master/LICENSE)
 
