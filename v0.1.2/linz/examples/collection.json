@@ -1,0 +1,50 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac.linz.govt.nz/v0.1.2/linz/schema.json",
+    "https://stac-extensions.github.io/file/v2.0.0/schema.json"
+  ],
+  "type": "Collection",
+  "id": "collection",
+  "title": "A title",
+  "description": "A description",
+  "license": "Apache-2.0",
+  "linz:event_name": "Forest assessment",
+  "linz:lifecycle": "under development",
+  "linz:geographic_description": "Underhill",
+  "linz:region": "new-zealand",
+  "linz:security_classification": "unclassified",
+  "linz:geospatial_category": "urban-aerial-photos",
+  "extent": {
+    "spatial": {
+      "bbox": [[172.9, 1.3, 173, 1.4]]
+    },
+    "temporal": {
+      "interval": [["2015-06-23T00:00:00Z", null]]
+    }
+  },
+  "links": [],
+  "linz:slug": "new-zealand_2015_1m",
+  "providers": [
+    {
+      "name": "Example",
+      "description": "Example description.",
+      "roles": ["licensor"],
+      "url": "https://www.exampleurl.com"
+    },
+    {
+      "name": "Example",
+      "description": "Example description.",
+      "roles": ["producer"],
+      "url": "https://www.exampleurl.com"
+    }
+  ],
+  "assets": {
+    "example": {
+      "href": "https://example.com/examples/file.xyz",
+      "created": "2000-01-01T00:00:00Z",
+      "updated": "2020-01-01T00:00:00Z",
+      "file:checksum": "1220e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

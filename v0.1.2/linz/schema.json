@@ -1,0 +1,232 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://stac.linz.govt.nz/v0.1.2/linz/schema.json",
+  "title": "LINZ STAC Extension",
+  "description": "LINZ STAC Extension.",
+  "allOf": [
+    {
+      "$ref": "https://stac-extensions.github.io/file/v2.0.0/schema.json#"
+    },
+    {
+      "$ref": "#/definitions/fields"
+    },
+    {
+      "$ref": "#/definitions/stac_extensions"
+    },
+    {
+      "$comment": "Type-specific schemas",
+      "if": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "const": "Collection"
+          }
+        }
+      },
+      "then": {
+        "$comment": "This is the schema for STAC Collections.",
+        "allOf": [
+          {
+            "type": "object",
+            "required": ["linz:lifecycle", "linz:security_classification", "providers", "title", "type"],
+            "properties": {
+              "linz:event_name": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Human-readable description of the event associated with the collection.",
+                "examples": ["Kaikōura earthquake", "Fiordland tsunami"]
+              },
+              "linz:historic_survey_number": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Historic survey number.",
+                "examples": ["SNC8844"]
+              },
+              "linz:geographic_description": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Human-readable description of the area covered by the collection.",
+                "examples": ["Waikato River", "Southland excluding islands"]
+              },
+              "linz:region": {
+                "type": "string",
+                "description": "ASCII, lowercase, hyphenated region name covering the entire collection.",
+                "enum": [
+                  "antarctica",
+                  "auckland",
+                  "bay-of-plenty",
+                  "canterbury",
+                  "chatham-islands",
+                  "gisborne",
+                  "global",
+                  "hawkes-bay",
+                  "manawatu-whanganui",
+                  "marlborough",
+                  "nelson",
+                  "new-zealand",
+                  "northland",
+                  "otago",
+                  "pacific-islands",
+                  "southland",
+                  "taranaki",
+                  "tasman",
+                  "waikato",
+                  "wellington",
+                  "west-coast"
+                ]
+              },
+              "linz:slug": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The '<name>_<date>_<GSD>' part of the Open Data Registry path.",
+                "examples": ["banks-peninsula_2019-2020_0.075m", "new-zealand_2015_1m"]
+              }
+            }
+          },
+          {
+            "$ref": "https://schemas.stacspec.org/v1.0.0/collection-spec/json-schema/collection.json#"
+          }
+        ]
+      },
+      "else": {
+        "if": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "Feature"
+            }
+          }
+        },
+        "then": {
+          "$comment": "This is the schema for STAC Items.",
+          "allOf": [
+            {
+              "type": "object",
+              "required": ["type"]
+            },
+            {
+              "$ref": "https://schemas.stacspec.org/v1.0.0/item-spec/json-schema/item.json#"
+            }
+          ]
+        },
+        "else": false
+      }
+    }
+  ],
+  "definitions": {
+    "stac_extensions": {
+      "type": "object",
+      "required": ["stac_extensions"],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "contains": {
+            "const": "https://stac.linz.govt.nz/v0.1.2/linz/schema.json"
+          }
+        }
+      }
+    },
+    "fields": {
+      "type": "object",
+      "properties": {
+        "assets": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["file:checksum", "created", "updated"],
+            "properties": {
+              "created": {
+                "title": "Creation time",
+                "$ref": "#/definitions/utc_datetime"
+              },
+              "updated": {
+                "title": "Last update time",
+                "$ref": "#/definitions/utc_datetime"
+              }
+            }
+          }
+        },
+        "linz:event_name": {},
+        "linz:geographic_description": {},
+        "linz:geospatial_category": {
+          "title": "Geospatial Category",
+          "type": "string",
+          "description": "Geospatial category of the data in the collection.",
+          "enum": [
+            "ancillary-aerial-photos",
+            "ancillary-near-infrared-aerial-photos",
+            "dem",
+            "dem-hillshade",
+            "dem-hillshade-igor",
+            "dsm",
+            "dsm-hillshade",
+            "dsm-hillshade-igor",
+            "near-infrared-aerial-photos",
+            "near-infrared-satellite-imagery",
+            "rural-aerial-photos",
+            "satellite-imagery",
+            "scanned-aerial-photos",
+            "urban-aerial-photos"
+          ]
+        },
+        "linz:historic_survey_number": {},
+        "linz:lifecycle": {
+          "title": "Life Cycle",
+          "type": "string",
+          "enum": ["under development", "preview", "ongoing", "completed", "deprecated"]
+        },
+        "linz:region": {},
+        "linz:security_classification": {
+          "type": "string",
+          "enum": ["unclassified", "in-confidence", "sensitive", "restricted", "confidential", "secret", "top-secret"]
+        },
+        "linz:slug": {},
+        "providers": {
+          "allOf": [
+            {
+              "type": "array",
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "roles": {
+                    "type": "array",
+                    "contains": {
+                      "const": "licensor"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "array",
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "roles": {
+                    "type": "array",
+                    "contains": {
+                      "const": "producer"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "patternProperties": {
+        "^(?!linz:)": {}
+      },
+      "additionalProperties": false
+    },
+    "utc_datetime": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "(\\+00:00|Z)$"
+    }
+  }
+}
