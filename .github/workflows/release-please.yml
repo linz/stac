@@ -47,9 +47,10 @@ jobs:
           fi
 
           # Keep a copy of the versioned extensions, the homepage and the changelog before switching branches
-          # (the homepage is the repo README with ./extensions/<name> links rewritten to /<tag>/<name>/)
+          # (the homepage is the repo README with ./extensions/<name> and CHANGELOG.md links rewritten to /<tag>/...)
           cp -r extensions "${RUNNER_TEMP}/extensions"
-          sed -E "s#\(\./extensions/([a-z0-9-]+)/?\)#(/${TAG_NAME}/\1/)#g" README.md > "${RUNNER_TEMP}/README.md"
+          sed -E -e "s#\(\./extensions/([a-z0-9-]+)/?\)#(/${TAG_NAME}/\1/)#g" \
+                 -e "s#\(CHANGELOG\.md\)#(/${TAG_NAME}/CHANGELOG.md)#g" README.md > "${RUNNER_TEMP}/README.md"
           cp CHANGELOG.md "${RUNNER_TEMP}/CHANGELOG.md"
           git checkout -- extensions
 

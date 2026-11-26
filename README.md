@@ -70,7 +70,7 @@ un-published json-schema.
 Add the extension to the [Extensions](#extensions) list above to include it on the
 [stac.linz.govt.nz](https://stac.linz.govt.nz) homepage.
 
-## [License](LICENSE)
+## [License](https://github.com/linz/stac/blob/master/LICENSE)
 
 [![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
 
