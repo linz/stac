@@ -1,13 +1,4 @@
-## [0.0.15](https://github.com/linz/stac/compare/v0.0.14...v0.0.15) (2022-03-30)
-
-### Bug Fixes
-
-- remove requirement for processing:software field in Historical Imagery extension TDE-343 ([#220](https://github.com/linz/stac/issues/220)) ([aebe081](https://github.com/linz/stac/commit/aebe081ce9256b3c98dbab5fb10653a284fe3f15))
-- tidy historical imagery examples TDE-338 ([#222](https://github.com/linz/stac/issues/222)) ([55e6de6](https://github.com/linz/stac/commit/55e6de63c08e40d1421cfb5d383c5c95b65c1c31))
-
-### Features
-
-- **historical-imagery:** add quality:description to collection ([#217](https://github.com/linz/stac/issues/217)) ([6c68da3](https://github.com/linz/stac/commit/6c68da3d6574af75fdc89d2dd1852d095bbd63dc))
+# Changelog
 
 ## [0.1.1](https://github.com/linz/stac/compare/v0.1.0...v0.1.1) (2026-11-23)
 
@@ -42,6 +33,17 @@
 * actually check formatting rather than fixing it silently ([#278](https://github.com/linz/stac/issues/278)) ([6d0748b](https://github.com/linz/stac/commit/6d0748bc21cf5ae5f77e9b2cd57ddb0c9a1dd355))
 * run ospec tests ([#279](https://github.com/linz/stac/issues/279)) ([0e82f66](https://github.com/linz/stac/commit/0e82f6611bda63a74a6bf20f13e84893dcb31a73))
 * Use specific action versions ([#228](https://github.com/linz/stac/issues/228)) ([f3085c5](https://github.com/linz/stac/commit/f3085c52f98e95f1b9f4491860324671d4f61a49))
+
+## [0.0.15](https://github.com/linz/stac/compare/v0.0.14...v0.0.15) (2022-03-30)
+
+### Bug Fixes
+
+- remove requirement for processing:software field in Historical Imagery extension TDE-343 ([#220](https://github.com/linz/stac/issues/220)) ([aebe081](https://github.com/linz/stac/commit/aebe081ce9256b3c98dbab5fb10653a284fe3f15))
+- tidy historical imagery examples TDE-338 ([#222](https://github.com/linz/stac/issues/222)) ([55e6de6](https://github.com/linz/stac/commit/55e6de63c08e40d1421cfb5d383c5c95b65c1c31))
+
+### Features
+
+- **historical-imagery:** add quality:description to collection ([#217](https://github.com/linz/stac/issues/217)) ([6c68da3](https://github.com/linz/stac/commit/6c68da3d6574af75fdc89d2dd1852d095bbd63dc))
 
 ## [0.0.14](https://github.com/linz/stac/compare/v0.0.13...v0.0.14) (2021-12-09)
 

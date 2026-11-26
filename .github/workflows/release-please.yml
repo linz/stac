@@ -38,22 +38,39 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          # Keep a copy of the versioned extensions before switching branches
-          cp -r extensions "${RUNNER_TEMP}/extensions"
-          git checkout -- extensions
-
           git fetch origin gh-pages
-          git checkout gh-pages
 
           # Never overwrite an existing published version
-          if [ -e "${TAG_NAME}" ]; then
+          if git cat-file -e "origin/gh-pages:${TAG_NAME}" 2>/dev/null; then
             echo "${TAG_NAME} is already published on gh-pages"
             exit 1
           fi
 
+          # Keep a copy of the versioned extensions, the homepage and the changelog before switching branches
+          # (the homepage is the repo README with ./extensions/<name> and CHANGELOG.md links rewritten to /<tag>/...)
+          cp -r extensions "${RUNNER_TEMP}/extensions"
+          sed -E -e "s#\(\./extensions/([a-z0-9-]+)/?\)#(/${TAG_NAME}/\1/)#g" \
+                 -e "s#\(CHANGELOG\.md\)#(/${TAG_NAME}/CHANGELOG.md)#g" README.md > "${RUNNER_TEMP}/README.md"
+          cp CHANGELOG.md "${RUNNER_TEMP}/CHANGELOG.md"
+          git checkout -- extensions
+
+          git checkout gh-pages
+
+          # Publish this version's folder
           mkdir "${TAG_NAME}"
           cp -r "${RUNNER_TEMP}/extensions/." "${TAG_NAME}/"
+          cp "${RUNNER_TEMP}/README.md" "${TAG_NAME}/README.md"
+          cp "${RUNNER_TEMP}/CHANGELOG.md" "${TAG_NAME}/CHANGELOG.md"
 
-          git add "${TAG_NAME}"
-          git commit -m "chore(schema): publish schema for ${TAG_NAME}"
+          # Only update the homepage if this is the latest published version
+          # (e.g. not when an older failed release is re-run after a newer one)
+          LATEST="$(find . -maxdepth 1 -type d -name 'v*' -printf '%f\n' | sort --version-sort | tail -n 1)"
+          if [ "${LATEST}" = "${TAG_NAME}" ]; then
+            cp "${RUNNER_TEMP}/README.md" README.md
+          else
+            echo "${TAG_NAME} is older than ${LATEST}, so not updating the homepage"
+          fi
+
+          git add "${TAG_NAME}" README.md
+          git commit -m "chore(schema): publish schema and homepage for ${TAG_NAME}"
           git push origin gh-pages
