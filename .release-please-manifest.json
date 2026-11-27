@@ -1,10 +1,10 @@
 {
-  ".": "0.1.2",
-  "extensions/aerial-photo": "0.1.2",
-  "extensions/camera": "0.1.2",
-  "extensions/film": "0.1.2",
-  "extensions/historical-imagery": "0.1.2",
-  "extensions/linz": "0.1.2",
-  "extensions/quality": "0.1.2",
-  "extensions/scanning": "0.1.2"
+  ".": "0.1.3",
+  "extensions/aerial-photo": "0.1.3",
+  "extensions/camera": "0.1.3",
+  "extensions/film": "0.1.3",
+  "extensions/historical-imagery": "0.1.3",
+  "extensions/linz": "0.1.3",
+  "extensions/quality": "0.1.3",
+  "extensions/scanning": "0.1.3"
 }
