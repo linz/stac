@@ -40,37 +40,51 @@ jobs:
 
           git fetch origin gh-pages
 
-          # Never overwrite an existing published version
-          if git cat-file -e "origin/gh-pages:${TAG_NAME}" 2>/dev/null; then
-            echo "${TAG_NAME} is already published on gh-pages"
-            exit 1
-          fi
-
-          # Keep a copy of the versioned extensions, the homepage and the changelog before switching branches
-          # (the homepage is the repo README with ./extensions/<name> and CHANGELOG.md links rewritten to /<tag>/...)
+          # Keep a copy of the versioned extensions and build the homepage before switching branches.
+          # Each extension is published to /v<its version.txt>/<name>/, and the homepage (the repo README)
+          # links each extension to its latest published version
           cp -r extensions "${RUNNER_TEMP}/extensions"
-          sed -E -e "s#\(\./extensions/([a-z0-9-]+)/?\)#(/${TAG_NAME}/\1/)#g" \
-                 -e "s#\(CHANGELOG\.md\)#(/${TAG_NAME}/CHANGELOG.md)#g" README.md > "${RUNNER_TEMP}/README.md"
-          cp CHANGELOG.md "${RUNNER_TEMP}/CHANGELOG.md"
+          SED_ARGS=(-E)
+          for dir in extensions/*/; do
+            name="$(basename "${dir}")"
+            [ -f "${dir}version.txt" ] || continue
+            SED_ARGS+=(-e "s#\(\./extensions/${name}/?\)#(/v$(cat "${dir}version.txt")/${name}/)#g")
+          done
+          SED_ARGS+=(-e "s#\(CHANGELOG\.md\)#(https://github.com/linz/stac/blob/master/CHANGELOG.md)#g")
+          sed "${SED_ARGS[@]}" README.md > "${RUNNER_TEMP}/README.md"
           git checkout -- extensions
 
           git checkout gh-pages
 
-          # Publish this version's folder
-          mkdir "${TAG_NAME}"
-          cp -r "${RUNNER_TEMP}/extensions/." "${TAG_NAME}/"
-          cp "${RUNNER_TEMP}/README.md" "${TAG_NAME}/README.md"
-          cp "${RUNNER_TEMP}/CHANGELOG.md" "${TAG_NAME}/CHANGELOG.md"
+          # Publish each extension's new version, never overwriting an already published one
+          for dir in "${RUNNER_TEMP}"/extensions/*/; do
+            name="$(basename "${dir}")"
+            [ -f "${dir}version.txt" ] || continue
+            target="v$(cat "${dir}version.txt")/${name}"
+            if [ -e "${target}" ]; then
+              echo "${target} is already published"
+              continue
+            fi
+            mkdir -p "$(dirname "${target}")"
+            cp -r "${dir}" "${target}"
 
-          # Only update the homepage if this is the latest published version
+            git add "${target}"
+          done
+
+          # Only update the homepage if this is the latest repository release
           # (e.g. not when an older failed release is re-run after a newer one)
-          LATEST="$(find . -maxdepth 1 -type d -name 'v*' -printf '%f\n' | sort --version-sort | tail -n 1)"
+          LATEST="$(git tag --list 'v*' --sort=-version:refname | head -n 1)"
           if [ "${LATEST}" = "${TAG_NAME}" ]; then
             cp "${RUNNER_TEMP}/README.md" README.md
+            git add README.md
           else
             echo "${TAG_NAME} is older than ${LATEST}, so not updating the homepage"
           fi
 
-          git add "${TAG_NAME}" README.md
-          git commit -m "chore(schema): publish schema and homepage for ${TAG_NAME}"
+          if git diff --cached --quiet; then
+            echo "Nothing new to publish for ${TAG_NAME}"
+            exit 0
+          fi
+
+          git commit -m "chore(schema): publish extensions and homepage for ${TAG_NAME}"
           git push origin gh-pages
