@@ -6,7 +6,7 @@
     {
       "rel": "self",
       "href": "./BC40_2000_2421.json",
-      "type": "application/json"
+      "type": "application/geo+json"
     },
     {
       "rel": "collection",
@@ -30,7 +30,9 @@
   "properties": {
     "start_datetime": "2021-12-01T11:00:00Z",
     "end_datetime": "2022-05-05T12:00:00Z",
-    "datetime": null
+    "datetime": null,
+    "created": "2023-09-09T00:00:00Z",
+    "updated": "2026-03-17T02:01:35Z"
   },
   "geometry": {
     "type": "Polygon",
