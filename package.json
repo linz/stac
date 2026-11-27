@@ -1,6 +1,6 @@
 {
   "name": "@linzjs/stac",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "type": "module",
   "scripts": {
     "lint": "npm run lint:fmt && npm run lint:oxlint",
